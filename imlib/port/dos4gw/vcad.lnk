@@ -1,0 +1,13 @@
+system dos4gw
+option caseexact
+option map=vcad.map
+debug all
+name vcad.exe
+option stack=70k
+file .\wat\debug\ipxtest.obj
+file .\wat\debug\ipx.obj
+file .\wat\debug\doscall.obj
+file ..\..\wat\debug\packet.obj
+file ..\..\wat\debug\jmalloc.obj
+file .\wat\debug\timing.obj
+file .\wat\debug\jnet.obj

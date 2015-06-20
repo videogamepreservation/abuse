@@ -1,0 +1,524 @@
+# Makefile.in generated automatically by automake 1.2 from Makefile.am
+
+# Copyright (C) 1994, 1995, 1996, 1997 Free Software Foundation, Inc.
+# This Makefile.in is free software; the Free Software Foundation
+# gives unlimited permission to copy, distribute and modify it.
+
+
+SHELL = /bin/sh
+
+srcdir = @srcdir@
+top_srcdir = @top_srcdir@
+VPATH = @srcdir@
+prefix = @prefix@
+exec_prefix = @exec_prefix@
+
+bindir = @bindir@
+sbindir = @sbindir@
+libexecdir = @libexecdir@
+datadir = @datadir@
+sysconfdir = @sysconfdir@
+sharedstatedir = @sharedstatedir@
+localstatedir = @localstatedir@
+libdir = @libdir@
+infodir = @infodir@
+mandir = @mandir@
+includedir = @includedir@
+oldincludedir = /usr/include
+
+pkgdatadir = $(datadir)/@PACKAGE@
+pkglibdir = $(libdir)/@PACKAGE@
+pkgincludedir = $(includedir)/@PACKAGE@
+
+top_builddir = .
+
+ACLOCAL = @ACLOCAL@
+AUTOCONF = @AUTOCONF@
+AUTOMAKE = @AUTOMAKE@
+AUTOHEADER = @AUTOHEADER@
+
+INSTALL = @INSTALL@
+INSTALL_PROGRAM = @INSTALL_PROGRAM@
+INSTALL_DATA = @INSTALL_DATA@
+INSTALL_SCRIPT = @INSTALL_SCRIPT@
+transform = @program_transform_name@
+
+NORMAL_INSTALL = true
+PRE_INSTALL = true
+POST_INSTALL = true
+NORMAL_UNINSTALL = true
+PRE_UNINSTALL = true
+POST_UNINSTALL = true
+host_alias = @host_alias@
+host_triplet = @host@
+ADDCFLAGS = @ADDCFLAGS@
+ADDCXXFLAGS = @ADDCXXFLAGS@
+CC = @CC@
+CPP = @CPP@
+CXX = @CXX@
+LIBS = @LIBS@
+MAKEINFO = @MAKEINFO@
+PACKAGE = @PACKAGE@
+PROGS = @PROGS@
+VERSION = @VERSION@
+
+bin_SCRIPTS = abuse
+pkglib_PROGRAMS = abuse.x11R6 $(PROGS)
+EXTRA_PROGRAMS = abuse.console keydrv lnx_sdrv sgi_sdrv aix_sdrv
+pkgdata_DATA = abuse.lsp light.tbl
+
+abuse_x11R6_SOURCES = src/net/mac/tcpip.c src/specache.c src/netcfg.c \
+	src/text_gui.c src/innet.c src/net/unix/gserver.c \
+	src/net/unix/gclient.c src/net/unix/fileman.c src/net/sock.c \
+	src/chat.c src/endgame.c src/setup.c src/version.c \
+	src/loadgame.c src/profile.c src/cop.c src/statbar.c \
+	src/compiled.c src/ant.c src/sensor.c src/lisp_opt.c src/demo.c \
+	src/lcache.c src/lisp_gc.c src/nfclient.c src/username.c \
+	src/clisp.c src/gui.c src/transp.c src/collide.c src/trig.c \
+	src/property.c src/lisp.c src/cache.c src/particle.c \
+	src/objects.c src/extend.c src/console.c src/ability.c \
+	src/items.c src/dev.c src/chars.c src/level.c src/smallfnt.c \
+	src/automap.c src/help.c src/intsect.c src/loader2.c src/seq.c \
+	src/points.c src/fnt6x13.c src/morpher.c src/menu.c \
+	src/director.c src/view.c src/config.c src/game.c src/light.c \
+	src/devsel.c src/crc.c src/gamma.c src/language.c \
+	../imlib/sprite.c
+abuse_console_SOURCES = $(abuse_x11R6_SOURCES)
+keydrv_SOURCES = src/keydrv.c
+
+lnx_sdrv_SOURCES = ../imlib/port/linux/lnx_sdrv.c
+sgi_sdrv_SOURCES = ../imlib/port/sgi/sgi_sdrv.c
+sgi_sdrv_LDADD = -laudio
+aix_sdrv_SOURCES = ../imlib/port/aix/aix_sdrv.c
+aix_sdrv_LDADD = -lUMSobj
+
+IMLIBS = ../imlib/libimage.a ../imlib/libgui.a \
+	../imlib/libdir.a ../imlib/libtime.a ../imlib/libsound.a \
+	../imlib/libjoy.a ../imlib/libpacket.a
+abuse_x11R6_LDADD = $(IMLIBS) ../imlib/libwinman.a \
+	$(X_LIBS) -lX11 -lXext -lm
+abuse_console_LDADD = $(IMLIBS) ../imlib/libsvgawin.a -lvga -lm
+
+INCLUDES = -I$(srcdir)/inc -I$(srcdir)/../imlib/include \
+	   -I$(srcdir)/src/net/inc -I$(srcdir)/src/net/unix
+
+MYDEFS = -DMANAGE_MEM -DNO_CHECK
+CXXFLAGS = -g -O2
+
+COMPILE = $(CXX) $(DEFS) $(MYDEFS) $(INCLUDES) $(CPPFLAGS) $(CXXFLAGS) $(ADDCXXFLAGS) -o $@
+ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
+mkinstalldirs = $(SHELL) $(top_srcdir)/../mkinstalldirs
+CONFIG_CLEAN_FILES =  abuse
+PROGRAMS =  $(pkglib_PROGRAMS)
+
+
+DEFS = @DEFS@ -I. -I$(srcdir) 
+CPPFLAGS = @CPPFLAGS@
+LDFLAGS = @LDFLAGS@
+X_CFLAGS = @X_CFLAGS@
+X_LIBS = @X_LIBS@
+X_EXTRA_LIBS = @X_EXTRA_LIBS@
+X_PRE_LIBS = @X_PRE_LIBS@
+abuse_console_OBJECTS =  src/net/mac/tcpip.o src/specache.o src/netcfg.o \
+src/text_gui.o src/innet.o src/net/unix/gserver.o \
+src/net/unix/gclient.o src/net/unix/fileman.o src/net/sock.o src/chat.o \
+src/endgame.o src/setup.o src/version.o src/loadgame.o src/profile.o \
+src/cop.o src/statbar.o src/compiled.o src/ant.o src/sensor.o \
+src/lisp_opt.o src/demo.o src/lcache.o src/lisp_gc.o src/nfclient.o \
+src/username.o src/clisp.o src/gui.o src/transp.o src/collide.o \
+src/trig.o src/property.o src/lisp.o src/cache.o src/particle.o \
+src/objects.o src/extend.o src/console.o src/ability.o src/items.o \
+src/dev.o src/chars.o src/level.o src/smallfnt.o src/automap.o \
+src/help.o src/intsect.o src/loader2.o src/seq.o src/points.o \
+src/fnt6x13.o src/morpher.o src/menu.o src/director.o src/view.o \
+src/config.o src/game.o src/light.o src/devsel.o src/crc.o src/gamma.o \
+src/language.o ../imlib/sprite.o
+abuse_console_DEPENDENCIES =  ../imlib/libimage.a ../imlib/libgui.a \
+../imlib/libdir.a ../imlib/libtime.a ../imlib/libsound.a \
+../imlib/libjoy.a ../imlib/libpacket.a ../imlib/libsvgawin.a
+abuse_console_LDFLAGS = 
+keydrv_OBJECTS =  src/keydrv.o
+keydrv_LDADD = $(LDADD)
+keydrv_LDFLAGS = 
+lnx_sdrv_OBJECTS =  ../imlib/port/linux/lnx_sdrv.o
+lnx_sdrv_LDADD = $(LDADD)
+lnx_sdrv_LDFLAGS = 
+sgi_sdrv_OBJECTS =  ../imlib/port/sgi/sgi_sdrv.o
+sgi_sdrv_DEPENDENCIES = 
+sgi_sdrv_LDFLAGS = 
+aix_sdrv_OBJECTS =  ../imlib/port/aix/aix_sdrv.o
+aix_sdrv_DEPENDENCIES = 
+aix_sdrv_LDFLAGS = 
+abuse_x11R6_OBJECTS =  src/net/mac/tcpip.o src/specache.o src/netcfg.o \
+src/text_gui.o src/innet.o src/net/unix/gserver.o \
+src/net/unix/gclient.o src/net/unix/fileman.o src/net/sock.o src/chat.o \
+src/endgame.o src/setup.o src/version.o src/loadgame.o src/profile.o \
+src/cop.o src/statbar.o src/compiled.o src/ant.o src/sensor.o \
+src/lisp_opt.o src/demo.o src/lcache.o src/lisp_gc.o src/nfclient.o \
+src/username.o src/clisp.o src/gui.o src/transp.o src/collide.o \
+src/trig.o src/property.o src/lisp.o src/cache.o src/particle.o \
+src/objects.o src/extend.o src/console.o src/ability.o src/items.o \
+src/dev.o src/chars.o src/level.o src/smallfnt.o src/automap.o \
+src/help.o src/intsect.o src/loader2.o src/seq.o src/points.o \
+src/fnt6x13.o src/morpher.o src/menu.o src/director.o src/view.o \
+src/config.o src/game.o src/light.o src/devsel.o src/crc.o src/gamma.o \
+src/language.o ../imlib/sprite.o
+abuse_x11R6_DEPENDENCIES =  ../imlib/libimage.a ../imlib/libgui.a \
+../imlib/libdir.a ../imlib/libtime.a ../imlib/libsound.a \
+../imlib/libjoy.a ../imlib/libpacket.a ../imlib/libwinman.a
+abuse_x11R6_LDFLAGS = 
+SCRIPTS =  $(bin_SCRIPTS)
+
+CFLAGS = @CFLAGS@
+LINK = $(CC) $(CFLAGS) $(LDFLAGS) -o $@
+DATA =  $(pkgdata_DATA)
+
+DIST_COMMON =  Makefile.am Makefile.in abuse.in acinclude.m4 aclocal.m4 \
+configure configure.in
+
+
+DISTFILES = $(DIST_COMMON) $(SOURCES) $(HEADERS) $(TEXINFOS) $(EXTRA_DIST)
+
+TAR = gtar
+GZIP = --best
+DEP_FILES =  ../imlib/.deps/sprite.P ../imlib/port/aix/.deps/aix_sdrv.P \
+../imlib/port/linux/.deps/lnx_sdrv.P ../imlib/port/sgi/.deps/sgi_sdrv.P \
+src/.deps/ability.P src/.deps/ant.P src/.deps/automap.P \
+src/.deps/cache.P src/.deps/chars.P src/.deps/chat.P src/.deps/clisp.P \
+src/.deps/collide.P src/.deps/compiled.P src/.deps/config.P \
+src/.deps/console.P src/.deps/cop.P src/.deps/crc.P src/.deps/demo.P \
+src/.deps/dev.P src/.deps/devsel.P src/.deps/director.P \
+src/.deps/endgame.P src/.deps/extend.P src/.deps/fnt6x13.P \
+src/.deps/game.P src/.deps/gamma.P src/.deps/gui.P src/.deps/help.P \
+src/.deps/innet.P src/.deps/intsect.P src/.deps/items.P \
+src/.deps/keydrv.P src/.deps/language.P src/.deps/lcache.P \
+src/.deps/level.P src/.deps/light.P src/.deps/lisp.P \
+src/.deps/lisp_gc.P src/.deps/lisp_opt.P src/.deps/loader2.P \
+src/.deps/loadgame.P src/.deps/menu.P src/.deps/morpher.P \
+src/.deps/netcfg.P src/.deps/nfclient.P src/.deps/objects.P \
+src/.deps/particle.P src/.deps/points.P src/.deps/profile.P \
+src/.deps/property.P src/.deps/sensor.P src/.deps/seq.P \
+src/.deps/setup.P src/.deps/smallfnt.P src/.deps/specache.P \
+src/.deps/statbar.P src/.deps/text_gui.P src/.deps/transp.P \
+src/.deps/trig.P src/.deps/username.P src/.deps/version.P \
+src/.deps/view.P src/net/.deps/sock.P src/net/mac/.deps/tcpip.P \
+src/net/unix/.deps/fileman.P src/net/unix/.deps/gclient.P \
+src/net/unix/.deps/gserver.P
+SOURCES = $(abuse_console_SOURCES) $(keydrv_SOURCES) $(lnx_sdrv_SOURCES) $(sgi_sdrv_SOURCES) $(aix_sdrv_SOURCES) $(abuse_x11R6_SOURCES)
+OBJECTS = $(abuse_console_OBJECTS) $(keydrv_OBJECTS) $(lnx_sdrv_OBJECTS) $(sgi_sdrv_OBJECTS) $(aix_sdrv_OBJECTS) $(abuse_x11R6_OBJECTS)
+
+default: all
+
+.SUFFIXES:
+.SUFFIXES: .c .o
+$(srcdir)/Makefile.in: Makefile.am $(top_srcdir)/configure.in $(ACLOCAL_M4) 
+	cd $(top_srcdir) && $(AUTOMAKE) --foreign Makefile
+
+Makefile: $(srcdir)/Makefile.in $(top_builddir)/config.status $(BUILT_SOURCES)
+	cd $(top_builddir) \
+	  && CONFIG_FILES=$@ CONFIG_HEADERS= $(SHELL) ./config.status
+
+$(ACLOCAL_M4):  configure.in  acinclude.m4
+	cd $(srcdir) && $(ACLOCAL)
+
+config.status: $(srcdir)/configure
+	$(SHELL) ./config.status --recheck
+$(srcdir)/configure: $(srcdir)/configure.in $(ACLOCAL_M4) $(CONFIGURE_DEPENDENCIES)
+	cd $(srcdir) && $(AUTOCONF)
+abuse: $(top_builddir)/config.status abuse.in
+	cd $(top_builddir) && CONFIG_FILES=$@ CONFIG_HEADERS= ./config.status
+
+mostlyclean-pkglibPROGRAMS:
+
+clean-pkglibPROGRAMS:
+	test -z "$(pkglib_PROGRAMS)" || rm -f $(pkglib_PROGRAMS)
+
+distclean-pkglibPROGRAMS:
+
+maintainer-clean-pkglibPROGRAMS:
+
+install-pkglibPROGRAMS: $(pkglib_PROGRAMS)
+	@$(NORMAL_INSTALL)
+	$(mkinstalldirs) $(pkglibdir)
+	@list='$(pkglib_PROGRAMS)'; for p in $$list; do \
+	  if test -f $$p; then \
+	    echo "  $(INSTALL_PROGRAM) $$p $(pkglibdir)/`echo $$p|sed '$(transform)'`"; \
+	     $(INSTALL_PROGRAM) $$p $(pkglibdir)/`echo $$p|sed '$(transform)'`; \
+	  else :; fi; \
+	done
+
+uninstall-pkglibPROGRAMS:
+	$(NORMAL_UNINSTALL)
+	list='$(pkglib_PROGRAMS)'; for p in $$list; do \
+	  rm -f $(pkglibdir)/`echo $$p|sed '$(transform)'`; \
+	done
+
+.c.o:
+	$(COMPILE) -c $<
+
+mostlyclean-compile:
+	rm -f *.o core $(OBJECTS)
+
+clean-compile:
+
+distclean-compile:
+	rm -f *.tab.c
+
+maintainer-clean-compile:
+
+abuse.console: $(abuse_console_OBJECTS) $(abuse_console_DEPENDENCIES)
+	@rm -f abuse.console
+	$(LINK) $(abuse_console_LDFLAGS) $(abuse_console_OBJECTS) $(abuse_console_LDADD) $(LIBS)
+
+keydrv: $(keydrv_OBJECTS) $(keydrv_DEPENDENCIES)
+	@rm -f keydrv
+	$(LINK) $(keydrv_LDFLAGS) $(keydrv_OBJECTS) $(keydrv_LDADD) $(LIBS)
+
+lnx_sdrv: $(lnx_sdrv_OBJECTS) $(lnx_sdrv_DEPENDENCIES)
+	@rm -f lnx_sdrv
+	$(LINK) $(lnx_sdrv_LDFLAGS) $(lnx_sdrv_OBJECTS) $(lnx_sdrv_LDADD) $(LIBS)
+
+sgi_sdrv: $(sgi_sdrv_OBJECTS) $(sgi_sdrv_DEPENDENCIES)
+	@rm -f sgi_sdrv
+	$(LINK) $(sgi_sdrv_LDFLAGS) $(sgi_sdrv_OBJECTS) $(sgi_sdrv_LDADD) $(LIBS)
+
+aix_sdrv: $(aix_sdrv_OBJECTS) $(aix_sdrv_DEPENDENCIES)
+	@rm -f aix_sdrv
+	$(LINK) $(aix_sdrv_LDFLAGS) $(aix_sdrv_OBJECTS) $(aix_sdrv_LDADD) $(LIBS)
+
+abuse.x11R6: $(abuse_x11R6_OBJECTS) $(abuse_x11R6_DEPENDENCIES)
+	@rm -f abuse.x11R6
+	$(LINK) $(abuse_x11R6_LDFLAGS) $(abuse_x11R6_OBJECTS) $(abuse_x11R6_LDADD) $(LIBS)
+
+install-binSCRIPTS: $(bin_SCRIPTS)
+	@$(NORMAL_INSTALL)
+	$(mkinstalldirs) $(bindir)
+	@list='$(bin_SCRIPTS)'; for p in $$list; do \
+	  if test -f $$p; then \
+	    echo " $(INSTALL_SCRIPT) $$p $(bindir)/`echo $$p|sed '$(transform)'`"; \
+	    $(INSTALL_SCRIPT) $$p $(bindir)/`echo $$p|sed '$(transform)'`; \
+	  else if test -f $(srcdir)/$$p; then \
+	    echo " $(INSTALL_SCRIPT) $(srcdir)/$$p $(bindir)/`echo $$p|sed '$(transform)'`"; \
+	    $(INSTALL_SCRIPT) $(srcdir)/$$p $(bindir)/`echo $$p|sed '$(transform)'`; \
+	  else :; fi; fi; \
+	done
+
+uninstall-binSCRIPTS:
+	$(NORMAL_UNINSTALL)
+	list='$(bin_SCRIPTS)'; for p in $$list; do \
+	  rm -f $(bindir)/`echo $$p|sed '$(transform)'`; \
+	done
+
+install-pkgdataDATA: $(pkgdata_DATA)
+	@$(NORMAL_INSTALL)
+	$(mkinstalldirs) $(pkgdatadir)
+	@list='$(pkgdata_DATA)'; for p in $$list; do \
+	  if test -f $(srcdir)/$$p; then \
+	    echo " $(INSTALL_DATA) $(srcdir)/$$p $(pkgdatadir)/$$p"; \
+	    $(INSTALL_DATA) $(srcdir)/$$p $(pkgdatadir)/$$p; \
+	  else if test -f $$p; then \
+	    echo " $(INSTALL_DATA) $$p $(pkgdatadir)/$$p"; \
+	    $(INSTALL_DATA) $$p $(pkgdatadir)/$$p; \
+	  fi; fi; \
+	done
+
+uninstall-pkgdataDATA:
+	$(NORMAL_UNINSTALL)
+	list='$(pkgdata_DATA)'; for p in $$list; do \
+	  rm -f $(pkgdatadir)/$$p; \
+	done
+
+tags: TAGS
+
+ID: $(HEADERS) $(SOURCES)
+	here=`pwd` && cd $(srcdir) && mkid -f$$here/ID $(SOURCES) $(HEADERS)
+
+TAGS:  $(HEADERS) $(SOURCES)  $(TAGS_DEPENDENCIES)
+	tags=; \
+	here=`pwd`; \
+	test -z "$(ETAGS_ARGS)$(SOURCES)$(HEADERS)$$tags" \
+	  || (cd $(srcdir) && etags $(ETAGS_ARGS) $$tags  $(SOURCES) $(HEADERS) -o $$here/TAGS)
+
+mostlyclean-tags:
+
+clean-tags:
+
+distclean-tags:
+	rm -f TAGS ID
+
+maintainer-clean-tags:
+
+distdir = $(PACKAGE)-$(VERSION)
+top_distdir = $(distdir)
+
+# This target untars the dist file and tries a VPATH configuration.  Then
+# it guarantees that the distribution is self-contained by making another
+# tarfile.
+distcheck: dist
+	rm -rf $(distdir)
+	GZIP=$(GZIP) $(TAR) zxf $(distdir).tar.gz
+	mkdir $(distdir)/=build
+	mkdir $(distdir)/=inst
+	dc_install_base=`cd $(distdir)/=inst && pwd`; \
+	cd $(distdir)/=build \
+	  && ../configure --srcdir=.. --prefix=$$dc_install_base \
+	  && $(MAKE) \
+	  && $(MAKE) dvi \
+	  && $(MAKE) check \
+	  && $(MAKE) install \
+	  && $(MAKE) installcheck \
+	  && $(MAKE) dist
+	rm -rf $(distdir)
+	@echo "========================"; \
+	echo "$(distdir).tar.gz is ready for distribution"; \
+	echo "========================"
+dist: distdir
+	-chmod -R a+r $(distdir)
+	GZIP=$(GZIP) $(TAR) chozf $(distdir).tar.gz $(distdir)
+	rm -rf $(distdir)
+dist-all: distdir
+	-chmod -R a+r $(distdir)
+	GZIP=$(GZIP) $(TAR) chozf $(distdir).tar.gz $(distdir)
+	rm -rf $(distdir)
+distdir: $(DISTFILES)
+	rm -rf $(distdir)
+	mkdir $(distdir)
+	-chmod 777 $(distdir)
+	here=`cd $(top_builddir) && pwd`; \
+	top_distdir=`cd $(top_distdir) && pwd`; \
+	cd $(top_srcdir) \
+	  && $(AUTOMAKE) --include-deps --build-dir=$$here --srcdir-name=$(top_srcdir) --output-dir=$$top_distdir --foreign Makefile
+	@for file in $(DISTFILES); do \
+	  d=$(srcdir); \
+	  test -f $(distdir)/$$file \
+	  || ln $$d/$$file $(distdir)/$$file 2> /dev/null \
+	  || cp -p $$d/$$file $(distdir)/$$file; \
+	done
+
+MKDEP = gcc -M $(DEFS) $(INCLUDES) $(CPPFLAGS) $(CFLAGS)
+
+DEPS_MAGIC := $(shell mkdir .deps > /dev/null 2>&1 || :)
+-include .deps/.P
+.deps/.P: $(BUILT_SOURCES)
+	echo > $@
+
+-include $(DEP_FILES)
+
+mostlyclean-depend:
+
+clean-depend:
+
+distclean-depend:
+
+maintainer-clean-depend:
+	rm -rf .deps
+
+.deps/%.P: %.c
+	@echo "Computing dependencies for $<..."
+	@o='o'; \
+	test -n "$o" && o='$$o'; \
+	$(MKDEP) $< >$@.tmp \
+	  && sed "s,^\(.*\)\.o:,\1.$$o \1.l$$o $@:," < $@.tmp > $@ \
+	  && rm -f $@.tmp
+info:
+dvi:
+check: all
+	$(MAKE)
+installcheck:
+install-exec: install-pkglibPROGRAMS install-binSCRIPTS install-exec-local
+	@$(NORMAL_INSTALL)
+
+install-data: install-pkgdataDATA install-data-local
+	@$(NORMAL_INSTALL)
+
+install: install-exec install-data all
+	@:
+
+uninstall: uninstall-pkglibPROGRAMS uninstall-binSCRIPTS uninstall-pkgdataDATA uninstall-local
+
+all: Makefile $(PROGRAMS) $(SCRIPTS) $(DATA)
+
+install-strip:
+	$(MAKE) INSTALL_PROGRAM='$(INSTALL_PROGRAM) -s' INSTALL_SCRIPT='$(INSTALL_PROGRAM)' install
+installdirs:
+	$(mkinstalldirs)  $(pkglibdir) $(bindir) $(pkgdatadir)
+
+
+mostlyclean-generic:
+	test -z "$(MOSTLYCLEANFILES)" || rm -f $(MOSTLYCLEANFILES)
+
+clean-generic:
+	test -z "$(CLEANFILES)" || rm -f $(CLEANFILES)
+
+distclean-generic:
+	rm -f Makefile $(DISTCLEANFILES)
+	rm -f config.cache config.log stamp-h stamp-h[0-9]*
+	test -z "$(CONFIG_CLEAN_FILES)" || rm -f $(CONFIG_CLEAN_FILES)
+
+maintainer-clean-generic:
+	test -z "$(MAINTAINERCLEANFILES)" || rm -f $(MAINTAINERCLEANFILES)
+	test -z "$(BUILT_SOURCES)" || rm -f $(BUILT_SOURCES)
+mostlyclean:  mostlyclean-pkglibPROGRAMS mostlyclean-compile \
+		mostlyclean-tags mostlyclean-depend mostlyclean-generic
+
+clean:  clean-pkglibPROGRAMS clean-compile clean-tags clean-depend \
+		clean-generic mostlyclean
+
+distclean:  distclean-pkglibPROGRAMS distclean-compile distclean-tags \
+		distclean-depend distclean-generic clean
+	rm -f config.status
+
+maintainer-clean:  maintainer-clean-pkglibPROGRAMS \
+		maintainer-clean-compile maintainer-clean-tags \
+		maintainer-clean-depend maintainer-clean-generic \
+		distclean
+	@echo "This command is intended for maintainers to use;"
+	@echo "it deletes files that may require special tools to rebuild."
+	rm -f config.status
+
+.PHONY: default mostlyclean-pkglibPROGRAMS distclean-pkglibPROGRAMS \
+clean-pkglibPROGRAMS maintainer-clean-pkglibPROGRAMS \
+uninstall-pkglibPROGRAMS install-pkglibPROGRAMS mostlyclean-compile \
+distclean-compile clean-compile maintainer-clean-compile \
+uninstall-binSCRIPTS install-binSCRIPTS uninstall-pkgdataDATA \
+install-pkgdataDATA tags mostlyclean-tags distclean-tags clean-tags \
+maintainer-clean-tags distdir mostlyclean-depend distclean-depend \
+clean-depend maintainer-clean-depend info dvi installcheck install-exec \
+install-data install uninstall all installdirs mostlyclean-generic \
+distclean-generic clean-generic maintainer-clean-generic clean \
+mostlyclean distclean maintainer-clean
+
+
+debug:
+	$(MAKE) DEFS='-DMANAGE_MEM -DMEM_CHECK' CXXFLAGS=-g
+opt:
+	$(MAKE) DEFS='-DMANAGE_MEM -DNO_CHECK' CXXFLAGS=-O2
+profile:
+	$(MAKE) DEFS='-DMANAGE_MEM -DNO_CHECK' CXXFLAGS='-O2 -g -pg'
+
+../imlib/port/aix/aix_sdrv.o: ../imlib/port/aix/aix_sdrv.c
+	cc -qcpluscmt -O2 -I/usr/lpp/UMS/include -I/usr/lpp/som/include -o $@ -c $<
+
+install-data-local:
+	for f in `(cd $(srcdir); find addon art levels lisp register sfx -type d -print)`; do \
+	  $(mkinstalldirs) $(pkgdatadir)/$$f; \
+	done
+	for f in `(cd $(srcdir); find addon art levels lisp register sfx -type f -print)`; do \
+	  echo " $(INSTALL_DATA) $(srcdir)/$$f $(pkgdatadir)/$$f"; \
+	  $(INSTALL_DATA) $(srcdir)/$$f $(pkgdatadir)/$$f; \
+	done
+
+uninstall-local:
+	rm -rf $(pkgdatadir) $(pkglibdir)
+
+install-exec-local:
+	-if [ -f $(pkglibdir)/abuse.console ]; then \
+	  : *** abuse.console needs to run setuid root; \
+	  : *** if this fails, set it up yourself; \
+	  chown root $(pkglibdir)/abuse.console \
+	  && chmod 4755 $(pkglibdir)/abuse.console ; \
+	fi
+
+# Tell versions [3.59,3.63) of GNU make to not export all variables.
+# Otherwise a system limit (for SysV at least) may be exceeded.
+.NOEXPORT:

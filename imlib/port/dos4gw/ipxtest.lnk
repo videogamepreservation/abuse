@@ -1,0 +1,7 @@
+system dos4gw
+option caseexact
+option map=ipxtest.map
+debug all
+name ipxtest.exe
+option stack=70k
+file .\wat\debug\ipxtest.obj

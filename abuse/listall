@@ -1,0 +1,6 @@
+#!/bin/bash -f
+
+for i in register netlevel art addon levels sfx lisp ; do
+	find $i -type f -print
+done
+

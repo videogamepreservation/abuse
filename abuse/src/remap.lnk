@@ -1,0 +1,9 @@
+system dos4gw
+option caseexact
+debug all
+name remap.exe
+option stack=70k
+
+file remap.obj
+file putline.obj
+

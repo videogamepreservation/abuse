@@ -1,0 +1,455 @@
+all : debug
+
+debug : undrvx undrv
+	echo Made debug
+
+opt : undrvxo undrvo
+	echo Made opt
+
+profile : undrvxp undrvp
+	echo Made profile
+
+LINUX_X11_undrvx_debug_o_files = \
+	./linux_x11/debug/undrv.o \
+	./linux_x11/debug/tcpip.o \
+	./linux_x11/debug/netdrv.o \
+	./linux_x11/debug/gserver.o \
+	./linux_x11/debug/gclient.o \
+	./linux_x11/debug/fileman.o
+
+LINUX_SVGA_undrv_debug_o_files = \
+	./linux_svga/debug/undrv.o \
+	./linux_svga/debug/tcpip.o \
+	./linux_svga/debug/netdrv.o \
+	./linux_svga/debug/gserver.o \
+	./linux_svga/debug/gclient.o \
+	./linux_svga/debug/fileman.o
+
+undrv : $(LINUX_SVGA_undrv_debug_o_files)
+	g++ -o undrv \
+	./linux_svga/debug/undrv.o \
+	./linux_svga/debug/tcpip.o \
+	./linux_svga/debug/netdrv.o \
+	./linux_svga/debug/gserver.o \
+	./linux_svga/debug/gclient.o \
+	./linux_svga/debug/fileman.o -lvga -lm
+
+./linux_svga/debug/undrv.o : undrv.c
+	g++ -c -o ./linux_svga/debug/undrv.o undrv.c -I../inc -g -DMEM_CHECK -DMANAGE_MEM 
+
+./linux_svga/debug/undrv.o : tcpip.hpp
+./linux_svga/debug/undrv.o : fileman.hpp
+./linux_svga/debug/undrv.o : gclient.hpp
+./linux_svga/debug/undrv.o : gserver.hpp
+./linux_svga/debug/undrv.o : netdrv.hpp
+./linux_svga/debug/undrv.o : ../inc/netface.hpp
+./linux_svga/debug/undrv.o : ../inc/sock.hpp
+./linux_svga/debug/undrv.o : undrv.hpp
+./linux_svga/debug/undrv.o : ../inc/indian.hpp
+./linux_svga/debug/tcpip.o : tcpip.c
+	g++ -c -o ./linux_svga/debug/tcpip.o tcpip.c -I../inc -g -DMEM_CHECK -DMANAGE_MEM 
+
+./linux_svga/debug/tcpip.o : ../inc/sock.hpp
+./linux_svga/debug/tcpip.o : tcpip.hpp
+./linux_svga/debug/netdrv.o : netdrv.c
+	g++ -c -o ./linux_svga/debug/netdrv.o netdrv.c -I../inc -g -DMEM_CHECK -DMANAGE_MEM 
+
+./linux_svga/debug/netdrv.o : tcpip.hpp
+./linux_svga/debug/netdrv.o : gclient.hpp
+./linux_svga/debug/netdrv.o : gserver.hpp
+./linux_svga/debug/netdrv.o : undrv.hpp
+./linux_svga/debug/netdrv.o : ../inc/indian.hpp
+./linux_svga/debug/netdrv.o : ../inc/netface.hpp
+./linux_svga/debug/netdrv.o : netdrv.hpp
+./linux_svga/debug/netdrv.o : ../inc/sock.hpp
+./linux_svga/debug/netdrv.o : fileman.hpp
+./linux_svga/debug/gserver.o : gserver.c
+	g++ -c -o ./linux_svga/debug/gserver.o gserver.c -I../inc -g -DMEM_CHECK -DMANAGE_MEM 
+
+./linux_svga/debug/gserver.o : undrv.hpp
+./linux_svga/debug/gserver.o : ../inc/indian.hpp
+./linux_svga/debug/gserver.o : ../inc/netface.hpp
+./linux_svga/debug/gserver.o : netdrv.hpp
+./linux_svga/debug/gserver.o : ../inc/sock.hpp
+./linux_svga/debug/gserver.o : gserver.hpp
+./linux_svga/debug/gclient.o : gclient.c
+	g++ -c -o ./linux_svga/debug/gclient.o gclient.c -I../inc -g -DMEM_CHECK -DMANAGE_MEM 
+
+./linux_svga/debug/gclient.o : undrv.hpp
+./linux_svga/debug/gclient.o : ../inc/indian.hpp
+./linux_svga/debug/gclient.o : ../inc/netface.hpp
+./linux_svga/debug/gclient.o : netdrv.hpp
+./linux_svga/debug/gclient.o : ../inc/sock.hpp
+./linux_svga/debug/gclient.o : gclient.hpp
+./linux_svga/debug/fileman.o : fileman.c
+	g++ -c -o ./linux_svga/debug/fileman.o fileman.c -I../inc -g -DMEM_CHECK -DMANAGE_MEM 
+
+./linux_svga/debug/fileman.o : netdrv.hpp
+./linux_svga/debug/fileman.o : undrv.hpp
+./linux_svga/debug/fileman.o : ../inc/indian.hpp
+./linux_svga/debug/fileman.o : ../inc/netface.hpp
+./linux_svga/debug/fileman.o : ../inc/sock.hpp
+./linux_svga/debug/fileman.o : fileman.hpp
+
+undrvx : $(LINUX_X11_undrvx_debug_o_files)
+	g++ -o undrvx \
+	./linux_x11/debug/undrv.o \
+	./linux_x11/debug/tcpip.o \
+	./linux_x11/debug/netdrv.o \
+	./linux_x11/debug/gserver.o \
+	./linux_x11/debug/gclient.o \
+	./linux_x11/debug/fileman.o /lib/libXext.a /lib/libX11.a -lm
+
+./linux_x11/debug/undrv.o : undrv.c
+	g++ -c -o ./linux_x11/debug/undrv.o undrv.c -I../inc -g -DMEM_CHECK -DMANAGE_MEM 
+
+./linux_x11/debug/undrv.o : tcpip.hpp
+./linux_x11/debug/undrv.o : fileman.hpp
+./linux_x11/debug/undrv.o : gclient.hpp
+./linux_x11/debug/undrv.o : gserver.hpp
+./linux_x11/debug/undrv.o : netdrv.hpp
+./linux_x11/debug/undrv.o : ../inc/netface.hpp
+./linux_x11/debug/undrv.o : ../inc/sock.hpp
+./linux_x11/debug/undrv.o : undrv.hpp
+./linux_x11/debug/undrv.o : ../inc/indian.hpp
+./linux_x11/debug/tcpip.o : tcpip.c
+	g++ -c -o ./linux_x11/debug/tcpip.o tcpip.c -I../inc -g -DMEM_CHECK -DMANAGE_MEM 
+
+./linux_x11/debug/tcpip.o : ../inc/sock.hpp
+./linux_x11/debug/tcpip.o : tcpip.hpp
+./linux_x11/debug/netdrv.o : netdrv.c
+	g++ -c -o ./linux_x11/debug/netdrv.o netdrv.c -I../inc -g -DMEM_CHECK -DMANAGE_MEM 
+
+./linux_x11/debug/netdrv.o : tcpip.hpp
+./linux_x11/debug/netdrv.o : gclient.hpp
+./linux_x11/debug/netdrv.o : gserver.hpp
+./linux_x11/debug/netdrv.o : undrv.hpp
+./linux_x11/debug/netdrv.o : ../inc/indian.hpp
+./linux_x11/debug/netdrv.o : ../inc/netface.hpp
+./linux_x11/debug/netdrv.o : netdrv.hpp
+./linux_x11/debug/netdrv.o : ../inc/sock.hpp
+./linux_x11/debug/netdrv.o : fileman.hpp
+./linux_x11/debug/gserver.o : gserver.c
+	g++ -c -o ./linux_x11/debug/gserver.o gserver.c -I../inc -g -DMEM_CHECK -DMANAGE_MEM 
+
+./linux_x11/debug/gserver.o : undrv.hpp
+./linux_x11/debug/gserver.o : ../inc/indian.hpp
+./linux_x11/debug/gserver.o : ../inc/netface.hpp
+./linux_x11/debug/gserver.o : netdrv.hpp
+./linux_x11/debug/gserver.o : ../inc/sock.hpp
+./linux_x11/debug/gserver.o : gserver.hpp
+./linux_x11/debug/gclient.o : gclient.c
+	g++ -c -o ./linux_x11/debug/gclient.o gclient.c -I../inc -g -DMEM_CHECK -DMANAGE_MEM 
+
+./linux_x11/debug/gclient.o : undrv.hpp
+./linux_x11/debug/gclient.o : ../inc/indian.hpp
+./linux_x11/debug/gclient.o : ../inc/netface.hpp
+./linux_x11/debug/gclient.o : netdrv.hpp
+./linux_x11/debug/gclient.o : ../inc/sock.hpp
+./linux_x11/debug/gclient.o : gclient.hpp
+./linux_x11/debug/fileman.o : fileman.c
+	g++ -c -o ./linux_x11/debug/fileman.o fileman.c -I../inc -g -DMEM_CHECK -DMANAGE_MEM 
+
+./linux_x11/debug/fileman.o : netdrv.hpp
+./linux_x11/debug/fileman.o : undrv.hpp
+./linux_x11/debug/fileman.o : ../inc/indian.hpp
+./linux_x11/debug/fileman.o : ../inc/netface.hpp
+./linux_x11/debug/fileman.o : ../inc/sock.hpp
+./linux_x11/debug/fileman.o : fileman.hpp
+
+LINUX_X11_undrvxo_opt_o_files = \
+	./linux_x11/opt/undrv.o \
+	./linux_x11/opt/tcpip.o \
+	./linux_x11/opt/netdrv.o \
+	./linux_x11/opt/gserver.o \
+	./linux_x11/opt/gclient.o \
+	./linux_x11/opt/fileman.o
+
+LINUX_SVGA_undrvo_opt_o_files = \
+	./linux_svga/opt/undrv.o \
+	./linux_svga/opt/tcpip.o \
+	./linux_svga/opt/netdrv.o \
+	./linux_svga/opt/gserver.o \
+	./linux_svga/opt/gclient.o \
+	./linux_svga/opt/fileman.o
+
+undrvo : $(LINUX_SVGA_undrvo_opt_o_files)
+	g++ -o undrvo \
+	./linux_svga/opt/undrv.o \
+	./linux_svga/opt/tcpip.o \
+	./linux_svga/opt/netdrv.o \
+	./linux_svga/opt/gserver.o \
+	./linux_svga/opt/gclient.o \
+	./linux_svga/opt/fileman.o -lvga -lm
+
+./linux_svga/opt/undrv.o : undrv.c
+	g++ -c -o ./linux_svga/opt/undrv.o undrv.c -I../inc -O2 -DMANAGE_MEM -DNO_CHECK 
+
+./linux_svga/opt/undrv.o : tcpip.hpp
+./linux_svga/opt/undrv.o : fileman.hpp
+./linux_svga/opt/undrv.o : gclient.hpp
+./linux_svga/opt/undrv.o : gserver.hpp
+./linux_svga/opt/undrv.o : netdrv.hpp
+./linux_svga/opt/undrv.o : ../inc/netface.hpp
+./linux_svga/opt/undrv.o : ../inc/sock.hpp
+./linux_svga/opt/undrv.o : undrv.hpp
+./linux_svga/opt/undrv.o : ../inc/indian.hpp
+./linux_svga/opt/tcpip.o : tcpip.c
+	g++ -c -o ./linux_svga/opt/tcpip.o tcpip.c -I../inc -O2 -DMANAGE_MEM -DNO_CHECK 
+
+./linux_svga/opt/tcpip.o : ../inc/sock.hpp
+./linux_svga/opt/tcpip.o : tcpip.hpp
+./linux_svga/opt/netdrv.o : netdrv.c
+	g++ -c -o ./linux_svga/opt/netdrv.o netdrv.c -I../inc -O2 -DMANAGE_MEM -DNO_CHECK 
+
+./linux_svga/opt/netdrv.o : tcpip.hpp
+./linux_svga/opt/netdrv.o : gclient.hpp
+./linux_svga/opt/netdrv.o : gserver.hpp
+./linux_svga/opt/netdrv.o : undrv.hpp
+./linux_svga/opt/netdrv.o : ../inc/indian.hpp
+./linux_svga/opt/netdrv.o : ../inc/netface.hpp
+./linux_svga/opt/netdrv.o : netdrv.hpp
+./linux_svga/opt/netdrv.o : ../inc/sock.hpp
+./linux_svga/opt/netdrv.o : fileman.hpp
+./linux_svga/opt/gserver.o : gserver.c
+	g++ -c -o ./linux_svga/opt/gserver.o gserver.c -I../inc -O2 -DMANAGE_MEM -DNO_CHECK 
+
+./linux_svga/opt/gserver.o : undrv.hpp
+./linux_svga/opt/gserver.o : ../inc/indian.hpp
+./linux_svga/opt/gserver.o : ../inc/netface.hpp
+./linux_svga/opt/gserver.o : netdrv.hpp
+./linux_svga/opt/gserver.o : ../inc/sock.hpp
+./linux_svga/opt/gserver.o : gserver.hpp
+./linux_svga/opt/gclient.o : gclient.c
+	g++ -c -o ./linux_svga/opt/gclient.o gclient.c -I../inc -O2 -DMANAGE_MEM -DNO_CHECK 
+
+./linux_svga/opt/gclient.o : undrv.hpp
+./linux_svga/opt/gclient.o : ../inc/indian.hpp
+./linux_svga/opt/gclient.o : ../inc/netface.hpp
+./linux_svga/opt/gclient.o : netdrv.hpp
+./linux_svga/opt/gclient.o : ../inc/sock.hpp
+./linux_svga/opt/gclient.o : gclient.hpp
+./linux_svga/opt/fileman.o : fileman.c
+	g++ -c -o ./linux_svga/opt/fileman.o fileman.c -I../inc -O2 -DMANAGE_MEM -DNO_CHECK 
+
+./linux_svga/opt/fileman.o : netdrv.hpp
+./linux_svga/opt/fileman.o : undrv.hpp
+./linux_svga/opt/fileman.o : ../inc/indian.hpp
+./linux_svga/opt/fileman.o : ../inc/netface.hpp
+./linux_svga/opt/fileman.o : ../inc/sock.hpp
+./linux_svga/opt/fileman.o : fileman.hpp
+
+undrvxo : $(LINUX_X11_undrvxo_opt_o_files)
+	g++ -o undrvxo \
+	./linux_x11/opt/undrv.o \
+	./linux_x11/opt/tcpip.o \
+	./linux_x11/opt/netdrv.o \
+	./linux_x11/opt/gserver.o \
+	./linux_x11/opt/gclient.o \
+	./linux_x11/opt/fileman.o /lib/libXext.a /lib/libX11.a -lm
+
+./linux_x11/opt/undrv.o : undrv.c
+	g++ -c -o ./linux_x11/opt/undrv.o undrv.c -I../inc -O2 -DMANAGE_MEM -DNO_CHECK 
+
+./linux_x11/opt/undrv.o : tcpip.hpp
+./linux_x11/opt/undrv.o : fileman.hpp
+./linux_x11/opt/undrv.o : gclient.hpp
+./linux_x11/opt/undrv.o : gserver.hpp
+./linux_x11/opt/undrv.o : netdrv.hpp
+./linux_x11/opt/undrv.o : ../inc/netface.hpp
+./linux_x11/opt/undrv.o : ../inc/sock.hpp
+./linux_x11/opt/undrv.o : undrv.hpp
+./linux_x11/opt/undrv.o : ../inc/indian.hpp
+./linux_x11/opt/tcpip.o : tcpip.c
+	g++ -c -o ./linux_x11/opt/tcpip.o tcpip.c -I../inc -O2 -DMANAGE_MEM -DNO_CHECK 
+
+./linux_x11/opt/tcpip.o : ../inc/sock.hpp
+./linux_x11/opt/tcpip.o : tcpip.hpp
+./linux_x11/opt/netdrv.o : netdrv.c
+	g++ -c -o ./linux_x11/opt/netdrv.o netdrv.c -I../inc -O2 -DMANAGE_MEM -DNO_CHECK 
+
+./linux_x11/opt/netdrv.o : tcpip.hpp
+./linux_x11/opt/netdrv.o : gclient.hpp
+./linux_x11/opt/netdrv.o : gserver.hpp
+./linux_x11/opt/netdrv.o : undrv.hpp
+./linux_x11/opt/netdrv.o : ../inc/indian.hpp
+./linux_x11/opt/netdrv.o : ../inc/netface.hpp
+./linux_x11/opt/netdrv.o : netdrv.hpp
+./linux_x11/opt/netdrv.o : ../inc/sock.hpp
+./linux_x11/opt/netdrv.o : fileman.hpp
+./linux_x11/opt/gserver.o : gserver.c
+	g++ -c -o ./linux_x11/opt/gserver.o gserver.c -I../inc -O2 -DMANAGE_MEM -DNO_CHECK 
+
+./linux_x11/opt/gserver.o : undrv.hpp
+./linux_x11/opt/gserver.o : ../inc/indian.hpp
+./linux_x11/opt/gserver.o : ../inc/netface.hpp
+./linux_x11/opt/gserver.o : netdrv.hpp
+./linux_x11/opt/gserver.o : ../inc/sock.hpp
+./linux_x11/opt/gserver.o : gserver.hpp
+./linux_x11/opt/gclient.o : gclient.c
+	g++ -c -o ./linux_x11/opt/gclient.o gclient.c -I../inc -O2 -DMANAGE_MEM -DNO_CHECK 
+
+./linux_x11/opt/gclient.o : undrv.hpp
+./linux_x11/opt/gclient.o : ../inc/indian.hpp
+./linux_x11/opt/gclient.o : ../inc/netface.hpp
+./linux_x11/opt/gclient.o : netdrv.hpp
+./linux_x11/opt/gclient.o : ../inc/sock.hpp
+./linux_x11/opt/gclient.o : gclient.hpp
+./linux_x11/opt/fileman.o : fileman.c
+	g++ -c -o ./linux_x11/opt/fileman.o fileman.c -I../inc -O2 -DMANAGE_MEM -DNO_CHECK 
+
+./linux_x11/opt/fileman.o : netdrv.hpp
+./linux_x11/opt/fileman.o : undrv.hpp
+./linux_x11/opt/fileman.o : ../inc/indian.hpp
+./linux_x11/opt/fileman.o : ../inc/netface.hpp
+./linux_x11/opt/fileman.o : ../inc/sock.hpp
+./linux_x11/opt/fileman.o : fileman.hpp
+
+LINUX_X11_undrvxp_profile_o_files = \
+	./linux_x11/profile/undrv.o \
+	./linux_x11/profile/tcpip.o \
+	./linux_x11/profile/netdrv.o \
+	./linux_x11/profile/gserver.o \
+	./linux_x11/profile/gclient.o \
+	./linux_x11/profile/fileman.o
+
+LINUX_SVGA_undrvp_profile_o_files = \
+	./linux_svga/profile/undrv.o \
+	./linux_svga/profile/tcpip.o \
+	./linux_svga/profile/netdrv.o \
+	./linux_svga/profile/gserver.o \
+	./linux_svga/profile/gclient.o \
+	./linux_svga/profile/fileman.o
+
+undrvp : $(LINUX_SVGA_undrvp_profile_o_files)
+	g++ -o undrvp \
+	./linux_svga/profile/undrv.o \
+	./linux_svga/profile/tcpip.o \
+	./linux_svga/profile/netdrv.o \
+	./linux_svga/profile/gserver.o \
+	./linux_svga/profile/gclient.o \
+	./linux_svga/profile/fileman.o -lvga -lm
+
+./linux_svga/profile/undrv.o : undrv.c
+	g++ -c -o ./linux_svga/profile/undrv.o undrv.c -I../inc -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+./linux_svga/profile/undrv.o : tcpip.hpp
+./linux_svga/profile/undrv.o : fileman.hpp
+./linux_svga/profile/undrv.o : gclient.hpp
+./linux_svga/profile/undrv.o : gserver.hpp
+./linux_svga/profile/undrv.o : netdrv.hpp
+./linux_svga/profile/undrv.o : ../inc/netface.hpp
+./linux_svga/profile/undrv.o : ../inc/sock.hpp
+./linux_svga/profile/undrv.o : undrv.hpp
+./linux_svga/profile/undrv.o : ../inc/indian.hpp
+./linux_svga/profile/tcpip.o : tcpip.c
+	g++ -c -o ./linux_svga/profile/tcpip.o tcpip.c -I../inc -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+./linux_svga/profile/tcpip.o : ../inc/sock.hpp
+./linux_svga/profile/tcpip.o : tcpip.hpp
+./linux_svga/profile/netdrv.o : netdrv.c
+	g++ -c -o ./linux_svga/profile/netdrv.o netdrv.c -I../inc -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+./linux_svga/profile/netdrv.o : tcpip.hpp
+./linux_svga/profile/netdrv.o : gclient.hpp
+./linux_svga/profile/netdrv.o : gserver.hpp
+./linux_svga/profile/netdrv.o : undrv.hpp
+./linux_svga/profile/netdrv.o : ../inc/indian.hpp
+./linux_svga/profile/netdrv.o : ../inc/netface.hpp
+./linux_svga/profile/netdrv.o : netdrv.hpp
+./linux_svga/profile/netdrv.o : ../inc/sock.hpp
+./linux_svga/profile/netdrv.o : fileman.hpp
+./linux_svga/profile/gserver.o : gserver.c
+	g++ -c -o ./linux_svga/profile/gserver.o gserver.c -I../inc -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+./linux_svga/profile/gserver.o : undrv.hpp
+./linux_svga/profile/gserver.o : ../inc/indian.hpp
+./linux_svga/profile/gserver.o : ../inc/netface.hpp
+./linux_svga/profile/gserver.o : netdrv.hpp
+./linux_svga/profile/gserver.o : ../inc/sock.hpp
+./linux_svga/profile/gserver.o : gserver.hpp
+./linux_svga/profile/gclient.o : gclient.c
+	g++ -c -o ./linux_svga/profile/gclient.o gclient.c -I../inc -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+./linux_svga/profile/gclient.o : undrv.hpp
+./linux_svga/profile/gclient.o : ../inc/indian.hpp
+./linux_svga/profile/gclient.o : ../inc/netface.hpp
+./linux_svga/profile/gclient.o : netdrv.hpp
+./linux_svga/profile/gclient.o : ../inc/sock.hpp
+./linux_svga/profile/gclient.o : gclient.hpp
+./linux_svga/profile/fileman.o : fileman.c
+	g++ -c -o ./linux_svga/profile/fileman.o fileman.c -I../inc -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+./linux_svga/profile/fileman.o : netdrv.hpp
+./linux_svga/profile/fileman.o : undrv.hpp
+./linux_svga/profile/fileman.o : ../inc/indian.hpp
+./linux_svga/profile/fileman.o : ../inc/netface.hpp
+./linux_svga/profile/fileman.o : ../inc/sock.hpp
+./linux_svga/profile/fileman.o : fileman.hpp
+
+undrvxp : $(LINUX_X11_undrvxp_profile_o_files)
+	g++ -o undrvxp \
+	./linux_x11/profile/undrv.o \
+	./linux_x11/profile/tcpip.o \
+	./linux_x11/profile/netdrv.o \
+	./linux_x11/profile/gserver.o \
+	./linux_x11/profile/gclient.o \
+	./linux_x11/profile/fileman.o /lib/libXext.a /lib/libX11.a -lm
+
+./linux_x11/profile/undrv.o : undrv.c
+	g++ -c -o ./linux_x11/profile/undrv.o undrv.c -I../inc -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+./linux_x11/profile/undrv.o : tcpip.hpp
+./linux_x11/profile/undrv.o : fileman.hpp
+./linux_x11/profile/undrv.o : gclient.hpp
+./linux_x11/profile/undrv.o : gserver.hpp
+./linux_x11/profile/undrv.o : netdrv.hpp
+./linux_x11/profile/undrv.o : ../inc/netface.hpp
+./linux_x11/profile/undrv.o : ../inc/sock.hpp
+./linux_x11/profile/undrv.o : undrv.hpp
+./linux_x11/profile/undrv.o : ../inc/indian.hpp
+./linux_x11/profile/tcpip.o : tcpip.c
+	g++ -c -o ./linux_x11/profile/tcpip.o tcpip.c -I../inc -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+./linux_x11/profile/tcpip.o : ../inc/sock.hpp
+./linux_x11/profile/tcpip.o : tcpip.hpp
+./linux_x11/profile/netdrv.o : netdrv.c
+	g++ -c -o ./linux_x11/profile/netdrv.o netdrv.c -I../inc -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+./linux_x11/profile/netdrv.o : tcpip.hpp
+./linux_x11/profile/netdrv.o : gclient.hpp
+./linux_x11/profile/netdrv.o : gserver.hpp
+./linux_x11/profile/netdrv.o : undrv.hpp
+./linux_x11/profile/netdrv.o : ../inc/indian.hpp
+./linux_x11/profile/netdrv.o : ../inc/netface.hpp
+./linux_x11/profile/netdrv.o : netdrv.hpp
+./linux_x11/profile/netdrv.o : ../inc/sock.hpp
+./linux_x11/profile/netdrv.o : fileman.hpp
+./linux_x11/profile/gserver.o : gserver.c
+	g++ -c -o ./linux_x11/profile/gserver.o gserver.c -I../inc -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+./linux_x11/profile/gserver.o : undrv.hpp
+./linux_x11/profile/gserver.o : ../inc/indian.hpp
+./linux_x11/profile/gserver.o : ../inc/netface.hpp
+./linux_x11/profile/gserver.o : netdrv.hpp
+./linux_x11/profile/gserver.o : ../inc/sock.hpp
+./linux_x11/profile/gserver.o : gserver.hpp
+./linux_x11/profile/gclient.o : gclient.c
+	g++ -c -o ./linux_x11/profile/gclient.o gclient.c -I../inc -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+./linux_x11/profile/gclient.o : undrv.hpp
+./linux_x11/profile/gclient.o : ../inc/indian.hpp
+./linux_x11/profile/gclient.o : ../inc/netface.hpp
+./linux_x11/profile/gclient.o : netdrv.hpp
+./linux_x11/profile/gclient.o : ../inc/sock.hpp
+./linux_x11/profile/gclient.o : gclient.hpp
+./linux_x11/profile/fileman.o : fileman.c
+	g++ -c -o ./linux_x11/profile/fileman.o fileman.c -I../inc -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+./linux_x11/profile/fileman.o : netdrv.hpp
+./linux_x11/profile/fileman.o : undrv.hpp
+./linux_x11/profile/fileman.o : ../inc/indian.hpp
+./linux_x11/profile/fileman.o : ../inc/netface.hpp
+./linux_x11/profile/fileman.o : ../inc/sock.hpp
+./linux_x11/profile/fileman.o : fileman.hpp
+

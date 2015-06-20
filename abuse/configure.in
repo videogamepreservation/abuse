@@ -1,0 +1,49 @@
+AC_INIT(src/game.c)
+AM_INIT_AUTOMAKE(abuse, 2.0)
+AC_PROG_CC
+AC_PROG_CPP
+AC_PROG_CXX
+AC_CANONICAL_HOST
+AC_ARG_PROGRAM
+AC_PROG_INSTALL
+
+AC_PATH_XTRA
+
+# Do we need to link against something for X shared memory support?
+AC_CHECK_LIB(Xext,XShmAttach,:,[
+AC_CHECK_LIB(XextSam,XShmAttach,LIBS="$LIBS -lXextSam",,$X_LIBS -lX11 -lXext)
+],$X_LIBS -lX11)
+
+PROGS=
+case ${host} in
+  *-*-linux*) 
+	AC_CHECK_HEADER(vga.h,PROGS='abuse.console keydrv',)
+	PROGS="${PROGS} lnx_sdrv"
+	;;
+  mips-sgi-irix*) 
+	PROGS=sgi_sdrv
+	;;
+  powerpc-*-aix4*)
+	if test -f /usr/lpp/UMS/include/UMSAudioDevice.h && 
+	   test -f /usr/lpp/som/include/somobj.h; then
+	  PROGS=aix_sdrv
+	fi
+	;;
+  *) 
+	;;
+esac
+AC_SUBST(PROGS)
+
+AC_CHECK_HEADERS(bstring.h)
+AC_CHECK_FUNCS(atexit on_exit, break)
+AB_C_BIGENDIAN
+AC_SUBST(LIBS)
+
+AC_LANG_SAVE
+AC_LANG_CPLUSPLUS
+AB_ADD_FLAGS(-fno-exceptions -fno-rtti)
+AC_LANG_RESTORE
+
+mkdir -p src/net/unix src/net/mac
+
+AC_OUTPUT(Makefile abuse)

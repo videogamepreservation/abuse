@@ -1,0 +1,93 @@
+  if (dev_cont && dev_cont->net_store1)
+  {
+    game_object *me=focus,*other;
+    jFILE *wr;
+    if (player_number==0)
+    {
+      other=the_game->first_view->focus;
+      wr=dev_cont->net_store1;
+    } else if (player_number==1)
+    {
+      other=the_game->first_view->next->focus;
+      wr=dev_cont->net_store2;
+    }
+    double in[17];
+    make_inputs(me,other,in,nn_dist_history);
+    wr->write(in,sizeof(in));
+    double out[6];
+    if (x_suggestion>0)
+      out[0]=1;
+    else out[0]=0;
+    if (x_suggestion<0)
+      out[1]=1;
+    else out[1]=0;
+
+    if (y_suggestion>0)
+      out[2]=1;
+    else out[2]=0;
+    if (y_suggestion<0)
+      out[3]=1;
+    else out[3]=0;
+
+    out[4]=b1_suggestion;
+    out[5]=b2_suggestion;
+    wr->write(out,sizeof(out));
+  } 
+
+
+else if (play_net && player_number==1)
+  {
+    game_object *me=focus,*other;
+    jFILE *wr;
+    if (player_number==0)
+    {
+      other=the_game->first_view->focus;
+      wr=dev_cont->net_store1;
+    } else if (player_number==1)
+    {
+      other=the_game->first_view->next->focus;
+      wr=dev_cont->net_store2;
+    }
+    double in[17];
+    make_inputs(me,other,in,nn_dist_history);
+    play_net->present_pattern(in);
+
+    printf("%lf %lf %lf %lf %lf %lf\n",play_net->get_output(0),play_net->get_output(1),
+	   play_net->get_output(2),play_net->get_output(3),
+	   play_net->get_output(4),play_net->get_output(5)
+	   );
+
+    double right=play_net->get_output(0)+jrandom(10000)/(double)10000*0.1;
+    double left=play_net->get_output(1)+jrandom(10000)/(double)10000*0.1;
+    double down=play_net->get_output(2)+jrandom(10000)/(double)10000*0.1;
+    double up=play_net->get_output(3)+jrandom(10000)/(double)10000*0.1;
+
+    double b1=play_net->get_output(4)+jrandom(10000)/(double)10000*0.1;
+    double b2=play_net->get_output(5)+jrandom(10000)/(double)10000*0.1;
+
+    if (left>0.3 && left>right)
+      x_suggestion=-1;
+    else if (right>0.3)
+      x_suggestion=1;
+    else x_suggestion=0;
+
+
+    if (up>0.3 && up>down)
+      y_suggestion=-1;
+    else if (down>0.3)
+      y_suggestion=1;
+    else y_suggestion=0;
+
+
+
+    if (b1>0.3)
+      b1_suggestion=1;
+    else b1_suggestion=0;
+
+    if (b2>0.3)
+      b2_suggestion=1;
+    else b2_suggestion=0;
+
+  }
+
+  

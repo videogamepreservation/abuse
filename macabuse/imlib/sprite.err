@@ -1,0 +1,4 @@
+include\gifread.hpp(7): Warning! W627: (col 8) text following pre-processor directive 
+
+include\gifread.hpp(7): Note! N393: (col 8) included from sprite.c(10) 
+

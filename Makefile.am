@@ -1,0 +1,8 @@
+SUBDIRS = imlib abuse
+
+debug:
+	$(MAKE) DEFS='-DMANAGE_MEM -DMEM_CHECK' CXXFLAGS=-g
+opt:
+	$(MAKE) DEFS='-DMANAGE_MEM -DNO_CHECK' CXXFLAGS=-O2
+profile:
+	$(MAKE) DEFS='-DMANAGE_MEM -DNO_CHECK' CXXFLAGS='-O2 -g -pg'

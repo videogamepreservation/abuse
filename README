@@ -1,0 +1,103 @@
+Crack dot Com is hereby releasing the source code to Abuse to the
+public domain.
+
+Ownership:
+
+  The following are statements of Crack dot Com's ownership.  These
+  items are NOT being submitted to the public domain.
+
+    Crack dot Com retains ownership of the Abuse trademark.
+    Crack dot Com retains ownership of the Crack dot Com trademark.
+    Crack dot Com retains ownership of the Abuse "retail" data set.
+    Crack dot Com retains ownership of the Abuse "registered" data set.
+
+  The "retail" and "registered" data sets are defined as the levels,
+  sound effects, music, artwork and other data which are NOT common to the
+  "shareware" release of the game.
+
+Licenses and Third Party Owners:
+
+  Crack licensed the DOS Abuse rights to Electronic Arts and the Mac Abuse
+  rights to Bungie.  Crack is therefore NOT releasing the full data set to
+  the public domain to protect EA's and Bungie's investments in the product.
+
+  Sound effects found in the shareware release of Abuse are the copyright of
+  Bobby Prince and are not being submitted to the public domain.
+
+Disclaimer of Waranty:
+
+  As with most public domain software, no warranty is made or implied
+  by Crack dot Com or Jonathan Clark.
+
+Examples of What you CAN Do:
+
+  Make another game and sell it commercially using the Abuse source code.
+  Use pieces of the source code or shareware data (excluding the WAV's-
+    you must speak to Bobby Prince) however you see fit.
+  Learn how to make a better game.
+  Port Abuse to any system you like.
+
+A note from Jonathan Clark:
+
+  I'm busy coding Golgotha so I don't have time to answer many questions.
+  If you e-mail me, I'll read it (unless it's really long), but I may
+  not answer.  If you are making a game with the code, I would like to
+  hear about that sort of thing.
+
+A note from Dave Taylor:
+
+  I didn't write a line of the Abuse source code, but I'm proud to have
+  footed the bill.  If any adventurous coders are interested, I would
+  love to someday see a version which runs a lot faster, draws interpolated
+  frames between the 15 Hz (i believe) updates, and runs under Win32.  I
+  believe in the released versions, we didn't include a line of assembly,
+  and we've identified several areas that can be optimized.
+
+  Also enclosed is the Mac Abuse source tree.  We decided to split
+  the Mac version from the main source tree.  The Mac version features
+  several updates to the Abuse engine and is designed primarily for a
+  640x480 resolution.  We do not know if the Mac Abuse source tree
+  compiles these days, so it's certainly wiser for the novice to stick
+  with the main abuse and imlib directories instead of the macabuse/abuse
+  and macabuse/imlib directories.
+
+  Many thanks to Jason Merrill at Cygnus who fitted the Abuse source to
+  use configure and fixed several bugs.  The following are exerpts from
+  his e-mail to us detailing some of those changes:
+
+    "You'll need to remove abuse/lnx_sdrv and abuse/keydrv before building so
+     make doesn't rebuild them in the source directory.
+
+     Some crashes fixed.  Curiously, building the 'opt' target instead of
+     'debug' produces a program that doesn't crash in mid-game, though it does
+     occasionally say "jfree: bad pointer".  I haven't checked whether this is
+     because of optimization or -DNO_CHECK.
+
+     ABUSE_PATH should work now, but it's useless without ABUSE_SAVE_PATH,
+     which would be harder to fix.  The 'abuse' script just makes symlinks
+     to the installed data files.
+
+     keydrv now works and cleans up after itself.
+
+     Changed SVGA mouse init to be run before vga_init so it only needs to be
+     suid root, not run as root.  Use vga_getmousetype() instead of checking
+     MOUSE_TYPE.
+
+     The patch uses automake, but stock FSF automake won't work.  I had to
+     tweak it to accommodate your source layout.  Avoid rebuilding
+     Makefile.in.
+
+     This should work for non-linux UNIX targets as well, but I haven't tested
+     it yet.
+
+     Fixes another couple of crashes and fixes support for sparc-sun-solaris2,
+     mips-sgi-irix5, powerpc-ibm-aix4.1, and probably others I haven't tried.
+     I haven't tested the AIX sound driver."
+
+
+Have fun,
+
+  Jonathan Clark                 Dave Taylor
+  Lead Programmer/Founder        President/Founder
+  Crack dot Com                  Crack dot Com
+

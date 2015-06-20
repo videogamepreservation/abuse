@@ -1,0 +1,435 @@
+# Makefile.in generated automatically by automake 1.2 from Makefile.am
+
+# Copyright (C) 1994, 1995, 1996, 1997 Free Software Foundation, Inc.
+# This Makefile.in is free software; the Free Software Foundation
+# gives unlimited permission to copy, distribute and modify it.
+
+
+SHELL = /bin/sh
+
+srcdir = @srcdir@
+top_srcdir = @top_srcdir@
+VPATH = @srcdir@
+prefix = @prefix@
+exec_prefix = @exec_prefix@
+
+bindir = @bindir@
+sbindir = @sbindir@
+libexecdir = @libexecdir@
+datadir = @datadir@
+sysconfdir = @sysconfdir@
+sharedstatedir = @sharedstatedir@
+localstatedir = @localstatedir@
+libdir = @libdir@
+infodir = @infodir@
+mandir = @mandir@
+includedir = @includedir@
+oldincludedir = /usr/include
+
+pkgdatadir = $(datadir)/@PACKAGE@
+pkglibdir = $(libdir)/@PACKAGE@
+pkgincludedir = $(includedir)/@PACKAGE@
+
+top_builddir = .
+
+ACLOCAL = @ACLOCAL@
+AUTOCONF = @AUTOCONF@
+AUTOMAKE = @AUTOMAKE@
+AUTOHEADER = @AUTOHEADER@
+
+INSTALL = @INSTALL@
+INSTALL_PROGRAM = @INSTALL_PROGRAM@
+INSTALL_DATA = @INSTALL_DATA@
+INSTALL_SCRIPT = @INSTALL_SCRIPT@
+transform = @program_transform_name@
+
+NORMAL_INSTALL = true
+PRE_INSTALL = true
+POST_INSTALL = true
+NORMAL_UNINSTALL = true
+PRE_UNINSTALL = true
+POST_UNINSTALL = true
+host_alias = @host_alias@
+host_triplet = @host@
+ADDCFLAGS = @ADDCFLAGS@
+ADDCXXFLAGS = @ADDCXXFLAGS@
+CC = @CC@
+CPP = @CPP@
+CXX = @CXX@
+JOYSTICK = @JOYSTICK@
+LIBSVGA = @LIBSVGA@
+MAKEINFO = @MAKEINFO@
+PACKAGE = @PACKAGE@
+RANLIB = @RANLIB@
+SOUND = @SOUND@
+TIMING = @TIMING@
+VERSION = @VERSION@
+
+noinst_LIBRARIES = libimage.a libpacket.a libgui.a libsound.a libnet.a \
+	libdir.a libwinman.a libjoy.a libtime.a $(LIBSVGA)
+EXTRA_LIBRARIES = libsvgawin.a
+
+libimage_a_SOURCES = filter.c gifread.c globals.c image.c linked.c \
+	input.c mdlread.c palette.c ppmread.c include.c xwdread.c \
+	fonts.c decoder.c loader.c glread.c texture.c specs.c \
+	supmorph.c image24.c pcxread.c timage.c jmalloc.c jrand.c \
+	lbmread.c targa.c keys.c dprint.c status.c visobj.c
+
+libpacket_a_SOURCES = packet.c
+
+libgui_a_SOURCES = pmenu.c scroller.c filesel.c tools.c guistat.c
+
+libsound_a_SOURCES = readwav.c
+libsound_a_LIBADD = $(SOUND)
+libsound_a_DEPENDENCIES = $(SOUND)
+EXTRA_libsound_a_SOURCES = port/sgi/sound.c port/aix/sound.c \
+	port/unix/sound.c
+libnet_a_SOURCES = port/unix/jnet.c
+libdir_a_SOURCES = port/unix/jdir.c
+libwinman_a_SOURCES = port/x11/video.c port/x11/mouse.c port/x11/event.c \
+	jwindow.c
+libsvgawin_a_SOURCES = port/svga/video.c port/svga/mouse.c \
+	port/svga/event.c jwindow.c
+libjoy_a_SOURCES = 
+libjoy_a_LIBADD = $(JOYSTICK)
+libjoy_a_DEPENDENCIES = $(JOYSTICK)
+EXTRA_libjoy_a_SOURCES = port/unix/joystick.c port/linux/joystick.c
+libtime_a_SOURCES =
+libtime_a_LIBADD = $(TIMING)
+libtime_a_DEPENDENCIES = $(TIMING)
+EXTRA_libtime_a_SOURCES = port/unix/timing.c port/sgi/timing.c
+
+INCLUDES = -I$(srcdir)/include $(X_CFLAGS)
+
+MYDEFS = -DMANAGE_MEM -DNO_CHECK
+CXXFLAGS = -g -O2
+
+MOSTLYCLEANFILES = $(SOUND) $(JOYSTICK) $(TIMING)
+
+COMPILE = $(CXX) $(DEFS) $(MYDEFS) $(INCLUDES) $(CPPFLAGS) $(CXXFLAGS) $(ADDCXXFLAGS) -o $@
+ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
+mkinstalldirs = $(SHELL) $(top_srcdir)/../mkinstalldirs
+CONFIG_CLEAN_FILES = 
+LIBRARIES =  $(noinst_LIBRARIES)
+
+
+DEFS = @DEFS@ -I. -I$(srcdir) 
+CPPFLAGS = @CPPFLAGS@
+LDFLAGS = @LDFLAGS@
+LIBS = @LIBS@
+X_CFLAGS = @X_CFLAGS@
+X_LIBS = @X_LIBS@
+X_EXTRA_LIBS = @X_EXTRA_LIBS@
+X_PRE_LIBS = @X_PRE_LIBS@
+libsvgawin_a_LIBADD = 
+libsvgawin_a_OBJECTS =  port/svga/video.o port/svga/mouse.o \
+port/svga/event.o jwindow.o
+libimage_a_LIBADD = 
+libimage_a_OBJECTS =  filter.o gifread.o globals.o image.o linked.o \
+input.o mdlread.o palette.o ppmread.o include.o xwdread.o fonts.o \
+decoder.o loader.o glread.o texture.o specs.o supmorph.o image24.o \
+pcxread.o timage.o jmalloc.o jrand.o lbmread.o targa.o keys.o dprint.o \
+status.o visobj.o
+libpacket_a_LIBADD = 
+libpacket_a_OBJECTS =  packet.o
+libgui_a_LIBADD = 
+libgui_a_OBJECTS =  pmenu.o scroller.o filesel.o tools.o guistat.o
+libsound_a_OBJECTS =  readwav.o
+libnet_a_LIBADD = 
+libnet_a_OBJECTS =  port/unix/jnet.o
+libdir_a_LIBADD = 
+libdir_a_OBJECTS =  port/unix/jdir.o
+libwinman_a_LIBADD = 
+libwinman_a_OBJECTS =  port/x11/video.o port/x11/mouse.o \
+port/x11/event.o jwindow.o
+libjoy_a_OBJECTS = 
+libtime_a_OBJECTS = 
+AR = ar
+CFLAGS = @CFLAGS@
+LINK = $(CC) $(CFLAGS) $(LDFLAGS) -o $@
+DIST_COMMON =  Makefile.am Makefile.in acinclude.m4 aclocal.m4 configure \
+configure.in
+
+
+DISTFILES = $(DIST_COMMON) $(SOURCES) $(HEADERS) $(TEXINFOS) $(EXTRA_DIST)
+
+TAR = gtar
+GZIP = --best
+DEP_FILES =  ./.deps/decoder.P ./.deps/dprint.P ./.deps/filesel.P \
+./.deps/filter.P ./.deps/fonts.P ./.deps/gifread.P ./.deps/globals.P \
+./.deps/glread.P ./.deps/guistat.P ./.deps/image.P ./.deps/image24.P \
+./.deps/include.P ./.deps/input.P ./.deps/jmalloc.P ./.deps/jrand.P \
+./.deps/jwindow.P ./.deps/keys.P ./.deps/lbmread.P ./.deps/linked.P \
+./.deps/loader.P ./.deps/mdlread.P ./.deps/packet.P ./.deps/palette.P \
+./.deps/pcxread.P ./.deps/pmenu.P ./.deps/ppmread.P ./.deps/readwav.P \
+./.deps/scroller.P ./.deps/specs.P ./.deps/status.P ./.deps/supmorph.P \
+./.deps/targa.P ./.deps/texture.P ./.deps/timage.P ./.deps/tools.P \
+./.deps/visobj.P ./.deps/xwdread.P port/aix/.deps/sound.P \
+port/linux/.deps/joystick.P port/sgi/.deps/sound.P \
+port/sgi/.deps/timing.P port/svga/.deps/event.P port/svga/.deps/mouse.P \
+port/svga/.deps/video.P port/unix/.deps/jdir.P port/unix/.deps/jnet.P \
+port/unix/.deps/joystick.P port/unix/.deps/sound.P \
+port/unix/.deps/timing.P port/x11/.deps/event.P port/x11/.deps/mouse.P \
+port/x11/.deps/video.P
+SOURCES = $(libsvgawin_a_SOURCES) $(libimage_a_SOURCES) $(libpacket_a_SOURCES) $(libgui_a_SOURCES) $(libsound_a_SOURCES) $(EXTRA_libsound_a_SOURCES) $(libnet_a_SOURCES) $(libdir_a_SOURCES) $(libwinman_a_SOURCES) $(libjoy_a_SOURCES) $(EXTRA_libjoy_a_SOURCES) $(libtime_a_SOURCES) $(EXTRA_libtime_a_SOURCES)
+OBJECTS = $(libsvgawin_a_OBJECTS) $(libimage_a_OBJECTS) $(libpacket_a_OBJECTS) $(libgui_a_OBJECTS) $(libsound_a_OBJECTS) $(libnet_a_OBJECTS) $(libdir_a_OBJECTS) $(libwinman_a_OBJECTS) $(libjoy_a_OBJECTS) $(libtime_a_OBJECTS)
+
+default: all
+
+.SUFFIXES:
+.SUFFIXES: .c .o
+$(srcdir)/Makefile.in: Makefile.am $(top_srcdir)/configure.in $(ACLOCAL_M4) 
+	cd $(top_srcdir) && $(AUTOMAKE) --foreign Makefile
+
+Makefile: $(srcdir)/Makefile.in $(top_builddir)/config.status $(BUILT_SOURCES)
+	cd $(top_builddir) \
+	  && CONFIG_FILES=$@ CONFIG_HEADERS= $(SHELL) ./config.status
+
+$(ACLOCAL_M4):  configure.in  acinclude.m4
+	cd $(srcdir) && $(ACLOCAL)
+
+config.status: $(srcdir)/configure
+	$(SHELL) ./config.status --recheck
+$(srcdir)/configure: $(srcdir)/configure.in $(ACLOCAL_M4) $(CONFIGURE_DEPENDENCIES)
+	cd $(srcdir) && $(AUTOCONF)
+
+mostlyclean-noinstLIBRARIES:
+
+clean-noinstLIBRARIES:
+	test -z "$(noinst_LIBRARIES)" || rm -f $(noinst_LIBRARIES)
+
+distclean-noinstLIBRARIES:
+
+maintainer-clean-noinstLIBRARIES:
+
+.c.o:
+	$(COMPILE) -c $<
+
+mostlyclean-compile:
+	rm -f *.o core $(OBJECTS)
+
+clean-compile:
+
+distclean-compile:
+	rm -f *.tab.c
+
+maintainer-clean-compile:
+
+libsvgawin.a: $(libsvgawin_a_OBJECTS) $(libsvgawin_a_DEPENDENCIES)
+	rm -f libsvgawin.a
+	$(AR) cru libsvgawin.a $(libsvgawin_a_OBJECTS) $(libsvgawin_a_LIBADD)
+	$(RANLIB) libsvgawin.a
+
+libimage.a: $(libimage_a_OBJECTS) $(libimage_a_DEPENDENCIES)
+	rm -f libimage.a
+	$(AR) cru libimage.a $(libimage_a_OBJECTS) $(libimage_a_LIBADD)
+	$(RANLIB) libimage.a
+
+libpacket.a: $(libpacket_a_OBJECTS) $(libpacket_a_DEPENDENCIES)
+	rm -f libpacket.a
+	$(AR) cru libpacket.a $(libpacket_a_OBJECTS) $(libpacket_a_LIBADD)
+	$(RANLIB) libpacket.a
+
+libgui.a: $(libgui_a_OBJECTS) $(libgui_a_DEPENDENCIES)
+	rm -f libgui.a
+	$(AR) cru libgui.a $(libgui_a_OBJECTS) $(libgui_a_LIBADD)
+	$(RANLIB) libgui.a
+
+libsound.a: $(libsound_a_OBJECTS) $(libsound_a_DEPENDENCIES)
+	rm -f libsound.a
+	$(AR) cru libsound.a $(libsound_a_OBJECTS) $(libsound_a_LIBADD)
+	$(RANLIB) libsound.a
+
+libnet.a: $(libnet_a_OBJECTS) $(libnet_a_DEPENDENCIES)
+	rm -f libnet.a
+	$(AR) cru libnet.a $(libnet_a_OBJECTS) $(libnet_a_LIBADD)
+	$(RANLIB) libnet.a
+
+libdir.a: $(libdir_a_OBJECTS) $(libdir_a_DEPENDENCIES)
+	rm -f libdir.a
+	$(AR) cru libdir.a $(libdir_a_OBJECTS) $(libdir_a_LIBADD)
+	$(RANLIB) libdir.a
+
+libwinman.a: $(libwinman_a_OBJECTS) $(libwinman_a_DEPENDENCIES)
+	rm -f libwinman.a
+	$(AR) cru libwinman.a $(libwinman_a_OBJECTS) $(libwinman_a_LIBADD)
+	$(RANLIB) libwinman.a
+
+libjoy.a: $(libjoy_a_OBJECTS) $(libjoy_a_DEPENDENCIES)
+	rm -f libjoy.a
+	$(AR) cru libjoy.a $(libjoy_a_OBJECTS) $(libjoy_a_LIBADD)
+	$(RANLIB) libjoy.a
+
+libtime.a: $(libtime_a_OBJECTS) $(libtime_a_DEPENDENCIES)
+	rm -f libtime.a
+	$(AR) cru libtime.a $(libtime_a_OBJECTS) $(libtime_a_LIBADD)
+	$(RANLIB) libtime.a
+
+tags: TAGS
+
+ID: $(HEADERS) $(SOURCES)
+	here=`pwd` && cd $(srcdir) && mkid -f$$here/ID $(SOURCES) $(HEADERS)
+
+TAGS:  $(HEADERS) $(SOURCES)  $(TAGS_DEPENDENCIES)
+	tags=; \
+	here=`pwd`; \
+	test -z "$(ETAGS_ARGS)$(SOURCES)$(HEADERS)$$tags" \
+	  || (cd $(srcdir) && etags $(ETAGS_ARGS) $$tags  $(SOURCES) $(HEADERS) -o $$here/TAGS)
+
+mostlyclean-tags:
+
+clean-tags:
+
+distclean-tags:
+	rm -f TAGS ID
+
+maintainer-clean-tags:
+
+distdir = $(PACKAGE)-$(VERSION)
+top_distdir = $(distdir)
+
+# This target untars the dist file and tries a VPATH configuration.  Then
+# it guarantees that the distribution is self-contained by making another
+# tarfile.
+distcheck: dist
+	rm -rf $(distdir)
+	GZIP=$(GZIP) $(TAR) zxf $(distdir).tar.gz
+	mkdir $(distdir)/=build
+	mkdir $(distdir)/=inst
+	dc_install_base=`cd $(distdir)/=inst && pwd`; \
+	cd $(distdir)/=build \
+	  && ../configure --srcdir=.. --prefix=$$dc_install_base \
+	  && $(MAKE) \
+	  && $(MAKE) dvi \
+	  && $(MAKE) check \
+	  && $(MAKE) install \
+	  && $(MAKE) installcheck \
+	  && $(MAKE) dist
+	rm -rf $(distdir)
+	@echo "========================"; \
+	echo "$(distdir).tar.gz is ready for distribution"; \
+	echo "========================"
+dist: distdir
+	-chmod -R a+r $(distdir)
+	GZIP=$(GZIP) $(TAR) chozf $(distdir).tar.gz $(distdir)
+	rm -rf $(distdir)
+dist-all: distdir
+	-chmod -R a+r $(distdir)
+	GZIP=$(GZIP) $(TAR) chozf $(distdir).tar.gz $(distdir)
+	rm -rf $(distdir)
+distdir: $(DISTFILES)
+	rm -rf $(distdir)
+	mkdir $(distdir)
+	-chmod 777 $(distdir)
+	here=`cd $(top_builddir) && pwd`; \
+	top_distdir=`cd $(top_distdir) && pwd`; \
+	cd $(top_srcdir) \
+	  && $(AUTOMAKE) --include-deps --build-dir=$$here --srcdir-name=$(top_srcdir) --output-dir=$$top_distdir --foreign Makefile
+	@for file in $(DISTFILES); do \
+	  d=$(srcdir); \
+	  test -f $(distdir)/$$file \
+	  || ln $$d/$$file $(distdir)/$$file 2> /dev/null \
+	  || cp -p $$d/$$file $(distdir)/$$file; \
+	done
+
+MKDEP = gcc -M $(DEFS) $(INCLUDES) $(CPPFLAGS) $(CFLAGS)
+
+DEPS_MAGIC := $(shell mkdir .deps > /dev/null 2>&1 || :)
+-include .deps/.P
+.deps/.P: $(BUILT_SOURCES)
+	echo > $@
+
+-include $(DEP_FILES)
+
+mostlyclean-depend:
+
+clean-depend:
+
+distclean-depend:
+
+maintainer-clean-depend:
+	rm -rf .deps
+
+.deps/%.P: %.c
+	@echo "Computing dependencies for $<..."
+	@o='o'; \
+	test -n "$o" && o='$$o'; \
+	$(MKDEP) $< >$@.tmp \
+	  && sed "s,^\(.*\)\.o:,\1.$$o \1.l$$o $@:," < $@.tmp > $@ \
+	  && rm -f $@.tmp
+info:
+dvi:
+check: all
+	$(MAKE)
+installcheck:
+install-exec: 
+	@$(NORMAL_INSTALL)
+
+install-data: 
+	@$(NORMAL_INSTALL)
+
+install: install-exec install-data all
+	@:
+
+uninstall: 
+
+all: Makefile $(LIBRARIES)
+
+install-strip:
+	$(MAKE) INSTALL_PROGRAM='$(INSTALL_PROGRAM) -s' INSTALL_SCRIPT='$(INSTALL_PROGRAM)' install
+installdirs:
+
+
+mostlyclean-generic:
+	test -z "$(MOSTLYCLEANFILES)" || rm -f $(MOSTLYCLEANFILES)
+
+clean-generic:
+	test -z "$(CLEANFILES)" || rm -f $(CLEANFILES)
+
+distclean-generic:
+	rm -f Makefile $(DISTCLEANFILES)
+	rm -f config.cache config.log stamp-h stamp-h[0-9]*
+	test -z "$(CONFIG_CLEAN_FILES)" || rm -f $(CONFIG_CLEAN_FILES)
+
+maintainer-clean-generic:
+	test -z "$(MAINTAINERCLEANFILES)" || rm -f $(MAINTAINERCLEANFILES)
+	test -z "$(BUILT_SOURCES)" || rm -f $(BUILT_SOURCES)
+mostlyclean:  mostlyclean-noinstLIBRARIES mostlyclean-compile \
+		mostlyclean-tags mostlyclean-depend mostlyclean-generic
+
+clean:  clean-noinstLIBRARIES clean-compile clean-tags clean-depend \
+		clean-generic mostlyclean
+
+distclean:  distclean-noinstLIBRARIES distclean-compile distclean-tags \
+		distclean-depend distclean-generic clean
+	rm -f config.status
+
+maintainer-clean:  maintainer-clean-noinstLIBRARIES \
+		maintainer-clean-compile maintainer-clean-tags \
+		maintainer-clean-depend maintainer-clean-generic \
+		distclean
+	@echo "This command is intended for maintainers to use;"
+	@echo "it deletes files that may require special tools to rebuild."
+	rm -f config.status
+
+.PHONY: default mostlyclean-noinstLIBRARIES distclean-noinstLIBRARIES \
+clean-noinstLIBRARIES maintainer-clean-noinstLIBRARIES \
+mostlyclean-compile distclean-compile clean-compile \
+maintainer-clean-compile tags mostlyclean-tags distclean-tags \
+clean-tags maintainer-clean-tags distdir mostlyclean-depend \
+distclean-depend clean-depend maintainer-clean-depend info dvi \
+installcheck install-exec install-data install uninstall all \
+installdirs mostlyclean-generic distclean-generic clean-generic \
+maintainer-clean-generic clean mostlyclean distclean maintainer-clean
+
+
+debug:
+	$(MAKE) DEFS='-DMANAGE_MEM -DMEM_CHECK' CXXFLAGS=-g
+opt:
+	$(MAKE) DEFS='-DMANAGE_MEM -DNO_CHECK' CXXFLAGS=-O2
+profile:
+	$(MAKE) DEFS='-DMANAGE_MEM -DNO_CHECK' CXXFLAGS='-O2 -g -pg'
+
+# Tell versions [3.59,3.63) of GNU make to not export all variables.
+# Otherwise a system limit (for SysV at least) may be exceeded.
+.NOEXPORT:

@@ -1,0 +1,4 @@
+debug all
+name maker.exe
+option stack=120k
+file maker.obj

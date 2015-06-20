@@ -1,0 +1,1643 @@
+all : opt
+
+debug : .//debug/image.a .//debug/gui.a
+	echo Made debug
+
+opt : .//opt/image.a .//opt/gui.a
+	echo Made opt
+
+profile : .//profile/image.a .//profile/gui.a
+	echo Made profile
+
+SGI_image_o_files = \
+	.//debug/filter.o \
+	.//debug/gifread.o \
+	.//debug/globals.o \
+	.//debug/image.o \
+	.//debug/linked.o \
+	.//debug/input.o \
+	.//debug/mdlread.o \
+	.//debug/palette.o \
+	.//debug/ppmread.o \
+	.//debug/sprite.o \
+	.//debug/include.o \
+	.//debug/xwdread.o \
+	.//debug/fonts.o \
+	.//debug/decoder.o \
+	.//debug/loader.o \
+	.//debug/glread.o \
+	.//debug/texture.o \
+	.//debug/specs.o \
+	.//debug/supmorph.o \
+	.//debug/image24.o \
+	.//debug/pcxread.o \
+	.//debug/timage.o \
+	.//debug/jmalloc.o \
+	.//debug/jrand.o \
+	.//debug/lbmread.o \
+	.//debug/keys.o \
+	.//debug/dprint.o \
+	.//debug/status.o \
+	.//debug/visobj.o
+
+SGI_gui_o_files = \
+	.//debug/pmenu.o \
+	.//debug/scroller.o \
+	.//debug/filesel.o \
+	.//debug/tools.o \
+	.//debug/guistat.o
+
+.//debug/gui.a : $(SGI_gui_o_files)
+	ar ruvs .//debug/gui.a\
+	.//debug/pmenu.o \
+	.//debug/scroller.o \
+	.//debug/filesel.o \
+	.//debug/tools.o \
+	.//debug/guistat.o
+
+.//debug/pmenu.o : pmenu.c
+	g++ -c -o .//debug/pmenu.o pmenu.c -Iinclude -g -DMEM_CHECK -DMANAGE_MEM 
+
+.//debug/pmenu.o : include/timage.hpp
+.//debug/pmenu.o : include/fonts.hpp
+.//debug/pmenu.o : include/filter.hpp
+.//debug/pmenu.o : include/mouse.hpp
+.//debug/pmenu.o : include/macs.hpp
+.//debug/pmenu.o : include/sprite.hpp
+.//debug/pmenu.o : include/keys.hpp
+.//debug/pmenu.o : include/event.hpp
+.//debug/pmenu.o : include/specs.hpp
+.//debug/pmenu.o : include/palette.hpp
+.//debug/pmenu.o : include/linked.hpp
+.//debug/pmenu.o : include/image.hpp
+.//debug/pmenu.o : include/system.h
+.//debug/pmenu.o : include/video.hpp
+.//debug/pmenu.o : include/jwindow.hpp
+.//debug/pmenu.o : include/input.hpp
+.//debug/pmenu.o : include/jmalloc.hpp
+.//debug/pmenu.o : include/pmenu.hpp
+.//debug/scroller.o : scroller.c
+	g++ -c -o .//debug/scroller.o scroller.c -Iinclude -g -DMEM_CHECK -DMANAGE_MEM 
+
+.//debug/scroller.o : include/timage.hpp
+.//debug/scroller.o : include/fonts.hpp
+.//debug/scroller.o : include/filter.hpp
+.//debug/scroller.o : include/mouse.hpp
+.//debug/scroller.o : include/macs.hpp
+.//debug/scroller.o : include/sprite.hpp
+.//debug/scroller.o : include/keys.hpp
+.//debug/scroller.o : include/event.hpp
+.//debug/scroller.o : include/jmalloc.hpp
+.//debug/scroller.o : include/specs.hpp
+.//debug/scroller.o : include/palette.hpp
+.//debug/scroller.o : include/linked.hpp
+.//debug/scroller.o : include/image.hpp
+.//debug/scroller.o : include/system.h
+.//debug/scroller.o : include/video.hpp
+.//debug/scroller.o : include/jwindow.hpp
+.//debug/scroller.o : include/input.hpp
+.//debug/scroller.o : include/scroller.hpp
+.//debug/filesel.o : filesel.c
+	g++ -c -o .//debug/filesel.o filesel.c -Iinclude -g -DMEM_CHECK -DMANAGE_MEM 
+
+.//debug/filesel.o : include/jdir.hpp
+.//debug/filesel.o : include/scroller.hpp
+.//debug/filesel.o : include/input.hpp
+.//debug/filesel.o : include/timage.hpp
+.//debug/filesel.o : include/fonts.hpp
+.//debug/filesel.o : include/filter.hpp
+.//debug/filesel.o : include/mouse.hpp
+.//debug/filesel.o : include/macs.hpp
+.//debug/filesel.o : include/sprite.hpp
+.//debug/filesel.o : include/keys.hpp
+.//debug/filesel.o : include/event.hpp
+.//debug/filesel.o : include/jmalloc.hpp
+.//debug/filesel.o : include/specs.hpp
+.//debug/filesel.o : include/palette.hpp
+.//debug/filesel.o : include/linked.hpp
+.//debug/filesel.o : include/image.hpp
+.//debug/filesel.o : include/system.h
+.//debug/filesel.o : include/video.hpp
+.//debug/filesel.o : include/jwindow.hpp
+.//debug/filesel.o : include/filesel.hpp
+.//debug/tools.o : tools.c
+	g++ -c -o .//debug/tools.o tools.c -Iinclude -g -DMEM_CHECK -DMANAGE_MEM 
+
+.//debug/tools.o : include/visobj.hpp
+.//debug/tools.o : include/scroller.hpp
+.//debug/tools.o : include/input.hpp
+.//debug/tools.o : include/timage.hpp
+.//debug/tools.o : include/fonts.hpp
+.//debug/tools.o : include/filter.hpp
+.//debug/tools.o : include/mouse.hpp
+.//debug/tools.o : include/macs.hpp
+.//debug/tools.o : include/sprite.hpp
+.//debug/tools.o : include/keys.hpp
+.//debug/tools.o : include/event.hpp
+.//debug/tools.o : include/jmalloc.hpp
+.//debug/tools.o : include/specs.hpp
+.//debug/tools.o : include/palette.hpp
+.//debug/tools.o : include/linked.hpp
+.//debug/tools.o : include/image.hpp
+.//debug/tools.o : include/system.h
+.//debug/tools.o : include/video.hpp
+.//debug/tools.o : include/jwindow.hpp
+.//debug/tools.o : include/tools.hpp
+.//debug/guistat.o : guistat.c
+	g++ -c -o .//debug/guistat.o guistat.c -Iinclude -g -DMEM_CHECK -DMANAGE_MEM 
+
+.//debug/guistat.o : include/guistat.hpp
+.//debug/guistat.o : include/timing.hpp
+.//debug/guistat.o : include/timage.hpp
+.//debug/guistat.o : include/fonts.hpp
+.//debug/guistat.o : include/filter.hpp
+.//debug/guistat.o : include/mouse.hpp
+.//debug/guistat.o : include/macs.hpp
+.//debug/guistat.o : include/sprite.hpp
+.//debug/guistat.o : include/keys.hpp
+.//debug/guistat.o : include/event.hpp
+.//debug/guistat.o : include/jmalloc.hpp
+.//debug/guistat.o : include/specs.hpp
+.//debug/guistat.o : include/palette.hpp
+.//debug/guistat.o : include/linked.hpp
+.//debug/guistat.o : include/image.hpp
+.//debug/guistat.o : include/system.h
+.//debug/guistat.o : include/video.hpp
+.//debug/guistat.o : include/jwindow.hpp
+.//debug/guistat.o : include/visobj.hpp
+.//debug/guistat.o : include/status.hpp
+
+.//debug/image.a : $(SGI_image_o_files)
+	ar ruvs .//debug/image.a\
+	.//debug/filter.o \
+	.//debug/gifread.o \
+	.//debug/globals.o \
+	.//debug/image.o \
+	.//debug/linked.o \
+	.//debug/input.o \
+	.//debug/mdlread.o \
+	.//debug/palette.o \
+	.//debug/ppmread.o \
+	.//debug/sprite.o \
+	.//debug/include.o \
+	.//debug/xwdread.o \
+	.//debug/fonts.o \
+	.//debug/decoder.o \
+	.//debug/loader.o \
+	.//debug/glread.o \
+	.//debug/texture.o \
+	.//debug/specs.o \
+	.//debug/supmorph.o \
+	.//debug/image24.o \
+	.//debug/pcxread.o \
+	.//debug/timage.o \
+	.//debug/jmalloc.o \
+	.//debug/jrand.o \
+	.//debug/lbmread.o \
+	.//debug/keys.o \
+	.//debug/dprint.o \
+	.//debug/status.o \
+	.//debug/visobj.o
+
+.//debug/filter.o : filter.c
+	g++ -c -o .//debug/filter.o filter.c -Iinclude -g -DMEM_CHECK -DMANAGE_MEM 
+
+.//debug/filter.o : include/filter.hpp
+.//debug/filter.o : include/macs.hpp
+.//debug/filter.o : include/system.h
+.//debug/filter.o : include/jmalloc.hpp
+.//debug/filter.o : include/specs.hpp
+.//debug/filter.o : include/palette.hpp
+.//debug/filter.o : include/linked.hpp
+.//debug/filter.o : include/image.hpp
+.//debug/gifread.o : gifread.c
+	g++ -c -o .//debug/gifread.o gifread.c -Iinclude -g -DMEM_CHECK -DMANAGE_MEM 
+
+.//debug/gifread.o : include/macs.hpp
+.//debug/gifread.o : include/dir.h
+.//debug/gifread.o : include/dos.h
+.//debug/gifread.o : include/std.h
+.//debug/gifread.o : include/gifdecod.hpp
+.//debug/gifread.o : include/video.hpp
+.//debug/gifread.o : include/system.h
+.//debug/gifread.o : include/jmalloc.hpp
+.//debug/gifread.o : include/specs.hpp
+.//debug/gifread.o : include/palette.hpp
+.//debug/gifread.o : include/linked.hpp
+.//debug/gifread.o : include/image.hpp
+.//debug/gifread.o : include/gifread.hpp
+.//debug/globals.o : globals.c
+	g++ -c -o .//debug/globals.o globals.c -Iinclude -g -DMEM_CHECK -DMANAGE_MEM 
+
+.//debug/globals.o : globals.c
+.//debug/image.o : image.c
+	g++ -c -o .//debug/image.o image.c -Iinclude -g -DMEM_CHECK -DMANAGE_MEM 
+
+.//debug/image.o : include/exitproc.hpp
+.//debug/image.o : include/dos.h
+.//debug/image.o : include/macs.hpp
+.//debug/image.o : include/jmalloc.hpp
+.//debug/image.o : include/specs.hpp
+.//debug/image.o : include/palette.hpp
+.//debug/image.o : include/image.hpp
+.//debug/image.o : include/linked.hpp
+.//debug/image.o : include/system.h
+.//debug/image.o : include/emm.hpp
+.//debug/linked.o : linked.c
+	g++ -c -o .//debug/linked.o linked.c -Iinclude -g -DMEM_CHECK -DMANAGE_MEM 
+
+.//debug/linked.o : include/linked.hpp
+.//debug/input.o : input.c
+	g++ -c -o .//debug/input.o input.c -Iinclude -g -DMEM_CHECK -DMANAGE_MEM 
+
+.//debug/input.o : include/timage.hpp
+.//debug/input.o : include/fonts.hpp
+.//debug/input.o : include/filter.hpp
+.//debug/input.o : include/mouse.hpp
+.//debug/input.o : include/macs.hpp
+.//debug/input.o : include/sprite.hpp
+.//debug/input.o : include/keys.hpp
+.//debug/input.o : include/event.hpp
+.//debug/input.o : include/jmalloc.hpp
+.//debug/input.o : include/specs.hpp
+.//debug/input.o : include/palette.hpp
+.//debug/input.o : include/linked.hpp
+.//debug/input.o : include/image.hpp
+.//debug/input.o : include/system.h
+.//debug/input.o : include/video.hpp
+.//debug/input.o : include/jwindow.hpp
+.//debug/input.o : include/input.hpp
+.//debug/mdlread.o : mdlread.c
+	g++ -c -o .//debug/mdlread.o mdlread.c -Iinclude -g -DMEM_CHECK -DMANAGE_MEM 
+
+.//debug/mdlread.o : include/macs.hpp
+.//debug/mdlread.o : include/image.hpp
+.//debug/mdlread.o : include/system.h
+.//debug/mdlread.o : include/jmalloc.hpp
+.//debug/mdlread.o : include/specs.hpp
+.//debug/mdlread.o : include/linked.hpp
+.//debug/mdlread.o : include/palette.hpp
+.//debug/mdlread.o : include/mdlread.hpp
+.//debug/palette.o : palette.c
+	g++ -c -o .//debug/palette.o palette.c -Iinclude -g -DMEM_CHECK -DMANAGE_MEM 
+
+.//debug/palette.o : include/filter.hpp
+.//debug/palette.o : include/video.hpp
+.//debug/palette.o : include/dos.h
+.//debug/palette.o : include/macs.hpp
+.//debug/palette.o : include/image.hpp
+.//debug/palette.o : include/system.h
+.//debug/palette.o : include/jmalloc.hpp
+.//debug/palette.o : include/specs.hpp
+.//debug/palette.o : include/linked.hpp
+.//debug/palette.o : include/palette.hpp
+.//debug/ppmread.o : ppmread.c
+	g++ -c -o .//debug/ppmread.o ppmread.c -Iinclude -g -DMEM_CHECK -DMANAGE_MEM 
+
+.//debug/ppmread.o : include/ppmread.hpp
+.//debug/ppmread.o : include/macs.hpp
+.//debug/ppmread.o : include/system.h
+.//debug/ppmread.o : include/jmalloc.hpp
+.//debug/ppmread.o : include/specs.hpp
+.//debug/ppmread.o : include/palette.hpp
+.//debug/ppmread.o : include/linked.hpp
+.//debug/ppmread.o : include/image.hpp
+.//debug/sprite.o : sprite.c
+	g++ -c -o .//debug/sprite.o sprite.c -Iinclude -g -DMEM_CHECK -DMANAGE_MEM 
+
+.//debug/sprite.o : include/sprite.hpp
+.//debug/sprite.o : include/emm.hpp
+.//debug/sprite.o : include/ppmread.hpp
+.//debug/sprite.o : include/gifread.hpp
+.//debug/sprite.o : include/glread.hpp
+.//debug/sprite.o : include/video.hpp
+.//debug/sprite.o : include/image.hpp
+.//debug/sprite.o : include/jmalloc.hpp
+.//debug/sprite.o : include/specs.hpp
+.//debug/sprite.o : include/linked.hpp
+.//debug/sprite.o : include/palette.hpp
+.//debug/sprite.o : include/mdlread.hpp
+.//debug/sprite.o : include/system.h
+.//debug/sprite.o : include/macs.hpp
+.//debug/include.o : include.c
+	g++ -c -o .//debug/include.o include.c -Iinclude -g -DMEM_CHECK -DMANAGE_MEM 
+
+.//debug/include.o : include/system.h
+.//debug/include.o : include/jmalloc.hpp
+.//debug/include.o : include/specs.hpp
+.//debug/include.o : include/palette.hpp
+.//debug/include.o : include/linked.hpp
+.//debug/include.o : include/image.hpp
+.//debug/include.o : include/include.hpp
+.//debug/xwdread.o : xwdread.c
+	g++ -c -o .//debug/xwdread.o xwdread.c -Iinclude -g -DMEM_CHECK -DMANAGE_MEM 
+
+.//debug/xwdread.o : include/image24.hpp
+.//debug/xwdread.o : include/main.hpp
+.//debug/xwdread.o : include/dos.h
+.//debug/xwdread.o : include/video.hpp
+.//debug/xwdread.o : include/mouse.hpp
+.//debug/xwdread.o : include/macs.hpp
+.//debug/xwdread.o : include/sprite.hpp
+.//debug/xwdread.o : include/keys.hpp
+.//debug/xwdread.o : include/event.hpp
+.//debug/xwdread.o : include/system.h
+.//debug/xwdread.o : include/jmalloc.hpp
+.//debug/xwdread.o : include/specs.hpp
+.//debug/xwdread.o : include/palette.hpp
+.//debug/xwdread.o : include/linked.hpp
+.//debug/xwdread.o : include/image.hpp
+.//debug/xwdread.o : include/filter.hpp
+.//debug/fonts.o : fonts.c
+	g++ -c -o .//debug/fonts.o fonts.c -Iinclude -g -DMEM_CHECK -DMANAGE_MEM 
+
+.//debug/fonts.o : include/filter.hpp
+.//debug/fonts.o : include/macs.hpp
+.//debug/fonts.o : include/timage.hpp
+.//debug/fonts.o : include/system.h
+.//debug/fonts.o : include/jmalloc.hpp
+.//debug/fonts.o : include/specs.hpp
+.//debug/fonts.o : include/palette.hpp
+.//debug/fonts.o : include/linked.hpp
+.//debug/fonts.o : include/image.hpp
+.//debug/fonts.o : include/fonts.hpp
+.//debug/decoder.o : decoder.c
+	g++ -c -o .//debug/decoder.o decoder.c -Iinclude -g -DMEM_CHECK -DMANAGE_MEM 
+
+.//debug/decoder.o : include/macs.hpp
+.//debug/decoder.o : include/system.h
+.//debug/decoder.o : include/jmalloc.hpp
+.//debug/decoder.o : include/specs.hpp
+.//debug/decoder.o : include/palette.hpp
+.//debug/decoder.o : include/linked.hpp
+.//debug/decoder.o : include/image.hpp
+.//debug/decoder.o : include/errs.h
+.//debug/loader.o : loader.c
+	g++ -c -o .//debug/loader.o loader.c -Iinclude -g -DMEM_CHECK -DMANAGE_MEM 
+
+.//debug/loader.o : include/lbmread.hpp
+.//debug/loader.o : include/pcxread.hpp
+.//debug/loader.o : include/glread.hpp
+.//debug/loader.o : include/xwdread.hpp
+.//debug/loader.o : include/ppmread.hpp
+.//debug/loader.o : include/mdlread.hpp
+.//debug/loader.o : include/filter.hpp
+.//debug/loader.o : include/macs.hpp
+.//debug/loader.o : include/image24.hpp
+.//debug/loader.o : include/system.h
+.//debug/loader.o : include/jmalloc.hpp
+.//debug/loader.o : include/specs.hpp
+.//debug/loader.o : include/palette.hpp
+.//debug/loader.o : include/linked.hpp
+.//debug/loader.o : include/image.hpp
+.//debug/loader.o : include/loader.hpp
+.//debug/glread.o : glread.c
+	g++ -c -o .//debug/glread.o glread.c -Iinclude -g -DMEM_CHECK -DMANAGE_MEM 
+
+.//debug/glread.o : include/video.hpp
+.//debug/glread.o : include/jmalloc.hpp
+.//debug/glread.o : include/specs.hpp
+.//debug/glread.o : include/palette.hpp
+.//debug/glread.o : include/linked.hpp
+.//debug/glread.o : include/image.hpp
+.//debug/glread.o : include/system.h
+.//debug/glread.o : include/macs.hpp
+.//debug/texture.o : texture.c
+	g++ -c -o .//debug/texture.o texture.c -Iinclude -g -DMEM_CHECK -DMANAGE_MEM 
+
+.//debug/texture.o : include/mouse.hpp
+.//debug/texture.o : include/sprite.hpp
+.//debug/texture.o : include/keys.hpp
+.//debug/texture.o : include/event.hpp
+.//debug/texture.o : include/macs.hpp
+.//debug/texture.o : include/video.hpp
+.//debug/texture.o : include/system.h
+.//debug/texture.o : include/jmalloc.hpp
+.//debug/texture.o : include/specs.hpp
+.//debug/texture.o : include/palette.hpp
+.//debug/texture.o : include/linked.hpp
+.//debug/texture.o : include/image.hpp
+.//debug/specs.o : specs.c
+	g++ -c -o .//debug/specs.o specs.c -Iinclude -g -DMEM_CHECK -DMANAGE_MEM 
+
+.//debug/specs.o : include/dprint.hpp
+.//debug/specs.o : include/system.h
+.//debug/specs.o : include/jmalloc.hpp
+.//debug/specs.o : include/specs.hpp
+.//debug/specs.o : include/palette.hpp
+.//debug/specs.o : include/linked.hpp
+.//debug/specs.o : include/image.hpp
+.//debug/supmorph.o : supmorph.c
+	g++ -c -o .//debug/supmorph.o supmorph.c -Iinclude -g -DMEM_CHECK -DMANAGE_MEM 
+
+.//debug/supmorph.o : include/jrand.hpp
+.//debug/supmorph.o : include/video.hpp
+.//debug/supmorph.o : include/timing.hpp
+.//debug/supmorph.o : include/filter.hpp
+.//debug/supmorph.o : include/macs.hpp
+.//debug/supmorph.o : include/system.h
+.//debug/supmorph.o : include/specs.hpp
+.//debug/supmorph.o : include/palette.hpp
+.//debug/supmorph.o : include/linked.hpp
+.//debug/supmorph.o : include/image.hpp
+.//debug/supmorph.o : include/timage.hpp
+.//debug/supmorph.o : include/jmalloc.hpp
+.//debug/supmorph.o : include/supmorph.hpp
+.//debug/image24.o : image24.c
+	g++ -c -o .//debug/image24.o image24.c -Iinclude -g -DMEM_CHECK -DMANAGE_MEM 
+
+.//debug/image24.o : include/image.hpp
+.//debug/image24.o : include/filter.hpp
+.//debug/image24.o : include/macs.hpp
+.//debug/image24.o : include/system.h
+.//debug/image24.o : include/jmalloc.hpp
+.//debug/image24.o : include/specs.hpp
+.//debug/image24.o : include/linked.hpp
+.//debug/image24.o : include/palette.hpp
+.//debug/image24.o : include/image24.hpp
+.//debug/pcxread.o : pcxread.c
+	g++ -c -o .//debug/pcxread.o pcxread.c -Iinclude -g -DMEM_CHECK -DMANAGE_MEM 
+
+.//debug/pcxread.o : include/filter.hpp
+.//debug/pcxread.o : include/macs.hpp
+.//debug/pcxread.o : include/image24.hpp
+.//debug/pcxread.o : include/system.h
+.//debug/pcxread.o : include/jmalloc.hpp
+.//debug/pcxread.o : include/specs.hpp
+.//debug/pcxread.o : include/palette.hpp
+.//debug/pcxread.o : include/linked.hpp
+.//debug/pcxread.o : include/image.hpp
+.//debug/pcxread.o : include/pcxread.hpp
+.//debug/timage.o : timage.c
+	g++ -c -o .//debug/timage.o timage.c -Iinclude -g -DMEM_CHECK -DMANAGE_MEM 
+
+.//debug/timage.o : include/filter.hpp
+.//debug/timage.o : include/macs.hpp
+.//debug/timage.o : include/system.h
+.//debug/timage.o : include/jmalloc.hpp
+.//debug/timage.o : include/specs.hpp
+.//debug/timage.o : include/palette.hpp
+.//debug/timage.o : include/linked.hpp
+.//debug/timage.o : include/image.hpp
+.//debug/timage.o : include/timage.hpp
+.//debug/jmalloc.o : jmalloc.c
+	g++ -c -o .//debug/jmalloc.o jmalloc.c -Iinclude -g -DMEM_CHECK -DMANAGE_MEM 
+
+.//debug/jmalloc.o : include/jmalloc.hpp
+.//debug/jmalloc.o : include/system.h
+.//debug/jmalloc.o : include/macs.hpp
+.//debug/jmalloc.o : include/doscall.hpp
+.//debug/jrand.o : jrand.c
+	g++ -c -o .//debug/jrand.o jrand.c -Iinclude -g -DMEM_CHECK -DMANAGE_MEM 
+
+.//debug/jrand.o : include/jrand.hpp
+.//debug/lbmread.o : lbmread.c
+	g++ -c -o .//debug/lbmread.o lbmread.c -Iinclude -g -DMEM_CHECK -DMANAGE_MEM 
+
+.//debug/lbmread.o : include/system.h
+.//debug/lbmread.o : include/jmalloc.hpp
+.//debug/lbmread.o : include/specs.hpp
+.//debug/lbmread.o : include/palette.hpp
+.//debug/lbmread.o : include/linked.hpp
+.//debug/lbmread.o : include/image.hpp
+.//debug/lbmread.o : include/lbmread.hpp
+.//debug/keys.o : keys.c
+	g++ -c -o .//debug/keys.o keys.c -Iinclude -g -DMEM_CHECK -DMANAGE_MEM 
+
+.//debug/keys.o : include/keys.hpp
+.//debug/dprint.o : dprint.c
+	g++ -c -o .//debug/dprint.o dprint.c -Iinclude -g -DMEM_CHECK -DMANAGE_MEM 
+
+.//debug/dprint.o : include/system.h
+.//debug/dprint.o : include/macs.hpp
+.//debug/status.o : status.c
+	g++ -c -o .//debug/status.o status.c -Iinclude -g -DMEM_CHECK -DMANAGE_MEM 
+
+.//debug/status.o : include/dprint.hpp
+.//debug/status.o : include/timage.hpp
+.//debug/status.o : include/fonts.hpp
+.//debug/status.o : include/filter.hpp
+.//debug/status.o : include/mouse.hpp
+.//debug/status.o : include/sprite.hpp
+.//debug/status.o : include/keys.hpp
+.//debug/status.o : include/event.hpp
+.//debug/status.o : include/jmalloc.hpp
+.//debug/status.o : include/specs.hpp
+.//debug/status.o : include/palette.hpp
+.//debug/status.o : include/linked.hpp
+.//debug/status.o : include/image.hpp
+.//debug/status.o : include/video.hpp
+.//debug/status.o : include/jwindow.hpp
+.//debug/status.o : include/visobj.hpp
+.//debug/status.o : include/status.hpp
+.//debug/status.o : include/system.h
+.//debug/status.o : include/macs.hpp
+.//debug/visobj.o : visobj.c
+	g++ -c -o .//debug/visobj.o visobj.c -Iinclude -g -DMEM_CHECK -DMANAGE_MEM 
+
+.//debug/visobj.o : include/timage.hpp
+.//debug/visobj.o : include/fonts.hpp
+.//debug/visobj.o : include/filter.hpp
+.//debug/visobj.o : include/mouse.hpp
+.//debug/visobj.o : include/macs.hpp
+.//debug/visobj.o : include/sprite.hpp
+.//debug/visobj.o : include/keys.hpp
+.//debug/visobj.o : include/event.hpp
+.//debug/visobj.o : include/jmalloc.hpp
+.//debug/visobj.o : include/specs.hpp
+.//debug/visobj.o : include/palette.hpp
+.//debug/visobj.o : include/linked.hpp
+.//debug/visobj.o : include/image.hpp
+.//debug/visobj.o : include/system.h
+.//debug/visobj.o : include/video.hpp
+.//debug/visobj.o : include/jwindow.hpp
+.//debug/visobj.o : include/visobj.hpp
+
+SGI_image_o_files = \
+	.//opt/filter.o \
+	.//opt/gifread.o \
+	.//opt/globals.o \
+	.//opt/image.o \
+	.//opt/linked.o \
+	.//opt/input.o \
+	.//opt/mdlread.o \
+	.//opt/palette.o \
+	.//opt/ppmread.o \
+	.//opt/sprite.o \
+	.//opt/include.o \
+	.//opt/xwdread.o \
+	.//opt/fonts.o \
+	.//opt/decoder.o \
+	.//opt/loader.o \
+	.//opt/glread.o \
+	.//opt/texture.o \
+	.//opt/specs.o \
+	.//opt/supmorph.o \
+	.//opt/image24.o \
+	.//opt/pcxread.o \
+	.//opt/timage.o \
+	.//opt/jmalloc.o \
+	.//opt/jrand.o \
+	.//opt/lbmread.o \
+	.//opt/keys.o \
+	.//opt/dprint.o \
+	.//opt/status.o \
+	.//opt/visobj.o
+
+SGI_gui_o_files = \
+	.//opt/pmenu.o \
+	.//opt/scroller.o \
+	.//opt/filesel.o \
+	.//opt/tools.o \
+	.//opt/guistat.o
+
+.//opt/gui.a : $(SGI_gui_o_files)
+	ar ruvs .//opt/gui.a\
+	.//opt/pmenu.o \
+	.//opt/scroller.o \
+	.//opt/filesel.o \
+	.//opt/tools.o \
+	.//opt/guistat.o
+
+.//opt/pmenu.o : pmenu.c
+	g++ -c -o .//opt/pmenu.o pmenu.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK 
+
+.//opt/pmenu.o : include/timage.hpp
+.//opt/pmenu.o : include/fonts.hpp
+.//opt/pmenu.o : include/filter.hpp
+.//opt/pmenu.o : include/mouse.hpp
+.//opt/pmenu.o : include/macs.hpp
+.//opt/pmenu.o : include/sprite.hpp
+.//opt/pmenu.o : include/keys.hpp
+.//opt/pmenu.o : include/event.hpp
+.//opt/pmenu.o : include/specs.hpp
+.//opt/pmenu.o : include/palette.hpp
+.//opt/pmenu.o : include/linked.hpp
+.//opt/pmenu.o : include/image.hpp
+.//opt/pmenu.o : include/system.h
+.//opt/pmenu.o : include/video.hpp
+.//opt/pmenu.o : include/jwindow.hpp
+.//opt/pmenu.o : include/input.hpp
+.//opt/pmenu.o : include/jmalloc.hpp
+.//opt/pmenu.o : include/pmenu.hpp
+.//opt/scroller.o : scroller.c
+	g++ -c -o .//opt/scroller.o scroller.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK 
+
+.//opt/scroller.o : include/timage.hpp
+.//opt/scroller.o : include/fonts.hpp
+.//opt/scroller.o : include/filter.hpp
+.//opt/scroller.o : include/mouse.hpp
+.//opt/scroller.o : include/macs.hpp
+.//opt/scroller.o : include/sprite.hpp
+.//opt/scroller.o : include/keys.hpp
+.//opt/scroller.o : include/event.hpp
+.//opt/scroller.o : include/jmalloc.hpp
+.//opt/scroller.o : include/specs.hpp
+.//opt/scroller.o : include/palette.hpp
+.//opt/scroller.o : include/linked.hpp
+.//opt/scroller.o : include/image.hpp
+.//opt/scroller.o : include/system.h
+.//opt/scroller.o : include/video.hpp
+.//opt/scroller.o : include/jwindow.hpp
+.//opt/scroller.o : include/input.hpp
+.//opt/scroller.o : include/scroller.hpp
+.//opt/filesel.o : filesel.c
+	g++ -c -o .//opt/filesel.o filesel.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK 
+
+.//opt/filesel.o : include/jdir.hpp
+.//opt/filesel.o : include/scroller.hpp
+.//opt/filesel.o : include/input.hpp
+.//opt/filesel.o : include/timage.hpp
+.//opt/filesel.o : include/fonts.hpp
+.//opt/filesel.o : include/filter.hpp
+.//opt/filesel.o : include/mouse.hpp
+.//opt/filesel.o : include/macs.hpp
+.//opt/filesel.o : include/sprite.hpp
+.//opt/filesel.o : include/keys.hpp
+.//opt/filesel.o : include/event.hpp
+.//opt/filesel.o : include/jmalloc.hpp
+.//opt/filesel.o : include/specs.hpp
+.//opt/filesel.o : include/palette.hpp
+.//opt/filesel.o : include/linked.hpp
+.//opt/filesel.o : include/image.hpp
+.//opt/filesel.o : include/system.h
+.//opt/filesel.o : include/video.hpp
+.//opt/filesel.o : include/jwindow.hpp
+.//opt/filesel.o : include/filesel.hpp
+.//opt/tools.o : tools.c
+	g++ -c -o .//opt/tools.o tools.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK 
+
+.//opt/tools.o : include/visobj.hpp
+.//opt/tools.o : include/scroller.hpp
+.//opt/tools.o : include/input.hpp
+.//opt/tools.o : include/timage.hpp
+.//opt/tools.o : include/fonts.hpp
+.//opt/tools.o : include/filter.hpp
+.//opt/tools.o : include/mouse.hpp
+.//opt/tools.o : include/macs.hpp
+.//opt/tools.o : include/sprite.hpp
+.//opt/tools.o : include/keys.hpp
+.//opt/tools.o : include/event.hpp
+.//opt/tools.o : include/jmalloc.hpp
+.//opt/tools.o : include/specs.hpp
+.//opt/tools.o : include/palette.hpp
+.//opt/tools.o : include/linked.hpp
+.//opt/tools.o : include/image.hpp
+.//opt/tools.o : include/system.h
+.//opt/tools.o : include/video.hpp
+.//opt/tools.o : include/jwindow.hpp
+.//opt/tools.o : include/tools.hpp
+.//opt/guistat.o : guistat.c
+	g++ -c -o .//opt/guistat.o guistat.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK 
+
+.//opt/guistat.o : include/guistat.hpp
+.//opt/guistat.o : include/timing.hpp
+.//opt/guistat.o : include/timage.hpp
+.//opt/guistat.o : include/fonts.hpp
+.//opt/guistat.o : include/filter.hpp
+.//opt/guistat.o : include/mouse.hpp
+.//opt/guistat.o : include/macs.hpp
+.//opt/guistat.o : include/sprite.hpp
+.//opt/guistat.o : include/keys.hpp
+.//opt/guistat.o : include/event.hpp
+.//opt/guistat.o : include/jmalloc.hpp
+.//opt/guistat.o : include/specs.hpp
+.//opt/guistat.o : include/palette.hpp
+.//opt/guistat.o : include/linked.hpp
+.//opt/guistat.o : include/image.hpp
+.//opt/guistat.o : include/system.h
+.//opt/guistat.o : include/video.hpp
+.//opt/guistat.o : include/jwindow.hpp
+.//opt/guistat.o : include/visobj.hpp
+.//opt/guistat.o : include/status.hpp
+
+.//opt/image.a : $(SGI_image_o_files)
+	ar ruvs .//opt/image.a\
+	.//opt/filter.o \
+	.//opt/gifread.o \
+	.//opt/globals.o \
+	.//opt/image.o \
+	.//opt/linked.o \
+	.//opt/input.o \
+	.//opt/mdlread.o \
+	.//opt/palette.o \
+	.//opt/ppmread.o \
+	.//opt/sprite.o \
+	.//opt/include.o \
+	.//opt/xwdread.o \
+	.//opt/fonts.o \
+	.//opt/decoder.o \
+	.//opt/loader.o \
+	.//opt/glread.o \
+	.//opt/texture.o \
+	.//opt/specs.o \
+	.//opt/supmorph.o \
+	.//opt/image24.o \
+	.//opt/pcxread.o \
+	.//opt/timage.o \
+	.//opt/jmalloc.o \
+	.//opt/jrand.o \
+	.//opt/lbmread.o \
+	.//opt/keys.o \
+	.//opt/dprint.o \
+	.//opt/status.o \
+	.//opt/visobj.o
+
+.//opt/filter.o : filter.c
+	g++ -c -o .//opt/filter.o filter.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK 
+
+.//opt/filter.o : include/filter.hpp
+.//opt/filter.o : include/macs.hpp
+.//opt/filter.o : include/system.h
+.//opt/filter.o : include/jmalloc.hpp
+.//opt/filter.o : include/specs.hpp
+.//opt/filter.o : include/palette.hpp
+.//opt/filter.o : include/linked.hpp
+.//opt/filter.o : include/image.hpp
+.//opt/gifread.o : gifread.c
+	g++ -c -o .//opt/gifread.o gifread.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK 
+
+.//opt/gifread.o : include/macs.hpp
+.//opt/gifread.o : include/dir.h
+.//opt/gifread.o : include/dos.h
+.//opt/gifread.o : include/std.h
+.//opt/gifread.o : include/gifdecod.hpp
+.//opt/gifread.o : include/video.hpp
+.//opt/gifread.o : include/system.h
+.//opt/gifread.o : include/jmalloc.hpp
+.//opt/gifread.o : include/specs.hpp
+.//opt/gifread.o : include/palette.hpp
+.//opt/gifread.o : include/linked.hpp
+.//opt/gifread.o : include/image.hpp
+.//opt/gifread.o : include/gifread.hpp
+.//opt/globals.o : globals.c
+	g++ -c -o .//opt/globals.o globals.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK 
+
+.//opt/globals.o : globals.c
+.//opt/image.o : image.c
+	g++ -c -o .//opt/image.o image.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK 
+
+.//opt/image.o : include/exitproc.hpp
+.//opt/image.o : include/dos.h
+.//opt/image.o : include/macs.hpp
+.//opt/image.o : include/jmalloc.hpp
+.//opt/image.o : include/specs.hpp
+.//opt/image.o : include/palette.hpp
+.//opt/image.o : include/image.hpp
+.//opt/image.o : include/linked.hpp
+.//opt/image.o : include/system.h
+.//opt/image.o : include/emm.hpp
+.//opt/linked.o : linked.c
+	g++ -c -o .//opt/linked.o linked.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK 
+
+.//opt/linked.o : include/linked.hpp
+.//opt/input.o : input.c
+	g++ -c -o .//opt/input.o input.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK 
+
+.//opt/input.o : include/timage.hpp
+.//opt/input.o : include/fonts.hpp
+.//opt/input.o : include/filter.hpp
+.//opt/input.o : include/mouse.hpp
+.//opt/input.o : include/macs.hpp
+.//opt/input.o : include/sprite.hpp
+.//opt/input.o : include/keys.hpp
+.//opt/input.o : include/event.hpp
+.//opt/input.o : include/jmalloc.hpp
+.//opt/input.o : include/specs.hpp
+.//opt/input.o : include/palette.hpp
+.//opt/input.o : include/linked.hpp
+.//opt/input.o : include/image.hpp
+.//opt/input.o : include/system.h
+.//opt/input.o : include/video.hpp
+.//opt/input.o : include/jwindow.hpp
+.//opt/input.o : include/input.hpp
+.//opt/mdlread.o : mdlread.c
+	g++ -c -o .//opt/mdlread.o mdlread.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK 
+
+.//opt/mdlread.o : include/macs.hpp
+.//opt/mdlread.o : include/image.hpp
+.//opt/mdlread.o : include/system.h
+.//opt/mdlread.o : include/jmalloc.hpp
+.//opt/mdlread.o : include/specs.hpp
+.//opt/mdlread.o : include/linked.hpp
+.//opt/mdlread.o : include/palette.hpp
+.//opt/mdlread.o : include/mdlread.hpp
+.//opt/palette.o : palette.c
+	g++ -c -o .//opt/palette.o palette.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK 
+
+.//opt/palette.o : include/filter.hpp
+.//opt/palette.o : include/video.hpp
+.//opt/palette.o : include/dos.h
+.//opt/palette.o : include/macs.hpp
+.//opt/palette.o : include/image.hpp
+.//opt/palette.o : include/system.h
+.//opt/palette.o : include/jmalloc.hpp
+.//opt/palette.o : include/specs.hpp
+.//opt/palette.o : include/linked.hpp
+.//opt/palette.o : include/palette.hpp
+.//opt/ppmread.o : ppmread.c
+	g++ -c -o .//opt/ppmread.o ppmread.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK 
+
+.//opt/ppmread.o : include/ppmread.hpp
+.//opt/ppmread.o : include/macs.hpp
+.//opt/ppmread.o : include/system.h
+.//opt/ppmread.o : include/jmalloc.hpp
+.//opt/ppmread.o : include/specs.hpp
+.//opt/ppmread.o : include/palette.hpp
+.//opt/ppmread.o : include/linked.hpp
+.//opt/ppmread.o : include/image.hpp
+.//opt/sprite.o : sprite.c
+	g++ -c -o .//opt/sprite.o sprite.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK 
+
+.//opt/sprite.o : include/sprite.hpp
+.//opt/sprite.o : include/emm.hpp
+.//opt/sprite.o : include/ppmread.hpp
+.//opt/sprite.o : include/gifread.hpp
+.//opt/sprite.o : include/glread.hpp
+.//opt/sprite.o : include/video.hpp
+.//opt/sprite.o : include/image.hpp
+.//opt/sprite.o : include/jmalloc.hpp
+.//opt/sprite.o : include/specs.hpp
+.//opt/sprite.o : include/linked.hpp
+.//opt/sprite.o : include/palette.hpp
+.//opt/sprite.o : include/mdlread.hpp
+.//opt/sprite.o : include/system.h
+.//opt/sprite.o : include/macs.hpp
+.//opt/include.o : include.c
+	g++ -c -o .//opt/include.o include.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK 
+
+.//opt/include.o : include/system.h
+.//opt/include.o : include/jmalloc.hpp
+.//opt/include.o : include/specs.hpp
+.//opt/include.o : include/palette.hpp
+.//opt/include.o : include/linked.hpp
+.//opt/include.o : include/image.hpp
+.//opt/include.o : include/include.hpp
+.//opt/xwdread.o : xwdread.c
+	g++ -c -o .//opt/xwdread.o xwdread.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK 
+
+.//opt/xwdread.o : include/image24.hpp
+.//opt/xwdread.o : include/main.hpp
+.//opt/xwdread.o : include/dos.h
+.//opt/xwdread.o : include/video.hpp
+.//opt/xwdread.o : include/mouse.hpp
+.//opt/xwdread.o : include/macs.hpp
+.//opt/xwdread.o : include/sprite.hpp
+.//opt/xwdread.o : include/keys.hpp
+.//opt/xwdread.o : include/event.hpp
+.//opt/xwdread.o : include/system.h
+.//opt/xwdread.o : include/jmalloc.hpp
+.//opt/xwdread.o : include/specs.hpp
+.//opt/xwdread.o : include/palette.hpp
+.//opt/xwdread.o : include/linked.hpp
+.//opt/xwdread.o : include/image.hpp
+.//opt/xwdread.o : include/filter.hpp
+.//opt/fonts.o : fonts.c
+	g++ -c -o .//opt/fonts.o fonts.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK 
+
+.//opt/fonts.o : include/filter.hpp
+.//opt/fonts.o : include/macs.hpp
+.//opt/fonts.o : include/timage.hpp
+.//opt/fonts.o : include/system.h
+.//opt/fonts.o : include/jmalloc.hpp
+.//opt/fonts.o : include/specs.hpp
+.//opt/fonts.o : include/palette.hpp
+.//opt/fonts.o : include/linked.hpp
+.//opt/fonts.o : include/image.hpp
+.//opt/fonts.o : include/fonts.hpp
+.//opt/decoder.o : decoder.c
+	g++ -c -o .//opt/decoder.o decoder.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK 
+
+.//opt/decoder.o : include/macs.hpp
+.//opt/decoder.o : include/system.h
+.//opt/decoder.o : include/jmalloc.hpp
+.//opt/decoder.o : include/specs.hpp
+.//opt/decoder.o : include/palette.hpp
+.//opt/decoder.o : include/linked.hpp
+.//opt/decoder.o : include/image.hpp
+.//opt/decoder.o : include/errs.h
+.//opt/loader.o : loader.c
+	g++ -c -o .//opt/loader.o loader.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK 
+
+.//opt/loader.o : include/lbmread.hpp
+.//opt/loader.o : include/pcxread.hpp
+.//opt/loader.o : include/glread.hpp
+.//opt/loader.o : include/xwdread.hpp
+.//opt/loader.o : include/ppmread.hpp
+.//opt/loader.o : include/mdlread.hpp
+.//opt/loader.o : include/filter.hpp
+.//opt/loader.o : include/macs.hpp
+.//opt/loader.o : include/image24.hpp
+.//opt/loader.o : include/system.h
+.//opt/loader.o : include/jmalloc.hpp
+.//opt/loader.o : include/specs.hpp
+.//opt/loader.o : include/palette.hpp
+.//opt/loader.o : include/linked.hpp
+.//opt/loader.o : include/image.hpp
+.//opt/loader.o : include/loader.hpp
+.//opt/glread.o : glread.c
+	g++ -c -o .//opt/glread.o glread.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK 
+
+.//opt/glread.o : include/video.hpp
+.//opt/glread.o : include/jmalloc.hpp
+.//opt/glread.o : include/specs.hpp
+.//opt/glread.o : include/palette.hpp
+.//opt/glread.o : include/linked.hpp
+.//opt/glread.o : include/image.hpp
+.//opt/glread.o : include/system.h
+.//opt/glread.o : include/macs.hpp
+.//opt/texture.o : texture.c
+	g++ -c -o .//opt/texture.o texture.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK 
+
+.//opt/texture.o : include/mouse.hpp
+.//opt/texture.o : include/sprite.hpp
+.//opt/texture.o : include/keys.hpp
+.//opt/texture.o : include/event.hpp
+.//opt/texture.o : include/macs.hpp
+.//opt/texture.o : include/video.hpp
+.//opt/texture.o : include/system.h
+.//opt/texture.o : include/jmalloc.hpp
+.//opt/texture.o : include/specs.hpp
+.//opt/texture.o : include/palette.hpp
+.//opt/texture.o : include/linked.hpp
+.//opt/texture.o : include/image.hpp
+.//opt/specs.o : specs.c
+	g++ -c -o .//opt/specs.o specs.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK 
+
+.//opt/specs.o : include/dprint.hpp
+.//opt/specs.o : include/system.h
+.//opt/specs.o : include/jmalloc.hpp
+.//opt/specs.o : include/specs.hpp
+.//opt/specs.o : include/palette.hpp
+.//opt/specs.o : include/linked.hpp
+.//opt/specs.o : include/image.hpp
+.//opt/supmorph.o : supmorph.c
+	g++ -c -o .//opt/supmorph.o supmorph.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK 
+
+.//opt/supmorph.o : include/jrand.hpp
+.//opt/supmorph.o : include/video.hpp
+.//opt/supmorph.o : include/timing.hpp
+.//opt/supmorph.o : include/filter.hpp
+.//opt/supmorph.o : include/macs.hpp
+.//opt/supmorph.o : include/system.h
+.//opt/supmorph.o : include/specs.hpp
+.//opt/supmorph.o : include/palette.hpp
+.//opt/supmorph.o : include/linked.hpp
+.//opt/supmorph.o : include/image.hpp
+.//opt/supmorph.o : include/timage.hpp
+.//opt/supmorph.o : include/jmalloc.hpp
+.//opt/supmorph.o : include/supmorph.hpp
+.//opt/image24.o : image24.c
+	g++ -c -o .//opt/image24.o image24.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK 
+
+.//opt/image24.o : include/image.hpp
+.//opt/image24.o : include/filter.hpp
+.//opt/image24.o : include/macs.hpp
+.//opt/image24.o : include/system.h
+.//opt/image24.o : include/jmalloc.hpp
+.//opt/image24.o : include/specs.hpp
+.//opt/image24.o : include/linked.hpp
+.//opt/image24.o : include/palette.hpp
+.//opt/image24.o : include/image24.hpp
+.//opt/pcxread.o : pcxread.c
+	g++ -c -o .//opt/pcxread.o pcxread.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK 
+
+.//opt/pcxread.o : include/filter.hpp
+.//opt/pcxread.o : include/macs.hpp
+.//opt/pcxread.o : include/image24.hpp
+.//opt/pcxread.o : include/system.h
+.//opt/pcxread.o : include/jmalloc.hpp
+.//opt/pcxread.o : include/specs.hpp
+.//opt/pcxread.o : include/palette.hpp
+.//opt/pcxread.o : include/linked.hpp
+.//opt/pcxread.o : include/image.hpp
+.//opt/pcxread.o : include/pcxread.hpp
+.//opt/timage.o : timage.c
+	g++ -c -o .//opt/timage.o timage.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK 
+
+.//opt/timage.o : include/filter.hpp
+.//opt/timage.o : include/macs.hpp
+.//opt/timage.o : include/system.h
+.//opt/timage.o : include/jmalloc.hpp
+.//opt/timage.o : include/specs.hpp
+.//opt/timage.o : include/palette.hpp
+.//opt/timage.o : include/linked.hpp
+.//opt/timage.o : include/image.hpp
+.//opt/timage.o : include/timage.hpp
+.//opt/jmalloc.o : jmalloc.c
+	g++ -c -o .//opt/jmalloc.o jmalloc.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK 
+
+.//opt/jmalloc.o : include/jmalloc.hpp
+.//opt/jmalloc.o : include/system.h
+.//opt/jmalloc.o : include/macs.hpp
+.//opt/jmalloc.o : include/doscall.hpp
+.//opt/jrand.o : jrand.c
+	g++ -c -o .//opt/jrand.o jrand.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK 
+
+.//opt/jrand.o : include/jrand.hpp
+.//opt/lbmread.o : lbmread.c
+	g++ -c -o .//opt/lbmread.o lbmread.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK 
+
+.//opt/lbmread.o : include/system.h
+.//opt/lbmread.o : include/jmalloc.hpp
+.//opt/lbmread.o : include/specs.hpp
+.//opt/lbmread.o : include/palette.hpp
+.//opt/lbmread.o : include/linked.hpp
+.//opt/lbmread.o : include/image.hpp
+.//opt/lbmread.o : include/lbmread.hpp
+.//opt/keys.o : keys.c
+	g++ -c -o .//opt/keys.o keys.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK 
+
+.//opt/keys.o : include/keys.hpp
+.//opt/dprint.o : dprint.c
+	g++ -c -o .//opt/dprint.o dprint.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK 
+
+.//opt/dprint.o : include/system.h
+.//opt/dprint.o : include/macs.hpp
+.//opt/status.o : status.c
+	g++ -c -o .//opt/status.o status.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK 
+
+.//opt/status.o : include/dprint.hpp
+.//opt/status.o : include/timage.hpp
+.//opt/status.o : include/fonts.hpp
+.//opt/status.o : include/filter.hpp
+.//opt/status.o : include/mouse.hpp
+.//opt/status.o : include/sprite.hpp
+.//opt/status.o : include/keys.hpp
+.//opt/status.o : include/event.hpp
+.//opt/status.o : include/jmalloc.hpp
+.//opt/status.o : include/specs.hpp
+.//opt/status.o : include/palette.hpp
+.//opt/status.o : include/linked.hpp
+.//opt/status.o : include/image.hpp
+.//opt/status.o : include/video.hpp
+.//opt/status.o : include/jwindow.hpp
+.//opt/status.o : include/visobj.hpp
+.//opt/status.o : include/status.hpp
+.//opt/status.o : include/system.h
+.//opt/status.o : include/macs.hpp
+.//opt/visobj.o : visobj.c
+	g++ -c -o .//opt/visobj.o visobj.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK 
+
+.//opt/visobj.o : include/timage.hpp
+.//opt/visobj.o : include/fonts.hpp
+.//opt/visobj.o : include/filter.hpp
+.//opt/visobj.o : include/mouse.hpp
+.//opt/visobj.o : include/macs.hpp
+.//opt/visobj.o : include/sprite.hpp
+.//opt/visobj.o : include/keys.hpp
+.//opt/visobj.o : include/event.hpp
+.//opt/visobj.o : include/jmalloc.hpp
+.//opt/visobj.o : include/specs.hpp
+.//opt/visobj.o : include/palette.hpp
+.//opt/visobj.o : include/linked.hpp
+.//opt/visobj.o : include/image.hpp
+.//opt/visobj.o : include/system.h
+.//opt/visobj.o : include/video.hpp
+.//opt/visobj.o : include/jwindow.hpp
+.//opt/visobj.o : include/visobj.hpp
+
+SGI_image_o_files = \
+	.//profile/filter.o \
+	.//profile/gifread.o \
+	.//profile/globals.o \
+	.//profile/image.o \
+	.//profile/linked.o \
+	.//profile/input.o \
+	.//profile/mdlread.o \
+	.//profile/palette.o \
+	.//profile/ppmread.o \
+	.//profile/sprite.o \
+	.//profile/include.o \
+	.//profile/xwdread.o \
+	.//profile/fonts.o \
+	.//profile/decoder.o \
+	.//profile/loader.o \
+	.//profile/glread.o \
+	.//profile/texture.o \
+	.//profile/specs.o \
+	.//profile/supmorph.o \
+	.//profile/image24.o \
+	.//profile/pcxread.o \
+	.//profile/timage.o \
+	.//profile/jmalloc.o \
+	.//profile/jrand.o \
+	.//profile/lbmread.o \
+	.//profile/keys.o \
+	.//profile/dprint.o \
+	.//profile/status.o \
+	.//profile/visobj.o
+
+SGI_gui_o_files = \
+	.//profile/pmenu.o \
+	.//profile/scroller.o \
+	.//profile/filesel.o \
+	.//profile/tools.o \
+	.//profile/guistat.o
+
+.//profile/gui.a : $(SGI_gui_o_files)
+	ar ruvs .//profile/gui.a\
+	.//profile/pmenu.o \
+	.//profile/scroller.o \
+	.//profile/filesel.o \
+	.//profile/tools.o \
+	.//profile/guistat.o
+
+.//profile/pmenu.o : pmenu.c
+	g++ -c -o .//profile/pmenu.o pmenu.c -Iinclude -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+.//profile/pmenu.o : include/timage.hpp
+.//profile/pmenu.o : include/fonts.hpp
+.//profile/pmenu.o : include/filter.hpp
+.//profile/pmenu.o : include/mouse.hpp
+.//profile/pmenu.o : include/macs.hpp
+.//profile/pmenu.o : include/sprite.hpp
+.//profile/pmenu.o : include/keys.hpp
+.//profile/pmenu.o : include/event.hpp
+.//profile/pmenu.o : include/specs.hpp
+.//profile/pmenu.o : include/palette.hpp
+.//profile/pmenu.o : include/linked.hpp
+.//profile/pmenu.o : include/image.hpp
+.//profile/pmenu.o : include/system.h
+.//profile/pmenu.o : include/video.hpp
+.//profile/pmenu.o : include/jwindow.hpp
+.//profile/pmenu.o : include/input.hpp
+.//profile/pmenu.o : include/jmalloc.hpp
+.//profile/pmenu.o : include/pmenu.hpp
+.//profile/scroller.o : scroller.c
+	g++ -c -o .//profile/scroller.o scroller.c -Iinclude -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+.//profile/scroller.o : include/timage.hpp
+.//profile/scroller.o : include/fonts.hpp
+.//profile/scroller.o : include/filter.hpp
+.//profile/scroller.o : include/mouse.hpp
+.//profile/scroller.o : include/macs.hpp
+.//profile/scroller.o : include/sprite.hpp
+.//profile/scroller.o : include/keys.hpp
+.//profile/scroller.o : include/event.hpp
+.//profile/scroller.o : include/jmalloc.hpp
+.//profile/scroller.o : include/specs.hpp
+.//profile/scroller.o : include/palette.hpp
+.//profile/scroller.o : include/linked.hpp
+.//profile/scroller.o : include/image.hpp
+.//profile/scroller.o : include/system.h
+.//profile/scroller.o : include/video.hpp
+.//profile/scroller.o : include/jwindow.hpp
+.//profile/scroller.o : include/input.hpp
+.//profile/scroller.o : include/scroller.hpp
+.//profile/filesel.o : filesel.c
+	g++ -c -o .//profile/filesel.o filesel.c -Iinclude -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+.//profile/filesel.o : include/jdir.hpp
+.//profile/filesel.o : include/scroller.hpp
+.//profile/filesel.o : include/input.hpp
+.//profile/filesel.o : include/timage.hpp
+.//profile/filesel.o : include/fonts.hpp
+.//profile/filesel.o : include/filter.hpp
+.//profile/filesel.o : include/mouse.hpp
+.//profile/filesel.o : include/macs.hpp
+.//profile/filesel.o : include/sprite.hpp
+.//profile/filesel.o : include/keys.hpp
+.//profile/filesel.o : include/event.hpp
+.//profile/filesel.o : include/jmalloc.hpp
+.//profile/filesel.o : include/specs.hpp
+.//profile/filesel.o : include/palette.hpp
+.//profile/filesel.o : include/linked.hpp
+.//profile/filesel.o : include/image.hpp
+.//profile/filesel.o : include/system.h
+.//profile/filesel.o : include/video.hpp
+.//profile/filesel.o : include/jwindow.hpp
+.//profile/filesel.o : include/filesel.hpp
+.//profile/tools.o : tools.c
+	g++ -c -o .//profile/tools.o tools.c -Iinclude -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+.//profile/tools.o : include/visobj.hpp
+.//profile/tools.o : include/scroller.hpp
+.//profile/tools.o : include/input.hpp
+.//profile/tools.o : include/timage.hpp
+.//profile/tools.o : include/fonts.hpp
+.//profile/tools.o : include/filter.hpp
+.//profile/tools.o : include/mouse.hpp
+.//profile/tools.o : include/macs.hpp
+.//profile/tools.o : include/sprite.hpp
+.//profile/tools.o : include/keys.hpp
+.//profile/tools.o : include/event.hpp
+.//profile/tools.o : include/jmalloc.hpp
+.//profile/tools.o : include/specs.hpp
+.//profile/tools.o : include/palette.hpp
+.//profile/tools.o : include/linked.hpp
+.//profile/tools.o : include/image.hpp
+.//profile/tools.o : include/system.h
+.//profile/tools.o : include/video.hpp
+.//profile/tools.o : include/jwindow.hpp
+.//profile/tools.o : include/tools.hpp
+.//profile/guistat.o : guistat.c
+	g++ -c -o .//profile/guistat.o guistat.c -Iinclude -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+.//profile/guistat.o : include/guistat.hpp
+.//profile/guistat.o : include/timing.hpp
+.//profile/guistat.o : include/timage.hpp
+.//profile/guistat.o : include/fonts.hpp
+.//profile/guistat.o : include/filter.hpp
+.//profile/guistat.o : include/mouse.hpp
+.//profile/guistat.o : include/macs.hpp
+.//profile/guistat.o : include/sprite.hpp
+.//profile/guistat.o : include/keys.hpp
+.//profile/guistat.o : include/event.hpp
+.//profile/guistat.o : include/jmalloc.hpp
+.//profile/guistat.o : include/specs.hpp
+.//profile/guistat.o : include/palette.hpp
+.//profile/guistat.o : include/linked.hpp
+.//profile/guistat.o : include/image.hpp
+.//profile/guistat.o : include/system.h
+.//profile/guistat.o : include/video.hpp
+.//profile/guistat.o : include/jwindow.hpp
+.//profile/guistat.o : include/visobj.hpp
+.//profile/guistat.o : include/status.hpp
+
+.//profile/image.a : $(SGI_image_o_files)
+	ar ruvs .//profile/image.a\
+	.//profile/filter.o \
+	.//profile/gifread.o \
+	.//profile/globals.o \
+	.//profile/image.o \
+	.//profile/linked.o \
+	.//profile/input.o \
+	.//profile/mdlread.o \
+	.//profile/palette.o \
+	.//profile/ppmread.o \
+	.//profile/sprite.o \
+	.//profile/include.o \
+	.//profile/xwdread.o \
+	.//profile/fonts.o \
+	.//profile/decoder.o \
+	.//profile/loader.o \
+	.//profile/glread.o \
+	.//profile/texture.o \
+	.//profile/specs.o \
+	.//profile/supmorph.o \
+	.//profile/image24.o \
+	.//profile/pcxread.o \
+	.//profile/timage.o \
+	.//profile/jmalloc.o \
+	.//profile/jrand.o \
+	.//profile/lbmread.o \
+	.//profile/keys.o \
+	.//profile/dprint.o \
+	.//profile/status.o \
+	.//profile/visobj.o
+
+.//profile/filter.o : filter.c
+	g++ -c -o .//profile/filter.o filter.c -Iinclude -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+.//profile/filter.o : include/filter.hpp
+.//profile/filter.o : include/macs.hpp
+.//profile/filter.o : include/system.h
+.//profile/filter.o : include/jmalloc.hpp
+.//profile/filter.o : include/specs.hpp
+.//profile/filter.o : include/palette.hpp
+.//profile/filter.o : include/linked.hpp
+.//profile/filter.o : include/image.hpp
+.//profile/gifread.o : gifread.c
+	g++ -c -o .//profile/gifread.o gifread.c -Iinclude -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+.//profile/gifread.o : include/macs.hpp
+.//profile/gifread.o : include/dir.h
+.//profile/gifread.o : include/dos.h
+.//profile/gifread.o : include/std.h
+.//profile/gifread.o : include/gifdecod.hpp
+.//profile/gifread.o : include/video.hpp
+.//profile/gifread.o : include/system.h
+.//profile/gifread.o : include/jmalloc.hpp
+.//profile/gifread.o : include/specs.hpp
+.//profile/gifread.o : include/palette.hpp
+.//profile/gifread.o : include/linked.hpp
+.//profile/gifread.o : include/image.hpp
+.//profile/gifread.o : include/gifread.hpp
+.//profile/globals.o : globals.c
+	g++ -c -o .//profile/globals.o globals.c -Iinclude -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+.//profile/globals.o : globals.c
+.//profile/image.o : image.c
+	g++ -c -o .//profile/image.o image.c -Iinclude -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+.//profile/image.o : include/exitproc.hpp
+.//profile/image.o : include/dos.h
+.//profile/image.o : include/macs.hpp
+.//profile/image.o : include/jmalloc.hpp
+.//profile/image.o : include/specs.hpp
+.//profile/image.o : include/palette.hpp
+.//profile/image.o : include/image.hpp
+.//profile/image.o : include/linked.hpp
+.//profile/image.o : include/system.h
+.//profile/image.o : include/emm.hpp
+.//profile/linked.o : linked.c
+	g++ -c -o .//profile/linked.o linked.c -Iinclude -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+.//profile/linked.o : include/linked.hpp
+.//profile/input.o : input.c
+	g++ -c -o .//profile/input.o input.c -Iinclude -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+.//profile/input.o : include/timage.hpp
+.//profile/input.o : include/fonts.hpp
+.//profile/input.o : include/filter.hpp
+.//profile/input.o : include/mouse.hpp
+.//profile/input.o : include/macs.hpp
+.//profile/input.o : include/sprite.hpp
+.//profile/input.o : include/keys.hpp
+.//profile/input.o : include/event.hpp
+.//profile/input.o : include/jmalloc.hpp
+.//profile/input.o : include/specs.hpp
+.//profile/input.o : include/palette.hpp
+.//profile/input.o : include/linked.hpp
+.//profile/input.o : include/image.hpp
+.//profile/input.o : include/system.h
+.//profile/input.o : include/video.hpp
+.//profile/input.o : include/jwindow.hpp
+.//profile/input.o : include/input.hpp
+.//profile/mdlread.o : mdlread.c
+	g++ -c -o .//profile/mdlread.o mdlread.c -Iinclude -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+.//profile/mdlread.o : include/macs.hpp
+.//profile/mdlread.o : include/image.hpp
+.//profile/mdlread.o : include/system.h
+.//profile/mdlread.o : include/jmalloc.hpp
+.//profile/mdlread.o : include/specs.hpp
+.//profile/mdlread.o : include/linked.hpp
+.//profile/mdlread.o : include/palette.hpp
+.//profile/mdlread.o : include/mdlread.hpp
+.//profile/palette.o : palette.c
+	g++ -c -o .//profile/palette.o palette.c -Iinclude -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+.//profile/palette.o : include/filter.hpp
+.//profile/palette.o : include/video.hpp
+.//profile/palette.o : include/dos.h
+.//profile/palette.o : include/macs.hpp
+.//profile/palette.o : include/image.hpp
+.//profile/palette.o : include/system.h
+.//profile/palette.o : include/jmalloc.hpp
+.//profile/palette.o : include/specs.hpp
+.//profile/palette.o : include/linked.hpp
+.//profile/palette.o : include/palette.hpp
+.//profile/ppmread.o : ppmread.c
+	g++ -c -o .//profile/ppmread.o ppmread.c -Iinclude -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+.//profile/ppmread.o : include/ppmread.hpp
+.//profile/ppmread.o : include/macs.hpp
+.//profile/ppmread.o : include/system.h
+.//profile/ppmread.o : include/jmalloc.hpp
+.//profile/ppmread.o : include/specs.hpp
+.//profile/ppmread.o : include/palette.hpp
+.//profile/ppmread.o : include/linked.hpp
+.//profile/ppmread.o : include/image.hpp
+.//profile/sprite.o : sprite.c
+	g++ -c -o .//profile/sprite.o sprite.c -Iinclude -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+.//profile/sprite.o : include/sprite.hpp
+.//profile/sprite.o : include/emm.hpp
+.//profile/sprite.o : include/ppmread.hpp
+.//profile/sprite.o : include/gifread.hpp
+.//profile/sprite.o : include/glread.hpp
+.//profile/sprite.o : include/video.hpp
+.//profile/sprite.o : include/image.hpp
+.//profile/sprite.o : include/jmalloc.hpp
+.//profile/sprite.o : include/specs.hpp
+.//profile/sprite.o : include/linked.hpp
+.//profile/sprite.o : include/palette.hpp
+.//profile/sprite.o : include/mdlread.hpp
+.//profile/sprite.o : include/system.h
+.//profile/sprite.o : include/macs.hpp
+.//profile/include.o : include.c
+	g++ -c -o .//profile/include.o include.c -Iinclude -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+.//profile/include.o : include/system.h
+.//profile/include.o : include/jmalloc.hpp
+.//profile/include.o : include/specs.hpp
+.//profile/include.o : include/palette.hpp
+.//profile/include.o : include/linked.hpp
+.//profile/include.o : include/image.hpp
+.//profile/include.o : include/include.hpp
+.//profile/xwdread.o : xwdread.c
+	g++ -c -o .//profile/xwdread.o xwdread.c -Iinclude -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+.//profile/xwdread.o : include/image24.hpp
+.//profile/xwdread.o : include/main.hpp
+.//profile/xwdread.o : include/dos.h
+.//profile/xwdread.o : include/video.hpp
+.//profile/xwdread.o : include/mouse.hpp
+.//profile/xwdread.o : include/macs.hpp
+.//profile/xwdread.o : include/sprite.hpp
+.//profile/xwdread.o : include/keys.hpp
+.//profile/xwdread.o : include/event.hpp
+.//profile/xwdread.o : include/system.h
+.//profile/xwdread.o : include/jmalloc.hpp
+.//profile/xwdread.o : include/specs.hpp
+.//profile/xwdread.o : include/palette.hpp
+.//profile/xwdread.o : include/linked.hpp
+.//profile/xwdread.o : include/image.hpp
+.//profile/xwdread.o : include/filter.hpp
+.//profile/fonts.o : fonts.c
+	g++ -c -o .//profile/fonts.o fonts.c -Iinclude -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+.//profile/fonts.o : include/filter.hpp
+.//profile/fonts.o : include/macs.hpp
+.//profile/fonts.o : include/timage.hpp
+.//profile/fonts.o : include/system.h
+.//profile/fonts.o : include/jmalloc.hpp
+.//profile/fonts.o : include/specs.hpp
+.//profile/fonts.o : include/palette.hpp
+.//profile/fonts.o : include/linked.hpp
+.//profile/fonts.o : include/image.hpp
+.//profile/fonts.o : include/fonts.hpp
+.//profile/decoder.o : decoder.c
+	g++ -c -o .//profile/decoder.o decoder.c -Iinclude -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+.//profile/decoder.o : include/macs.hpp
+.//profile/decoder.o : include/system.h
+.//profile/decoder.o : include/jmalloc.hpp
+.//profile/decoder.o : include/specs.hpp
+.//profile/decoder.o : include/palette.hpp
+.//profile/decoder.o : include/linked.hpp
+.//profile/decoder.o : include/image.hpp
+.//profile/decoder.o : include/errs.h
+.//profile/loader.o : loader.c
+	g++ -c -o .//profile/loader.o loader.c -Iinclude -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+.//profile/loader.o : include/lbmread.hpp
+.//profile/loader.o : include/pcxread.hpp
+.//profile/loader.o : include/glread.hpp
+.//profile/loader.o : include/xwdread.hpp
+.//profile/loader.o : include/ppmread.hpp
+.//profile/loader.o : include/mdlread.hpp
+.//profile/loader.o : include/filter.hpp
+.//profile/loader.o : include/macs.hpp
+.//profile/loader.o : include/image24.hpp
+.//profile/loader.o : include/system.h
+.//profile/loader.o : include/jmalloc.hpp
+.//profile/loader.o : include/specs.hpp
+.//profile/loader.o : include/palette.hpp
+.//profile/loader.o : include/linked.hpp
+.//profile/loader.o : include/image.hpp
+.//profile/loader.o : include/loader.hpp
+.//profile/glread.o : glread.c
+	g++ -c -o .//profile/glread.o glread.c -Iinclude -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+.//profile/glread.o : include/video.hpp
+.//profile/glread.o : include/jmalloc.hpp
+.//profile/glread.o : include/specs.hpp
+.//profile/glread.o : include/palette.hpp
+.//profile/glread.o : include/linked.hpp
+.//profile/glread.o : include/image.hpp
+.//profile/glread.o : include/system.h
+.//profile/glread.o : include/macs.hpp
+.//profile/texture.o : texture.c
+	g++ -c -o .//profile/texture.o texture.c -Iinclude -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+.//profile/texture.o : include/mouse.hpp
+.//profile/texture.o : include/sprite.hpp
+.//profile/texture.o : include/keys.hpp
+.//profile/texture.o : include/event.hpp
+.//profile/texture.o : include/macs.hpp
+.//profile/texture.o : include/video.hpp
+.//profile/texture.o : include/system.h
+.//profile/texture.o : include/jmalloc.hpp
+.//profile/texture.o : include/specs.hpp
+.//profile/texture.o : include/palette.hpp
+.//profile/texture.o : include/linked.hpp
+.//profile/texture.o : include/image.hpp
+.//profile/specs.o : specs.c
+	g++ -c -o .//profile/specs.o specs.c -Iinclude -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+.//profile/specs.o : include/dprint.hpp
+.//profile/specs.o : include/system.h
+.//profile/specs.o : include/jmalloc.hpp
+.//profile/specs.o : include/specs.hpp
+.//profile/specs.o : include/palette.hpp
+.//profile/specs.o : include/linked.hpp
+.//profile/specs.o : include/image.hpp
+.//profile/supmorph.o : supmorph.c
+	g++ -c -o .//profile/supmorph.o supmorph.c -Iinclude -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+.//profile/supmorph.o : include/jrand.hpp
+.//profile/supmorph.o : include/video.hpp
+.//profile/supmorph.o : include/timing.hpp
+.//profile/supmorph.o : include/filter.hpp
+.//profile/supmorph.o : include/macs.hpp
+.//profile/supmorph.o : include/system.h
+.//profile/supmorph.o : include/specs.hpp
+.//profile/supmorph.o : include/palette.hpp
+.//profile/supmorph.o : include/linked.hpp
+.//profile/supmorph.o : include/image.hpp
+.//profile/supmorph.o : include/timage.hpp
+.//profile/supmorph.o : include/jmalloc.hpp
+.//profile/supmorph.o : include/supmorph.hpp
+.//profile/image24.o : image24.c
+	g++ -c -o .//profile/image24.o image24.c -Iinclude -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+.//profile/image24.o : include/image.hpp
+.//profile/image24.o : include/filter.hpp
+.//profile/image24.o : include/macs.hpp
+.//profile/image24.o : include/system.h
+.//profile/image24.o : include/jmalloc.hpp
+.//profile/image24.o : include/specs.hpp
+.//profile/image24.o : include/linked.hpp
+.//profile/image24.o : include/palette.hpp
+.//profile/image24.o : include/image24.hpp
+.//profile/pcxread.o : pcxread.c
+	g++ -c -o .//profile/pcxread.o pcxread.c -Iinclude -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+.//profile/pcxread.o : include/filter.hpp
+.//profile/pcxread.o : include/macs.hpp
+.//profile/pcxread.o : include/image24.hpp
+.//profile/pcxread.o : include/system.h
+.//profile/pcxread.o : include/jmalloc.hpp
+.//profile/pcxread.o : include/specs.hpp
+.//profile/pcxread.o : include/palette.hpp
+.//profile/pcxread.o : include/linked.hpp
+.//profile/pcxread.o : include/image.hpp
+.//profile/pcxread.o : include/pcxread.hpp
+.//profile/timage.o : timage.c
+	g++ -c -o .//profile/timage.o timage.c -Iinclude -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+.//profile/timage.o : include/filter.hpp
+.//profile/timage.o : include/macs.hpp
+.//profile/timage.o : include/system.h
+.//profile/timage.o : include/jmalloc.hpp
+.//profile/timage.o : include/specs.hpp
+.//profile/timage.o : include/palette.hpp
+.//profile/timage.o : include/linked.hpp
+.//profile/timage.o : include/image.hpp
+.//profile/timage.o : include/timage.hpp
+.//profile/jmalloc.o : jmalloc.c
+	g++ -c -o .//profile/jmalloc.o jmalloc.c -Iinclude -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+.//profile/jmalloc.o : include/jmalloc.hpp
+.//profile/jmalloc.o : include/system.h
+.//profile/jmalloc.o : include/macs.hpp
+.//profile/jmalloc.o : include/doscall.hpp
+.//profile/jrand.o : jrand.c
+	g++ -c -o .//profile/jrand.o jrand.c -Iinclude -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+.//profile/jrand.o : include/jrand.hpp
+.//profile/lbmread.o : lbmread.c
+	g++ -c -o .//profile/lbmread.o lbmread.c -Iinclude -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+.//profile/lbmread.o : include/system.h
+.//profile/lbmread.o : include/jmalloc.hpp
+.//profile/lbmread.o : include/specs.hpp
+.//profile/lbmread.o : include/palette.hpp
+.//profile/lbmread.o : include/linked.hpp
+.//profile/lbmread.o : include/image.hpp
+.//profile/lbmread.o : include/lbmread.hpp
+.//profile/keys.o : keys.c
+	g++ -c -o .//profile/keys.o keys.c -Iinclude -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+.//profile/keys.o : include/keys.hpp
+.//profile/dprint.o : dprint.c
+	g++ -c -o .//profile/dprint.o dprint.c -Iinclude -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+.//profile/dprint.o : include/system.h
+.//profile/dprint.o : include/macs.hpp
+.//profile/status.o : status.c
+	g++ -c -o .//profile/status.o status.c -Iinclude -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+.//profile/status.o : include/dprint.hpp
+.//profile/status.o : include/timage.hpp
+.//profile/status.o : include/fonts.hpp
+.//profile/status.o : include/filter.hpp
+.//profile/status.o : include/mouse.hpp
+.//profile/status.o : include/sprite.hpp
+.//profile/status.o : include/keys.hpp
+.//profile/status.o : include/event.hpp
+.//profile/status.o : include/jmalloc.hpp
+.//profile/status.o : include/specs.hpp
+.//profile/status.o : include/palette.hpp
+.//profile/status.o : include/linked.hpp
+.//profile/status.o : include/image.hpp
+.//profile/status.o : include/video.hpp
+.//profile/status.o : include/jwindow.hpp
+.//profile/status.o : include/visobj.hpp
+.//profile/status.o : include/status.hpp
+.//profile/status.o : include/system.h
+.//profile/status.o : include/macs.hpp
+.//profile/visobj.o : visobj.c
+	g++ -c -o .//profile/visobj.o visobj.c -Iinclude -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+.//profile/visobj.o : include/timage.hpp
+.//profile/visobj.o : include/fonts.hpp
+.//profile/visobj.o : include/filter.hpp
+.//profile/visobj.o : include/mouse.hpp
+.//profile/visobj.o : include/macs.hpp
+.//profile/visobj.o : include/sprite.hpp
+.//profile/visobj.o : include/keys.hpp
+.//profile/visobj.o : include/event.hpp
+.//profile/visobj.o : include/jmalloc.hpp
+.//profile/visobj.o : include/specs.hpp
+.//profile/visobj.o : include/palette.hpp
+.//profile/visobj.o : include/linked.hpp
+.//profile/visobj.o : include/image.hpp
+.//profile/visobj.o : include/system.h
+.//profile/visobj.o : include/video.hpp
+.//profile/visobj.o : include/jwindow.hpp
+.//profile/visobj.o : include/visobj.hpp
+

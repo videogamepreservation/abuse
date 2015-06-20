@@ -1,0 +1,4310 @@
+all : debug
+
+debug : ./linux_x11/debug/image.a ./linux_svga/debug/image.a ./linux_x11/debug/packet.a ./linux_svga/debug/packet.a ./linux_x11/debug/gui.a ./linux_svga/debug/gui.a ./linux_x11/debug/sound.a ./linux_svga/debug/sound.a ./linux_x11/debug/net.a ./linux_svga/debug/net.a ./linux_x11/debug/dir.a ./linux_svga/debug/dir.a ./linux_x11/debug/winman.a ./linux_svga/debug/winman.a ./linux_x11/debug/joy.a ./linux_svga/debug/joy.a ./linux_x11/debug/time.a ./linux_svga/debug/time.a
+	echo Made debug
+
+opt : ./linux_x11/opt/image.a ./linux_svga/opt/image.a ./linux_x11/opt/packet.a ./linux_svga/opt/packet.a ./linux_x11/opt/gui.a ./linux_svga/opt/gui.a ./linux_x11/opt/sound.a ./linux_svga/opt/sound.a ./linux_x11/opt/net.a ./linux_svga/opt/net.a ./linux_x11/opt/dir.a ./linux_svga/opt/dir.a ./linux_x11/opt/winman.a ./linux_svga/opt/winman.a ./linux_x11/opt/joy.a ./linux_svga/opt/joy.a ./linux_x11/opt/time.a ./linux_svga/opt/time.a
+	echo Made opt
+
+profile : ./linux_x11/profile/image.a ./linux_svga/profile/image.a ./linux_x11/profile/packet.a ./linux_svga/profile/packet.a ./linux_x11/profile/gui.a ./linux_svga/profile/gui.a ./linux_x11/profile/sound.a ./linux_svga/profile/sound.a ./linux_x11/profile/net.a ./linux_svga/profile/net.a ./linux_x11/profile/dir.a ./linux_svga/profile/dir.a ./linux_x11/profile/winman.a ./linux_svga/profile/winman.a ./linux_x11/profile/joy.a ./linux_svga/profile/joy.a ./linux_x11/profile/time.a ./linux_svga/profile/time.a
+	echo Made profile
+
+LINUX_X11_image_debug_o_files = \
+	./linux_x11/debug/filter.o \
+	./linux_x11/debug/gifread.o \
+	./linux_x11/debug/globals.o \
+	./linux_x11/debug/image.o \
+	./linux_x11/debug/linked.o \
+	./linux_x11/debug/input.o \
+	./linux_x11/debug/mdlread.o \
+	./linux_x11/debug/palette.o \
+	./linux_x11/debug/ppmread.o \
+	./linux_x11/debug/include.o \
+	./linux_x11/debug/xwdread.o \
+	./linux_x11/debug/fonts.o \
+	./linux_x11/debug/decoder.o \
+	./linux_x11/debug/loader.o \
+	./linux_x11/debug/glread.o \
+	./linux_x11/debug/texture.o \
+	./linux_x11/debug/specs.o \
+	./linux_x11/debug/supmorph.o \
+	./linux_x11/debug/image24.o \
+	./linux_x11/debug/pcxread.o \
+	./linux_x11/debug/timage.o \
+	./linux_x11/debug/jmalloc.o \
+	./linux_x11/debug/jrand.o \
+	./linux_x11/debug/lbmread.o \
+	./linux_x11/debug/targa.o \
+	./linux_x11/debug/keys.o \
+	./linux_x11/debug/dprint.o \
+	./linux_x11/debug/status.o \
+	./linux_x11/debug/visobj.o
+
+LINUX_SVGA_image_debug_o_files = \
+	./linux_svga/debug/filter.o \
+	./linux_svga/debug/gifread.o \
+	./linux_svga/debug/globals.o \
+	./linux_svga/debug/image.o \
+	./linux_svga/debug/linked.o \
+	./linux_svga/debug/input.o \
+	./linux_svga/debug/mdlread.o \
+	./linux_svga/debug/palette.o \
+	./linux_svga/debug/ppmread.o \
+	./linux_svga/debug/include.o \
+	./linux_svga/debug/xwdread.o \
+	./linux_svga/debug/fonts.o \
+	./linux_svga/debug/decoder.o \
+	./linux_svga/debug/loader.o \
+	./linux_svga/debug/glread.o \
+	./linux_svga/debug/texture.o \
+	./linux_svga/debug/specs.o \
+	./linux_svga/debug/supmorph.o \
+	./linux_svga/debug/image24.o \
+	./linux_svga/debug/pcxread.o \
+	./linux_svga/debug/timage.o \
+	./linux_svga/debug/jmalloc.o \
+	./linux_svga/debug/jrand.o \
+	./linux_svga/debug/lbmread.o \
+	./linux_svga/debug/targa.o \
+	./linux_svga/debug/keys.o \
+	./linux_svga/debug/dprint.o \
+	./linux_svga/debug/status.o \
+	./linux_svga/debug/visobj.o
+
+LINUX_X11_packet_debug_o_files = \
+	./linux_x11/debug/packet.o
+
+LINUX_SVGA_packet_debug_o_files = \
+	./linux_svga/debug/packet.o
+
+LINUX_X11_gui_debug_o_files = \
+	./linux_x11/debug/pmenu.o \
+	./linux_x11/debug/scroller.o \
+	./linux_x11/debug/filesel.o \
+	./linux_x11/debug/tools.o \
+	./linux_x11/debug/guistat.o
+
+LINUX_SVGA_gui_debug_o_files = \
+	./linux_svga/debug/pmenu.o \
+	./linux_svga/debug/scroller.o \
+	./linux_svga/debug/filesel.o \
+	./linux_svga/debug/tools.o \
+	./linux_svga/debug/guistat.o
+
+LINUX_X11_sound_debug_o_files = \
+	port/sgi/linux_x11/debug/sound.o \
+	./linux_x11/debug/readwav.o
+
+LINUX_SVGA_sound_debug_o_files = \
+	port/sgi/linux_svga/debug/sound.o \
+	./linux_svga/debug/readwav.o
+
+LINUX_X11_net_debug_o_files = \
+	port/unix/linux_x11/debug/jnet.o
+
+LINUX_SVGA_net_debug_o_files = \
+	port/unix/linux_svga/debug/jnet.o
+
+LINUX_X11_dir_debug_o_files = \
+	port/unix/linux_x11/debug/jdir.o
+
+LINUX_SVGA_dir_debug_o_files = \
+	port/unix/linux_svga/debug/jdir.o
+
+LINUX_X11_winman_debug_o_files = \
+	port/x11/linux_x11/debug/video.o \
+	port/x11/linux_x11/debug/mouse.o \
+	port/x11/linux_x11/debug/event.o \
+	./linux_x11/debug/jwindow.o
+
+LINUX_SVGA_winman_debug_o_files = \
+	port/svga/linux_svga/debug/video.o \
+	port/svga/linux_svga/debug/mouse.o \
+	port/svga/linux_svga/debug/event.o \
+	./linux_svga/debug/jwindow.o
+
+LINUX_X11_joy_debug_o_files = \
+	port/linux/linux_x11/debug/joystick.o
+
+LINUX_SVGA_joy_debug_o_files = \
+	port/linux/linux_svga/debug/joystick.o
+
+LINUX_X11_time_debug_o_files = \
+	port/unix/linux_x11/debug/timing.o
+
+LINUX_SVGA_time_debug_o_files = \
+	port/unix/linux_svga/debug/timing.o
+
+./linux_svga/debug/time.a : $(LINUX_SVGA_time_debug_o_files)
+	ar ruvs ./linux_svga/debug/time.a \
+	port/unix/linux_svga/debug/timing.o
+
+port/unix/linux_svga/debug/timing.o : port/unix/timing.c
+	g++  -c -o port/unix/linux_svga/debug/timing.o port/unix/timing.c -Iinclude -g -DMEM_CHECK -DMANAGE_MEM 
+
+port/unix/linux_svga/debug/timing.o : include/timing.hpp
+
+./linux_x11/debug/time.a : $(LINUX_X11_time_debug_o_files)
+	ar ruvs ./linux_x11/debug/time.a \
+	port/unix/linux_x11/debug/timing.o
+
+port/unix/linux_x11/debug/timing.o : port/unix/timing.c
+	g++  -c -o port/unix/linux_x11/debug/timing.o port/unix/timing.c -Iinclude -g -DMEM_CHECK -DMANAGE_MEM 
+
+port/unix/linux_x11/debug/timing.o : include/timing.hpp
+
+./linux_svga/debug/joy.a : $(LINUX_SVGA_joy_debug_o_files)
+	ar ruvs ./linux_svga/debug/joy.a \
+	port/linux/linux_svga/debug/joystick.o
+
+port/linux/linux_svga/debug/joystick.o : port/linux/joystick.c
+	g++  -c -o port/linux/linux_svga/debug/joystick.o port/linux/joystick.c -Iinclude -g -DMEM_CHECK -DMANAGE_MEM 
+
+port/linux/linux_svga/debug/joystick.o : include/joy.hpp
+
+./linux_x11/debug/joy.a : $(LINUX_X11_joy_debug_o_files)
+	ar ruvs ./linux_x11/debug/joy.a \
+	port/linux/linux_x11/debug/joystick.o
+
+port/linux/linux_x11/debug/joystick.o : port/linux/joystick.c
+	g++  -c -o port/linux/linux_x11/debug/joystick.o port/linux/joystick.c -Iinclude -g -DMEM_CHECK -DMANAGE_MEM 
+
+port/linux/linux_x11/debug/joystick.o : include/joy.hpp
+
+./linux_svga/debug/winman.a : $(LINUX_SVGA_winman_debug_o_files)
+	ar ruvs ./linux_svga/debug/winman.a \
+	port/svga/linux_svga/debug/video.o \
+	port/svga/linux_svga/debug/mouse.o \
+	port/svga/linux_svga/debug/event.o \
+	./linux_svga/debug/jwindow.o
+
+port/svga/linux_svga/debug/video.o : port/svga/video.c
+	g++  -c -o port/svga/linux_svga/debug/video.o port/svga/video.c -Iinclude -g -DMEM_CHECK -DMANAGE_MEM 
+
+port/svga/linux_svga/debug/video.o : include/macs.hpp
+port/svga/linux_svga/debug/video.o : include/dos.h
+port/svga/linux_svga/debug/video.o : include/jmalloc.hpp
+port/svga/linux_svga/debug/video.o : include/specs.hpp
+port/svga/linux_svga/debug/video.o : include/palette.hpp
+port/svga/linux_svga/debug/video.o : include/linked.hpp
+port/svga/linux_svga/debug/video.o : include/image.hpp
+port/svga/linux_svga/debug/video.o : include/video.hpp
+port/svga/linux_svga/debug/video.o : include/system.h
+port/svga/linux_svga/debug/video.o : include/globals.hpp
+port/svga/linux_svga/debug/mouse.o : port/svga/mouse.c
+	g++  -c -o port/svga/linux_svga/debug/mouse.o port/svga/mouse.c -Iinclude -g -DMEM_CHECK -DMANAGE_MEM 
+
+port/svga/linux_svga/debug/mouse.o : include/dprint.hpp
+port/svga/linux_svga/debug/mouse.o : include/mouse.hpp
+port/svga/linux_svga/debug/mouse.o : include/monoprnt.hpp
+port/svga/linux_svga/debug/mouse.o : include/mdlread.hpp
+port/svga/linux_svga/debug/mouse.o : include/filter.hpp
+port/svga/linux_svga/debug/mouse.o : include/macs.hpp
+port/svga/linux_svga/debug/mouse.o : include/sprite.hpp
+port/svga/linux_svga/debug/mouse.o : include/jmalloc.hpp
+port/svga/linux_svga/debug/mouse.o : include/specs.hpp
+port/svga/linux_svga/debug/mouse.o : include/palette.hpp
+port/svga/linux_svga/debug/mouse.o : include/linked.hpp
+port/svga/linux_svga/debug/mouse.o : include/image.hpp
+port/svga/linux_svga/debug/mouse.o : include/system.h
+port/svga/linux_svga/debug/mouse.o : include/video.hpp
+port/svga/linux_svga/debug/event.o : port/svga/event.c
+	g++  -c -o port/svga/linux_svga/debug/event.o port/svga/event.c -Iinclude -g -DMEM_CHECK -DMANAGE_MEM 
+
+port/svga/linux_svga/debug/event.o : include/dprint.hpp
+port/svga/linux_svga/debug/event.o : include/monoprnt.hpp
+port/svga/linux_svga/debug/event.o : include/keys.hpp
+port/svga/linux_svga/debug/event.o : include/event.hpp
+port/svga/linux_svga/debug/event.o : include/sprite.hpp
+port/svga/linux_svga/debug/event.o : include/mouse.hpp
+port/svga/linux_svga/debug/event.o : include/macs.hpp
+port/svga/linux_svga/debug/event.o : include/gifread.hpp
+port/svga/linux_svga/debug/event.o : include/dos.h
+port/svga/linux_svga/debug/event.o : include/video.hpp
+port/svga/linux_svga/debug/event.o : include/mdlread.hpp
+port/svga/linux_svga/debug/event.o : include/jmalloc.hpp
+port/svga/linux_svga/debug/event.o : include/specs.hpp
+port/svga/linux_svga/debug/event.o : include/palette.hpp
+port/svga/linux_svga/debug/event.o : include/linked.hpp
+port/svga/linux_svga/debug/event.o : include/image.hpp
+port/svga/linux_svga/debug/event.o : include/system.h
+./linux_svga/debug/jwindow.o : jwindow.c
+	g++  -c -o ./linux_svga/debug/jwindow.o jwindow.c -Iinclude -g -DMEM_CHECK -DMANAGE_MEM 
+
+./linux_svga/debug/jwindow.o : include/timage.hpp
+./linux_svga/debug/jwindow.o : include/fonts.hpp
+./linux_svga/debug/jwindow.o : include/jwindow.hpp
+./linux_svga/debug/jwindow.o : include/filter.hpp
+./linux_svga/debug/jwindow.o : include/mouse.hpp
+./linux_svga/debug/jwindow.o : include/macs.hpp
+./linux_svga/debug/jwindow.o : include/sprite.hpp
+./linux_svga/debug/jwindow.o : include/keys.hpp
+./linux_svga/debug/jwindow.o : include/event.hpp
+./linux_svga/debug/jwindow.o : include/jmalloc.hpp
+./linux_svga/debug/jwindow.o : include/specs.hpp
+./linux_svga/debug/jwindow.o : include/palette.hpp
+./linux_svga/debug/jwindow.o : include/linked.hpp
+./linux_svga/debug/jwindow.o : include/image.hpp
+./linux_svga/debug/jwindow.o : include/system.h
+./linux_svga/debug/jwindow.o : include/video.hpp
+
+./linux_x11/debug/winman.a : $(LINUX_X11_winman_debug_o_files)
+	ar ruvs ./linux_x11/debug/winman.a \
+	port/x11/linux_x11/debug/video.o \
+	port/x11/linux_x11/debug/mouse.o \
+	port/x11/linux_x11/debug/event.o \
+	./linux_x11/debug/jwindow.o
+
+port/x11/linux_x11/debug/video.o : port/x11/video.c
+	g++  -c -o port/x11/linux_x11/debug/video.o port/x11/video.c -Iinclude -g -DMEM_CHECK -DMANAGE_MEM 
+
+port/x11/linux_x11/debug/video.o : include/bitmap.h
+port/x11/linux_x11/debug/video.o : include/macs.hpp
+port/x11/linux_x11/debug/video.o : include/xinclude.h
+port/x11/linux_x11/debug/video.o : include/dos.h
+port/x11/linux_x11/debug/video.o : include/video.hpp
+port/x11/linux_x11/debug/video.o : include/globals.hpp
+port/x11/linux_x11/debug/video.o : include/system.h
+port/x11/linux_x11/debug/video.o : include/jmalloc.hpp
+port/x11/linux_x11/debug/video.o : include/specs.hpp
+port/x11/linux_x11/debug/video.o : include/palette.hpp
+port/x11/linux_x11/debug/video.o : include/linked.hpp
+port/x11/linux_x11/debug/video.o : include/image.hpp
+port/x11/linux_x11/debug/video.o : include/filter.hpp
+port/x11/linux_x11/debug/mouse.o : port/x11/mouse.c
+	g++  -c -o port/x11/linux_x11/debug/mouse.o port/x11/mouse.c -Iinclude -g -DMEM_CHECK -DMANAGE_MEM 
+
+port/x11/linux_x11/debug/mouse.o : include/xinclude.h
+port/x11/linux_x11/debug/mouse.o : include/mouse.hpp
+port/x11/linux_x11/debug/mouse.o : include/monoprnt.hpp
+port/x11/linux_x11/debug/mouse.o : include/mdlread.hpp
+port/x11/linux_x11/debug/mouse.o : include/filter.hpp
+port/x11/linux_x11/debug/mouse.o : include/macs.hpp
+port/x11/linux_x11/debug/mouse.o : include/sprite.hpp
+port/x11/linux_x11/debug/mouse.o : include/jmalloc.hpp
+port/x11/linux_x11/debug/mouse.o : include/specs.hpp
+port/x11/linux_x11/debug/mouse.o : include/palette.hpp
+port/x11/linux_x11/debug/mouse.o : include/linked.hpp
+port/x11/linux_x11/debug/mouse.o : include/image.hpp
+port/x11/linux_x11/debug/mouse.o : include/system.h
+port/x11/linux_x11/debug/mouse.o : include/video.hpp
+port/x11/linux_x11/debug/event.o : port/x11/event.c
+	g++  -c -o port/x11/linux_x11/debug/event.o port/x11/event.c -Iinclude -g -DMEM_CHECK -DMANAGE_MEM 
+
+port/x11/linux_x11/debug/event.o : include/keys.hpp
+port/x11/linux_x11/debug/event.o : include/event.hpp
+port/x11/linux_x11/debug/event.o : include/sprite.hpp
+port/x11/linux_x11/debug/event.o : include/mouse.hpp
+port/x11/linux_x11/debug/event.o : include/macs.hpp
+port/x11/linux_x11/debug/event.o : include/gifread.hpp
+port/x11/linux_x11/debug/event.o : include/video.hpp
+port/x11/linux_x11/debug/event.o : include/mdlread.hpp
+port/x11/linux_x11/debug/event.o : include/jmalloc.hpp
+port/x11/linux_x11/debug/event.o : include/specs.hpp
+port/x11/linux_x11/debug/event.o : include/palette.hpp
+port/x11/linux_x11/debug/event.o : include/linked.hpp
+port/x11/linux_x11/debug/event.o : include/image.hpp
+port/x11/linux_x11/debug/event.o : include/xinclude.h
+port/x11/linux_x11/debug/event.o : include/system.h
+./linux_x11/debug/jwindow.o : jwindow.c
+	g++  -c -o ./linux_x11/debug/jwindow.o jwindow.c -Iinclude -g -DMEM_CHECK -DMANAGE_MEM 
+
+./linux_x11/debug/jwindow.o : include/timage.hpp
+./linux_x11/debug/jwindow.o : include/fonts.hpp
+./linux_x11/debug/jwindow.o : include/jwindow.hpp
+./linux_x11/debug/jwindow.o : include/filter.hpp
+./linux_x11/debug/jwindow.o : include/mouse.hpp
+./linux_x11/debug/jwindow.o : include/macs.hpp
+./linux_x11/debug/jwindow.o : include/sprite.hpp
+./linux_x11/debug/jwindow.o : include/keys.hpp
+./linux_x11/debug/jwindow.o : include/event.hpp
+./linux_x11/debug/jwindow.o : include/jmalloc.hpp
+./linux_x11/debug/jwindow.o : include/specs.hpp
+./linux_x11/debug/jwindow.o : include/palette.hpp
+./linux_x11/debug/jwindow.o : include/linked.hpp
+./linux_x11/debug/jwindow.o : include/image.hpp
+./linux_x11/debug/jwindow.o : include/system.h
+./linux_x11/debug/jwindow.o : include/video.hpp
+
+./linux_svga/debug/dir.a : $(LINUX_SVGA_dir_debug_o_files)
+	ar ruvs ./linux_svga/debug/dir.a \
+	port/unix/linux_svga/debug/jdir.o
+
+port/unix/linux_svga/debug/jdir.o : port/unix/jdir.c
+	g++  -c -o port/unix/linux_svga/debug/jdir.o port/unix/jdir.c -Iinclude -g -DMEM_CHECK -DMANAGE_MEM 
+
+port/unix/linux_svga/debug/jdir.o : include/jmalloc.hpp
+
+./linux_x11/debug/dir.a : $(LINUX_X11_dir_debug_o_files)
+	ar ruvs ./linux_x11/debug/dir.a \
+	port/unix/linux_x11/debug/jdir.o
+
+port/unix/linux_x11/debug/jdir.o : port/unix/jdir.c
+	g++  -c -o port/unix/linux_x11/debug/jdir.o port/unix/jdir.c -Iinclude -g -DMEM_CHECK -DMANAGE_MEM 
+
+port/unix/linux_x11/debug/jdir.o : include/jmalloc.hpp
+
+./linux_svga/debug/net.a : $(LINUX_SVGA_net_debug_o_files)
+	ar ruvs ./linux_svga/debug/net.a \
+	port/unix/linux_svga/debug/jnet.o
+
+port/unix/linux_svga/debug/jnet.o : port/unix/jnet.c
+	g++  -c -o port/unix/linux_svga/debug/jnet.o port/unix/jnet.c -Iinclude -g -DMEM_CHECK -DMANAGE_MEM 
+
+port/unix/linux_svga/debug/jnet.o : include/jmalloc.hpp
+port/unix/linux_svga/debug/jnet.o : include/packet.hpp
+port/unix/linux_svga/debug/jnet.o : include/system.h
+port/unix/linux_svga/debug/jnet.o : include/macs.hpp
+port/unix/linux_svga/debug/jnet.o : include/jnet.hpp
+
+./linux_x11/debug/net.a : $(LINUX_X11_net_debug_o_files)
+	ar ruvs ./linux_x11/debug/net.a \
+	port/unix/linux_x11/debug/jnet.o
+
+port/unix/linux_x11/debug/jnet.o : port/unix/jnet.c
+	g++  -c -o port/unix/linux_x11/debug/jnet.o port/unix/jnet.c -Iinclude -g -DMEM_CHECK -DMANAGE_MEM 
+
+port/unix/linux_x11/debug/jnet.o : include/jmalloc.hpp
+port/unix/linux_x11/debug/jnet.o : include/packet.hpp
+port/unix/linux_x11/debug/jnet.o : include/system.h
+port/unix/linux_x11/debug/jnet.o : include/macs.hpp
+port/unix/linux_x11/debug/jnet.o : include/jnet.hpp
+
+./linux_svga/debug/sound.a : $(LINUX_SVGA_sound_debug_o_files)
+	ar ruvs ./linux_svga/debug/sound.a \
+	port/sgi/linux_svga/debug/sound.o \
+	./linux_svga/debug/readwav.o
+
+port/sgi/linux_svga/debug/sound.o : port/sgi/sound.c
+	g++  -c -o port/sgi/linux_svga/debug/sound.o port/sgi/sound.c -Iinclude -g -DMEM_CHECK -DMANAGE_MEM 
+
+port/sgi/linux_svga/debug/sound.o : include/timing.hpp
+port/sgi/linux_svga/debug/sound.o : include/dprint.hpp
+port/sgi/linux_svga/debug/sound.o : include/jmalloc.hpp
+port/sgi/linux_svga/debug/sound.o : include/linked.hpp
+port/sgi/linux_svga/debug/sound.o : include/specs.hpp
+port/sgi/linux_svga/debug/sound.o : include/readwav.hpp
+port/sgi/linux_svga/debug/sound.o : include/sound.hpp
+port/sgi/linux_svga/debug/sound.o : include/system.h
+port/sgi/linux_svga/debug/sound.o : include/macs.hpp
+./linux_svga/debug/readwav.o : readwav.c
+	g++  -c -o ./linux_svga/debug/readwav.o readwav.c -Iinclude -g -DMEM_CHECK -DMANAGE_MEM 
+
+./linux_svga/debug/readwav.o : include/dprint.hpp
+./linux_svga/debug/readwav.o : include/macs.hpp
+./linux_svga/debug/readwav.o : include/system.h
+./linux_svga/debug/readwav.o : include/jmalloc.hpp
+./linux_svga/debug/readwav.o : include/linked.hpp
+./linux_svga/debug/readwav.o : include/specs.hpp
+./linux_svga/debug/readwav.o : include/readwav.hpp
+
+./linux_x11/debug/sound.a : $(LINUX_X11_sound_debug_o_files)
+	ar ruvs ./linux_x11/debug/sound.a \
+	port/sgi/linux_x11/debug/sound.o \
+	./linux_x11/debug/readwav.o
+
+port/sgi/linux_x11/debug/sound.o : port/sgi/sound.c
+	g++  -c -o port/sgi/linux_x11/debug/sound.o port/sgi/sound.c -Iinclude -g -DMEM_CHECK -DMANAGE_MEM 
+
+port/sgi/linux_x11/debug/sound.o : include/timing.hpp
+port/sgi/linux_x11/debug/sound.o : include/dprint.hpp
+port/sgi/linux_x11/debug/sound.o : include/jmalloc.hpp
+port/sgi/linux_x11/debug/sound.o : include/linked.hpp
+port/sgi/linux_x11/debug/sound.o : include/specs.hpp
+port/sgi/linux_x11/debug/sound.o : include/readwav.hpp
+port/sgi/linux_x11/debug/sound.o : include/sound.hpp
+port/sgi/linux_x11/debug/sound.o : include/system.h
+port/sgi/linux_x11/debug/sound.o : include/macs.hpp
+./linux_x11/debug/readwav.o : readwav.c
+	g++  -c -o ./linux_x11/debug/readwav.o readwav.c -Iinclude -g -DMEM_CHECK -DMANAGE_MEM 
+
+./linux_x11/debug/readwav.o : include/dprint.hpp
+./linux_x11/debug/readwav.o : include/macs.hpp
+./linux_x11/debug/readwav.o : include/system.h
+./linux_x11/debug/readwav.o : include/jmalloc.hpp
+./linux_x11/debug/readwav.o : include/linked.hpp
+./linux_x11/debug/readwav.o : include/specs.hpp
+./linux_x11/debug/readwav.o : include/readwav.hpp
+
+./linux_svga/debug/gui.a : $(LINUX_SVGA_gui_debug_o_files)
+	ar ruvs ./linux_svga/debug/gui.a \
+	./linux_svga/debug/pmenu.o \
+	./linux_svga/debug/scroller.o \
+	./linux_svga/debug/filesel.o \
+	./linux_svga/debug/tools.o \
+	./linux_svga/debug/guistat.o
+
+./linux_svga/debug/pmenu.o : pmenu.c
+	g++  -c -o ./linux_svga/debug/pmenu.o pmenu.c -Iinclude -g -DMEM_CHECK -DMANAGE_MEM 
+
+./linux_svga/debug/pmenu.o : include/timage.hpp
+./linux_svga/debug/pmenu.o : include/fonts.hpp
+./linux_svga/debug/pmenu.o : include/filter.hpp
+./linux_svga/debug/pmenu.o : include/mouse.hpp
+./linux_svga/debug/pmenu.o : include/macs.hpp
+./linux_svga/debug/pmenu.o : include/sprite.hpp
+./linux_svga/debug/pmenu.o : include/keys.hpp
+./linux_svga/debug/pmenu.o : include/event.hpp
+./linux_svga/debug/pmenu.o : include/specs.hpp
+./linux_svga/debug/pmenu.o : include/palette.hpp
+./linux_svga/debug/pmenu.o : include/linked.hpp
+./linux_svga/debug/pmenu.o : include/image.hpp
+./linux_svga/debug/pmenu.o : include/system.h
+./linux_svga/debug/pmenu.o : include/video.hpp
+./linux_svga/debug/pmenu.o : include/jwindow.hpp
+./linux_svga/debug/pmenu.o : include/input.hpp
+./linux_svga/debug/pmenu.o : include/jmalloc.hpp
+./linux_svga/debug/pmenu.o : include/pmenu.hpp
+./linux_svga/debug/scroller.o : scroller.c
+	g++  -c -o ./linux_svga/debug/scroller.o scroller.c -Iinclude -g -DMEM_CHECK -DMANAGE_MEM 
+
+./linux_svga/debug/scroller.o : include/timage.hpp
+./linux_svga/debug/scroller.o : include/fonts.hpp
+./linux_svga/debug/scroller.o : include/filter.hpp
+./linux_svga/debug/scroller.o : include/mouse.hpp
+./linux_svga/debug/scroller.o : include/macs.hpp
+./linux_svga/debug/scroller.o : include/sprite.hpp
+./linux_svga/debug/scroller.o : include/keys.hpp
+./linux_svga/debug/scroller.o : include/event.hpp
+./linux_svga/debug/scroller.o : include/jmalloc.hpp
+./linux_svga/debug/scroller.o : include/specs.hpp
+./linux_svga/debug/scroller.o : include/palette.hpp
+./linux_svga/debug/scroller.o : include/linked.hpp
+./linux_svga/debug/scroller.o : include/image.hpp
+./linux_svga/debug/scroller.o : include/system.h
+./linux_svga/debug/scroller.o : include/video.hpp
+./linux_svga/debug/scroller.o : include/jwindow.hpp
+./linux_svga/debug/scroller.o : include/input.hpp
+./linux_svga/debug/scroller.o : include/scroller.hpp
+./linux_svga/debug/filesel.o : filesel.c
+	g++  -c -o ./linux_svga/debug/filesel.o filesel.c -Iinclude -g -DMEM_CHECK -DMANAGE_MEM 
+
+./linux_svga/debug/filesel.o : include/jdir.hpp
+./linux_svga/debug/filesel.o : include/scroller.hpp
+./linux_svga/debug/filesel.o : include/input.hpp
+./linux_svga/debug/filesel.o : include/timage.hpp
+./linux_svga/debug/filesel.o : include/fonts.hpp
+./linux_svga/debug/filesel.o : include/filter.hpp
+./linux_svga/debug/filesel.o : include/mouse.hpp
+./linux_svga/debug/filesel.o : include/macs.hpp
+./linux_svga/debug/filesel.o : include/sprite.hpp
+./linux_svga/debug/filesel.o : include/keys.hpp
+./linux_svga/debug/filesel.o : include/event.hpp
+./linux_svga/debug/filesel.o : include/jmalloc.hpp
+./linux_svga/debug/filesel.o : include/specs.hpp
+./linux_svga/debug/filesel.o : include/palette.hpp
+./linux_svga/debug/filesel.o : include/linked.hpp
+./linux_svga/debug/filesel.o : include/image.hpp
+./linux_svga/debug/filesel.o : include/system.h
+./linux_svga/debug/filesel.o : include/video.hpp
+./linux_svga/debug/filesel.o : include/jwindow.hpp
+./linux_svga/debug/filesel.o : include/filesel.hpp
+./linux_svga/debug/tools.o : tools.c
+	g++  -c -o ./linux_svga/debug/tools.o tools.c -Iinclude -g -DMEM_CHECK -DMANAGE_MEM 
+
+./linux_svga/debug/tools.o : include/visobj.hpp
+./linux_svga/debug/tools.o : include/scroller.hpp
+./linux_svga/debug/tools.o : include/input.hpp
+./linux_svga/debug/tools.o : include/timage.hpp
+./linux_svga/debug/tools.o : include/fonts.hpp
+./linux_svga/debug/tools.o : include/filter.hpp
+./linux_svga/debug/tools.o : include/mouse.hpp
+./linux_svga/debug/tools.o : include/macs.hpp
+./linux_svga/debug/tools.o : include/sprite.hpp
+./linux_svga/debug/tools.o : include/keys.hpp
+./linux_svga/debug/tools.o : include/event.hpp
+./linux_svga/debug/tools.o : include/jmalloc.hpp
+./linux_svga/debug/tools.o : include/specs.hpp
+./linux_svga/debug/tools.o : include/palette.hpp
+./linux_svga/debug/tools.o : include/linked.hpp
+./linux_svga/debug/tools.o : include/image.hpp
+./linux_svga/debug/tools.o : include/system.h
+./linux_svga/debug/tools.o : include/video.hpp
+./linux_svga/debug/tools.o : include/jwindow.hpp
+./linux_svga/debug/tools.o : include/tools.hpp
+./linux_svga/debug/guistat.o : guistat.c
+	g++  -c -o ./linux_svga/debug/guistat.o guistat.c -Iinclude -g -DMEM_CHECK -DMANAGE_MEM 
+
+./linux_svga/debug/guistat.o : include/guistat.hpp
+./linux_svga/debug/guistat.o : include/timing.hpp
+./linux_svga/debug/guistat.o : include/timage.hpp
+./linux_svga/debug/guistat.o : include/fonts.hpp
+./linux_svga/debug/guistat.o : include/filter.hpp
+./linux_svga/debug/guistat.o : include/mouse.hpp
+./linux_svga/debug/guistat.o : include/macs.hpp
+./linux_svga/debug/guistat.o : include/sprite.hpp
+./linux_svga/debug/guistat.o : include/keys.hpp
+./linux_svga/debug/guistat.o : include/event.hpp
+./linux_svga/debug/guistat.o : include/jmalloc.hpp
+./linux_svga/debug/guistat.o : include/specs.hpp
+./linux_svga/debug/guistat.o : include/palette.hpp
+./linux_svga/debug/guistat.o : include/linked.hpp
+./linux_svga/debug/guistat.o : include/image.hpp
+./linux_svga/debug/guistat.o : include/system.h
+./linux_svga/debug/guistat.o : include/video.hpp
+./linux_svga/debug/guistat.o : include/jwindow.hpp
+./linux_svga/debug/guistat.o : include/visobj.hpp
+./linux_svga/debug/guistat.o : include/status.hpp
+
+./linux_x11/debug/gui.a : $(LINUX_X11_gui_debug_o_files)
+	ar ruvs ./linux_x11/debug/gui.a \
+	./linux_x11/debug/pmenu.o \
+	./linux_x11/debug/scroller.o \
+	./linux_x11/debug/filesel.o \
+	./linux_x11/debug/tools.o \
+	./linux_x11/debug/guistat.o
+
+./linux_x11/debug/pmenu.o : pmenu.c
+	g++  -c -o ./linux_x11/debug/pmenu.o pmenu.c -Iinclude -g -DMEM_CHECK -DMANAGE_MEM 
+
+./linux_x11/debug/pmenu.o : include/timage.hpp
+./linux_x11/debug/pmenu.o : include/fonts.hpp
+./linux_x11/debug/pmenu.o : include/filter.hpp
+./linux_x11/debug/pmenu.o : include/mouse.hpp
+./linux_x11/debug/pmenu.o : include/macs.hpp
+./linux_x11/debug/pmenu.o : include/sprite.hpp
+./linux_x11/debug/pmenu.o : include/keys.hpp
+./linux_x11/debug/pmenu.o : include/event.hpp
+./linux_x11/debug/pmenu.o : include/specs.hpp
+./linux_x11/debug/pmenu.o : include/palette.hpp
+./linux_x11/debug/pmenu.o : include/linked.hpp
+./linux_x11/debug/pmenu.o : include/image.hpp
+./linux_x11/debug/pmenu.o : include/system.h
+./linux_x11/debug/pmenu.o : include/video.hpp
+./linux_x11/debug/pmenu.o : include/jwindow.hpp
+./linux_x11/debug/pmenu.o : include/input.hpp
+./linux_x11/debug/pmenu.o : include/jmalloc.hpp
+./linux_x11/debug/pmenu.o : include/pmenu.hpp
+./linux_x11/debug/scroller.o : scroller.c
+	g++  -c -o ./linux_x11/debug/scroller.o scroller.c -Iinclude -g -DMEM_CHECK -DMANAGE_MEM 
+
+./linux_x11/debug/scroller.o : include/timage.hpp
+./linux_x11/debug/scroller.o : include/fonts.hpp
+./linux_x11/debug/scroller.o : include/filter.hpp
+./linux_x11/debug/scroller.o : include/mouse.hpp
+./linux_x11/debug/scroller.o : include/macs.hpp
+./linux_x11/debug/scroller.o : include/sprite.hpp
+./linux_x11/debug/scroller.o : include/keys.hpp
+./linux_x11/debug/scroller.o : include/event.hpp
+./linux_x11/debug/scroller.o : include/jmalloc.hpp
+./linux_x11/debug/scroller.o : include/specs.hpp
+./linux_x11/debug/scroller.o : include/palette.hpp
+./linux_x11/debug/scroller.o : include/linked.hpp
+./linux_x11/debug/scroller.o : include/image.hpp
+./linux_x11/debug/scroller.o : include/system.h
+./linux_x11/debug/scroller.o : include/video.hpp
+./linux_x11/debug/scroller.o : include/jwindow.hpp
+./linux_x11/debug/scroller.o : include/input.hpp
+./linux_x11/debug/scroller.o : include/scroller.hpp
+./linux_x11/debug/filesel.o : filesel.c
+	g++  -c -o ./linux_x11/debug/filesel.o filesel.c -Iinclude -g -DMEM_CHECK -DMANAGE_MEM 
+
+./linux_x11/debug/filesel.o : include/jdir.hpp
+./linux_x11/debug/filesel.o : include/scroller.hpp
+./linux_x11/debug/filesel.o : include/input.hpp
+./linux_x11/debug/filesel.o : include/timage.hpp
+./linux_x11/debug/filesel.o : include/fonts.hpp
+./linux_x11/debug/filesel.o : include/filter.hpp
+./linux_x11/debug/filesel.o : include/mouse.hpp
+./linux_x11/debug/filesel.o : include/macs.hpp
+./linux_x11/debug/filesel.o : include/sprite.hpp
+./linux_x11/debug/filesel.o : include/keys.hpp
+./linux_x11/debug/filesel.o : include/event.hpp
+./linux_x11/debug/filesel.o : include/jmalloc.hpp
+./linux_x11/debug/filesel.o : include/specs.hpp
+./linux_x11/debug/filesel.o : include/palette.hpp
+./linux_x11/debug/filesel.o : include/linked.hpp
+./linux_x11/debug/filesel.o : include/image.hpp
+./linux_x11/debug/filesel.o : include/system.h
+./linux_x11/debug/filesel.o : include/video.hpp
+./linux_x11/debug/filesel.o : include/jwindow.hpp
+./linux_x11/debug/filesel.o : include/filesel.hpp
+./linux_x11/debug/tools.o : tools.c
+	g++  -c -o ./linux_x11/debug/tools.o tools.c -Iinclude -g -DMEM_CHECK -DMANAGE_MEM 
+
+./linux_x11/debug/tools.o : include/visobj.hpp
+./linux_x11/debug/tools.o : include/scroller.hpp
+./linux_x11/debug/tools.o : include/input.hpp
+./linux_x11/debug/tools.o : include/timage.hpp
+./linux_x11/debug/tools.o : include/fonts.hpp
+./linux_x11/debug/tools.o : include/filter.hpp
+./linux_x11/debug/tools.o : include/mouse.hpp
+./linux_x11/debug/tools.o : include/macs.hpp
+./linux_x11/debug/tools.o : include/sprite.hpp
+./linux_x11/debug/tools.o : include/keys.hpp
+./linux_x11/debug/tools.o : include/event.hpp
+./linux_x11/debug/tools.o : include/jmalloc.hpp
+./linux_x11/debug/tools.o : include/specs.hpp
+./linux_x11/debug/tools.o : include/palette.hpp
+./linux_x11/debug/tools.o : include/linked.hpp
+./linux_x11/debug/tools.o : include/image.hpp
+./linux_x11/debug/tools.o : include/system.h
+./linux_x11/debug/tools.o : include/video.hpp
+./linux_x11/debug/tools.o : include/jwindow.hpp
+./linux_x11/debug/tools.o : include/tools.hpp
+./linux_x11/debug/guistat.o : guistat.c
+	g++  -c -o ./linux_x11/debug/guistat.o guistat.c -Iinclude -g -DMEM_CHECK -DMANAGE_MEM 
+
+./linux_x11/debug/guistat.o : include/guistat.hpp
+./linux_x11/debug/guistat.o : include/timing.hpp
+./linux_x11/debug/guistat.o : include/timage.hpp
+./linux_x11/debug/guistat.o : include/fonts.hpp
+./linux_x11/debug/guistat.o : include/filter.hpp
+./linux_x11/debug/guistat.o : include/mouse.hpp
+./linux_x11/debug/guistat.o : include/macs.hpp
+./linux_x11/debug/guistat.o : include/sprite.hpp
+./linux_x11/debug/guistat.o : include/keys.hpp
+./linux_x11/debug/guistat.o : include/event.hpp
+./linux_x11/debug/guistat.o : include/jmalloc.hpp
+./linux_x11/debug/guistat.o : include/specs.hpp
+./linux_x11/debug/guistat.o : include/palette.hpp
+./linux_x11/debug/guistat.o : include/linked.hpp
+./linux_x11/debug/guistat.o : include/image.hpp
+./linux_x11/debug/guistat.o : include/system.h
+./linux_x11/debug/guistat.o : include/video.hpp
+./linux_x11/debug/guistat.o : include/jwindow.hpp
+./linux_x11/debug/guistat.o : include/visobj.hpp
+./linux_x11/debug/guistat.o : include/status.hpp
+
+./linux_svga/debug/packet.a : $(LINUX_SVGA_packet_debug_o_files)
+	ar ruvs ./linux_svga/debug/packet.a \
+	./linux_svga/debug/packet.o
+
+./linux_svga/debug/packet.o : packet.c
+	g++  -c -o ./linux_svga/debug/packet.o packet.c -Iinclude -g -DMEM_CHECK -DMANAGE_MEM 
+
+./linux_svga/debug/packet.o : include/jmalloc.hpp
+./linux_svga/debug/packet.o : include/system.h
+./linux_svga/debug/packet.o : include/macs.hpp
+./linux_svga/debug/packet.o : include/packet.hpp
+
+./linux_x11/debug/packet.a : $(LINUX_X11_packet_debug_o_files)
+	ar ruvs ./linux_x11/debug/packet.a \
+	./linux_x11/debug/packet.o
+
+./linux_x11/debug/packet.o : packet.c
+	g++  -c -o ./linux_x11/debug/packet.o packet.c -Iinclude -g -DMEM_CHECK -DMANAGE_MEM 
+
+./linux_x11/debug/packet.o : include/jmalloc.hpp
+./linux_x11/debug/packet.o : include/system.h
+./linux_x11/debug/packet.o : include/macs.hpp
+./linux_x11/debug/packet.o : include/packet.hpp
+
+./linux_svga/debug/image.a : $(LINUX_SVGA_image_debug_o_files)
+	ar ruvs ./linux_svga/debug/image.a \
+	./linux_svga/debug/filter.o \
+	./linux_svga/debug/gifread.o \
+	./linux_svga/debug/globals.o \
+	./linux_svga/debug/image.o \
+	./linux_svga/debug/linked.o \
+	./linux_svga/debug/input.o \
+	./linux_svga/debug/mdlread.o \
+	./linux_svga/debug/palette.o \
+	./linux_svga/debug/ppmread.o \
+	./linux_svga/debug/include.o \
+	./linux_svga/debug/xwdread.o \
+	./linux_svga/debug/fonts.o \
+	./linux_svga/debug/decoder.o \
+	./linux_svga/debug/loader.o \
+	./linux_svga/debug/glread.o \
+	./linux_svga/debug/texture.o \
+	./linux_svga/debug/specs.o \
+	./linux_svga/debug/supmorph.o \
+	./linux_svga/debug/image24.o \
+	./linux_svga/debug/pcxread.o \
+	./linux_svga/debug/timage.o \
+	./linux_svga/debug/jmalloc.o \
+	./linux_svga/debug/jrand.o \
+	./linux_svga/debug/lbmread.o \
+	./linux_svga/debug/targa.o \
+	./linux_svga/debug/keys.o \
+	./linux_svga/debug/dprint.o \
+	./linux_svga/debug/status.o \
+	./linux_svga/debug/visobj.o
+
+./linux_svga/debug/filter.o : filter.c
+	g++  -c -o ./linux_svga/debug/filter.o filter.c -Iinclude -g -DMEM_CHECK -DMANAGE_MEM 
+
+./linux_svga/debug/filter.o : include/filter.hpp
+./linux_svga/debug/filter.o : include/macs.hpp
+./linux_svga/debug/filter.o : include/system.h
+./linux_svga/debug/filter.o : include/jmalloc.hpp
+./linux_svga/debug/filter.o : include/specs.hpp
+./linux_svga/debug/filter.o : include/palette.hpp
+./linux_svga/debug/filter.o : include/linked.hpp
+./linux_svga/debug/filter.o : include/image.hpp
+./linux_svga/debug/gifread.o : gifread.c
+	g++  -c -o ./linux_svga/debug/gifread.o gifread.c -Iinclude -g -DMEM_CHECK -DMANAGE_MEM 
+
+./linux_svga/debug/gifread.o : include/macs.hpp
+./linux_svga/debug/gifread.o : include/dir.h
+./linux_svga/debug/gifread.o : include/dos.h
+./linux_svga/debug/gifread.o : include/std.h
+./linux_svga/debug/gifread.o : include/gifdecod.hpp
+./linux_svga/debug/gifread.o : include/video.hpp
+./linux_svga/debug/gifread.o : include/system.h
+./linux_svga/debug/gifread.o : include/jmalloc.hpp
+./linux_svga/debug/gifread.o : include/specs.hpp
+./linux_svga/debug/gifread.o : include/palette.hpp
+./linux_svga/debug/gifread.o : include/linked.hpp
+./linux_svga/debug/gifread.o : include/image.hpp
+./linux_svga/debug/gifread.o : include/gifread.hpp
+./linux_svga/debug/globals.o : globals.c
+	g++  -c -o ./linux_svga/debug/globals.o globals.c -Iinclude -g -DMEM_CHECK -DMANAGE_MEM 
+
+./linux_svga/debug/globals.o : globals.c
+./linux_svga/debug/image.o : image.c
+	g++  -c -o ./linux_svga/debug/image.o image.c -Iinclude -g -DMEM_CHECK -DMANAGE_MEM 
+
+./linux_svga/debug/image.o : include/macs.hpp
+./linux_svga/debug/image.o : include/system.h
+./linux_svga/debug/image.o : include/jmalloc.hpp
+./linux_svga/debug/image.o : include/specs.hpp
+./linux_svga/debug/image.o : include/palette.hpp
+./linux_svga/debug/image.o : include/linked.hpp
+./linux_svga/debug/image.o : include/image.hpp
+./linux_svga/debug/linked.o : linked.c
+	g++  -c -o ./linux_svga/debug/linked.o linked.c -Iinclude -g -DMEM_CHECK -DMANAGE_MEM 
+
+./linux_svga/debug/linked.o : include/linked.hpp
+./linux_svga/debug/input.o : input.c
+	g++  -c -o ./linux_svga/debug/input.o input.c -Iinclude -g -DMEM_CHECK -DMANAGE_MEM 
+
+./linux_svga/debug/input.o : include/timage.hpp
+./linux_svga/debug/input.o : include/fonts.hpp
+./linux_svga/debug/input.o : include/filter.hpp
+./linux_svga/debug/input.o : include/mouse.hpp
+./linux_svga/debug/input.o : include/macs.hpp
+./linux_svga/debug/input.o : include/sprite.hpp
+./linux_svga/debug/input.o : include/keys.hpp
+./linux_svga/debug/input.o : include/event.hpp
+./linux_svga/debug/input.o : include/jmalloc.hpp
+./linux_svga/debug/input.o : include/specs.hpp
+./linux_svga/debug/input.o : include/palette.hpp
+./linux_svga/debug/input.o : include/linked.hpp
+./linux_svga/debug/input.o : include/image.hpp
+./linux_svga/debug/input.o : include/system.h
+./linux_svga/debug/input.o : include/video.hpp
+./linux_svga/debug/input.o : include/jwindow.hpp
+./linux_svga/debug/input.o : include/input.hpp
+./linux_svga/debug/mdlread.o : mdlread.c
+	g++  -c -o ./linux_svga/debug/mdlread.o mdlread.c -Iinclude -g -DMEM_CHECK -DMANAGE_MEM 
+
+./linux_svga/debug/mdlread.o : include/macs.hpp
+./linux_svga/debug/mdlread.o : include/image.hpp
+./linux_svga/debug/mdlread.o : include/system.h
+./linux_svga/debug/mdlread.o : include/jmalloc.hpp
+./linux_svga/debug/mdlread.o : include/specs.hpp
+./linux_svga/debug/mdlread.o : include/linked.hpp
+./linux_svga/debug/mdlread.o : include/palette.hpp
+./linux_svga/debug/mdlread.o : include/mdlread.hpp
+./linux_svga/debug/palette.o : palette.c
+	g++  -c -o ./linux_svga/debug/palette.o palette.c -Iinclude -g -DMEM_CHECK -DMANAGE_MEM 
+
+./linux_svga/debug/palette.o : include/filter.hpp
+./linux_svga/debug/palette.o : include/video.hpp
+./linux_svga/debug/palette.o : include/dos.h
+./linux_svga/debug/palette.o : include/macs.hpp
+./linux_svga/debug/palette.o : include/image.hpp
+./linux_svga/debug/palette.o : include/system.h
+./linux_svga/debug/palette.o : include/jmalloc.hpp
+./linux_svga/debug/palette.o : include/specs.hpp
+./linux_svga/debug/palette.o : include/linked.hpp
+./linux_svga/debug/palette.o : include/palette.hpp
+./linux_svga/debug/ppmread.o : ppmread.c
+	g++  -c -o ./linux_svga/debug/ppmread.o ppmread.c -Iinclude -g -DMEM_CHECK -DMANAGE_MEM 
+
+./linux_svga/debug/ppmread.o : include/ppmread.hpp
+./linux_svga/debug/ppmread.o : include/macs.hpp
+./linux_svga/debug/ppmread.o : include/system.h
+./linux_svga/debug/ppmread.o : include/jmalloc.hpp
+./linux_svga/debug/ppmread.o : include/specs.hpp
+./linux_svga/debug/ppmread.o : include/palette.hpp
+./linux_svga/debug/ppmread.o : include/linked.hpp
+./linux_svga/debug/ppmread.o : include/image.hpp
+./linux_svga/debug/include.o : include.c
+	g++  -c -o ./linux_svga/debug/include.o include.c -Iinclude -g -DMEM_CHECK -DMANAGE_MEM 
+
+./linux_svga/debug/include.o : include/system.h
+./linux_svga/debug/include.o : include/jmalloc.hpp
+./linux_svga/debug/include.o : include/specs.hpp
+./linux_svga/debug/include.o : include/palette.hpp
+./linux_svga/debug/include.o : include/linked.hpp
+./linux_svga/debug/include.o : include/image.hpp
+./linux_svga/debug/include.o : include/include.hpp
+./linux_svga/debug/xwdread.o : xwdread.c
+	g++  -c -o ./linux_svga/debug/xwdread.o xwdread.c -Iinclude -g -DMEM_CHECK -DMANAGE_MEM 
+
+./linux_svga/debug/xwdread.o : include/image24.hpp
+./linux_svga/debug/xwdread.o : include/main.hpp
+./linux_svga/debug/xwdread.o : include/dos.h
+./linux_svga/debug/xwdread.o : include/video.hpp
+./linux_svga/debug/xwdread.o : include/mouse.hpp
+./linux_svga/debug/xwdread.o : include/macs.hpp
+./linux_svga/debug/xwdread.o : include/sprite.hpp
+./linux_svga/debug/xwdread.o : include/keys.hpp
+./linux_svga/debug/xwdread.o : include/event.hpp
+./linux_svga/debug/xwdread.o : include/system.h
+./linux_svga/debug/xwdread.o : include/jmalloc.hpp
+./linux_svga/debug/xwdread.o : include/specs.hpp
+./linux_svga/debug/xwdread.o : include/palette.hpp
+./linux_svga/debug/xwdread.o : include/linked.hpp
+./linux_svga/debug/xwdread.o : include/image.hpp
+./linux_svga/debug/xwdread.o : include/filter.hpp
+./linux_svga/debug/fonts.o : fonts.c
+	g++  -c -o ./linux_svga/debug/fonts.o fonts.c -Iinclude -g -DMEM_CHECK -DMANAGE_MEM 
+
+./linux_svga/debug/fonts.o : include/filter.hpp
+./linux_svga/debug/fonts.o : include/macs.hpp
+./linux_svga/debug/fonts.o : include/timage.hpp
+./linux_svga/debug/fonts.o : include/system.h
+./linux_svga/debug/fonts.o : include/jmalloc.hpp
+./linux_svga/debug/fonts.o : include/specs.hpp
+./linux_svga/debug/fonts.o : include/palette.hpp
+./linux_svga/debug/fonts.o : include/linked.hpp
+./linux_svga/debug/fonts.o : include/image.hpp
+./linux_svga/debug/fonts.o : include/fonts.hpp
+./linux_svga/debug/decoder.o : decoder.c
+	g++  -c -o ./linux_svga/debug/decoder.o decoder.c -Iinclude -g -DMEM_CHECK -DMANAGE_MEM 
+
+./linux_svga/debug/decoder.o : include/macs.hpp
+./linux_svga/debug/decoder.o : include/system.h
+./linux_svga/debug/decoder.o : include/jmalloc.hpp
+./linux_svga/debug/decoder.o : include/specs.hpp
+./linux_svga/debug/decoder.o : include/palette.hpp
+./linux_svga/debug/decoder.o : include/linked.hpp
+./linux_svga/debug/decoder.o : include/image.hpp
+./linux_svga/debug/decoder.o : include/errs.h
+./linux_svga/debug/loader.o : loader.c
+	g++  -c -o ./linux_svga/debug/loader.o loader.c -Iinclude -g -DMEM_CHECK -DMANAGE_MEM 
+
+./linux_svga/debug/loader.o : include/targa.hpp
+./linux_svga/debug/loader.o : include/lbmread.hpp
+./linux_svga/debug/loader.o : include/pcxread.hpp
+./linux_svga/debug/loader.o : include/glread.hpp
+./linux_svga/debug/loader.o : include/xwdread.hpp
+./linux_svga/debug/loader.o : include/ppmread.hpp
+./linux_svga/debug/loader.o : include/mdlread.hpp
+./linux_svga/debug/loader.o : include/filter.hpp
+./linux_svga/debug/loader.o : include/macs.hpp
+./linux_svga/debug/loader.o : include/image24.hpp
+./linux_svga/debug/loader.o : include/system.h
+./linux_svga/debug/loader.o : include/jmalloc.hpp
+./linux_svga/debug/loader.o : include/specs.hpp
+./linux_svga/debug/loader.o : include/palette.hpp
+./linux_svga/debug/loader.o : include/linked.hpp
+./linux_svga/debug/loader.o : include/image.hpp
+./linux_svga/debug/loader.o : include/loader.hpp
+./linux_svga/debug/glread.o : glread.c
+	g++  -c -o ./linux_svga/debug/glread.o glread.c -Iinclude -g -DMEM_CHECK -DMANAGE_MEM 
+
+./linux_svga/debug/glread.o : include/video.hpp
+./linux_svga/debug/glread.o : include/jmalloc.hpp
+./linux_svga/debug/glread.o : include/specs.hpp
+./linux_svga/debug/glread.o : include/palette.hpp
+./linux_svga/debug/glread.o : include/linked.hpp
+./linux_svga/debug/glread.o : include/image.hpp
+./linux_svga/debug/glread.o : include/system.h
+./linux_svga/debug/glread.o : include/macs.hpp
+./linux_svga/debug/texture.o : texture.c
+	g++  -c -o ./linux_svga/debug/texture.o texture.c -Iinclude -g -DMEM_CHECK -DMANAGE_MEM 
+
+./linux_svga/debug/texture.o : include/mouse.hpp
+./linux_svga/debug/texture.o : include/sprite.hpp
+./linux_svga/debug/texture.o : include/keys.hpp
+./linux_svga/debug/texture.o : include/event.hpp
+./linux_svga/debug/texture.o : include/macs.hpp
+./linux_svga/debug/texture.o : include/video.hpp
+./linux_svga/debug/texture.o : include/system.h
+./linux_svga/debug/texture.o : include/jmalloc.hpp
+./linux_svga/debug/texture.o : include/specs.hpp
+./linux_svga/debug/texture.o : include/palette.hpp
+./linux_svga/debug/texture.o : include/linked.hpp
+./linux_svga/debug/texture.o : include/image.hpp
+./linux_svga/debug/specs.o : specs.c
+	g++  -c -o ./linux_svga/debug/specs.o specs.c -Iinclude -g -DMEM_CHECK -DMANAGE_MEM 
+
+./linux_svga/debug/specs.o : include/dprint.hpp
+./linux_svga/debug/specs.o : include/system.h
+./linux_svga/debug/specs.o : include/jmalloc.hpp
+./linux_svga/debug/specs.o : include/specs.hpp
+./linux_svga/debug/specs.o : include/palette.hpp
+./linux_svga/debug/specs.o : include/linked.hpp
+./linux_svga/debug/specs.o : include/image.hpp
+./linux_svga/debug/supmorph.o : supmorph.c
+	g++  -c -o ./linux_svga/debug/supmorph.o supmorph.c -Iinclude -g -DMEM_CHECK -DMANAGE_MEM 
+
+./linux_svga/debug/supmorph.o : include/jrand.hpp
+./linux_svga/debug/supmorph.o : include/video.hpp
+./linux_svga/debug/supmorph.o : include/timing.hpp
+./linux_svga/debug/supmorph.o : include/filter.hpp
+./linux_svga/debug/supmorph.o : include/macs.hpp
+./linux_svga/debug/supmorph.o : include/system.h
+./linux_svga/debug/supmorph.o : include/specs.hpp
+./linux_svga/debug/supmorph.o : include/palette.hpp
+./linux_svga/debug/supmorph.o : include/linked.hpp
+./linux_svga/debug/supmorph.o : include/image.hpp
+./linux_svga/debug/supmorph.o : include/timage.hpp
+./linux_svga/debug/supmorph.o : include/jmalloc.hpp
+./linux_svga/debug/supmorph.o : include/supmorph.hpp
+./linux_svga/debug/image24.o : image24.c
+	g++  -c -o ./linux_svga/debug/image24.o image24.c -Iinclude -g -DMEM_CHECK -DMANAGE_MEM 
+
+./linux_svga/debug/image24.o : include/image.hpp
+./linux_svga/debug/image24.o : include/filter.hpp
+./linux_svga/debug/image24.o : include/macs.hpp
+./linux_svga/debug/image24.o : include/system.h
+./linux_svga/debug/image24.o : include/jmalloc.hpp
+./linux_svga/debug/image24.o : include/specs.hpp
+./linux_svga/debug/image24.o : include/linked.hpp
+./linux_svga/debug/image24.o : include/palette.hpp
+./linux_svga/debug/image24.o : include/image24.hpp
+./linux_svga/debug/pcxread.o : pcxread.c
+	g++  -c -o ./linux_svga/debug/pcxread.o pcxread.c -Iinclude -g -DMEM_CHECK -DMANAGE_MEM 
+
+./linux_svga/debug/pcxread.o : include/filter.hpp
+./linux_svga/debug/pcxread.o : include/macs.hpp
+./linux_svga/debug/pcxread.o : include/image24.hpp
+./linux_svga/debug/pcxread.o : include/system.h
+./linux_svga/debug/pcxread.o : include/jmalloc.hpp
+./linux_svga/debug/pcxread.o : include/specs.hpp
+./linux_svga/debug/pcxread.o : include/palette.hpp
+./linux_svga/debug/pcxread.o : include/linked.hpp
+./linux_svga/debug/pcxread.o : include/image.hpp
+./linux_svga/debug/pcxread.o : include/pcxread.hpp
+./linux_svga/debug/timage.o : timage.c
+	g++  -c -o ./linux_svga/debug/timage.o timage.c -Iinclude -g -DMEM_CHECK -DMANAGE_MEM 
+
+./linux_svga/debug/timage.o : include/filter.hpp
+./linux_svga/debug/timage.o : include/macs.hpp
+./linux_svga/debug/timage.o : include/system.h
+./linux_svga/debug/timage.o : include/jmalloc.hpp
+./linux_svga/debug/timage.o : include/specs.hpp
+./linux_svga/debug/timage.o : include/palette.hpp
+./linux_svga/debug/timage.o : include/linked.hpp
+./linux_svga/debug/timage.o : include/image.hpp
+./linux_svga/debug/timage.o : include/timage.hpp
+./linux_svga/debug/jmalloc.o : jmalloc.c
+	g++  -c -o ./linux_svga/debug/jmalloc.o jmalloc.c -Iinclude -g -DMEM_CHECK -DMANAGE_MEM 
+
+./linux_svga/debug/jmalloc.o : include/jmalloc.hpp
+./linux_svga/debug/jmalloc.o : include/system.h
+./linux_svga/debug/jmalloc.o : include/macs.hpp
+./linux_svga/debug/jmalloc.o : include/doscall.hpp
+./linux_svga/debug/jrand.o : jrand.c
+	g++  -c -o ./linux_svga/debug/jrand.o jrand.c -Iinclude -g -DMEM_CHECK -DMANAGE_MEM 
+
+./linux_svga/debug/jrand.o : include/jrand.hpp
+./linux_svga/debug/lbmread.o : lbmread.c
+	g++  -c -o ./linux_svga/debug/lbmread.o lbmread.c -Iinclude -g -DMEM_CHECK -DMANAGE_MEM 
+
+./linux_svga/debug/lbmread.o : include/system.h
+./linux_svga/debug/lbmread.o : include/jmalloc.hpp
+./linux_svga/debug/lbmread.o : include/specs.hpp
+./linux_svga/debug/lbmread.o : include/palette.hpp
+./linux_svga/debug/lbmread.o : include/linked.hpp
+./linux_svga/debug/lbmread.o : include/image.hpp
+./linux_svga/debug/lbmread.o : include/lbmread.hpp
+./linux_svga/debug/targa.o : targa.c
+	g++  -c -o ./linux_svga/debug/targa.o targa.c -Iinclude -g -DMEM_CHECK -DMANAGE_MEM 
+
+./linux_svga/debug/targa.o : include/system.h
+./linux_svga/debug/targa.o : include/jmalloc.hpp
+./linux_svga/debug/targa.o : include/specs.hpp
+./linux_svga/debug/targa.o : include/palette.hpp
+./linux_svga/debug/targa.o : include/linked.hpp
+./linux_svga/debug/targa.o : include/image.hpp
+./linux_svga/debug/keys.o : keys.c
+	g++  -c -o ./linux_svga/debug/keys.o keys.c -Iinclude -g -DMEM_CHECK -DMANAGE_MEM 
+
+./linux_svga/debug/keys.o : include/keys.hpp
+./linux_svga/debug/dprint.o : dprint.c
+	g++  -c -o ./linux_svga/debug/dprint.o dprint.c -Iinclude -g -DMEM_CHECK -DMANAGE_MEM 
+
+./linux_svga/debug/dprint.o : include/system.h
+./linux_svga/debug/dprint.o : include/macs.hpp
+./linux_svga/debug/status.o : status.c
+	g++  -c -o ./linux_svga/debug/status.o status.c -Iinclude -g -DMEM_CHECK -DMANAGE_MEM 
+
+./linux_svga/debug/status.o : include/dprint.hpp
+./linux_svga/debug/status.o : include/timage.hpp
+./linux_svga/debug/status.o : include/fonts.hpp
+./linux_svga/debug/status.o : include/filter.hpp
+./linux_svga/debug/status.o : include/mouse.hpp
+./linux_svga/debug/status.o : include/sprite.hpp
+./linux_svga/debug/status.o : include/keys.hpp
+./linux_svga/debug/status.o : include/event.hpp
+./linux_svga/debug/status.o : include/jmalloc.hpp
+./linux_svga/debug/status.o : include/specs.hpp
+./linux_svga/debug/status.o : include/palette.hpp
+./linux_svga/debug/status.o : include/linked.hpp
+./linux_svga/debug/status.o : include/image.hpp
+./linux_svga/debug/status.o : include/video.hpp
+./linux_svga/debug/status.o : include/jwindow.hpp
+./linux_svga/debug/status.o : include/visobj.hpp
+./linux_svga/debug/status.o : include/status.hpp
+./linux_svga/debug/status.o : include/system.h
+./linux_svga/debug/status.o : include/macs.hpp
+./linux_svga/debug/visobj.o : visobj.c
+	g++  -c -o ./linux_svga/debug/visobj.o visobj.c -Iinclude -g -DMEM_CHECK -DMANAGE_MEM 
+
+./linux_svga/debug/visobj.o : include/timage.hpp
+./linux_svga/debug/visobj.o : include/fonts.hpp
+./linux_svga/debug/visobj.o : include/filter.hpp
+./linux_svga/debug/visobj.o : include/mouse.hpp
+./linux_svga/debug/visobj.o : include/macs.hpp
+./linux_svga/debug/visobj.o : include/sprite.hpp
+./linux_svga/debug/visobj.o : include/keys.hpp
+./linux_svga/debug/visobj.o : include/event.hpp
+./linux_svga/debug/visobj.o : include/jmalloc.hpp
+./linux_svga/debug/visobj.o : include/specs.hpp
+./linux_svga/debug/visobj.o : include/palette.hpp
+./linux_svga/debug/visobj.o : include/linked.hpp
+./linux_svga/debug/visobj.o : include/image.hpp
+./linux_svga/debug/visobj.o : include/system.h
+./linux_svga/debug/visobj.o : include/video.hpp
+./linux_svga/debug/visobj.o : include/jwindow.hpp
+./linux_svga/debug/visobj.o : include/visobj.hpp
+
+./linux_x11/debug/image.a : $(LINUX_X11_image_debug_o_files)
+	ar ruvs ./linux_x11/debug/image.a \
+	./linux_x11/debug/filter.o \
+	./linux_x11/debug/gifread.o \
+	./linux_x11/debug/globals.o \
+	./linux_x11/debug/image.o \
+	./linux_x11/debug/linked.o \
+	./linux_x11/debug/input.o \
+	./linux_x11/debug/mdlread.o \
+	./linux_x11/debug/palette.o \
+	./linux_x11/debug/ppmread.o \
+	./linux_x11/debug/include.o \
+	./linux_x11/debug/xwdread.o \
+	./linux_x11/debug/fonts.o \
+	./linux_x11/debug/decoder.o \
+	./linux_x11/debug/loader.o \
+	./linux_x11/debug/glread.o \
+	./linux_x11/debug/texture.o \
+	./linux_x11/debug/specs.o \
+	./linux_x11/debug/supmorph.o \
+	./linux_x11/debug/image24.o \
+	./linux_x11/debug/pcxread.o \
+	./linux_x11/debug/timage.o \
+	./linux_x11/debug/jmalloc.o \
+	./linux_x11/debug/jrand.o \
+	./linux_x11/debug/lbmread.o \
+	./linux_x11/debug/targa.o \
+	./linux_x11/debug/keys.o \
+	./linux_x11/debug/dprint.o \
+	./linux_x11/debug/status.o \
+	./linux_x11/debug/visobj.o
+
+./linux_x11/debug/filter.o : filter.c
+	g++  -c -o ./linux_x11/debug/filter.o filter.c -Iinclude -g -DMEM_CHECK -DMANAGE_MEM 
+
+./linux_x11/debug/filter.o : include/filter.hpp
+./linux_x11/debug/filter.o : include/macs.hpp
+./linux_x11/debug/filter.o : include/system.h
+./linux_x11/debug/filter.o : include/jmalloc.hpp
+./linux_x11/debug/filter.o : include/specs.hpp
+./linux_x11/debug/filter.o : include/palette.hpp
+./linux_x11/debug/filter.o : include/linked.hpp
+./linux_x11/debug/filter.o : include/image.hpp
+./linux_x11/debug/gifread.o : gifread.c
+	g++  -c -o ./linux_x11/debug/gifread.o gifread.c -Iinclude -g -DMEM_CHECK -DMANAGE_MEM 
+
+./linux_x11/debug/gifread.o : include/macs.hpp
+./linux_x11/debug/gifread.o : include/dir.h
+./linux_x11/debug/gifread.o : include/dos.h
+./linux_x11/debug/gifread.o : include/std.h
+./linux_x11/debug/gifread.o : include/gifdecod.hpp
+./linux_x11/debug/gifread.o : include/video.hpp
+./linux_x11/debug/gifread.o : include/system.h
+./linux_x11/debug/gifread.o : include/jmalloc.hpp
+./linux_x11/debug/gifread.o : include/specs.hpp
+./linux_x11/debug/gifread.o : include/palette.hpp
+./linux_x11/debug/gifread.o : include/linked.hpp
+./linux_x11/debug/gifread.o : include/image.hpp
+./linux_x11/debug/gifread.o : include/gifread.hpp
+./linux_x11/debug/globals.o : globals.c
+	g++  -c -o ./linux_x11/debug/globals.o globals.c -Iinclude -g -DMEM_CHECK -DMANAGE_MEM 
+
+./linux_x11/debug/globals.o : globals.c
+./linux_x11/debug/image.o : image.c
+	g++  -c -o ./linux_x11/debug/image.o image.c -Iinclude -g -DMEM_CHECK -DMANAGE_MEM 
+
+./linux_x11/debug/image.o : include/macs.hpp
+./linux_x11/debug/image.o : include/system.h
+./linux_x11/debug/image.o : include/jmalloc.hpp
+./linux_x11/debug/image.o : include/specs.hpp
+./linux_x11/debug/image.o : include/palette.hpp
+./linux_x11/debug/image.o : include/linked.hpp
+./linux_x11/debug/image.o : include/image.hpp
+./linux_x11/debug/linked.o : linked.c
+	g++  -c -o ./linux_x11/debug/linked.o linked.c -Iinclude -g -DMEM_CHECK -DMANAGE_MEM 
+
+./linux_x11/debug/linked.o : include/linked.hpp
+./linux_x11/debug/input.o : input.c
+	g++  -c -o ./linux_x11/debug/input.o input.c -Iinclude -g -DMEM_CHECK -DMANAGE_MEM 
+
+./linux_x11/debug/input.o : include/timage.hpp
+./linux_x11/debug/input.o : include/fonts.hpp
+./linux_x11/debug/input.o : include/filter.hpp
+./linux_x11/debug/input.o : include/mouse.hpp
+./linux_x11/debug/input.o : include/macs.hpp
+./linux_x11/debug/input.o : include/sprite.hpp
+./linux_x11/debug/input.o : include/keys.hpp
+./linux_x11/debug/input.o : include/event.hpp
+./linux_x11/debug/input.o : include/jmalloc.hpp
+./linux_x11/debug/input.o : include/specs.hpp
+./linux_x11/debug/input.o : include/palette.hpp
+./linux_x11/debug/input.o : include/linked.hpp
+./linux_x11/debug/input.o : include/image.hpp
+./linux_x11/debug/input.o : include/system.h
+./linux_x11/debug/input.o : include/video.hpp
+./linux_x11/debug/input.o : include/jwindow.hpp
+./linux_x11/debug/input.o : include/input.hpp
+./linux_x11/debug/mdlread.o : mdlread.c
+	g++  -c -o ./linux_x11/debug/mdlread.o mdlread.c -Iinclude -g -DMEM_CHECK -DMANAGE_MEM 
+
+./linux_x11/debug/mdlread.o : include/macs.hpp
+./linux_x11/debug/mdlread.o : include/image.hpp
+./linux_x11/debug/mdlread.o : include/system.h
+./linux_x11/debug/mdlread.o : include/jmalloc.hpp
+./linux_x11/debug/mdlread.o : include/specs.hpp
+./linux_x11/debug/mdlread.o : include/linked.hpp
+./linux_x11/debug/mdlread.o : include/palette.hpp
+./linux_x11/debug/mdlread.o : include/mdlread.hpp
+./linux_x11/debug/palette.o : palette.c
+	g++  -c -o ./linux_x11/debug/palette.o palette.c -Iinclude -g -DMEM_CHECK -DMANAGE_MEM 
+
+./linux_x11/debug/palette.o : include/filter.hpp
+./linux_x11/debug/palette.o : include/video.hpp
+./linux_x11/debug/palette.o : include/dos.h
+./linux_x11/debug/palette.o : include/macs.hpp
+./linux_x11/debug/palette.o : include/image.hpp
+./linux_x11/debug/palette.o : include/system.h
+./linux_x11/debug/palette.o : include/jmalloc.hpp
+./linux_x11/debug/palette.o : include/specs.hpp
+./linux_x11/debug/palette.o : include/linked.hpp
+./linux_x11/debug/palette.o : include/palette.hpp
+./linux_x11/debug/ppmread.o : ppmread.c
+	g++  -c -o ./linux_x11/debug/ppmread.o ppmread.c -Iinclude -g -DMEM_CHECK -DMANAGE_MEM 
+
+./linux_x11/debug/ppmread.o : include/ppmread.hpp
+./linux_x11/debug/ppmread.o : include/macs.hpp
+./linux_x11/debug/ppmread.o : include/system.h
+./linux_x11/debug/ppmread.o : include/jmalloc.hpp
+./linux_x11/debug/ppmread.o : include/specs.hpp
+./linux_x11/debug/ppmread.o : include/palette.hpp
+./linux_x11/debug/ppmread.o : include/linked.hpp
+./linux_x11/debug/ppmread.o : include/image.hpp
+./linux_x11/debug/include.o : include.c
+	g++  -c -o ./linux_x11/debug/include.o include.c -Iinclude -g -DMEM_CHECK -DMANAGE_MEM 
+
+./linux_x11/debug/include.o : include/system.h
+./linux_x11/debug/include.o : include/jmalloc.hpp
+./linux_x11/debug/include.o : include/specs.hpp
+./linux_x11/debug/include.o : include/palette.hpp
+./linux_x11/debug/include.o : include/linked.hpp
+./linux_x11/debug/include.o : include/image.hpp
+./linux_x11/debug/include.o : include/include.hpp
+./linux_x11/debug/xwdread.o : xwdread.c
+	g++  -c -o ./linux_x11/debug/xwdread.o xwdread.c -Iinclude -g -DMEM_CHECK -DMANAGE_MEM 
+
+./linux_x11/debug/xwdread.o : include/image24.hpp
+./linux_x11/debug/xwdread.o : include/main.hpp
+./linux_x11/debug/xwdread.o : include/dos.h
+./linux_x11/debug/xwdread.o : include/video.hpp
+./linux_x11/debug/xwdread.o : include/mouse.hpp
+./linux_x11/debug/xwdread.o : include/macs.hpp
+./linux_x11/debug/xwdread.o : include/sprite.hpp
+./linux_x11/debug/xwdread.o : include/keys.hpp
+./linux_x11/debug/xwdread.o : include/event.hpp
+./linux_x11/debug/xwdread.o : include/system.h
+./linux_x11/debug/xwdread.o : include/jmalloc.hpp
+./linux_x11/debug/xwdread.o : include/specs.hpp
+./linux_x11/debug/xwdread.o : include/palette.hpp
+./linux_x11/debug/xwdread.o : include/linked.hpp
+./linux_x11/debug/xwdread.o : include/image.hpp
+./linux_x11/debug/xwdread.o : include/filter.hpp
+./linux_x11/debug/fonts.o : fonts.c
+	g++  -c -o ./linux_x11/debug/fonts.o fonts.c -Iinclude -g -DMEM_CHECK -DMANAGE_MEM 
+
+./linux_x11/debug/fonts.o : include/filter.hpp
+./linux_x11/debug/fonts.o : include/macs.hpp
+./linux_x11/debug/fonts.o : include/timage.hpp
+./linux_x11/debug/fonts.o : include/system.h
+./linux_x11/debug/fonts.o : include/jmalloc.hpp
+./linux_x11/debug/fonts.o : include/specs.hpp
+./linux_x11/debug/fonts.o : include/palette.hpp
+./linux_x11/debug/fonts.o : include/linked.hpp
+./linux_x11/debug/fonts.o : include/image.hpp
+./linux_x11/debug/fonts.o : include/fonts.hpp
+./linux_x11/debug/decoder.o : decoder.c
+	g++  -c -o ./linux_x11/debug/decoder.o decoder.c -Iinclude -g -DMEM_CHECK -DMANAGE_MEM 
+
+./linux_x11/debug/decoder.o : include/macs.hpp
+./linux_x11/debug/decoder.o : include/system.h
+./linux_x11/debug/decoder.o : include/jmalloc.hpp
+./linux_x11/debug/decoder.o : include/specs.hpp
+./linux_x11/debug/decoder.o : include/palette.hpp
+./linux_x11/debug/decoder.o : include/linked.hpp
+./linux_x11/debug/decoder.o : include/image.hpp
+./linux_x11/debug/decoder.o : include/errs.h
+./linux_x11/debug/loader.o : loader.c
+	g++  -c -o ./linux_x11/debug/loader.o loader.c -Iinclude -g -DMEM_CHECK -DMANAGE_MEM 
+
+./linux_x11/debug/loader.o : include/targa.hpp
+./linux_x11/debug/loader.o : include/lbmread.hpp
+./linux_x11/debug/loader.o : include/pcxread.hpp
+./linux_x11/debug/loader.o : include/glread.hpp
+./linux_x11/debug/loader.o : include/xwdread.hpp
+./linux_x11/debug/loader.o : include/ppmread.hpp
+./linux_x11/debug/loader.o : include/mdlread.hpp
+./linux_x11/debug/loader.o : include/filter.hpp
+./linux_x11/debug/loader.o : include/macs.hpp
+./linux_x11/debug/loader.o : include/image24.hpp
+./linux_x11/debug/loader.o : include/system.h
+./linux_x11/debug/loader.o : include/jmalloc.hpp
+./linux_x11/debug/loader.o : include/specs.hpp
+./linux_x11/debug/loader.o : include/palette.hpp
+./linux_x11/debug/loader.o : include/linked.hpp
+./linux_x11/debug/loader.o : include/image.hpp
+./linux_x11/debug/loader.o : include/loader.hpp
+./linux_x11/debug/glread.o : glread.c
+	g++  -c -o ./linux_x11/debug/glread.o glread.c -Iinclude -g -DMEM_CHECK -DMANAGE_MEM 
+
+./linux_x11/debug/glread.o : include/video.hpp
+./linux_x11/debug/glread.o : include/jmalloc.hpp
+./linux_x11/debug/glread.o : include/specs.hpp
+./linux_x11/debug/glread.o : include/palette.hpp
+./linux_x11/debug/glread.o : include/linked.hpp
+./linux_x11/debug/glread.o : include/image.hpp
+./linux_x11/debug/glread.o : include/system.h
+./linux_x11/debug/glread.o : include/macs.hpp
+./linux_x11/debug/texture.o : texture.c
+	g++  -c -o ./linux_x11/debug/texture.o texture.c -Iinclude -g -DMEM_CHECK -DMANAGE_MEM 
+
+./linux_x11/debug/texture.o : include/mouse.hpp
+./linux_x11/debug/texture.o : include/sprite.hpp
+./linux_x11/debug/texture.o : include/keys.hpp
+./linux_x11/debug/texture.o : include/event.hpp
+./linux_x11/debug/texture.o : include/macs.hpp
+./linux_x11/debug/texture.o : include/video.hpp
+./linux_x11/debug/texture.o : include/system.h
+./linux_x11/debug/texture.o : include/jmalloc.hpp
+./linux_x11/debug/texture.o : include/specs.hpp
+./linux_x11/debug/texture.o : include/palette.hpp
+./linux_x11/debug/texture.o : include/linked.hpp
+./linux_x11/debug/texture.o : include/image.hpp
+./linux_x11/debug/specs.o : specs.c
+	g++  -c -o ./linux_x11/debug/specs.o specs.c -Iinclude -g -DMEM_CHECK -DMANAGE_MEM 
+
+./linux_x11/debug/specs.o : include/dprint.hpp
+./linux_x11/debug/specs.o : include/system.h
+./linux_x11/debug/specs.o : include/jmalloc.hpp
+./linux_x11/debug/specs.o : include/specs.hpp
+./linux_x11/debug/specs.o : include/palette.hpp
+./linux_x11/debug/specs.o : include/linked.hpp
+./linux_x11/debug/specs.o : include/image.hpp
+./linux_x11/debug/supmorph.o : supmorph.c
+	g++  -c -o ./linux_x11/debug/supmorph.o supmorph.c -Iinclude -g -DMEM_CHECK -DMANAGE_MEM 
+
+./linux_x11/debug/supmorph.o : include/jrand.hpp
+./linux_x11/debug/supmorph.o : include/video.hpp
+./linux_x11/debug/supmorph.o : include/timing.hpp
+./linux_x11/debug/supmorph.o : include/filter.hpp
+./linux_x11/debug/supmorph.o : include/macs.hpp
+./linux_x11/debug/supmorph.o : include/system.h
+./linux_x11/debug/supmorph.o : include/specs.hpp
+./linux_x11/debug/supmorph.o : include/palette.hpp
+./linux_x11/debug/supmorph.o : include/linked.hpp
+./linux_x11/debug/supmorph.o : include/image.hpp
+./linux_x11/debug/supmorph.o : include/timage.hpp
+./linux_x11/debug/supmorph.o : include/jmalloc.hpp
+./linux_x11/debug/supmorph.o : include/supmorph.hpp
+./linux_x11/debug/image24.o : image24.c
+	g++  -c -o ./linux_x11/debug/image24.o image24.c -Iinclude -g -DMEM_CHECK -DMANAGE_MEM 
+
+./linux_x11/debug/image24.o : include/image.hpp
+./linux_x11/debug/image24.o : include/filter.hpp
+./linux_x11/debug/image24.o : include/macs.hpp
+./linux_x11/debug/image24.o : include/system.h
+./linux_x11/debug/image24.o : include/jmalloc.hpp
+./linux_x11/debug/image24.o : include/specs.hpp
+./linux_x11/debug/image24.o : include/linked.hpp
+./linux_x11/debug/image24.o : include/palette.hpp
+./linux_x11/debug/image24.o : include/image24.hpp
+./linux_x11/debug/pcxread.o : pcxread.c
+	g++  -c -o ./linux_x11/debug/pcxread.o pcxread.c -Iinclude -g -DMEM_CHECK -DMANAGE_MEM 
+
+./linux_x11/debug/pcxread.o : include/filter.hpp
+./linux_x11/debug/pcxread.o : include/macs.hpp
+./linux_x11/debug/pcxread.o : include/image24.hpp
+./linux_x11/debug/pcxread.o : include/system.h
+./linux_x11/debug/pcxread.o : include/jmalloc.hpp
+./linux_x11/debug/pcxread.o : include/specs.hpp
+./linux_x11/debug/pcxread.o : include/palette.hpp
+./linux_x11/debug/pcxread.o : include/linked.hpp
+./linux_x11/debug/pcxread.o : include/image.hpp
+./linux_x11/debug/pcxread.o : include/pcxread.hpp
+./linux_x11/debug/timage.o : timage.c
+	g++  -c -o ./linux_x11/debug/timage.o timage.c -Iinclude -g -DMEM_CHECK -DMANAGE_MEM 
+
+./linux_x11/debug/timage.o : include/filter.hpp
+./linux_x11/debug/timage.o : include/macs.hpp
+./linux_x11/debug/timage.o : include/system.h
+./linux_x11/debug/timage.o : include/jmalloc.hpp
+./linux_x11/debug/timage.o : include/specs.hpp
+./linux_x11/debug/timage.o : include/palette.hpp
+./linux_x11/debug/timage.o : include/linked.hpp
+./linux_x11/debug/timage.o : include/image.hpp
+./linux_x11/debug/timage.o : include/timage.hpp
+./linux_x11/debug/jmalloc.o : jmalloc.c
+	g++  -c -o ./linux_x11/debug/jmalloc.o jmalloc.c -Iinclude -g -DMEM_CHECK -DMANAGE_MEM 
+
+./linux_x11/debug/jmalloc.o : include/jmalloc.hpp
+./linux_x11/debug/jmalloc.o : include/system.h
+./linux_x11/debug/jmalloc.o : include/macs.hpp
+./linux_x11/debug/jmalloc.o : include/doscall.hpp
+./linux_x11/debug/jrand.o : jrand.c
+	g++  -c -o ./linux_x11/debug/jrand.o jrand.c -Iinclude -g -DMEM_CHECK -DMANAGE_MEM 
+
+./linux_x11/debug/jrand.o : include/jrand.hpp
+./linux_x11/debug/lbmread.o : lbmread.c
+	g++  -c -o ./linux_x11/debug/lbmread.o lbmread.c -Iinclude -g -DMEM_CHECK -DMANAGE_MEM 
+
+./linux_x11/debug/lbmread.o : include/system.h
+./linux_x11/debug/lbmread.o : include/jmalloc.hpp
+./linux_x11/debug/lbmread.o : include/specs.hpp
+./linux_x11/debug/lbmread.o : include/palette.hpp
+./linux_x11/debug/lbmread.o : include/linked.hpp
+./linux_x11/debug/lbmread.o : include/image.hpp
+./linux_x11/debug/lbmread.o : include/lbmread.hpp
+./linux_x11/debug/targa.o : targa.c
+	g++  -c -o ./linux_x11/debug/targa.o targa.c -Iinclude -g -DMEM_CHECK -DMANAGE_MEM 
+
+./linux_x11/debug/targa.o : include/system.h
+./linux_x11/debug/targa.o : include/jmalloc.hpp
+./linux_x11/debug/targa.o : include/specs.hpp
+./linux_x11/debug/targa.o : include/palette.hpp
+./linux_x11/debug/targa.o : include/linked.hpp
+./linux_x11/debug/targa.o : include/image.hpp
+./linux_x11/debug/keys.o : keys.c
+	g++  -c -o ./linux_x11/debug/keys.o keys.c -Iinclude -g -DMEM_CHECK -DMANAGE_MEM 
+
+./linux_x11/debug/keys.o : include/keys.hpp
+./linux_x11/debug/dprint.o : dprint.c
+	g++  -c -o ./linux_x11/debug/dprint.o dprint.c -Iinclude -g -DMEM_CHECK -DMANAGE_MEM 
+
+./linux_x11/debug/dprint.o : include/system.h
+./linux_x11/debug/dprint.o : include/macs.hpp
+./linux_x11/debug/status.o : status.c
+	g++  -c -o ./linux_x11/debug/status.o status.c -Iinclude -g -DMEM_CHECK -DMANAGE_MEM 
+
+./linux_x11/debug/status.o : include/dprint.hpp
+./linux_x11/debug/status.o : include/timage.hpp
+./linux_x11/debug/status.o : include/fonts.hpp
+./linux_x11/debug/status.o : include/filter.hpp
+./linux_x11/debug/status.o : include/mouse.hpp
+./linux_x11/debug/status.o : include/sprite.hpp
+./linux_x11/debug/status.o : include/keys.hpp
+./linux_x11/debug/status.o : include/event.hpp
+./linux_x11/debug/status.o : include/jmalloc.hpp
+./linux_x11/debug/status.o : include/specs.hpp
+./linux_x11/debug/status.o : include/palette.hpp
+./linux_x11/debug/status.o : include/linked.hpp
+./linux_x11/debug/status.o : include/image.hpp
+./linux_x11/debug/status.o : include/video.hpp
+./linux_x11/debug/status.o : include/jwindow.hpp
+./linux_x11/debug/status.o : include/visobj.hpp
+./linux_x11/debug/status.o : include/status.hpp
+./linux_x11/debug/status.o : include/system.h
+./linux_x11/debug/status.o : include/macs.hpp
+./linux_x11/debug/visobj.o : visobj.c
+	g++  -c -o ./linux_x11/debug/visobj.o visobj.c -Iinclude -g -DMEM_CHECK -DMANAGE_MEM 
+
+./linux_x11/debug/visobj.o : include/timage.hpp
+./linux_x11/debug/visobj.o : include/fonts.hpp
+./linux_x11/debug/visobj.o : include/filter.hpp
+./linux_x11/debug/visobj.o : include/mouse.hpp
+./linux_x11/debug/visobj.o : include/macs.hpp
+./linux_x11/debug/visobj.o : include/sprite.hpp
+./linux_x11/debug/visobj.o : include/keys.hpp
+./linux_x11/debug/visobj.o : include/event.hpp
+./linux_x11/debug/visobj.o : include/jmalloc.hpp
+./linux_x11/debug/visobj.o : include/specs.hpp
+./linux_x11/debug/visobj.o : include/palette.hpp
+./linux_x11/debug/visobj.o : include/linked.hpp
+./linux_x11/debug/visobj.o : include/image.hpp
+./linux_x11/debug/visobj.o : include/system.h
+./linux_x11/debug/visobj.o : include/video.hpp
+./linux_x11/debug/visobj.o : include/jwindow.hpp
+./linux_x11/debug/visobj.o : include/visobj.hpp
+
+LINUX_X11_image_opt_o_files = \
+	./linux_x11/opt/filter.o \
+	./linux_x11/opt/gifread.o \
+	./linux_x11/opt/globals.o \
+	./linux_x11/opt/image.o \
+	./linux_x11/opt/linked.o \
+	./linux_x11/opt/input.o \
+	./linux_x11/opt/mdlread.o \
+	./linux_x11/opt/palette.o \
+	./linux_x11/opt/ppmread.o \
+	./linux_x11/opt/include.o \
+	./linux_x11/opt/xwdread.o \
+	./linux_x11/opt/fonts.o \
+	./linux_x11/opt/decoder.o \
+	./linux_x11/opt/loader.o \
+	./linux_x11/opt/glread.o \
+	./linux_x11/opt/texture.o \
+	./linux_x11/opt/specs.o \
+	./linux_x11/opt/supmorph.o \
+	./linux_x11/opt/image24.o \
+	./linux_x11/opt/pcxread.o \
+	./linux_x11/opt/timage.o \
+	./linux_x11/opt/jmalloc.o \
+	./linux_x11/opt/jrand.o \
+	./linux_x11/opt/lbmread.o \
+	./linux_x11/opt/targa.o \
+	./linux_x11/opt/keys.o \
+	./linux_x11/opt/dprint.o \
+	./linux_x11/opt/status.o \
+	./linux_x11/opt/visobj.o
+
+LINUX_SVGA_image_opt_o_files = \
+	./linux_svga/opt/filter.o \
+	./linux_svga/opt/gifread.o \
+	./linux_svga/opt/globals.o \
+	./linux_svga/opt/image.o \
+	./linux_svga/opt/linked.o \
+	./linux_svga/opt/input.o \
+	./linux_svga/opt/mdlread.o \
+	./linux_svga/opt/palette.o \
+	./linux_svga/opt/ppmread.o \
+	./linux_svga/opt/include.o \
+	./linux_svga/opt/xwdread.o \
+	./linux_svga/opt/fonts.o \
+	./linux_svga/opt/decoder.o \
+	./linux_svga/opt/loader.o \
+	./linux_svga/opt/glread.o \
+	./linux_svga/opt/texture.o \
+	./linux_svga/opt/specs.o \
+	./linux_svga/opt/supmorph.o \
+	./linux_svga/opt/image24.o \
+	./linux_svga/opt/pcxread.o \
+	./linux_svga/opt/timage.o \
+	./linux_svga/opt/jmalloc.o \
+	./linux_svga/opt/jrand.o \
+	./linux_svga/opt/lbmread.o \
+	./linux_svga/opt/targa.o \
+	./linux_svga/opt/keys.o \
+	./linux_svga/opt/dprint.o \
+	./linux_svga/opt/status.o \
+	./linux_svga/opt/visobj.o
+
+LINUX_X11_packet_opt_o_files = \
+	./linux_x11/opt/packet.o
+
+LINUX_SVGA_packet_opt_o_files = \
+	./linux_svga/opt/packet.o
+
+LINUX_X11_gui_opt_o_files = \
+	./linux_x11/opt/pmenu.o \
+	./linux_x11/opt/scroller.o \
+	./linux_x11/opt/filesel.o \
+	./linux_x11/opt/tools.o \
+	./linux_x11/opt/guistat.o
+
+LINUX_SVGA_gui_opt_o_files = \
+	./linux_svga/opt/pmenu.o \
+	./linux_svga/opt/scroller.o \
+	./linux_svga/opt/filesel.o \
+	./linux_svga/opt/tools.o \
+	./linux_svga/opt/guistat.o
+
+LINUX_X11_sound_opt_o_files = \
+	port/sgi/linux_x11/opt/sound.o \
+	./linux_x11/opt/readwav.o
+
+LINUX_SVGA_sound_opt_o_files = \
+	port/sgi/linux_svga/opt/sound.o \
+	./linux_svga/opt/readwav.o
+
+LINUX_X11_net_opt_o_files = \
+	port/unix/linux_x11/opt/jnet.o
+
+LINUX_SVGA_net_opt_o_files = \
+	port/unix/linux_svga/opt/jnet.o
+
+LINUX_X11_dir_opt_o_files = \
+	port/unix/linux_x11/opt/jdir.o
+
+LINUX_SVGA_dir_opt_o_files = \
+	port/unix/linux_svga/opt/jdir.o
+
+LINUX_X11_winman_opt_o_files = \
+	port/x11/linux_x11/opt/video.o \
+	port/x11/linux_x11/opt/mouse.o \
+	port/x11/linux_x11/opt/event.o \
+	./linux_x11/opt/jwindow.o
+
+LINUX_SVGA_winman_opt_o_files = \
+	port/svga/linux_svga/opt/video.o \
+	port/svga/linux_svga/opt/mouse.o \
+	port/svga/linux_svga/opt/event.o \
+	./linux_svga/opt/jwindow.o
+
+LINUX_X11_joy_opt_o_files = \
+	port/linux/linux_x11/opt/joystick.o
+
+LINUX_SVGA_joy_opt_o_files = \
+	port/linux/linux_svga/opt/joystick.o
+
+LINUX_X11_time_opt_o_files = \
+	port/unix/linux_x11/opt/timing.o
+
+LINUX_SVGA_time_opt_o_files = \
+	port/unix/linux_svga/opt/timing.o
+
+./linux_svga/opt/time.a : $(LINUX_SVGA_time_opt_o_files)
+	ar ruvs ./linux_svga/opt/time.a \
+	port/unix/linux_svga/opt/timing.o
+
+port/unix/linux_svga/opt/timing.o : port/unix/timing.c
+	g++  -c -o port/unix/linux_svga/opt/timing.o port/unix/timing.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK 
+
+port/unix/linux_svga/opt/timing.o : include/timing.hpp
+
+./linux_x11/opt/time.a : $(LINUX_X11_time_opt_o_files)
+	ar ruvs ./linux_x11/opt/time.a \
+	port/unix/linux_x11/opt/timing.o
+
+port/unix/linux_x11/opt/timing.o : port/unix/timing.c
+	g++  -c -o port/unix/linux_x11/opt/timing.o port/unix/timing.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK 
+
+port/unix/linux_x11/opt/timing.o : include/timing.hpp
+
+./linux_svga/opt/joy.a : $(LINUX_SVGA_joy_opt_o_files)
+	ar ruvs ./linux_svga/opt/joy.a \
+	port/linux/linux_svga/opt/joystick.o
+
+port/linux/linux_svga/opt/joystick.o : port/linux/joystick.c
+	g++  -c -o port/linux/linux_svga/opt/joystick.o port/linux/joystick.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK 
+
+port/linux/linux_svga/opt/joystick.o : include/joy.hpp
+
+./linux_x11/opt/joy.a : $(LINUX_X11_joy_opt_o_files)
+	ar ruvs ./linux_x11/opt/joy.a \
+	port/linux/linux_x11/opt/joystick.o
+
+port/linux/linux_x11/opt/joystick.o : port/linux/joystick.c
+	g++  -c -o port/linux/linux_x11/opt/joystick.o port/linux/joystick.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK 
+
+port/linux/linux_x11/opt/joystick.o : include/joy.hpp
+
+./linux_svga/opt/winman.a : $(LINUX_SVGA_winman_opt_o_files)
+	ar ruvs ./linux_svga/opt/winman.a \
+	port/svga/linux_svga/opt/video.o \
+	port/svga/linux_svga/opt/mouse.o \
+	port/svga/linux_svga/opt/event.o \
+	./linux_svga/opt/jwindow.o
+
+port/svga/linux_svga/opt/video.o : port/svga/video.c
+	g++  -c -o port/svga/linux_svga/opt/video.o port/svga/video.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK 
+
+port/svga/linux_svga/opt/video.o : include/macs.hpp
+port/svga/linux_svga/opt/video.o : include/dos.h
+port/svga/linux_svga/opt/video.o : include/jmalloc.hpp
+port/svga/linux_svga/opt/video.o : include/specs.hpp
+port/svga/linux_svga/opt/video.o : include/palette.hpp
+port/svga/linux_svga/opt/video.o : include/linked.hpp
+port/svga/linux_svga/opt/video.o : include/image.hpp
+port/svga/linux_svga/opt/video.o : include/video.hpp
+port/svga/linux_svga/opt/video.o : include/system.h
+port/svga/linux_svga/opt/video.o : include/globals.hpp
+port/svga/linux_svga/opt/mouse.o : port/svga/mouse.c
+	g++  -c -o port/svga/linux_svga/opt/mouse.o port/svga/mouse.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK 
+
+port/svga/linux_svga/opt/mouse.o : include/dprint.hpp
+port/svga/linux_svga/opt/mouse.o : include/mouse.hpp
+port/svga/linux_svga/opt/mouse.o : include/monoprnt.hpp
+port/svga/linux_svga/opt/mouse.o : include/mdlread.hpp
+port/svga/linux_svga/opt/mouse.o : include/filter.hpp
+port/svga/linux_svga/opt/mouse.o : include/macs.hpp
+port/svga/linux_svga/opt/mouse.o : include/sprite.hpp
+port/svga/linux_svga/opt/mouse.o : include/jmalloc.hpp
+port/svga/linux_svga/opt/mouse.o : include/specs.hpp
+port/svga/linux_svga/opt/mouse.o : include/palette.hpp
+port/svga/linux_svga/opt/mouse.o : include/linked.hpp
+port/svga/linux_svga/opt/mouse.o : include/image.hpp
+port/svga/linux_svga/opt/mouse.o : include/system.h
+port/svga/linux_svga/opt/mouse.o : include/video.hpp
+port/svga/linux_svga/opt/event.o : port/svga/event.c
+	g++  -c -o port/svga/linux_svga/opt/event.o port/svga/event.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK 
+
+port/svga/linux_svga/opt/event.o : include/dprint.hpp
+port/svga/linux_svga/opt/event.o : include/monoprnt.hpp
+port/svga/linux_svga/opt/event.o : include/keys.hpp
+port/svga/linux_svga/opt/event.o : include/event.hpp
+port/svga/linux_svga/opt/event.o : include/sprite.hpp
+port/svga/linux_svga/opt/event.o : include/mouse.hpp
+port/svga/linux_svga/opt/event.o : include/macs.hpp
+port/svga/linux_svga/opt/event.o : include/gifread.hpp
+port/svga/linux_svga/opt/event.o : include/dos.h
+port/svga/linux_svga/opt/event.o : include/video.hpp
+port/svga/linux_svga/opt/event.o : include/mdlread.hpp
+port/svga/linux_svga/opt/event.o : include/jmalloc.hpp
+port/svga/linux_svga/opt/event.o : include/specs.hpp
+port/svga/linux_svga/opt/event.o : include/palette.hpp
+port/svga/linux_svga/opt/event.o : include/linked.hpp
+port/svga/linux_svga/opt/event.o : include/image.hpp
+port/svga/linux_svga/opt/event.o : include/system.h
+./linux_svga/opt/jwindow.o : jwindow.c
+	g++  -c -o ./linux_svga/opt/jwindow.o jwindow.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK 
+
+./linux_svga/opt/jwindow.o : include/timage.hpp
+./linux_svga/opt/jwindow.o : include/fonts.hpp
+./linux_svga/opt/jwindow.o : include/jwindow.hpp
+./linux_svga/opt/jwindow.o : include/filter.hpp
+./linux_svga/opt/jwindow.o : include/mouse.hpp
+./linux_svga/opt/jwindow.o : include/macs.hpp
+./linux_svga/opt/jwindow.o : include/sprite.hpp
+./linux_svga/opt/jwindow.o : include/keys.hpp
+./linux_svga/opt/jwindow.o : include/event.hpp
+./linux_svga/opt/jwindow.o : include/jmalloc.hpp
+./linux_svga/opt/jwindow.o : include/specs.hpp
+./linux_svga/opt/jwindow.o : include/palette.hpp
+./linux_svga/opt/jwindow.o : include/linked.hpp
+./linux_svga/opt/jwindow.o : include/image.hpp
+./linux_svga/opt/jwindow.o : include/system.h
+./linux_svga/opt/jwindow.o : include/video.hpp
+
+./linux_x11/opt/winman.a : $(LINUX_X11_winman_opt_o_files)
+	ar ruvs ./linux_x11/opt/winman.a \
+	port/x11/linux_x11/opt/video.o \
+	port/x11/linux_x11/opt/mouse.o \
+	port/x11/linux_x11/opt/event.o \
+	./linux_x11/opt/jwindow.o
+
+port/x11/linux_x11/opt/video.o : port/x11/video.c
+	g++  -c -o port/x11/linux_x11/opt/video.o port/x11/video.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK 
+
+port/x11/linux_x11/opt/video.o : include/bitmap.h
+port/x11/linux_x11/opt/video.o : include/macs.hpp
+port/x11/linux_x11/opt/video.o : include/xinclude.h
+port/x11/linux_x11/opt/video.o : include/dos.h
+port/x11/linux_x11/opt/video.o : include/video.hpp
+port/x11/linux_x11/opt/video.o : include/globals.hpp
+port/x11/linux_x11/opt/video.o : include/system.h
+port/x11/linux_x11/opt/video.o : include/jmalloc.hpp
+port/x11/linux_x11/opt/video.o : include/specs.hpp
+port/x11/linux_x11/opt/video.o : include/palette.hpp
+port/x11/linux_x11/opt/video.o : include/linked.hpp
+port/x11/linux_x11/opt/video.o : include/image.hpp
+port/x11/linux_x11/opt/video.o : include/filter.hpp
+port/x11/linux_x11/opt/mouse.o : port/x11/mouse.c
+	g++  -c -o port/x11/linux_x11/opt/mouse.o port/x11/mouse.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK 
+
+port/x11/linux_x11/opt/mouse.o : include/xinclude.h
+port/x11/linux_x11/opt/mouse.o : include/mouse.hpp
+port/x11/linux_x11/opt/mouse.o : include/monoprnt.hpp
+port/x11/linux_x11/opt/mouse.o : include/mdlread.hpp
+port/x11/linux_x11/opt/mouse.o : include/filter.hpp
+port/x11/linux_x11/opt/mouse.o : include/macs.hpp
+port/x11/linux_x11/opt/mouse.o : include/sprite.hpp
+port/x11/linux_x11/opt/mouse.o : include/jmalloc.hpp
+port/x11/linux_x11/opt/mouse.o : include/specs.hpp
+port/x11/linux_x11/opt/mouse.o : include/palette.hpp
+port/x11/linux_x11/opt/mouse.o : include/linked.hpp
+port/x11/linux_x11/opt/mouse.o : include/image.hpp
+port/x11/linux_x11/opt/mouse.o : include/system.h
+port/x11/linux_x11/opt/mouse.o : include/video.hpp
+port/x11/linux_x11/opt/event.o : port/x11/event.c
+	g++  -c -o port/x11/linux_x11/opt/event.o port/x11/event.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK 
+
+port/x11/linux_x11/opt/event.o : include/keys.hpp
+port/x11/linux_x11/opt/event.o : include/event.hpp
+port/x11/linux_x11/opt/event.o : include/sprite.hpp
+port/x11/linux_x11/opt/event.o : include/mouse.hpp
+port/x11/linux_x11/opt/event.o : include/macs.hpp
+port/x11/linux_x11/opt/event.o : include/gifread.hpp
+port/x11/linux_x11/opt/event.o : include/video.hpp
+port/x11/linux_x11/opt/event.o : include/mdlread.hpp
+port/x11/linux_x11/opt/event.o : include/jmalloc.hpp
+port/x11/linux_x11/opt/event.o : include/specs.hpp
+port/x11/linux_x11/opt/event.o : include/palette.hpp
+port/x11/linux_x11/opt/event.o : include/linked.hpp
+port/x11/linux_x11/opt/event.o : include/image.hpp
+port/x11/linux_x11/opt/event.o : include/xinclude.h
+port/x11/linux_x11/opt/event.o : include/system.h
+./linux_x11/opt/jwindow.o : jwindow.c
+	g++  -c -o ./linux_x11/opt/jwindow.o jwindow.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK 
+
+./linux_x11/opt/jwindow.o : include/timage.hpp
+./linux_x11/opt/jwindow.o : include/fonts.hpp
+./linux_x11/opt/jwindow.o : include/jwindow.hpp
+./linux_x11/opt/jwindow.o : include/filter.hpp
+./linux_x11/opt/jwindow.o : include/mouse.hpp
+./linux_x11/opt/jwindow.o : include/macs.hpp
+./linux_x11/opt/jwindow.o : include/sprite.hpp
+./linux_x11/opt/jwindow.o : include/keys.hpp
+./linux_x11/opt/jwindow.o : include/event.hpp
+./linux_x11/opt/jwindow.o : include/jmalloc.hpp
+./linux_x11/opt/jwindow.o : include/specs.hpp
+./linux_x11/opt/jwindow.o : include/palette.hpp
+./linux_x11/opt/jwindow.o : include/linked.hpp
+./linux_x11/opt/jwindow.o : include/image.hpp
+./linux_x11/opt/jwindow.o : include/system.h
+./linux_x11/opt/jwindow.o : include/video.hpp
+
+./linux_svga/opt/dir.a : $(LINUX_SVGA_dir_opt_o_files)
+	ar ruvs ./linux_svga/opt/dir.a \
+	port/unix/linux_svga/opt/jdir.o
+
+port/unix/linux_svga/opt/jdir.o : port/unix/jdir.c
+	g++  -c -o port/unix/linux_svga/opt/jdir.o port/unix/jdir.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK 
+
+port/unix/linux_svga/opt/jdir.o : include/jmalloc.hpp
+
+./linux_x11/opt/dir.a : $(LINUX_X11_dir_opt_o_files)
+	ar ruvs ./linux_x11/opt/dir.a \
+	port/unix/linux_x11/opt/jdir.o
+
+port/unix/linux_x11/opt/jdir.o : port/unix/jdir.c
+	g++  -c -o port/unix/linux_x11/opt/jdir.o port/unix/jdir.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK 
+
+port/unix/linux_x11/opt/jdir.o : include/jmalloc.hpp
+
+./linux_svga/opt/net.a : $(LINUX_SVGA_net_opt_o_files)
+	ar ruvs ./linux_svga/opt/net.a \
+	port/unix/linux_svga/opt/jnet.o
+
+port/unix/linux_svga/opt/jnet.o : port/unix/jnet.c
+	g++  -c -o port/unix/linux_svga/opt/jnet.o port/unix/jnet.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK 
+
+port/unix/linux_svga/opt/jnet.o : include/jmalloc.hpp
+port/unix/linux_svga/opt/jnet.o : include/packet.hpp
+port/unix/linux_svga/opt/jnet.o : include/system.h
+port/unix/linux_svga/opt/jnet.o : include/macs.hpp
+port/unix/linux_svga/opt/jnet.o : include/jnet.hpp
+
+./linux_x11/opt/net.a : $(LINUX_X11_net_opt_o_files)
+	ar ruvs ./linux_x11/opt/net.a \
+	port/unix/linux_x11/opt/jnet.o
+
+port/unix/linux_x11/opt/jnet.o : port/unix/jnet.c
+	g++  -c -o port/unix/linux_x11/opt/jnet.o port/unix/jnet.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK 
+
+port/unix/linux_x11/opt/jnet.o : include/jmalloc.hpp
+port/unix/linux_x11/opt/jnet.o : include/packet.hpp
+port/unix/linux_x11/opt/jnet.o : include/system.h
+port/unix/linux_x11/opt/jnet.o : include/macs.hpp
+port/unix/linux_x11/opt/jnet.o : include/jnet.hpp
+
+./linux_svga/opt/sound.a : $(LINUX_SVGA_sound_opt_o_files)
+	ar ruvs ./linux_svga/opt/sound.a \
+	port/sgi/linux_svga/opt/sound.o \
+	./linux_svga/opt/readwav.o
+
+port/sgi/linux_svga/opt/sound.o : port/sgi/sound.c
+	g++  -c -o port/sgi/linux_svga/opt/sound.o port/sgi/sound.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK 
+
+port/sgi/linux_svga/opt/sound.o : include/timing.hpp
+port/sgi/linux_svga/opt/sound.o : include/dprint.hpp
+port/sgi/linux_svga/opt/sound.o : include/jmalloc.hpp
+port/sgi/linux_svga/opt/sound.o : include/linked.hpp
+port/sgi/linux_svga/opt/sound.o : include/specs.hpp
+port/sgi/linux_svga/opt/sound.o : include/readwav.hpp
+port/sgi/linux_svga/opt/sound.o : include/sound.hpp
+port/sgi/linux_svga/opt/sound.o : include/system.h
+port/sgi/linux_svga/opt/sound.o : include/macs.hpp
+./linux_svga/opt/readwav.o : readwav.c
+	g++  -c -o ./linux_svga/opt/readwav.o readwav.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK 
+
+./linux_svga/opt/readwav.o : include/dprint.hpp
+./linux_svga/opt/readwav.o : include/macs.hpp
+./linux_svga/opt/readwav.o : include/system.h
+./linux_svga/opt/readwav.o : include/jmalloc.hpp
+./linux_svga/opt/readwav.o : include/linked.hpp
+./linux_svga/opt/readwav.o : include/specs.hpp
+./linux_svga/opt/readwav.o : include/readwav.hpp
+
+./linux_x11/opt/sound.a : $(LINUX_X11_sound_opt_o_files)
+	ar ruvs ./linux_x11/opt/sound.a \
+	port/sgi/linux_x11/opt/sound.o \
+	./linux_x11/opt/readwav.o
+
+port/sgi/linux_x11/opt/sound.o : port/sgi/sound.c
+	g++  -c -o port/sgi/linux_x11/opt/sound.o port/sgi/sound.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK 
+
+port/sgi/linux_x11/opt/sound.o : include/timing.hpp
+port/sgi/linux_x11/opt/sound.o : include/dprint.hpp
+port/sgi/linux_x11/opt/sound.o : include/jmalloc.hpp
+port/sgi/linux_x11/opt/sound.o : include/linked.hpp
+port/sgi/linux_x11/opt/sound.o : include/specs.hpp
+port/sgi/linux_x11/opt/sound.o : include/readwav.hpp
+port/sgi/linux_x11/opt/sound.o : include/sound.hpp
+port/sgi/linux_x11/opt/sound.o : include/system.h
+port/sgi/linux_x11/opt/sound.o : include/macs.hpp
+./linux_x11/opt/readwav.o : readwav.c
+	g++  -c -o ./linux_x11/opt/readwav.o readwav.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK 
+
+./linux_x11/opt/readwav.o : include/dprint.hpp
+./linux_x11/opt/readwav.o : include/macs.hpp
+./linux_x11/opt/readwav.o : include/system.h
+./linux_x11/opt/readwav.o : include/jmalloc.hpp
+./linux_x11/opt/readwav.o : include/linked.hpp
+./linux_x11/opt/readwav.o : include/specs.hpp
+./linux_x11/opt/readwav.o : include/readwav.hpp
+
+./linux_svga/opt/gui.a : $(LINUX_SVGA_gui_opt_o_files)
+	ar ruvs ./linux_svga/opt/gui.a \
+	./linux_svga/opt/pmenu.o \
+	./linux_svga/opt/scroller.o \
+	./linux_svga/opt/filesel.o \
+	./linux_svga/opt/tools.o \
+	./linux_svga/opt/guistat.o
+
+./linux_svga/opt/pmenu.o : pmenu.c
+	g++  -c -o ./linux_svga/opt/pmenu.o pmenu.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK 
+
+./linux_svga/opt/pmenu.o : include/timage.hpp
+./linux_svga/opt/pmenu.o : include/fonts.hpp
+./linux_svga/opt/pmenu.o : include/filter.hpp
+./linux_svga/opt/pmenu.o : include/mouse.hpp
+./linux_svga/opt/pmenu.o : include/macs.hpp
+./linux_svga/opt/pmenu.o : include/sprite.hpp
+./linux_svga/opt/pmenu.o : include/keys.hpp
+./linux_svga/opt/pmenu.o : include/event.hpp
+./linux_svga/opt/pmenu.o : include/specs.hpp
+./linux_svga/opt/pmenu.o : include/palette.hpp
+./linux_svga/opt/pmenu.o : include/linked.hpp
+./linux_svga/opt/pmenu.o : include/image.hpp
+./linux_svga/opt/pmenu.o : include/system.h
+./linux_svga/opt/pmenu.o : include/video.hpp
+./linux_svga/opt/pmenu.o : include/jwindow.hpp
+./linux_svga/opt/pmenu.o : include/input.hpp
+./linux_svga/opt/pmenu.o : include/jmalloc.hpp
+./linux_svga/opt/pmenu.o : include/pmenu.hpp
+./linux_svga/opt/scroller.o : scroller.c
+	g++  -c -o ./linux_svga/opt/scroller.o scroller.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK 
+
+./linux_svga/opt/scroller.o : include/timage.hpp
+./linux_svga/opt/scroller.o : include/fonts.hpp
+./linux_svga/opt/scroller.o : include/filter.hpp
+./linux_svga/opt/scroller.o : include/mouse.hpp
+./linux_svga/opt/scroller.o : include/macs.hpp
+./linux_svga/opt/scroller.o : include/sprite.hpp
+./linux_svga/opt/scroller.o : include/keys.hpp
+./linux_svga/opt/scroller.o : include/event.hpp
+./linux_svga/opt/scroller.o : include/jmalloc.hpp
+./linux_svga/opt/scroller.o : include/specs.hpp
+./linux_svga/opt/scroller.o : include/palette.hpp
+./linux_svga/opt/scroller.o : include/linked.hpp
+./linux_svga/opt/scroller.o : include/image.hpp
+./linux_svga/opt/scroller.o : include/system.h
+./linux_svga/opt/scroller.o : include/video.hpp
+./linux_svga/opt/scroller.o : include/jwindow.hpp
+./linux_svga/opt/scroller.o : include/input.hpp
+./linux_svga/opt/scroller.o : include/scroller.hpp
+./linux_svga/opt/filesel.o : filesel.c
+	g++  -c -o ./linux_svga/opt/filesel.o filesel.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK 
+
+./linux_svga/opt/filesel.o : include/jdir.hpp
+./linux_svga/opt/filesel.o : include/scroller.hpp
+./linux_svga/opt/filesel.o : include/input.hpp
+./linux_svga/opt/filesel.o : include/timage.hpp
+./linux_svga/opt/filesel.o : include/fonts.hpp
+./linux_svga/opt/filesel.o : include/filter.hpp
+./linux_svga/opt/filesel.o : include/mouse.hpp
+./linux_svga/opt/filesel.o : include/macs.hpp
+./linux_svga/opt/filesel.o : include/sprite.hpp
+./linux_svga/opt/filesel.o : include/keys.hpp
+./linux_svga/opt/filesel.o : include/event.hpp
+./linux_svga/opt/filesel.o : include/jmalloc.hpp
+./linux_svga/opt/filesel.o : include/specs.hpp
+./linux_svga/opt/filesel.o : include/palette.hpp
+./linux_svga/opt/filesel.o : include/linked.hpp
+./linux_svga/opt/filesel.o : include/image.hpp
+./linux_svga/opt/filesel.o : include/system.h
+./linux_svga/opt/filesel.o : include/video.hpp
+./linux_svga/opt/filesel.o : include/jwindow.hpp
+./linux_svga/opt/filesel.o : include/filesel.hpp
+./linux_svga/opt/tools.o : tools.c
+	g++  -c -o ./linux_svga/opt/tools.o tools.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK 
+
+./linux_svga/opt/tools.o : include/visobj.hpp
+./linux_svga/opt/tools.o : include/scroller.hpp
+./linux_svga/opt/tools.o : include/input.hpp
+./linux_svga/opt/tools.o : include/timage.hpp
+./linux_svga/opt/tools.o : include/fonts.hpp
+./linux_svga/opt/tools.o : include/filter.hpp
+./linux_svga/opt/tools.o : include/mouse.hpp
+./linux_svga/opt/tools.o : include/macs.hpp
+./linux_svga/opt/tools.o : include/sprite.hpp
+./linux_svga/opt/tools.o : include/keys.hpp
+./linux_svga/opt/tools.o : include/event.hpp
+./linux_svga/opt/tools.o : include/jmalloc.hpp
+./linux_svga/opt/tools.o : include/specs.hpp
+./linux_svga/opt/tools.o : include/palette.hpp
+./linux_svga/opt/tools.o : include/linked.hpp
+./linux_svga/opt/tools.o : include/image.hpp
+./linux_svga/opt/tools.o : include/system.h
+./linux_svga/opt/tools.o : include/video.hpp
+./linux_svga/opt/tools.o : include/jwindow.hpp
+./linux_svga/opt/tools.o : include/tools.hpp
+./linux_svga/opt/guistat.o : guistat.c
+	g++  -c -o ./linux_svga/opt/guistat.o guistat.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK 
+
+./linux_svga/opt/guistat.o : include/guistat.hpp
+./linux_svga/opt/guistat.o : include/timing.hpp
+./linux_svga/opt/guistat.o : include/timage.hpp
+./linux_svga/opt/guistat.o : include/fonts.hpp
+./linux_svga/opt/guistat.o : include/filter.hpp
+./linux_svga/opt/guistat.o : include/mouse.hpp
+./linux_svga/opt/guistat.o : include/macs.hpp
+./linux_svga/opt/guistat.o : include/sprite.hpp
+./linux_svga/opt/guistat.o : include/keys.hpp
+./linux_svga/opt/guistat.o : include/event.hpp
+./linux_svga/opt/guistat.o : include/jmalloc.hpp
+./linux_svga/opt/guistat.o : include/specs.hpp
+./linux_svga/opt/guistat.o : include/palette.hpp
+./linux_svga/opt/guistat.o : include/linked.hpp
+./linux_svga/opt/guistat.o : include/image.hpp
+./linux_svga/opt/guistat.o : include/system.h
+./linux_svga/opt/guistat.o : include/video.hpp
+./linux_svga/opt/guistat.o : include/jwindow.hpp
+./linux_svga/opt/guistat.o : include/visobj.hpp
+./linux_svga/opt/guistat.o : include/status.hpp
+
+./linux_x11/opt/gui.a : $(LINUX_X11_gui_opt_o_files)
+	ar ruvs ./linux_x11/opt/gui.a \
+	./linux_x11/opt/pmenu.o \
+	./linux_x11/opt/scroller.o \
+	./linux_x11/opt/filesel.o \
+	./linux_x11/opt/tools.o \
+	./linux_x11/opt/guistat.o
+
+./linux_x11/opt/pmenu.o : pmenu.c
+	g++  -c -o ./linux_x11/opt/pmenu.o pmenu.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK 
+
+./linux_x11/opt/pmenu.o : include/timage.hpp
+./linux_x11/opt/pmenu.o : include/fonts.hpp
+./linux_x11/opt/pmenu.o : include/filter.hpp
+./linux_x11/opt/pmenu.o : include/mouse.hpp
+./linux_x11/opt/pmenu.o : include/macs.hpp
+./linux_x11/opt/pmenu.o : include/sprite.hpp
+./linux_x11/opt/pmenu.o : include/keys.hpp
+./linux_x11/opt/pmenu.o : include/event.hpp
+./linux_x11/opt/pmenu.o : include/specs.hpp
+./linux_x11/opt/pmenu.o : include/palette.hpp
+./linux_x11/opt/pmenu.o : include/linked.hpp
+./linux_x11/opt/pmenu.o : include/image.hpp
+./linux_x11/opt/pmenu.o : include/system.h
+./linux_x11/opt/pmenu.o : include/video.hpp
+./linux_x11/opt/pmenu.o : include/jwindow.hpp
+./linux_x11/opt/pmenu.o : include/input.hpp
+./linux_x11/opt/pmenu.o : include/jmalloc.hpp
+./linux_x11/opt/pmenu.o : include/pmenu.hpp
+./linux_x11/opt/scroller.o : scroller.c
+	g++  -c -o ./linux_x11/opt/scroller.o scroller.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK 
+
+./linux_x11/opt/scroller.o : include/timage.hpp
+./linux_x11/opt/scroller.o : include/fonts.hpp
+./linux_x11/opt/scroller.o : include/filter.hpp
+./linux_x11/opt/scroller.o : include/mouse.hpp
+./linux_x11/opt/scroller.o : include/macs.hpp
+./linux_x11/opt/scroller.o : include/sprite.hpp
+./linux_x11/opt/scroller.o : include/keys.hpp
+./linux_x11/opt/scroller.o : include/event.hpp
+./linux_x11/opt/scroller.o : include/jmalloc.hpp
+./linux_x11/opt/scroller.o : include/specs.hpp
+./linux_x11/opt/scroller.o : include/palette.hpp
+./linux_x11/opt/scroller.o : include/linked.hpp
+./linux_x11/opt/scroller.o : include/image.hpp
+./linux_x11/opt/scroller.o : include/system.h
+./linux_x11/opt/scroller.o : include/video.hpp
+./linux_x11/opt/scroller.o : include/jwindow.hpp
+./linux_x11/opt/scroller.o : include/input.hpp
+./linux_x11/opt/scroller.o : include/scroller.hpp
+./linux_x11/opt/filesel.o : filesel.c
+	g++  -c -o ./linux_x11/opt/filesel.o filesel.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK 
+
+./linux_x11/opt/filesel.o : include/jdir.hpp
+./linux_x11/opt/filesel.o : include/scroller.hpp
+./linux_x11/opt/filesel.o : include/input.hpp
+./linux_x11/opt/filesel.o : include/timage.hpp
+./linux_x11/opt/filesel.o : include/fonts.hpp
+./linux_x11/opt/filesel.o : include/filter.hpp
+./linux_x11/opt/filesel.o : include/mouse.hpp
+./linux_x11/opt/filesel.o : include/macs.hpp
+./linux_x11/opt/filesel.o : include/sprite.hpp
+./linux_x11/opt/filesel.o : include/keys.hpp
+./linux_x11/opt/filesel.o : include/event.hpp
+./linux_x11/opt/filesel.o : include/jmalloc.hpp
+./linux_x11/opt/filesel.o : include/specs.hpp
+./linux_x11/opt/filesel.o : include/palette.hpp
+./linux_x11/opt/filesel.o : include/linked.hpp
+./linux_x11/opt/filesel.o : include/image.hpp
+./linux_x11/opt/filesel.o : include/system.h
+./linux_x11/opt/filesel.o : include/video.hpp
+./linux_x11/opt/filesel.o : include/jwindow.hpp
+./linux_x11/opt/filesel.o : include/filesel.hpp
+./linux_x11/opt/tools.o : tools.c
+	g++  -c -o ./linux_x11/opt/tools.o tools.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK 
+
+./linux_x11/opt/tools.o : include/visobj.hpp
+./linux_x11/opt/tools.o : include/scroller.hpp
+./linux_x11/opt/tools.o : include/input.hpp
+./linux_x11/opt/tools.o : include/timage.hpp
+./linux_x11/opt/tools.o : include/fonts.hpp
+./linux_x11/opt/tools.o : include/filter.hpp
+./linux_x11/opt/tools.o : include/mouse.hpp
+./linux_x11/opt/tools.o : include/macs.hpp
+./linux_x11/opt/tools.o : include/sprite.hpp
+./linux_x11/opt/tools.o : include/keys.hpp
+./linux_x11/opt/tools.o : include/event.hpp
+./linux_x11/opt/tools.o : include/jmalloc.hpp
+./linux_x11/opt/tools.o : include/specs.hpp
+./linux_x11/opt/tools.o : include/palette.hpp
+./linux_x11/opt/tools.o : include/linked.hpp
+./linux_x11/opt/tools.o : include/image.hpp
+./linux_x11/opt/tools.o : include/system.h
+./linux_x11/opt/tools.o : include/video.hpp
+./linux_x11/opt/tools.o : include/jwindow.hpp
+./linux_x11/opt/tools.o : include/tools.hpp
+./linux_x11/opt/guistat.o : guistat.c
+	g++  -c -o ./linux_x11/opt/guistat.o guistat.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK 
+
+./linux_x11/opt/guistat.o : include/guistat.hpp
+./linux_x11/opt/guistat.o : include/timing.hpp
+./linux_x11/opt/guistat.o : include/timage.hpp
+./linux_x11/opt/guistat.o : include/fonts.hpp
+./linux_x11/opt/guistat.o : include/filter.hpp
+./linux_x11/opt/guistat.o : include/mouse.hpp
+./linux_x11/opt/guistat.o : include/macs.hpp
+./linux_x11/opt/guistat.o : include/sprite.hpp
+./linux_x11/opt/guistat.o : include/keys.hpp
+./linux_x11/opt/guistat.o : include/event.hpp
+./linux_x11/opt/guistat.o : include/jmalloc.hpp
+./linux_x11/opt/guistat.o : include/specs.hpp
+./linux_x11/opt/guistat.o : include/palette.hpp
+./linux_x11/opt/guistat.o : include/linked.hpp
+./linux_x11/opt/guistat.o : include/image.hpp
+./linux_x11/opt/guistat.o : include/system.h
+./linux_x11/opt/guistat.o : include/video.hpp
+./linux_x11/opt/guistat.o : include/jwindow.hpp
+./linux_x11/opt/guistat.o : include/visobj.hpp
+./linux_x11/opt/guistat.o : include/status.hpp
+
+./linux_svga/opt/packet.a : $(LINUX_SVGA_packet_opt_o_files)
+	ar ruvs ./linux_svga/opt/packet.a \
+	./linux_svga/opt/packet.o
+
+./linux_svga/opt/packet.o : packet.c
+	g++  -c -o ./linux_svga/opt/packet.o packet.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK 
+
+./linux_svga/opt/packet.o : include/jmalloc.hpp
+./linux_svga/opt/packet.o : include/system.h
+./linux_svga/opt/packet.o : include/macs.hpp
+./linux_svga/opt/packet.o : include/packet.hpp
+
+./linux_x11/opt/packet.a : $(LINUX_X11_packet_opt_o_files)
+	ar ruvs ./linux_x11/opt/packet.a \
+	./linux_x11/opt/packet.o
+
+./linux_x11/opt/packet.o : packet.c
+	g++  -c -o ./linux_x11/opt/packet.o packet.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK 
+
+./linux_x11/opt/packet.o : include/jmalloc.hpp
+./linux_x11/opt/packet.o : include/system.h
+./linux_x11/opt/packet.o : include/macs.hpp
+./linux_x11/opt/packet.o : include/packet.hpp
+
+./linux_svga/opt/image.a : $(LINUX_SVGA_image_opt_o_files)
+	ar ruvs ./linux_svga/opt/image.a \
+	./linux_svga/opt/filter.o \
+	./linux_svga/opt/gifread.o \
+	./linux_svga/opt/globals.o \
+	./linux_svga/opt/image.o \
+	./linux_svga/opt/linked.o \
+	./linux_svga/opt/input.o \
+	./linux_svga/opt/mdlread.o \
+	./linux_svga/opt/palette.o \
+	./linux_svga/opt/ppmread.o \
+	./linux_svga/opt/include.o \
+	./linux_svga/opt/xwdread.o \
+	./linux_svga/opt/fonts.o \
+	./linux_svga/opt/decoder.o \
+	./linux_svga/opt/loader.o \
+	./linux_svga/opt/glread.o \
+	./linux_svga/opt/texture.o \
+	./linux_svga/opt/specs.o \
+	./linux_svga/opt/supmorph.o \
+	./linux_svga/opt/image24.o \
+	./linux_svga/opt/pcxread.o \
+	./linux_svga/opt/timage.o \
+	./linux_svga/opt/jmalloc.o \
+	./linux_svga/opt/jrand.o \
+	./linux_svga/opt/lbmread.o \
+	./linux_svga/opt/targa.o \
+	./linux_svga/opt/keys.o \
+	./linux_svga/opt/dprint.o \
+	./linux_svga/opt/status.o \
+	./linux_svga/opt/visobj.o
+
+./linux_svga/opt/filter.o : filter.c
+	g++  -c -o ./linux_svga/opt/filter.o filter.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK 
+
+./linux_svga/opt/filter.o : include/filter.hpp
+./linux_svga/opt/filter.o : include/macs.hpp
+./linux_svga/opt/filter.o : include/system.h
+./linux_svga/opt/filter.o : include/jmalloc.hpp
+./linux_svga/opt/filter.o : include/specs.hpp
+./linux_svga/opt/filter.o : include/palette.hpp
+./linux_svga/opt/filter.o : include/linked.hpp
+./linux_svga/opt/filter.o : include/image.hpp
+./linux_svga/opt/gifread.o : gifread.c
+	g++  -c -o ./linux_svga/opt/gifread.o gifread.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK 
+
+./linux_svga/opt/gifread.o : include/macs.hpp
+./linux_svga/opt/gifread.o : include/dir.h
+./linux_svga/opt/gifread.o : include/dos.h
+./linux_svga/opt/gifread.o : include/std.h
+./linux_svga/opt/gifread.o : include/gifdecod.hpp
+./linux_svga/opt/gifread.o : include/video.hpp
+./linux_svga/opt/gifread.o : include/system.h
+./linux_svga/opt/gifread.o : include/jmalloc.hpp
+./linux_svga/opt/gifread.o : include/specs.hpp
+./linux_svga/opt/gifread.o : include/palette.hpp
+./linux_svga/opt/gifread.o : include/linked.hpp
+./linux_svga/opt/gifread.o : include/image.hpp
+./linux_svga/opt/gifread.o : include/gifread.hpp
+./linux_svga/opt/globals.o : globals.c
+	g++  -c -o ./linux_svga/opt/globals.o globals.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK 
+
+./linux_svga/opt/globals.o : globals.c
+./linux_svga/opt/image.o : image.c
+	g++  -c -o ./linux_svga/opt/image.o image.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK 
+
+./linux_svga/opt/image.o : include/macs.hpp
+./linux_svga/opt/image.o : include/system.h
+./linux_svga/opt/image.o : include/jmalloc.hpp
+./linux_svga/opt/image.o : include/specs.hpp
+./linux_svga/opt/image.o : include/palette.hpp
+./linux_svga/opt/image.o : include/linked.hpp
+./linux_svga/opt/image.o : include/image.hpp
+./linux_svga/opt/linked.o : linked.c
+	g++  -c -o ./linux_svga/opt/linked.o linked.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK 
+
+./linux_svga/opt/linked.o : include/linked.hpp
+./linux_svga/opt/input.o : input.c
+	g++  -c -o ./linux_svga/opt/input.o input.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK 
+
+./linux_svga/opt/input.o : include/timage.hpp
+./linux_svga/opt/input.o : include/fonts.hpp
+./linux_svga/opt/input.o : include/filter.hpp
+./linux_svga/opt/input.o : include/mouse.hpp
+./linux_svga/opt/input.o : include/macs.hpp
+./linux_svga/opt/input.o : include/sprite.hpp
+./linux_svga/opt/input.o : include/keys.hpp
+./linux_svga/opt/input.o : include/event.hpp
+./linux_svga/opt/input.o : include/jmalloc.hpp
+./linux_svga/opt/input.o : include/specs.hpp
+./linux_svga/opt/input.o : include/palette.hpp
+./linux_svga/opt/input.o : include/linked.hpp
+./linux_svga/opt/input.o : include/image.hpp
+./linux_svga/opt/input.o : include/system.h
+./linux_svga/opt/input.o : include/video.hpp
+./linux_svga/opt/input.o : include/jwindow.hpp
+./linux_svga/opt/input.o : include/input.hpp
+./linux_svga/opt/mdlread.o : mdlread.c
+	g++  -c -o ./linux_svga/opt/mdlread.o mdlread.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK 
+
+./linux_svga/opt/mdlread.o : include/macs.hpp
+./linux_svga/opt/mdlread.o : include/image.hpp
+./linux_svga/opt/mdlread.o : include/system.h
+./linux_svga/opt/mdlread.o : include/jmalloc.hpp
+./linux_svga/opt/mdlread.o : include/specs.hpp
+./linux_svga/opt/mdlread.o : include/linked.hpp
+./linux_svga/opt/mdlread.o : include/palette.hpp
+./linux_svga/opt/mdlread.o : include/mdlread.hpp
+./linux_svga/opt/palette.o : palette.c
+	g++  -c -o ./linux_svga/opt/palette.o palette.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK 
+
+./linux_svga/opt/palette.o : include/filter.hpp
+./linux_svga/opt/palette.o : include/video.hpp
+./linux_svga/opt/palette.o : include/dos.h
+./linux_svga/opt/palette.o : include/macs.hpp
+./linux_svga/opt/palette.o : include/image.hpp
+./linux_svga/opt/palette.o : include/system.h
+./linux_svga/opt/palette.o : include/jmalloc.hpp
+./linux_svga/opt/palette.o : include/specs.hpp
+./linux_svga/opt/palette.o : include/linked.hpp
+./linux_svga/opt/palette.o : include/palette.hpp
+./linux_svga/opt/ppmread.o : ppmread.c
+	g++  -c -o ./linux_svga/opt/ppmread.o ppmread.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK 
+
+./linux_svga/opt/ppmread.o : include/ppmread.hpp
+./linux_svga/opt/ppmread.o : include/macs.hpp
+./linux_svga/opt/ppmread.o : include/system.h
+./linux_svga/opt/ppmread.o : include/jmalloc.hpp
+./linux_svga/opt/ppmread.o : include/specs.hpp
+./linux_svga/opt/ppmread.o : include/palette.hpp
+./linux_svga/opt/ppmread.o : include/linked.hpp
+./linux_svga/opt/ppmread.o : include/image.hpp
+./linux_svga/opt/include.o : include.c
+	g++  -c -o ./linux_svga/opt/include.o include.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK 
+
+./linux_svga/opt/include.o : include/system.h
+./linux_svga/opt/include.o : include/jmalloc.hpp
+./linux_svga/opt/include.o : include/specs.hpp
+./linux_svga/opt/include.o : include/palette.hpp
+./linux_svga/opt/include.o : include/linked.hpp
+./linux_svga/opt/include.o : include/image.hpp
+./linux_svga/opt/include.o : include/include.hpp
+./linux_svga/opt/xwdread.o : xwdread.c
+	g++  -c -o ./linux_svga/opt/xwdread.o xwdread.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK 
+
+./linux_svga/opt/xwdread.o : include/image24.hpp
+./linux_svga/opt/xwdread.o : include/main.hpp
+./linux_svga/opt/xwdread.o : include/dos.h
+./linux_svga/opt/xwdread.o : include/video.hpp
+./linux_svga/opt/xwdread.o : include/mouse.hpp
+./linux_svga/opt/xwdread.o : include/macs.hpp
+./linux_svga/opt/xwdread.o : include/sprite.hpp
+./linux_svga/opt/xwdread.o : include/keys.hpp
+./linux_svga/opt/xwdread.o : include/event.hpp
+./linux_svga/opt/xwdread.o : include/system.h
+./linux_svga/opt/xwdread.o : include/jmalloc.hpp
+./linux_svga/opt/xwdread.o : include/specs.hpp
+./linux_svga/opt/xwdread.o : include/palette.hpp
+./linux_svga/opt/xwdread.o : include/linked.hpp
+./linux_svga/opt/xwdread.o : include/image.hpp
+./linux_svga/opt/xwdread.o : include/filter.hpp
+./linux_svga/opt/fonts.o : fonts.c
+	g++  -c -o ./linux_svga/opt/fonts.o fonts.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK 
+
+./linux_svga/opt/fonts.o : include/filter.hpp
+./linux_svga/opt/fonts.o : include/macs.hpp
+./linux_svga/opt/fonts.o : include/timage.hpp
+./linux_svga/opt/fonts.o : include/system.h
+./linux_svga/opt/fonts.o : include/jmalloc.hpp
+./linux_svga/opt/fonts.o : include/specs.hpp
+./linux_svga/opt/fonts.o : include/palette.hpp
+./linux_svga/opt/fonts.o : include/linked.hpp
+./linux_svga/opt/fonts.o : include/image.hpp
+./linux_svga/opt/fonts.o : include/fonts.hpp
+./linux_svga/opt/decoder.o : decoder.c
+	g++  -c -o ./linux_svga/opt/decoder.o decoder.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK 
+
+./linux_svga/opt/decoder.o : include/macs.hpp
+./linux_svga/opt/decoder.o : include/system.h
+./linux_svga/opt/decoder.o : include/jmalloc.hpp
+./linux_svga/opt/decoder.o : include/specs.hpp
+./linux_svga/opt/decoder.o : include/palette.hpp
+./linux_svga/opt/decoder.o : include/linked.hpp
+./linux_svga/opt/decoder.o : include/image.hpp
+./linux_svga/opt/decoder.o : include/errs.h
+./linux_svga/opt/loader.o : loader.c
+	g++  -c -o ./linux_svga/opt/loader.o loader.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK 
+
+./linux_svga/opt/loader.o : include/targa.hpp
+./linux_svga/opt/loader.o : include/lbmread.hpp
+./linux_svga/opt/loader.o : include/pcxread.hpp
+./linux_svga/opt/loader.o : include/glread.hpp
+./linux_svga/opt/loader.o : include/xwdread.hpp
+./linux_svga/opt/loader.o : include/ppmread.hpp
+./linux_svga/opt/loader.o : include/mdlread.hpp
+./linux_svga/opt/loader.o : include/filter.hpp
+./linux_svga/opt/loader.o : include/macs.hpp
+./linux_svga/opt/loader.o : include/image24.hpp
+./linux_svga/opt/loader.o : include/system.h
+./linux_svga/opt/loader.o : include/jmalloc.hpp
+./linux_svga/opt/loader.o : include/specs.hpp
+./linux_svga/opt/loader.o : include/palette.hpp
+./linux_svga/opt/loader.o : include/linked.hpp
+./linux_svga/opt/loader.o : include/image.hpp
+./linux_svga/opt/loader.o : include/loader.hpp
+./linux_svga/opt/glread.o : glread.c
+	g++  -c -o ./linux_svga/opt/glread.o glread.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK 
+
+./linux_svga/opt/glread.o : include/video.hpp
+./linux_svga/opt/glread.o : include/jmalloc.hpp
+./linux_svga/opt/glread.o : include/specs.hpp
+./linux_svga/opt/glread.o : include/palette.hpp
+./linux_svga/opt/glread.o : include/linked.hpp
+./linux_svga/opt/glread.o : include/image.hpp
+./linux_svga/opt/glread.o : include/system.h
+./linux_svga/opt/glread.o : include/macs.hpp
+./linux_svga/opt/texture.o : texture.c
+	g++  -c -o ./linux_svga/opt/texture.o texture.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK 
+
+./linux_svga/opt/texture.o : include/mouse.hpp
+./linux_svga/opt/texture.o : include/sprite.hpp
+./linux_svga/opt/texture.o : include/keys.hpp
+./linux_svga/opt/texture.o : include/event.hpp
+./linux_svga/opt/texture.o : include/macs.hpp
+./linux_svga/opt/texture.o : include/video.hpp
+./linux_svga/opt/texture.o : include/system.h
+./linux_svga/opt/texture.o : include/jmalloc.hpp
+./linux_svga/opt/texture.o : include/specs.hpp
+./linux_svga/opt/texture.o : include/palette.hpp
+./linux_svga/opt/texture.o : include/linked.hpp
+./linux_svga/opt/texture.o : include/image.hpp
+./linux_svga/opt/specs.o : specs.c
+	g++  -c -o ./linux_svga/opt/specs.o specs.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK 
+
+./linux_svga/opt/specs.o : include/dprint.hpp
+./linux_svga/opt/specs.o : include/system.h
+./linux_svga/opt/specs.o : include/jmalloc.hpp
+./linux_svga/opt/specs.o : include/specs.hpp
+./linux_svga/opt/specs.o : include/palette.hpp
+./linux_svga/opt/specs.o : include/linked.hpp
+./linux_svga/opt/specs.o : include/image.hpp
+./linux_svga/opt/supmorph.o : supmorph.c
+	g++  -c -o ./linux_svga/opt/supmorph.o supmorph.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK 
+
+./linux_svga/opt/supmorph.o : include/jrand.hpp
+./linux_svga/opt/supmorph.o : include/video.hpp
+./linux_svga/opt/supmorph.o : include/timing.hpp
+./linux_svga/opt/supmorph.o : include/filter.hpp
+./linux_svga/opt/supmorph.o : include/macs.hpp
+./linux_svga/opt/supmorph.o : include/system.h
+./linux_svga/opt/supmorph.o : include/specs.hpp
+./linux_svga/opt/supmorph.o : include/palette.hpp
+./linux_svga/opt/supmorph.o : include/linked.hpp
+./linux_svga/opt/supmorph.o : include/image.hpp
+./linux_svga/opt/supmorph.o : include/timage.hpp
+./linux_svga/opt/supmorph.o : include/jmalloc.hpp
+./linux_svga/opt/supmorph.o : include/supmorph.hpp
+./linux_svga/opt/image24.o : image24.c
+	g++  -c -o ./linux_svga/opt/image24.o image24.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK 
+
+./linux_svga/opt/image24.o : include/image.hpp
+./linux_svga/opt/image24.o : include/filter.hpp
+./linux_svga/opt/image24.o : include/macs.hpp
+./linux_svga/opt/image24.o : include/system.h
+./linux_svga/opt/image24.o : include/jmalloc.hpp
+./linux_svga/opt/image24.o : include/specs.hpp
+./linux_svga/opt/image24.o : include/linked.hpp
+./linux_svga/opt/image24.o : include/palette.hpp
+./linux_svga/opt/image24.o : include/image24.hpp
+./linux_svga/opt/pcxread.o : pcxread.c
+	g++  -c -o ./linux_svga/opt/pcxread.o pcxread.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK 
+
+./linux_svga/opt/pcxread.o : include/filter.hpp
+./linux_svga/opt/pcxread.o : include/macs.hpp
+./linux_svga/opt/pcxread.o : include/image24.hpp
+./linux_svga/opt/pcxread.o : include/system.h
+./linux_svga/opt/pcxread.o : include/jmalloc.hpp
+./linux_svga/opt/pcxread.o : include/specs.hpp
+./linux_svga/opt/pcxread.o : include/palette.hpp
+./linux_svga/opt/pcxread.o : include/linked.hpp
+./linux_svga/opt/pcxread.o : include/image.hpp
+./linux_svga/opt/pcxread.o : include/pcxread.hpp
+./linux_svga/opt/timage.o : timage.c
+	g++  -c -o ./linux_svga/opt/timage.o timage.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK 
+
+./linux_svga/opt/timage.o : include/filter.hpp
+./linux_svga/opt/timage.o : include/macs.hpp
+./linux_svga/opt/timage.o : include/system.h
+./linux_svga/opt/timage.o : include/jmalloc.hpp
+./linux_svga/opt/timage.o : include/specs.hpp
+./linux_svga/opt/timage.o : include/palette.hpp
+./linux_svga/opt/timage.o : include/linked.hpp
+./linux_svga/opt/timage.o : include/image.hpp
+./linux_svga/opt/timage.o : include/timage.hpp
+./linux_svga/opt/jmalloc.o : jmalloc.c
+	g++  -c -o ./linux_svga/opt/jmalloc.o jmalloc.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK 
+
+./linux_svga/opt/jmalloc.o : include/jmalloc.hpp
+./linux_svga/opt/jmalloc.o : include/system.h
+./linux_svga/opt/jmalloc.o : include/macs.hpp
+./linux_svga/opt/jmalloc.o : include/doscall.hpp
+./linux_svga/opt/jrand.o : jrand.c
+	g++  -c -o ./linux_svga/opt/jrand.o jrand.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK 
+
+./linux_svga/opt/jrand.o : include/jrand.hpp
+./linux_svga/opt/lbmread.o : lbmread.c
+	g++  -c -o ./linux_svga/opt/lbmread.o lbmread.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK 
+
+./linux_svga/opt/lbmread.o : include/system.h
+./linux_svga/opt/lbmread.o : include/jmalloc.hpp
+./linux_svga/opt/lbmread.o : include/specs.hpp
+./linux_svga/opt/lbmread.o : include/palette.hpp
+./linux_svga/opt/lbmread.o : include/linked.hpp
+./linux_svga/opt/lbmread.o : include/image.hpp
+./linux_svga/opt/lbmread.o : include/lbmread.hpp
+./linux_svga/opt/targa.o : targa.c
+	g++  -c -o ./linux_svga/opt/targa.o targa.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK 
+
+./linux_svga/opt/targa.o : include/system.h
+./linux_svga/opt/targa.o : include/jmalloc.hpp
+./linux_svga/opt/targa.o : include/specs.hpp
+./linux_svga/opt/targa.o : include/palette.hpp
+./linux_svga/opt/targa.o : include/linked.hpp
+./linux_svga/opt/targa.o : include/image.hpp
+./linux_svga/opt/keys.o : keys.c
+	g++  -c -o ./linux_svga/opt/keys.o keys.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK 
+
+./linux_svga/opt/keys.o : include/keys.hpp
+./linux_svga/opt/dprint.o : dprint.c
+	g++  -c -o ./linux_svga/opt/dprint.o dprint.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK 
+
+./linux_svga/opt/dprint.o : include/system.h
+./linux_svga/opt/dprint.o : include/macs.hpp
+./linux_svga/opt/status.o : status.c
+	g++  -c -o ./linux_svga/opt/status.o status.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK 
+
+./linux_svga/opt/status.o : include/dprint.hpp
+./linux_svga/opt/status.o : include/timage.hpp
+./linux_svga/opt/status.o : include/fonts.hpp
+./linux_svga/opt/status.o : include/filter.hpp
+./linux_svga/opt/status.o : include/mouse.hpp
+./linux_svga/opt/status.o : include/sprite.hpp
+./linux_svga/opt/status.o : include/keys.hpp
+./linux_svga/opt/status.o : include/event.hpp
+./linux_svga/opt/status.o : include/jmalloc.hpp
+./linux_svga/opt/status.o : include/specs.hpp
+./linux_svga/opt/status.o : include/palette.hpp
+./linux_svga/opt/status.o : include/linked.hpp
+./linux_svga/opt/status.o : include/image.hpp
+./linux_svga/opt/status.o : include/video.hpp
+./linux_svga/opt/status.o : include/jwindow.hpp
+./linux_svga/opt/status.o : include/visobj.hpp
+./linux_svga/opt/status.o : include/status.hpp
+./linux_svga/opt/status.o : include/system.h
+./linux_svga/opt/status.o : include/macs.hpp
+./linux_svga/opt/visobj.o : visobj.c
+	g++  -c -o ./linux_svga/opt/visobj.o visobj.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK 
+
+./linux_svga/opt/visobj.o : include/timage.hpp
+./linux_svga/opt/visobj.o : include/fonts.hpp
+./linux_svga/opt/visobj.o : include/filter.hpp
+./linux_svga/opt/visobj.o : include/mouse.hpp
+./linux_svga/opt/visobj.o : include/macs.hpp
+./linux_svga/opt/visobj.o : include/sprite.hpp
+./linux_svga/opt/visobj.o : include/keys.hpp
+./linux_svga/opt/visobj.o : include/event.hpp
+./linux_svga/opt/visobj.o : include/jmalloc.hpp
+./linux_svga/opt/visobj.o : include/specs.hpp
+./linux_svga/opt/visobj.o : include/palette.hpp
+./linux_svga/opt/visobj.o : include/linked.hpp
+./linux_svga/opt/visobj.o : include/image.hpp
+./linux_svga/opt/visobj.o : include/system.h
+./linux_svga/opt/visobj.o : include/video.hpp
+./linux_svga/opt/visobj.o : include/jwindow.hpp
+./linux_svga/opt/visobj.o : include/visobj.hpp
+
+./linux_x11/opt/image.a : $(LINUX_X11_image_opt_o_files)
+	ar ruvs ./linux_x11/opt/image.a \
+	./linux_x11/opt/filter.o \
+	./linux_x11/opt/gifread.o \
+	./linux_x11/opt/globals.o \
+	./linux_x11/opt/image.o \
+	./linux_x11/opt/linked.o \
+	./linux_x11/opt/input.o \
+	./linux_x11/opt/mdlread.o \
+	./linux_x11/opt/palette.o \
+	./linux_x11/opt/ppmread.o \
+	./linux_x11/opt/include.o \
+	./linux_x11/opt/xwdread.o \
+	./linux_x11/opt/fonts.o \
+	./linux_x11/opt/decoder.o \
+	./linux_x11/opt/loader.o \
+	./linux_x11/opt/glread.o \
+	./linux_x11/opt/texture.o \
+	./linux_x11/opt/specs.o \
+	./linux_x11/opt/supmorph.o \
+	./linux_x11/opt/image24.o \
+	./linux_x11/opt/pcxread.o \
+	./linux_x11/opt/timage.o \
+	./linux_x11/opt/jmalloc.o \
+	./linux_x11/opt/jrand.o \
+	./linux_x11/opt/lbmread.o \
+	./linux_x11/opt/targa.o \
+	./linux_x11/opt/keys.o \
+	./linux_x11/opt/dprint.o \
+	./linux_x11/opt/status.o \
+	./linux_x11/opt/visobj.o
+
+./linux_x11/opt/filter.o : filter.c
+	g++  -c -o ./linux_x11/opt/filter.o filter.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK 
+
+./linux_x11/opt/filter.o : include/filter.hpp
+./linux_x11/opt/filter.o : include/macs.hpp
+./linux_x11/opt/filter.o : include/system.h
+./linux_x11/opt/filter.o : include/jmalloc.hpp
+./linux_x11/opt/filter.o : include/specs.hpp
+./linux_x11/opt/filter.o : include/palette.hpp
+./linux_x11/opt/filter.o : include/linked.hpp
+./linux_x11/opt/filter.o : include/image.hpp
+./linux_x11/opt/gifread.o : gifread.c
+	g++  -c -o ./linux_x11/opt/gifread.o gifread.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK 
+
+./linux_x11/opt/gifread.o : include/macs.hpp
+./linux_x11/opt/gifread.o : include/dir.h
+./linux_x11/opt/gifread.o : include/dos.h
+./linux_x11/opt/gifread.o : include/std.h
+./linux_x11/opt/gifread.o : include/gifdecod.hpp
+./linux_x11/opt/gifread.o : include/video.hpp
+./linux_x11/opt/gifread.o : include/system.h
+./linux_x11/opt/gifread.o : include/jmalloc.hpp
+./linux_x11/opt/gifread.o : include/specs.hpp
+./linux_x11/opt/gifread.o : include/palette.hpp
+./linux_x11/opt/gifread.o : include/linked.hpp
+./linux_x11/opt/gifread.o : include/image.hpp
+./linux_x11/opt/gifread.o : include/gifread.hpp
+./linux_x11/opt/globals.o : globals.c
+	g++  -c -o ./linux_x11/opt/globals.o globals.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK 
+
+./linux_x11/opt/globals.o : globals.c
+./linux_x11/opt/image.o : image.c
+	g++  -c -o ./linux_x11/opt/image.o image.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK 
+
+./linux_x11/opt/image.o : include/macs.hpp
+./linux_x11/opt/image.o : include/system.h
+./linux_x11/opt/image.o : include/jmalloc.hpp
+./linux_x11/opt/image.o : include/specs.hpp
+./linux_x11/opt/image.o : include/palette.hpp
+./linux_x11/opt/image.o : include/linked.hpp
+./linux_x11/opt/image.o : include/image.hpp
+./linux_x11/opt/linked.o : linked.c
+	g++  -c -o ./linux_x11/opt/linked.o linked.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK 
+
+./linux_x11/opt/linked.o : include/linked.hpp
+./linux_x11/opt/input.o : input.c
+	g++  -c -o ./linux_x11/opt/input.o input.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK 
+
+./linux_x11/opt/input.o : include/timage.hpp
+./linux_x11/opt/input.o : include/fonts.hpp
+./linux_x11/opt/input.o : include/filter.hpp
+./linux_x11/opt/input.o : include/mouse.hpp
+./linux_x11/opt/input.o : include/macs.hpp
+./linux_x11/opt/input.o : include/sprite.hpp
+./linux_x11/opt/input.o : include/keys.hpp
+./linux_x11/opt/input.o : include/event.hpp
+./linux_x11/opt/input.o : include/jmalloc.hpp
+./linux_x11/opt/input.o : include/specs.hpp
+./linux_x11/opt/input.o : include/palette.hpp
+./linux_x11/opt/input.o : include/linked.hpp
+./linux_x11/opt/input.o : include/image.hpp
+./linux_x11/opt/input.o : include/system.h
+./linux_x11/opt/input.o : include/video.hpp
+./linux_x11/opt/input.o : include/jwindow.hpp
+./linux_x11/opt/input.o : include/input.hpp
+./linux_x11/opt/mdlread.o : mdlread.c
+	g++  -c -o ./linux_x11/opt/mdlread.o mdlread.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK 
+
+./linux_x11/opt/mdlread.o : include/macs.hpp
+./linux_x11/opt/mdlread.o : include/image.hpp
+./linux_x11/opt/mdlread.o : include/system.h
+./linux_x11/opt/mdlread.o : include/jmalloc.hpp
+./linux_x11/opt/mdlread.o : include/specs.hpp
+./linux_x11/opt/mdlread.o : include/linked.hpp
+./linux_x11/opt/mdlread.o : include/palette.hpp
+./linux_x11/opt/mdlread.o : include/mdlread.hpp
+./linux_x11/opt/palette.o : palette.c
+	g++  -c -o ./linux_x11/opt/palette.o palette.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK 
+
+./linux_x11/opt/palette.o : include/filter.hpp
+./linux_x11/opt/palette.o : include/video.hpp
+./linux_x11/opt/palette.o : include/dos.h
+./linux_x11/opt/palette.o : include/macs.hpp
+./linux_x11/opt/palette.o : include/image.hpp
+./linux_x11/opt/palette.o : include/system.h
+./linux_x11/opt/palette.o : include/jmalloc.hpp
+./linux_x11/opt/palette.o : include/specs.hpp
+./linux_x11/opt/palette.o : include/linked.hpp
+./linux_x11/opt/palette.o : include/palette.hpp
+./linux_x11/opt/ppmread.o : ppmread.c
+	g++  -c -o ./linux_x11/opt/ppmread.o ppmread.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK 
+
+./linux_x11/opt/ppmread.o : include/ppmread.hpp
+./linux_x11/opt/ppmread.o : include/macs.hpp
+./linux_x11/opt/ppmread.o : include/system.h
+./linux_x11/opt/ppmread.o : include/jmalloc.hpp
+./linux_x11/opt/ppmread.o : include/specs.hpp
+./linux_x11/opt/ppmread.o : include/palette.hpp
+./linux_x11/opt/ppmread.o : include/linked.hpp
+./linux_x11/opt/ppmread.o : include/image.hpp
+./linux_x11/opt/include.o : include.c
+	g++  -c -o ./linux_x11/opt/include.o include.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK 
+
+./linux_x11/opt/include.o : include/system.h
+./linux_x11/opt/include.o : include/jmalloc.hpp
+./linux_x11/opt/include.o : include/specs.hpp
+./linux_x11/opt/include.o : include/palette.hpp
+./linux_x11/opt/include.o : include/linked.hpp
+./linux_x11/opt/include.o : include/image.hpp
+./linux_x11/opt/include.o : include/include.hpp
+./linux_x11/opt/xwdread.o : xwdread.c
+	g++  -c -o ./linux_x11/opt/xwdread.o xwdread.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK 
+
+./linux_x11/opt/xwdread.o : include/image24.hpp
+./linux_x11/opt/xwdread.o : include/main.hpp
+./linux_x11/opt/xwdread.o : include/dos.h
+./linux_x11/opt/xwdread.o : include/video.hpp
+./linux_x11/opt/xwdread.o : include/mouse.hpp
+./linux_x11/opt/xwdread.o : include/macs.hpp
+./linux_x11/opt/xwdread.o : include/sprite.hpp
+./linux_x11/opt/xwdread.o : include/keys.hpp
+./linux_x11/opt/xwdread.o : include/event.hpp
+./linux_x11/opt/xwdread.o : include/system.h
+./linux_x11/opt/xwdread.o : include/jmalloc.hpp
+./linux_x11/opt/xwdread.o : include/specs.hpp
+./linux_x11/opt/xwdread.o : include/palette.hpp
+./linux_x11/opt/xwdread.o : include/linked.hpp
+./linux_x11/opt/xwdread.o : include/image.hpp
+./linux_x11/opt/xwdread.o : include/filter.hpp
+./linux_x11/opt/fonts.o : fonts.c
+	g++  -c -o ./linux_x11/opt/fonts.o fonts.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK 
+
+./linux_x11/opt/fonts.o : include/filter.hpp
+./linux_x11/opt/fonts.o : include/macs.hpp
+./linux_x11/opt/fonts.o : include/timage.hpp
+./linux_x11/opt/fonts.o : include/system.h
+./linux_x11/opt/fonts.o : include/jmalloc.hpp
+./linux_x11/opt/fonts.o : include/specs.hpp
+./linux_x11/opt/fonts.o : include/palette.hpp
+./linux_x11/opt/fonts.o : include/linked.hpp
+./linux_x11/opt/fonts.o : include/image.hpp
+./linux_x11/opt/fonts.o : include/fonts.hpp
+./linux_x11/opt/decoder.o : decoder.c
+	g++  -c -o ./linux_x11/opt/decoder.o decoder.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK 
+
+./linux_x11/opt/decoder.o : include/macs.hpp
+./linux_x11/opt/decoder.o : include/system.h
+./linux_x11/opt/decoder.o : include/jmalloc.hpp
+./linux_x11/opt/decoder.o : include/specs.hpp
+./linux_x11/opt/decoder.o : include/palette.hpp
+./linux_x11/opt/decoder.o : include/linked.hpp
+./linux_x11/opt/decoder.o : include/image.hpp
+./linux_x11/opt/decoder.o : include/errs.h
+./linux_x11/opt/loader.o : loader.c
+	g++  -c -o ./linux_x11/opt/loader.o loader.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK 
+
+./linux_x11/opt/loader.o : include/targa.hpp
+./linux_x11/opt/loader.o : include/lbmread.hpp
+./linux_x11/opt/loader.o : include/pcxread.hpp
+./linux_x11/opt/loader.o : include/glread.hpp
+./linux_x11/opt/loader.o : include/xwdread.hpp
+./linux_x11/opt/loader.o : include/ppmread.hpp
+./linux_x11/opt/loader.o : include/mdlread.hpp
+./linux_x11/opt/loader.o : include/filter.hpp
+./linux_x11/opt/loader.o : include/macs.hpp
+./linux_x11/opt/loader.o : include/image24.hpp
+./linux_x11/opt/loader.o : include/system.h
+./linux_x11/opt/loader.o : include/jmalloc.hpp
+./linux_x11/opt/loader.o : include/specs.hpp
+./linux_x11/opt/loader.o : include/palette.hpp
+./linux_x11/opt/loader.o : include/linked.hpp
+./linux_x11/opt/loader.o : include/image.hpp
+./linux_x11/opt/loader.o : include/loader.hpp
+./linux_x11/opt/glread.o : glread.c
+	g++  -c -o ./linux_x11/opt/glread.o glread.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK 
+
+./linux_x11/opt/glread.o : include/video.hpp
+./linux_x11/opt/glread.o : include/jmalloc.hpp
+./linux_x11/opt/glread.o : include/specs.hpp
+./linux_x11/opt/glread.o : include/palette.hpp
+./linux_x11/opt/glread.o : include/linked.hpp
+./linux_x11/opt/glread.o : include/image.hpp
+./linux_x11/opt/glread.o : include/system.h
+./linux_x11/opt/glread.o : include/macs.hpp
+./linux_x11/opt/texture.o : texture.c
+	g++  -c -o ./linux_x11/opt/texture.o texture.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK 
+
+./linux_x11/opt/texture.o : include/mouse.hpp
+./linux_x11/opt/texture.o : include/sprite.hpp
+./linux_x11/opt/texture.o : include/keys.hpp
+./linux_x11/opt/texture.o : include/event.hpp
+./linux_x11/opt/texture.o : include/macs.hpp
+./linux_x11/opt/texture.o : include/video.hpp
+./linux_x11/opt/texture.o : include/system.h
+./linux_x11/opt/texture.o : include/jmalloc.hpp
+./linux_x11/opt/texture.o : include/specs.hpp
+./linux_x11/opt/texture.o : include/palette.hpp
+./linux_x11/opt/texture.o : include/linked.hpp
+./linux_x11/opt/texture.o : include/image.hpp
+./linux_x11/opt/specs.o : specs.c
+	g++  -c -o ./linux_x11/opt/specs.o specs.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK 
+
+./linux_x11/opt/specs.o : include/dprint.hpp
+./linux_x11/opt/specs.o : include/system.h
+./linux_x11/opt/specs.o : include/jmalloc.hpp
+./linux_x11/opt/specs.o : include/specs.hpp
+./linux_x11/opt/specs.o : include/palette.hpp
+./linux_x11/opt/specs.o : include/linked.hpp
+./linux_x11/opt/specs.o : include/image.hpp
+./linux_x11/opt/supmorph.o : supmorph.c
+	g++  -c -o ./linux_x11/opt/supmorph.o supmorph.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK 
+
+./linux_x11/opt/supmorph.o : include/jrand.hpp
+./linux_x11/opt/supmorph.o : include/video.hpp
+./linux_x11/opt/supmorph.o : include/timing.hpp
+./linux_x11/opt/supmorph.o : include/filter.hpp
+./linux_x11/opt/supmorph.o : include/macs.hpp
+./linux_x11/opt/supmorph.o : include/system.h
+./linux_x11/opt/supmorph.o : include/specs.hpp
+./linux_x11/opt/supmorph.o : include/palette.hpp
+./linux_x11/opt/supmorph.o : include/linked.hpp
+./linux_x11/opt/supmorph.o : include/image.hpp
+./linux_x11/opt/supmorph.o : include/timage.hpp
+./linux_x11/opt/supmorph.o : include/jmalloc.hpp
+./linux_x11/opt/supmorph.o : include/supmorph.hpp
+./linux_x11/opt/image24.o : image24.c
+	g++  -c -o ./linux_x11/opt/image24.o image24.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK 
+
+./linux_x11/opt/image24.o : include/image.hpp
+./linux_x11/opt/image24.o : include/filter.hpp
+./linux_x11/opt/image24.o : include/macs.hpp
+./linux_x11/opt/image24.o : include/system.h
+./linux_x11/opt/image24.o : include/jmalloc.hpp
+./linux_x11/opt/image24.o : include/specs.hpp
+./linux_x11/opt/image24.o : include/linked.hpp
+./linux_x11/opt/image24.o : include/palette.hpp
+./linux_x11/opt/image24.o : include/image24.hpp
+./linux_x11/opt/pcxread.o : pcxread.c
+	g++  -c -o ./linux_x11/opt/pcxread.o pcxread.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK 
+
+./linux_x11/opt/pcxread.o : include/filter.hpp
+./linux_x11/opt/pcxread.o : include/macs.hpp
+./linux_x11/opt/pcxread.o : include/image24.hpp
+./linux_x11/opt/pcxread.o : include/system.h
+./linux_x11/opt/pcxread.o : include/jmalloc.hpp
+./linux_x11/opt/pcxread.o : include/specs.hpp
+./linux_x11/opt/pcxread.o : include/palette.hpp
+./linux_x11/opt/pcxread.o : include/linked.hpp
+./linux_x11/opt/pcxread.o : include/image.hpp
+./linux_x11/opt/pcxread.o : include/pcxread.hpp
+./linux_x11/opt/timage.o : timage.c
+	g++  -c -o ./linux_x11/opt/timage.o timage.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK 
+
+./linux_x11/opt/timage.o : include/filter.hpp
+./linux_x11/opt/timage.o : include/macs.hpp
+./linux_x11/opt/timage.o : include/system.h
+./linux_x11/opt/timage.o : include/jmalloc.hpp
+./linux_x11/opt/timage.o : include/specs.hpp
+./linux_x11/opt/timage.o : include/palette.hpp
+./linux_x11/opt/timage.o : include/linked.hpp
+./linux_x11/opt/timage.o : include/image.hpp
+./linux_x11/opt/timage.o : include/timage.hpp
+./linux_x11/opt/jmalloc.o : jmalloc.c
+	g++  -c -o ./linux_x11/opt/jmalloc.o jmalloc.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK 
+
+./linux_x11/opt/jmalloc.o : include/jmalloc.hpp
+./linux_x11/opt/jmalloc.o : include/system.h
+./linux_x11/opt/jmalloc.o : include/macs.hpp
+./linux_x11/opt/jmalloc.o : include/doscall.hpp
+./linux_x11/opt/jrand.o : jrand.c
+	g++  -c -o ./linux_x11/opt/jrand.o jrand.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK 
+
+./linux_x11/opt/jrand.o : include/jrand.hpp
+./linux_x11/opt/lbmread.o : lbmread.c
+	g++  -c -o ./linux_x11/opt/lbmread.o lbmread.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK 
+
+./linux_x11/opt/lbmread.o : include/system.h
+./linux_x11/opt/lbmread.o : include/jmalloc.hpp
+./linux_x11/opt/lbmread.o : include/specs.hpp
+./linux_x11/opt/lbmread.o : include/palette.hpp
+./linux_x11/opt/lbmread.o : include/linked.hpp
+./linux_x11/opt/lbmread.o : include/image.hpp
+./linux_x11/opt/lbmread.o : include/lbmread.hpp
+./linux_x11/opt/targa.o : targa.c
+	g++  -c -o ./linux_x11/opt/targa.o targa.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK 
+
+./linux_x11/opt/targa.o : include/system.h
+./linux_x11/opt/targa.o : include/jmalloc.hpp
+./linux_x11/opt/targa.o : include/specs.hpp
+./linux_x11/opt/targa.o : include/palette.hpp
+./linux_x11/opt/targa.o : include/linked.hpp
+./linux_x11/opt/targa.o : include/image.hpp
+./linux_x11/opt/keys.o : keys.c
+	g++  -c -o ./linux_x11/opt/keys.o keys.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK 
+
+./linux_x11/opt/keys.o : include/keys.hpp
+./linux_x11/opt/dprint.o : dprint.c
+	g++  -c -o ./linux_x11/opt/dprint.o dprint.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK 
+
+./linux_x11/opt/dprint.o : include/system.h
+./linux_x11/opt/dprint.o : include/macs.hpp
+./linux_x11/opt/status.o : status.c
+	g++  -c -o ./linux_x11/opt/status.o status.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK 
+
+./linux_x11/opt/status.o : include/dprint.hpp
+./linux_x11/opt/status.o : include/timage.hpp
+./linux_x11/opt/status.o : include/fonts.hpp
+./linux_x11/opt/status.o : include/filter.hpp
+./linux_x11/opt/status.o : include/mouse.hpp
+./linux_x11/opt/status.o : include/sprite.hpp
+./linux_x11/opt/status.o : include/keys.hpp
+./linux_x11/opt/status.o : include/event.hpp
+./linux_x11/opt/status.o : include/jmalloc.hpp
+./linux_x11/opt/status.o : include/specs.hpp
+./linux_x11/opt/status.o : include/palette.hpp
+./linux_x11/opt/status.o : include/linked.hpp
+./linux_x11/opt/status.o : include/image.hpp
+./linux_x11/opt/status.o : include/video.hpp
+./linux_x11/opt/status.o : include/jwindow.hpp
+./linux_x11/opt/status.o : include/visobj.hpp
+./linux_x11/opt/status.o : include/status.hpp
+./linux_x11/opt/status.o : include/system.h
+./linux_x11/opt/status.o : include/macs.hpp
+./linux_x11/opt/visobj.o : visobj.c
+	g++  -c -o ./linux_x11/opt/visobj.o visobj.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK 
+
+./linux_x11/opt/visobj.o : include/timage.hpp
+./linux_x11/opt/visobj.o : include/fonts.hpp
+./linux_x11/opt/visobj.o : include/filter.hpp
+./linux_x11/opt/visobj.o : include/mouse.hpp
+./linux_x11/opt/visobj.o : include/macs.hpp
+./linux_x11/opt/visobj.o : include/sprite.hpp
+./linux_x11/opt/visobj.o : include/keys.hpp
+./linux_x11/opt/visobj.o : include/event.hpp
+./linux_x11/opt/visobj.o : include/jmalloc.hpp
+./linux_x11/opt/visobj.o : include/specs.hpp
+./linux_x11/opt/visobj.o : include/palette.hpp
+./linux_x11/opt/visobj.o : include/linked.hpp
+./linux_x11/opt/visobj.o : include/image.hpp
+./linux_x11/opt/visobj.o : include/system.h
+./linux_x11/opt/visobj.o : include/video.hpp
+./linux_x11/opt/visobj.o : include/jwindow.hpp
+./linux_x11/opt/visobj.o : include/visobj.hpp
+
+LINUX_X11_image_profile_o_files = \
+	./linux_x11/profile/filter.o \
+	./linux_x11/profile/gifread.o \
+	./linux_x11/profile/globals.o \
+	./linux_x11/profile/image.o \
+	./linux_x11/profile/linked.o \
+	./linux_x11/profile/input.o \
+	./linux_x11/profile/mdlread.o \
+	./linux_x11/profile/palette.o \
+	./linux_x11/profile/ppmread.o \
+	./linux_x11/profile/include.o \
+	./linux_x11/profile/xwdread.o \
+	./linux_x11/profile/fonts.o \
+	./linux_x11/profile/decoder.o \
+	./linux_x11/profile/loader.o \
+	./linux_x11/profile/glread.o \
+	./linux_x11/profile/texture.o \
+	./linux_x11/profile/specs.o \
+	./linux_x11/profile/supmorph.o \
+	./linux_x11/profile/image24.o \
+	./linux_x11/profile/pcxread.o \
+	./linux_x11/profile/timage.o \
+	./linux_x11/profile/jmalloc.o \
+	./linux_x11/profile/jrand.o \
+	./linux_x11/profile/lbmread.o \
+	./linux_x11/profile/targa.o \
+	./linux_x11/profile/keys.o \
+	./linux_x11/profile/dprint.o \
+	./linux_x11/profile/status.o \
+	./linux_x11/profile/visobj.o
+
+LINUX_SVGA_image_profile_o_files = \
+	./linux_svga/profile/filter.o \
+	./linux_svga/profile/gifread.o \
+	./linux_svga/profile/globals.o \
+	./linux_svga/profile/image.o \
+	./linux_svga/profile/linked.o \
+	./linux_svga/profile/input.o \
+	./linux_svga/profile/mdlread.o \
+	./linux_svga/profile/palette.o \
+	./linux_svga/profile/ppmread.o \
+	./linux_svga/profile/include.o \
+	./linux_svga/profile/xwdread.o \
+	./linux_svga/profile/fonts.o \
+	./linux_svga/profile/decoder.o \
+	./linux_svga/profile/loader.o \
+	./linux_svga/profile/glread.o \
+	./linux_svga/profile/texture.o \
+	./linux_svga/profile/specs.o \
+	./linux_svga/profile/supmorph.o \
+	./linux_svga/profile/image24.o \
+	./linux_svga/profile/pcxread.o \
+	./linux_svga/profile/timage.o \
+	./linux_svga/profile/jmalloc.o \
+	./linux_svga/profile/jrand.o \
+	./linux_svga/profile/lbmread.o \
+	./linux_svga/profile/targa.o \
+	./linux_svga/profile/keys.o \
+	./linux_svga/profile/dprint.o \
+	./linux_svga/profile/status.o \
+	./linux_svga/profile/visobj.o
+
+LINUX_X11_packet_profile_o_files = \
+	./linux_x11/profile/packet.o
+
+LINUX_SVGA_packet_profile_o_files = \
+	./linux_svga/profile/packet.o
+
+LINUX_X11_gui_profile_o_files = \
+	./linux_x11/profile/pmenu.o \
+	./linux_x11/profile/scroller.o \
+	./linux_x11/profile/filesel.o \
+	./linux_x11/profile/tools.o \
+	./linux_x11/profile/guistat.o
+
+LINUX_SVGA_gui_profile_o_files = \
+	./linux_svga/profile/pmenu.o \
+	./linux_svga/profile/scroller.o \
+	./linux_svga/profile/filesel.o \
+	./linux_svga/profile/tools.o \
+	./linux_svga/profile/guistat.o
+
+LINUX_X11_sound_profile_o_files = \
+	port/sgi/linux_x11/profile/sound.o \
+	./linux_x11/profile/readwav.o
+
+LINUX_SVGA_sound_profile_o_files = \
+	port/sgi/linux_svga/profile/sound.o \
+	./linux_svga/profile/readwav.o
+
+LINUX_X11_net_profile_o_files = \
+	port/unix/linux_x11/profile/jnet.o
+
+LINUX_SVGA_net_profile_o_files = \
+	port/unix/linux_svga/profile/jnet.o
+
+LINUX_X11_dir_profile_o_files = \
+	port/unix/linux_x11/profile/jdir.o
+
+LINUX_SVGA_dir_profile_o_files = \
+	port/unix/linux_svga/profile/jdir.o
+
+LINUX_X11_winman_profile_o_files = \
+	port/x11/linux_x11/profile/video.o \
+	port/x11/linux_x11/profile/mouse.o \
+	port/x11/linux_x11/profile/event.o \
+	./linux_x11/profile/jwindow.o
+
+LINUX_SVGA_winman_profile_o_files = \
+	port/svga/linux_svga/profile/video.o \
+	port/svga/linux_svga/profile/mouse.o \
+	port/svga/linux_svga/profile/event.o \
+	./linux_svga/profile/jwindow.o
+
+LINUX_X11_joy_profile_o_files = \
+	port/linux/linux_x11/profile/joystick.o
+
+LINUX_SVGA_joy_profile_o_files = \
+	port/linux/linux_svga/profile/joystick.o
+
+LINUX_X11_time_profile_o_files = \
+	port/unix/linux_x11/profile/timing.o
+
+LINUX_SVGA_time_profile_o_files = \
+	port/unix/linux_svga/profile/timing.o
+
+./linux_svga/profile/time.a : $(LINUX_SVGA_time_profile_o_files)
+	ar ruvs ./linux_svga/profile/time.a \
+	port/unix/linux_svga/profile/timing.o
+
+port/unix/linux_svga/profile/timing.o : port/unix/timing.c
+	g++  -c -o port/unix/linux_svga/profile/timing.o port/unix/timing.c -Iinclude -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+port/unix/linux_svga/profile/timing.o : include/timing.hpp
+
+./linux_x11/profile/time.a : $(LINUX_X11_time_profile_o_files)
+	ar ruvs ./linux_x11/profile/time.a \
+	port/unix/linux_x11/profile/timing.o
+
+port/unix/linux_x11/profile/timing.o : port/unix/timing.c
+	g++  -c -o port/unix/linux_x11/profile/timing.o port/unix/timing.c -Iinclude -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+port/unix/linux_x11/profile/timing.o : include/timing.hpp
+
+./linux_svga/profile/joy.a : $(LINUX_SVGA_joy_profile_o_files)
+	ar ruvs ./linux_svga/profile/joy.a \
+	port/linux/linux_svga/profile/joystick.o
+
+port/linux/linux_svga/profile/joystick.o : port/linux/joystick.c
+	g++  -c -o port/linux/linux_svga/profile/joystick.o port/linux/joystick.c -Iinclude -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+port/linux/linux_svga/profile/joystick.o : include/joy.hpp
+
+./linux_x11/profile/joy.a : $(LINUX_X11_joy_profile_o_files)
+	ar ruvs ./linux_x11/profile/joy.a \
+	port/linux/linux_x11/profile/joystick.o
+
+port/linux/linux_x11/profile/joystick.o : port/linux/joystick.c
+	g++  -c -o port/linux/linux_x11/profile/joystick.o port/linux/joystick.c -Iinclude -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+port/linux/linux_x11/profile/joystick.o : include/joy.hpp
+
+./linux_svga/profile/winman.a : $(LINUX_SVGA_winman_profile_o_files)
+	ar ruvs ./linux_svga/profile/winman.a \
+	port/svga/linux_svga/profile/video.o \
+	port/svga/linux_svga/profile/mouse.o \
+	port/svga/linux_svga/profile/event.o \
+	./linux_svga/profile/jwindow.o
+
+port/svga/linux_svga/profile/video.o : port/svga/video.c
+	g++  -c -o port/svga/linux_svga/profile/video.o port/svga/video.c -Iinclude -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+port/svga/linux_svga/profile/video.o : include/macs.hpp
+port/svga/linux_svga/profile/video.o : include/dos.h
+port/svga/linux_svga/profile/video.o : include/jmalloc.hpp
+port/svga/linux_svga/profile/video.o : include/specs.hpp
+port/svga/linux_svga/profile/video.o : include/palette.hpp
+port/svga/linux_svga/profile/video.o : include/linked.hpp
+port/svga/linux_svga/profile/video.o : include/image.hpp
+port/svga/linux_svga/profile/video.o : include/video.hpp
+port/svga/linux_svga/profile/video.o : include/system.h
+port/svga/linux_svga/profile/video.o : include/globals.hpp
+port/svga/linux_svga/profile/mouse.o : port/svga/mouse.c
+	g++  -c -o port/svga/linux_svga/profile/mouse.o port/svga/mouse.c -Iinclude -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+port/svga/linux_svga/profile/mouse.o : include/dprint.hpp
+port/svga/linux_svga/profile/mouse.o : include/mouse.hpp
+port/svga/linux_svga/profile/mouse.o : include/monoprnt.hpp
+port/svga/linux_svga/profile/mouse.o : include/mdlread.hpp
+port/svga/linux_svga/profile/mouse.o : include/filter.hpp
+port/svga/linux_svga/profile/mouse.o : include/macs.hpp
+port/svga/linux_svga/profile/mouse.o : include/sprite.hpp
+port/svga/linux_svga/profile/mouse.o : include/jmalloc.hpp
+port/svga/linux_svga/profile/mouse.o : include/specs.hpp
+port/svga/linux_svga/profile/mouse.o : include/palette.hpp
+port/svga/linux_svga/profile/mouse.o : include/linked.hpp
+port/svga/linux_svga/profile/mouse.o : include/image.hpp
+port/svga/linux_svga/profile/mouse.o : include/system.h
+port/svga/linux_svga/profile/mouse.o : include/video.hpp
+port/svga/linux_svga/profile/event.o : port/svga/event.c
+	g++  -c -o port/svga/linux_svga/profile/event.o port/svga/event.c -Iinclude -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+port/svga/linux_svga/profile/event.o : include/dprint.hpp
+port/svga/linux_svga/profile/event.o : include/monoprnt.hpp
+port/svga/linux_svga/profile/event.o : include/keys.hpp
+port/svga/linux_svga/profile/event.o : include/event.hpp
+port/svga/linux_svga/profile/event.o : include/sprite.hpp
+port/svga/linux_svga/profile/event.o : include/mouse.hpp
+port/svga/linux_svga/profile/event.o : include/macs.hpp
+port/svga/linux_svga/profile/event.o : include/gifread.hpp
+port/svga/linux_svga/profile/event.o : include/dos.h
+port/svga/linux_svga/profile/event.o : include/video.hpp
+port/svga/linux_svga/profile/event.o : include/mdlread.hpp
+port/svga/linux_svga/profile/event.o : include/jmalloc.hpp
+port/svga/linux_svga/profile/event.o : include/specs.hpp
+port/svga/linux_svga/profile/event.o : include/palette.hpp
+port/svga/linux_svga/profile/event.o : include/linked.hpp
+port/svga/linux_svga/profile/event.o : include/image.hpp
+port/svga/linux_svga/profile/event.o : include/system.h
+./linux_svga/profile/jwindow.o : jwindow.c
+	g++  -c -o ./linux_svga/profile/jwindow.o jwindow.c -Iinclude -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+./linux_svga/profile/jwindow.o : include/timage.hpp
+./linux_svga/profile/jwindow.o : include/fonts.hpp
+./linux_svga/profile/jwindow.o : include/jwindow.hpp
+./linux_svga/profile/jwindow.o : include/filter.hpp
+./linux_svga/profile/jwindow.o : include/mouse.hpp
+./linux_svga/profile/jwindow.o : include/macs.hpp
+./linux_svga/profile/jwindow.o : include/sprite.hpp
+./linux_svga/profile/jwindow.o : include/keys.hpp
+./linux_svga/profile/jwindow.o : include/event.hpp
+./linux_svga/profile/jwindow.o : include/jmalloc.hpp
+./linux_svga/profile/jwindow.o : include/specs.hpp
+./linux_svga/profile/jwindow.o : include/palette.hpp
+./linux_svga/profile/jwindow.o : include/linked.hpp
+./linux_svga/profile/jwindow.o : include/image.hpp
+./linux_svga/profile/jwindow.o : include/system.h
+./linux_svga/profile/jwindow.o : include/video.hpp
+
+./linux_x11/profile/winman.a : $(LINUX_X11_winman_profile_o_files)
+	ar ruvs ./linux_x11/profile/winman.a \
+	port/x11/linux_x11/profile/video.o \
+	port/x11/linux_x11/profile/mouse.o \
+	port/x11/linux_x11/profile/event.o \
+	./linux_x11/profile/jwindow.o
+
+port/x11/linux_x11/profile/video.o : port/x11/video.c
+	g++  -c -o port/x11/linux_x11/profile/video.o port/x11/video.c -Iinclude -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+port/x11/linux_x11/profile/video.o : include/bitmap.h
+port/x11/linux_x11/profile/video.o : include/macs.hpp
+port/x11/linux_x11/profile/video.o : include/xinclude.h
+port/x11/linux_x11/profile/video.o : include/dos.h
+port/x11/linux_x11/profile/video.o : include/video.hpp
+port/x11/linux_x11/profile/video.o : include/globals.hpp
+port/x11/linux_x11/profile/video.o : include/system.h
+port/x11/linux_x11/profile/video.o : include/jmalloc.hpp
+port/x11/linux_x11/profile/video.o : include/specs.hpp
+port/x11/linux_x11/profile/video.o : include/palette.hpp
+port/x11/linux_x11/profile/video.o : include/linked.hpp
+port/x11/linux_x11/profile/video.o : include/image.hpp
+port/x11/linux_x11/profile/video.o : include/filter.hpp
+port/x11/linux_x11/profile/mouse.o : port/x11/mouse.c
+	g++  -c -o port/x11/linux_x11/profile/mouse.o port/x11/mouse.c -Iinclude -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+port/x11/linux_x11/profile/mouse.o : include/xinclude.h
+port/x11/linux_x11/profile/mouse.o : include/mouse.hpp
+port/x11/linux_x11/profile/mouse.o : include/monoprnt.hpp
+port/x11/linux_x11/profile/mouse.o : include/mdlread.hpp
+port/x11/linux_x11/profile/mouse.o : include/filter.hpp
+port/x11/linux_x11/profile/mouse.o : include/macs.hpp
+port/x11/linux_x11/profile/mouse.o : include/sprite.hpp
+port/x11/linux_x11/profile/mouse.o : include/jmalloc.hpp
+port/x11/linux_x11/profile/mouse.o : include/specs.hpp
+port/x11/linux_x11/profile/mouse.o : include/palette.hpp
+port/x11/linux_x11/profile/mouse.o : include/linked.hpp
+port/x11/linux_x11/profile/mouse.o : include/image.hpp
+port/x11/linux_x11/profile/mouse.o : include/system.h
+port/x11/linux_x11/profile/mouse.o : include/video.hpp
+port/x11/linux_x11/profile/event.o : port/x11/event.c
+	g++  -c -o port/x11/linux_x11/profile/event.o port/x11/event.c -Iinclude -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+port/x11/linux_x11/profile/event.o : include/keys.hpp
+port/x11/linux_x11/profile/event.o : include/event.hpp
+port/x11/linux_x11/profile/event.o : include/sprite.hpp
+port/x11/linux_x11/profile/event.o : include/mouse.hpp
+port/x11/linux_x11/profile/event.o : include/macs.hpp
+port/x11/linux_x11/profile/event.o : include/gifread.hpp
+port/x11/linux_x11/profile/event.o : include/video.hpp
+port/x11/linux_x11/profile/event.o : include/mdlread.hpp
+port/x11/linux_x11/profile/event.o : include/jmalloc.hpp
+port/x11/linux_x11/profile/event.o : include/specs.hpp
+port/x11/linux_x11/profile/event.o : include/palette.hpp
+port/x11/linux_x11/profile/event.o : include/linked.hpp
+port/x11/linux_x11/profile/event.o : include/image.hpp
+port/x11/linux_x11/profile/event.o : include/xinclude.h
+port/x11/linux_x11/profile/event.o : include/system.h
+./linux_x11/profile/jwindow.o : jwindow.c
+	g++  -c -o ./linux_x11/profile/jwindow.o jwindow.c -Iinclude -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+./linux_x11/profile/jwindow.o : include/timage.hpp
+./linux_x11/profile/jwindow.o : include/fonts.hpp
+./linux_x11/profile/jwindow.o : include/jwindow.hpp
+./linux_x11/profile/jwindow.o : include/filter.hpp
+./linux_x11/profile/jwindow.o : include/mouse.hpp
+./linux_x11/profile/jwindow.o : include/macs.hpp
+./linux_x11/profile/jwindow.o : include/sprite.hpp
+./linux_x11/profile/jwindow.o : include/keys.hpp
+./linux_x11/profile/jwindow.o : include/event.hpp
+./linux_x11/profile/jwindow.o : include/jmalloc.hpp
+./linux_x11/profile/jwindow.o : include/specs.hpp
+./linux_x11/profile/jwindow.o : include/palette.hpp
+./linux_x11/profile/jwindow.o : include/linked.hpp
+./linux_x11/profile/jwindow.o : include/image.hpp
+./linux_x11/profile/jwindow.o : include/system.h
+./linux_x11/profile/jwindow.o : include/video.hpp
+
+./linux_svga/profile/dir.a : $(LINUX_SVGA_dir_profile_o_files)
+	ar ruvs ./linux_svga/profile/dir.a \
+	port/unix/linux_svga/profile/jdir.o
+
+port/unix/linux_svga/profile/jdir.o : port/unix/jdir.c
+	g++  -c -o port/unix/linux_svga/profile/jdir.o port/unix/jdir.c -Iinclude -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+port/unix/linux_svga/profile/jdir.o : include/jmalloc.hpp
+
+./linux_x11/profile/dir.a : $(LINUX_X11_dir_profile_o_files)
+	ar ruvs ./linux_x11/profile/dir.a \
+	port/unix/linux_x11/profile/jdir.o
+
+port/unix/linux_x11/profile/jdir.o : port/unix/jdir.c
+	g++  -c -o port/unix/linux_x11/profile/jdir.o port/unix/jdir.c -Iinclude -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+port/unix/linux_x11/profile/jdir.o : include/jmalloc.hpp
+
+./linux_svga/profile/net.a : $(LINUX_SVGA_net_profile_o_files)
+	ar ruvs ./linux_svga/profile/net.a \
+	port/unix/linux_svga/profile/jnet.o
+
+port/unix/linux_svga/profile/jnet.o : port/unix/jnet.c
+	g++  -c -o port/unix/linux_svga/profile/jnet.o port/unix/jnet.c -Iinclude -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+port/unix/linux_svga/profile/jnet.o : include/jmalloc.hpp
+port/unix/linux_svga/profile/jnet.o : include/packet.hpp
+port/unix/linux_svga/profile/jnet.o : include/system.h
+port/unix/linux_svga/profile/jnet.o : include/macs.hpp
+port/unix/linux_svga/profile/jnet.o : include/jnet.hpp
+
+./linux_x11/profile/net.a : $(LINUX_X11_net_profile_o_files)
+	ar ruvs ./linux_x11/profile/net.a \
+	port/unix/linux_x11/profile/jnet.o
+
+port/unix/linux_x11/profile/jnet.o : port/unix/jnet.c
+	g++  -c -o port/unix/linux_x11/profile/jnet.o port/unix/jnet.c -Iinclude -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+port/unix/linux_x11/profile/jnet.o : include/jmalloc.hpp
+port/unix/linux_x11/profile/jnet.o : include/packet.hpp
+port/unix/linux_x11/profile/jnet.o : include/system.h
+port/unix/linux_x11/profile/jnet.o : include/macs.hpp
+port/unix/linux_x11/profile/jnet.o : include/jnet.hpp
+
+./linux_svga/profile/sound.a : $(LINUX_SVGA_sound_profile_o_files)
+	ar ruvs ./linux_svga/profile/sound.a \
+	port/sgi/linux_svga/profile/sound.o \
+	./linux_svga/profile/readwav.o
+
+port/sgi/linux_svga/profile/sound.o : port/sgi/sound.c
+	g++  -c -o port/sgi/linux_svga/profile/sound.o port/sgi/sound.c -Iinclude -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+port/sgi/linux_svga/profile/sound.o : include/timing.hpp
+port/sgi/linux_svga/profile/sound.o : include/dprint.hpp
+port/sgi/linux_svga/profile/sound.o : include/jmalloc.hpp
+port/sgi/linux_svga/profile/sound.o : include/linked.hpp
+port/sgi/linux_svga/profile/sound.o : include/specs.hpp
+port/sgi/linux_svga/profile/sound.o : include/readwav.hpp
+port/sgi/linux_svga/profile/sound.o : include/sound.hpp
+port/sgi/linux_svga/profile/sound.o : include/system.h
+port/sgi/linux_svga/profile/sound.o : include/macs.hpp
+./linux_svga/profile/readwav.o : readwav.c
+	g++  -c -o ./linux_svga/profile/readwav.o readwav.c -Iinclude -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+./linux_svga/profile/readwav.o : include/dprint.hpp
+./linux_svga/profile/readwav.o : include/macs.hpp
+./linux_svga/profile/readwav.o : include/system.h
+./linux_svga/profile/readwav.o : include/jmalloc.hpp
+./linux_svga/profile/readwav.o : include/linked.hpp
+./linux_svga/profile/readwav.o : include/specs.hpp
+./linux_svga/profile/readwav.o : include/readwav.hpp
+
+./linux_x11/profile/sound.a : $(LINUX_X11_sound_profile_o_files)
+	ar ruvs ./linux_x11/profile/sound.a \
+	port/sgi/linux_x11/profile/sound.o \
+	./linux_x11/profile/readwav.o
+
+port/sgi/linux_x11/profile/sound.o : port/sgi/sound.c
+	g++  -c -o port/sgi/linux_x11/profile/sound.o port/sgi/sound.c -Iinclude -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+port/sgi/linux_x11/profile/sound.o : include/timing.hpp
+port/sgi/linux_x11/profile/sound.o : include/dprint.hpp
+port/sgi/linux_x11/profile/sound.o : include/jmalloc.hpp
+port/sgi/linux_x11/profile/sound.o : include/linked.hpp
+port/sgi/linux_x11/profile/sound.o : include/specs.hpp
+port/sgi/linux_x11/profile/sound.o : include/readwav.hpp
+port/sgi/linux_x11/profile/sound.o : include/sound.hpp
+port/sgi/linux_x11/profile/sound.o : include/system.h
+port/sgi/linux_x11/profile/sound.o : include/macs.hpp
+./linux_x11/profile/readwav.o : readwav.c
+	g++  -c -o ./linux_x11/profile/readwav.o readwav.c -Iinclude -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+./linux_x11/profile/readwav.o : include/dprint.hpp
+./linux_x11/profile/readwav.o : include/macs.hpp
+./linux_x11/profile/readwav.o : include/system.h
+./linux_x11/profile/readwav.o : include/jmalloc.hpp
+./linux_x11/profile/readwav.o : include/linked.hpp
+./linux_x11/profile/readwav.o : include/specs.hpp
+./linux_x11/profile/readwav.o : include/readwav.hpp
+
+./linux_svga/profile/gui.a : $(LINUX_SVGA_gui_profile_o_files)
+	ar ruvs ./linux_svga/profile/gui.a \
+	./linux_svga/profile/pmenu.o \
+	./linux_svga/profile/scroller.o \
+	./linux_svga/profile/filesel.o \
+	./linux_svga/profile/tools.o \
+	./linux_svga/profile/guistat.o
+
+./linux_svga/profile/pmenu.o : pmenu.c
+	g++  -c -o ./linux_svga/profile/pmenu.o pmenu.c -Iinclude -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+./linux_svga/profile/pmenu.o : include/timage.hpp
+./linux_svga/profile/pmenu.o : include/fonts.hpp
+./linux_svga/profile/pmenu.o : include/filter.hpp
+./linux_svga/profile/pmenu.o : include/mouse.hpp
+./linux_svga/profile/pmenu.o : include/macs.hpp
+./linux_svga/profile/pmenu.o : include/sprite.hpp
+./linux_svga/profile/pmenu.o : include/keys.hpp
+./linux_svga/profile/pmenu.o : include/event.hpp
+./linux_svga/profile/pmenu.o : include/specs.hpp
+./linux_svga/profile/pmenu.o : include/palette.hpp
+./linux_svga/profile/pmenu.o : include/linked.hpp
+./linux_svga/profile/pmenu.o : include/image.hpp
+./linux_svga/profile/pmenu.o : include/system.h
+./linux_svga/profile/pmenu.o : include/video.hpp
+./linux_svga/profile/pmenu.o : include/jwindow.hpp
+./linux_svga/profile/pmenu.o : include/input.hpp
+./linux_svga/profile/pmenu.o : include/jmalloc.hpp
+./linux_svga/profile/pmenu.o : include/pmenu.hpp
+./linux_svga/profile/scroller.o : scroller.c
+	g++  -c -o ./linux_svga/profile/scroller.o scroller.c -Iinclude -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+./linux_svga/profile/scroller.o : include/timage.hpp
+./linux_svga/profile/scroller.o : include/fonts.hpp
+./linux_svga/profile/scroller.o : include/filter.hpp
+./linux_svga/profile/scroller.o : include/mouse.hpp
+./linux_svga/profile/scroller.o : include/macs.hpp
+./linux_svga/profile/scroller.o : include/sprite.hpp
+./linux_svga/profile/scroller.o : include/keys.hpp
+./linux_svga/profile/scroller.o : include/event.hpp
+./linux_svga/profile/scroller.o : include/jmalloc.hpp
+./linux_svga/profile/scroller.o : include/specs.hpp
+./linux_svga/profile/scroller.o : include/palette.hpp
+./linux_svga/profile/scroller.o : include/linked.hpp
+./linux_svga/profile/scroller.o : include/image.hpp
+./linux_svga/profile/scroller.o : include/system.h
+./linux_svga/profile/scroller.o : include/video.hpp
+./linux_svga/profile/scroller.o : include/jwindow.hpp
+./linux_svga/profile/scroller.o : include/input.hpp
+./linux_svga/profile/scroller.o : include/scroller.hpp
+./linux_svga/profile/filesel.o : filesel.c
+	g++  -c -o ./linux_svga/profile/filesel.o filesel.c -Iinclude -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+./linux_svga/profile/filesel.o : include/jdir.hpp
+./linux_svga/profile/filesel.o : include/scroller.hpp
+./linux_svga/profile/filesel.o : include/input.hpp
+./linux_svga/profile/filesel.o : include/timage.hpp
+./linux_svga/profile/filesel.o : include/fonts.hpp
+./linux_svga/profile/filesel.o : include/filter.hpp
+./linux_svga/profile/filesel.o : include/mouse.hpp
+./linux_svga/profile/filesel.o : include/macs.hpp
+./linux_svga/profile/filesel.o : include/sprite.hpp
+./linux_svga/profile/filesel.o : include/keys.hpp
+./linux_svga/profile/filesel.o : include/event.hpp
+./linux_svga/profile/filesel.o : include/jmalloc.hpp
+./linux_svga/profile/filesel.o : include/specs.hpp
+./linux_svga/profile/filesel.o : include/palette.hpp
+./linux_svga/profile/filesel.o : include/linked.hpp
+./linux_svga/profile/filesel.o : include/image.hpp
+./linux_svga/profile/filesel.o : include/system.h
+./linux_svga/profile/filesel.o : include/video.hpp
+./linux_svga/profile/filesel.o : include/jwindow.hpp
+./linux_svga/profile/filesel.o : include/filesel.hpp
+./linux_svga/profile/tools.o : tools.c
+	g++  -c -o ./linux_svga/profile/tools.o tools.c -Iinclude -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+./linux_svga/profile/tools.o : include/visobj.hpp
+./linux_svga/profile/tools.o : include/scroller.hpp
+./linux_svga/profile/tools.o : include/input.hpp
+./linux_svga/profile/tools.o : include/timage.hpp
+./linux_svga/profile/tools.o : include/fonts.hpp
+./linux_svga/profile/tools.o : include/filter.hpp
+./linux_svga/profile/tools.o : include/mouse.hpp
+./linux_svga/profile/tools.o : include/macs.hpp
+./linux_svga/profile/tools.o : include/sprite.hpp
+./linux_svga/profile/tools.o : include/keys.hpp
+./linux_svga/profile/tools.o : include/event.hpp
+./linux_svga/profile/tools.o : include/jmalloc.hpp
+./linux_svga/profile/tools.o : include/specs.hpp
+./linux_svga/profile/tools.o : include/palette.hpp
+./linux_svga/profile/tools.o : include/linked.hpp
+./linux_svga/profile/tools.o : include/image.hpp
+./linux_svga/profile/tools.o : include/system.h
+./linux_svga/profile/tools.o : include/video.hpp
+./linux_svga/profile/tools.o : include/jwindow.hpp
+./linux_svga/profile/tools.o : include/tools.hpp
+./linux_svga/profile/guistat.o : guistat.c
+	g++  -c -o ./linux_svga/profile/guistat.o guistat.c -Iinclude -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+./linux_svga/profile/guistat.o : include/guistat.hpp
+./linux_svga/profile/guistat.o : include/timing.hpp
+./linux_svga/profile/guistat.o : include/timage.hpp
+./linux_svga/profile/guistat.o : include/fonts.hpp
+./linux_svga/profile/guistat.o : include/filter.hpp
+./linux_svga/profile/guistat.o : include/mouse.hpp
+./linux_svga/profile/guistat.o : include/macs.hpp
+./linux_svga/profile/guistat.o : include/sprite.hpp
+./linux_svga/profile/guistat.o : include/keys.hpp
+./linux_svga/profile/guistat.o : include/event.hpp
+./linux_svga/profile/guistat.o : include/jmalloc.hpp
+./linux_svga/profile/guistat.o : include/specs.hpp
+./linux_svga/profile/guistat.o : include/palette.hpp
+./linux_svga/profile/guistat.o : include/linked.hpp
+./linux_svga/profile/guistat.o : include/image.hpp
+./linux_svga/profile/guistat.o : include/system.h
+./linux_svga/profile/guistat.o : include/video.hpp
+./linux_svga/profile/guistat.o : include/jwindow.hpp
+./linux_svga/profile/guistat.o : include/visobj.hpp
+./linux_svga/profile/guistat.o : include/status.hpp
+
+./linux_x11/profile/gui.a : $(LINUX_X11_gui_profile_o_files)
+	ar ruvs ./linux_x11/profile/gui.a \
+	./linux_x11/profile/pmenu.o \
+	./linux_x11/profile/scroller.o \
+	./linux_x11/profile/filesel.o \
+	./linux_x11/profile/tools.o \
+	./linux_x11/profile/guistat.o
+
+./linux_x11/profile/pmenu.o : pmenu.c
+	g++  -c -o ./linux_x11/profile/pmenu.o pmenu.c -Iinclude -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+./linux_x11/profile/pmenu.o : include/timage.hpp
+./linux_x11/profile/pmenu.o : include/fonts.hpp
+./linux_x11/profile/pmenu.o : include/filter.hpp
+./linux_x11/profile/pmenu.o : include/mouse.hpp
+./linux_x11/profile/pmenu.o : include/macs.hpp
+./linux_x11/profile/pmenu.o : include/sprite.hpp
+./linux_x11/profile/pmenu.o : include/keys.hpp
+./linux_x11/profile/pmenu.o : include/event.hpp
+./linux_x11/profile/pmenu.o : include/specs.hpp
+./linux_x11/profile/pmenu.o : include/palette.hpp
+./linux_x11/profile/pmenu.o : include/linked.hpp
+./linux_x11/profile/pmenu.o : include/image.hpp
+./linux_x11/profile/pmenu.o : include/system.h
+./linux_x11/profile/pmenu.o : include/video.hpp
+./linux_x11/profile/pmenu.o : include/jwindow.hpp
+./linux_x11/profile/pmenu.o : include/input.hpp
+./linux_x11/profile/pmenu.o : include/jmalloc.hpp
+./linux_x11/profile/pmenu.o : include/pmenu.hpp
+./linux_x11/profile/scroller.o : scroller.c
+	g++  -c -o ./linux_x11/profile/scroller.o scroller.c -Iinclude -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+./linux_x11/profile/scroller.o : include/timage.hpp
+./linux_x11/profile/scroller.o : include/fonts.hpp
+./linux_x11/profile/scroller.o : include/filter.hpp
+./linux_x11/profile/scroller.o : include/mouse.hpp
+./linux_x11/profile/scroller.o : include/macs.hpp
+./linux_x11/profile/scroller.o : include/sprite.hpp
+./linux_x11/profile/scroller.o : include/keys.hpp
+./linux_x11/profile/scroller.o : include/event.hpp
+./linux_x11/profile/scroller.o : include/jmalloc.hpp
+./linux_x11/profile/scroller.o : include/specs.hpp
+./linux_x11/profile/scroller.o : include/palette.hpp
+./linux_x11/profile/scroller.o : include/linked.hpp
+./linux_x11/profile/scroller.o : include/image.hpp
+./linux_x11/profile/scroller.o : include/system.h
+./linux_x11/profile/scroller.o : include/video.hpp
+./linux_x11/profile/scroller.o : include/jwindow.hpp
+./linux_x11/profile/scroller.o : include/input.hpp
+./linux_x11/profile/scroller.o : include/scroller.hpp
+./linux_x11/profile/filesel.o : filesel.c
+	g++  -c -o ./linux_x11/profile/filesel.o filesel.c -Iinclude -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+./linux_x11/profile/filesel.o : include/jdir.hpp
+./linux_x11/profile/filesel.o : include/scroller.hpp
+./linux_x11/profile/filesel.o : include/input.hpp
+./linux_x11/profile/filesel.o : include/timage.hpp
+./linux_x11/profile/filesel.o : include/fonts.hpp
+./linux_x11/profile/filesel.o : include/filter.hpp
+./linux_x11/profile/filesel.o : include/mouse.hpp
+./linux_x11/profile/filesel.o : include/macs.hpp
+./linux_x11/profile/filesel.o : include/sprite.hpp
+./linux_x11/profile/filesel.o : include/keys.hpp
+./linux_x11/profile/filesel.o : include/event.hpp
+./linux_x11/profile/filesel.o : include/jmalloc.hpp
+./linux_x11/profile/filesel.o : include/specs.hpp
+./linux_x11/profile/filesel.o : include/palette.hpp
+./linux_x11/profile/filesel.o : include/linked.hpp
+./linux_x11/profile/filesel.o : include/image.hpp
+./linux_x11/profile/filesel.o : include/system.h
+./linux_x11/profile/filesel.o : include/video.hpp
+./linux_x11/profile/filesel.o : include/jwindow.hpp
+./linux_x11/profile/filesel.o : include/filesel.hpp
+./linux_x11/profile/tools.o : tools.c
+	g++  -c -o ./linux_x11/profile/tools.o tools.c -Iinclude -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+./linux_x11/profile/tools.o : include/visobj.hpp
+./linux_x11/profile/tools.o : include/scroller.hpp
+./linux_x11/profile/tools.o : include/input.hpp
+./linux_x11/profile/tools.o : include/timage.hpp
+./linux_x11/profile/tools.o : include/fonts.hpp
+./linux_x11/profile/tools.o : include/filter.hpp
+./linux_x11/profile/tools.o : include/mouse.hpp
+./linux_x11/profile/tools.o : include/macs.hpp
+./linux_x11/profile/tools.o : include/sprite.hpp
+./linux_x11/profile/tools.o : include/keys.hpp
+./linux_x11/profile/tools.o : include/event.hpp
+./linux_x11/profile/tools.o : include/jmalloc.hpp
+./linux_x11/profile/tools.o : include/specs.hpp
+./linux_x11/profile/tools.o : include/palette.hpp
+./linux_x11/profile/tools.o : include/linked.hpp
+./linux_x11/profile/tools.o : include/image.hpp
+./linux_x11/profile/tools.o : include/system.h
+./linux_x11/profile/tools.o : include/video.hpp
+./linux_x11/profile/tools.o : include/jwindow.hpp
+./linux_x11/profile/tools.o : include/tools.hpp
+./linux_x11/profile/guistat.o : guistat.c
+	g++  -c -o ./linux_x11/profile/guistat.o guistat.c -Iinclude -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+./linux_x11/profile/guistat.o : include/guistat.hpp
+./linux_x11/profile/guistat.o : include/timing.hpp
+./linux_x11/profile/guistat.o : include/timage.hpp
+./linux_x11/profile/guistat.o : include/fonts.hpp
+./linux_x11/profile/guistat.o : include/filter.hpp
+./linux_x11/profile/guistat.o : include/mouse.hpp
+./linux_x11/profile/guistat.o : include/macs.hpp
+./linux_x11/profile/guistat.o : include/sprite.hpp
+./linux_x11/profile/guistat.o : include/keys.hpp
+./linux_x11/profile/guistat.o : include/event.hpp
+./linux_x11/profile/guistat.o : include/jmalloc.hpp
+./linux_x11/profile/guistat.o : include/specs.hpp
+./linux_x11/profile/guistat.o : include/palette.hpp
+./linux_x11/profile/guistat.o : include/linked.hpp
+./linux_x11/profile/guistat.o : include/image.hpp
+./linux_x11/profile/guistat.o : include/system.h
+./linux_x11/profile/guistat.o : include/video.hpp
+./linux_x11/profile/guistat.o : include/jwindow.hpp
+./linux_x11/profile/guistat.o : include/visobj.hpp
+./linux_x11/profile/guistat.o : include/status.hpp
+
+./linux_svga/profile/packet.a : $(LINUX_SVGA_packet_profile_o_files)
+	ar ruvs ./linux_svga/profile/packet.a \
+	./linux_svga/profile/packet.o
+
+./linux_svga/profile/packet.o : packet.c
+	g++  -c -o ./linux_svga/profile/packet.o packet.c -Iinclude -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+./linux_svga/profile/packet.o : include/jmalloc.hpp
+./linux_svga/profile/packet.o : include/system.h
+./linux_svga/profile/packet.o : include/macs.hpp
+./linux_svga/profile/packet.o : include/packet.hpp
+
+./linux_x11/profile/packet.a : $(LINUX_X11_packet_profile_o_files)
+	ar ruvs ./linux_x11/profile/packet.a \
+	./linux_x11/profile/packet.o
+
+./linux_x11/profile/packet.o : packet.c
+	g++  -c -o ./linux_x11/profile/packet.o packet.c -Iinclude -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+./linux_x11/profile/packet.o : include/jmalloc.hpp
+./linux_x11/profile/packet.o : include/system.h
+./linux_x11/profile/packet.o : include/macs.hpp
+./linux_x11/profile/packet.o : include/packet.hpp
+
+./linux_svga/profile/image.a : $(LINUX_SVGA_image_profile_o_files)
+	ar ruvs ./linux_svga/profile/image.a \
+	./linux_svga/profile/filter.o \
+	./linux_svga/profile/gifread.o \
+	./linux_svga/profile/globals.o \
+	./linux_svga/profile/image.o \
+	./linux_svga/profile/linked.o \
+	./linux_svga/profile/input.o \
+	./linux_svga/profile/mdlread.o \
+	./linux_svga/profile/palette.o \
+	./linux_svga/profile/ppmread.o \
+	./linux_svga/profile/include.o \
+	./linux_svga/profile/xwdread.o \
+	./linux_svga/profile/fonts.o \
+	./linux_svga/profile/decoder.o \
+	./linux_svga/profile/loader.o \
+	./linux_svga/profile/glread.o \
+	./linux_svga/profile/texture.o \
+	./linux_svga/profile/specs.o \
+	./linux_svga/profile/supmorph.o \
+	./linux_svga/profile/image24.o \
+	./linux_svga/profile/pcxread.o \
+	./linux_svga/profile/timage.o \
+	./linux_svga/profile/jmalloc.o \
+	./linux_svga/profile/jrand.o \
+	./linux_svga/profile/lbmread.o \
+	./linux_svga/profile/targa.o \
+	./linux_svga/profile/keys.o \
+	./linux_svga/profile/dprint.o \
+	./linux_svga/profile/status.o \
+	./linux_svga/profile/visobj.o
+
+./linux_svga/profile/filter.o : filter.c
+	g++  -c -o ./linux_svga/profile/filter.o filter.c -Iinclude -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+./linux_svga/profile/filter.o : include/filter.hpp
+./linux_svga/profile/filter.o : include/macs.hpp
+./linux_svga/profile/filter.o : include/system.h
+./linux_svga/profile/filter.o : include/jmalloc.hpp
+./linux_svga/profile/filter.o : include/specs.hpp
+./linux_svga/profile/filter.o : include/palette.hpp
+./linux_svga/profile/filter.o : include/linked.hpp
+./linux_svga/profile/filter.o : include/image.hpp
+./linux_svga/profile/gifread.o : gifread.c
+	g++  -c -o ./linux_svga/profile/gifread.o gifread.c -Iinclude -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+./linux_svga/profile/gifread.o : include/macs.hpp
+./linux_svga/profile/gifread.o : include/dir.h
+./linux_svga/profile/gifread.o : include/dos.h
+./linux_svga/profile/gifread.o : include/std.h
+./linux_svga/profile/gifread.o : include/gifdecod.hpp
+./linux_svga/profile/gifread.o : include/video.hpp
+./linux_svga/profile/gifread.o : include/system.h
+./linux_svga/profile/gifread.o : include/jmalloc.hpp
+./linux_svga/profile/gifread.o : include/specs.hpp
+./linux_svga/profile/gifread.o : include/palette.hpp
+./linux_svga/profile/gifread.o : include/linked.hpp
+./linux_svga/profile/gifread.o : include/image.hpp
+./linux_svga/profile/gifread.o : include/gifread.hpp
+./linux_svga/profile/globals.o : globals.c
+	g++  -c -o ./linux_svga/profile/globals.o globals.c -Iinclude -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+./linux_svga/profile/globals.o : globals.c
+./linux_svga/profile/image.o : image.c
+	g++  -c -o ./linux_svga/profile/image.o image.c -Iinclude -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+./linux_svga/profile/image.o : include/macs.hpp
+./linux_svga/profile/image.o : include/system.h
+./linux_svga/profile/image.o : include/jmalloc.hpp
+./linux_svga/profile/image.o : include/specs.hpp
+./linux_svga/profile/image.o : include/palette.hpp
+./linux_svga/profile/image.o : include/linked.hpp
+./linux_svga/profile/image.o : include/image.hpp
+./linux_svga/profile/linked.o : linked.c
+	g++  -c -o ./linux_svga/profile/linked.o linked.c -Iinclude -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+./linux_svga/profile/linked.o : include/linked.hpp
+./linux_svga/profile/input.o : input.c
+	g++  -c -o ./linux_svga/profile/input.o input.c -Iinclude -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+./linux_svga/profile/input.o : include/timage.hpp
+./linux_svga/profile/input.o : include/fonts.hpp
+./linux_svga/profile/input.o : include/filter.hpp
+./linux_svga/profile/input.o : include/mouse.hpp
+./linux_svga/profile/input.o : include/macs.hpp
+./linux_svga/profile/input.o : include/sprite.hpp
+./linux_svga/profile/input.o : include/keys.hpp
+./linux_svga/profile/input.o : include/event.hpp
+./linux_svga/profile/input.o : include/jmalloc.hpp
+./linux_svga/profile/input.o : include/specs.hpp
+./linux_svga/profile/input.o : include/palette.hpp
+./linux_svga/profile/input.o : include/linked.hpp
+./linux_svga/profile/input.o : include/image.hpp
+./linux_svga/profile/input.o : include/system.h
+./linux_svga/profile/input.o : include/video.hpp
+./linux_svga/profile/input.o : include/jwindow.hpp
+./linux_svga/profile/input.o : include/input.hpp
+./linux_svga/profile/mdlread.o : mdlread.c
+	g++  -c -o ./linux_svga/profile/mdlread.o mdlread.c -Iinclude -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+./linux_svga/profile/mdlread.o : include/macs.hpp
+./linux_svga/profile/mdlread.o : include/image.hpp
+./linux_svga/profile/mdlread.o : include/system.h
+./linux_svga/profile/mdlread.o : include/jmalloc.hpp
+./linux_svga/profile/mdlread.o : include/specs.hpp
+./linux_svga/profile/mdlread.o : include/linked.hpp
+./linux_svga/profile/mdlread.o : include/palette.hpp
+./linux_svga/profile/mdlread.o : include/mdlread.hpp
+./linux_svga/profile/palette.o : palette.c
+	g++  -c -o ./linux_svga/profile/palette.o palette.c -Iinclude -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+./linux_svga/profile/palette.o : include/filter.hpp
+./linux_svga/profile/palette.o : include/video.hpp
+./linux_svga/profile/palette.o : include/dos.h
+./linux_svga/profile/palette.o : include/macs.hpp
+./linux_svga/profile/palette.o : include/image.hpp
+./linux_svga/profile/palette.o : include/system.h
+./linux_svga/profile/palette.o : include/jmalloc.hpp
+./linux_svga/profile/palette.o : include/specs.hpp
+./linux_svga/profile/palette.o : include/linked.hpp
+./linux_svga/profile/palette.o : include/palette.hpp
+./linux_svga/profile/ppmread.o : ppmread.c
+	g++  -c -o ./linux_svga/profile/ppmread.o ppmread.c -Iinclude -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+./linux_svga/profile/ppmread.o : include/ppmread.hpp
+./linux_svga/profile/ppmread.o : include/macs.hpp
+./linux_svga/profile/ppmread.o : include/system.h
+./linux_svga/profile/ppmread.o : include/jmalloc.hpp
+./linux_svga/profile/ppmread.o : include/specs.hpp
+./linux_svga/profile/ppmread.o : include/palette.hpp
+./linux_svga/profile/ppmread.o : include/linked.hpp
+./linux_svga/profile/ppmread.o : include/image.hpp
+./linux_svga/profile/include.o : include.c
+	g++  -c -o ./linux_svga/profile/include.o include.c -Iinclude -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+./linux_svga/profile/include.o : include/system.h
+./linux_svga/profile/include.o : include/jmalloc.hpp
+./linux_svga/profile/include.o : include/specs.hpp
+./linux_svga/profile/include.o : include/palette.hpp
+./linux_svga/profile/include.o : include/linked.hpp
+./linux_svga/profile/include.o : include/image.hpp
+./linux_svga/profile/include.o : include/include.hpp
+./linux_svga/profile/xwdread.o : xwdread.c
+	g++  -c -o ./linux_svga/profile/xwdread.o xwdread.c -Iinclude -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+./linux_svga/profile/xwdread.o : include/image24.hpp
+./linux_svga/profile/xwdread.o : include/main.hpp
+./linux_svga/profile/xwdread.o : include/dos.h
+./linux_svga/profile/xwdread.o : include/video.hpp
+./linux_svga/profile/xwdread.o : include/mouse.hpp
+./linux_svga/profile/xwdread.o : include/macs.hpp
+./linux_svga/profile/xwdread.o : include/sprite.hpp
+./linux_svga/profile/xwdread.o : include/keys.hpp
+./linux_svga/profile/xwdread.o : include/event.hpp
+./linux_svga/profile/xwdread.o : include/system.h
+./linux_svga/profile/xwdread.o : include/jmalloc.hpp
+./linux_svga/profile/xwdread.o : include/specs.hpp
+./linux_svga/profile/xwdread.o : include/palette.hpp
+./linux_svga/profile/xwdread.o : include/linked.hpp
+./linux_svga/profile/xwdread.o : include/image.hpp
+./linux_svga/profile/xwdread.o : include/filter.hpp
+./linux_svga/profile/fonts.o : fonts.c
+	g++  -c -o ./linux_svga/profile/fonts.o fonts.c -Iinclude -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+./linux_svga/profile/fonts.o : include/filter.hpp
+./linux_svga/profile/fonts.o : include/macs.hpp
+./linux_svga/profile/fonts.o : include/timage.hpp
+./linux_svga/profile/fonts.o : include/system.h
+./linux_svga/profile/fonts.o : include/jmalloc.hpp
+./linux_svga/profile/fonts.o : include/specs.hpp
+./linux_svga/profile/fonts.o : include/palette.hpp
+./linux_svga/profile/fonts.o : include/linked.hpp
+./linux_svga/profile/fonts.o : include/image.hpp
+./linux_svga/profile/fonts.o : include/fonts.hpp
+./linux_svga/profile/decoder.o : decoder.c
+	g++  -c -o ./linux_svga/profile/decoder.o decoder.c -Iinclude -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+./linux_svga/profile/decoder.o : include/macs.hpp
+./linux_svga/profile/decoder.o : include/system.h
+./linux_svga/profile/decoder.o : include/jmalloc.hpp
+./linux_svga/profile/decoder.o : include/specs.hpp
+./linux_svga/profile/decoder.o : include/palette.hpp
+./linux_svga/profile/decoder.o : include/linked.hpp
+./linux_svga/profile/decoder.o : include/image.hpp
+./linux_svga/profile/decoder.o : include/errs.h
+./linux_svga/profile/loader.o : loader.c
+	g++  -c -o ./linux_svga/profile/loader.o loader.c -Iinclude -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+./linux_svga/profile/loader.o : include/targa.hpp
+./linux_svga/profile/loader.o : include/lbmread.hpp
+./linux_svga/profile/loader.o : include/pcxread.hpp
+./linux_svga/profile/loader.o : include/glread.hpp
+./linux_svga/profile/loader.o : include/xwdread.hpp
+./linux_svga/profile/loader.o : include/ppmread.hpp
+./linux_svga/profile/loader.o : include/mdlread.hpp
+./linux_svga/profile/loader.o : include/filter.hpp
+./linux_svga/profile/loader.o : include/macs.hpp
+./linux_svga/profile/loader.o : include/image24.hpp
+./linux_svga/profile/loader.o : include/system.h
+./linux_svga/profile/loader.o : include/jmalloc.hpp
+./linux_svga/profile/loader.o : include/specs.hpp
+./linux_svga/profile/loader.o : include/palette.hpp
+./linux_svga/profile/loader.o : include/linked.hpp
+./linux_svga/profile/loader.o : include/image.hpp
+./linux_svga/profile/loader.o : include/loader.hpp
+./linux_svga/profile/glread.o : glread.c
+	g++  -c -o ./linux_svga/profile/glread.o glread.c -Iinclude -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+./linux_svga/profile/glread.o : include/video.hpp
+./linux_svga/profile/glread.o : include/jmalloc.hpp
+./linux_svga/profile/glread.o : include/specs.hpp
+./linux_svga/profile/glread.o : include/palette.hpp
+./linux_svga/profile/glread.o : include/linked.hpp
+./linux_svga/profile/glread.o : include/image.hpp
+./linux_svga/profile/glread.o : include/system.h
+./linux_svga/profile/glread.o : include/macs.hpp
+./linux_svga/profile/texture.o : texture.c
+	g++  -c -o ./linux_svga/profile/texture.o texture.c -Iinclude -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+./linux_svga/profile/texture.o : include/mouse.hpp
+./linux_svga/profile/texture.o : include/sprite.hpp
+./linux_svga/profile/texture.o : include/keys.hpp
+./linux_svga/profile/texture.o : include/event.hpp
+./linux_svga/profile/texture.o : include/macs.hpp
+./linux_svga/profile/texture.o : include/video.hpp
+./linux_svga/profile/texture.o : include/system.h
+./linux_svga/profile/texture.o : include/jmalloc.hpp
+./linux_svga/profile/texture.o : include/specs.hpp
+./linux_svga/profile/texture.o : include/palette.hpp
+./linux_svga/profile/texture.o : include/linked.hpp
+./linux_svga/profile/texture.o : include/image.hpp
+./linux_svga/profile/specs.o : specs.c
+	g++  -c -o ./linux_svga/profile/specs.o specs.c -Iinclude -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+./linux_svga/profile/specs.o : include/dprint.hpp
+./linux_svga/profile/specs.o : include/system.h
+./linux_svga/profile/specs.o : include/jmalloc.hpp
+./linux_svga/profile/specs.o : include/specs.hpp
+./linux_svga/profile/specs.o : include/palette.hpp
+./linux_svga/profile/specs.o : include/linked.hpp
+./linux_svga/profile/specs.o : include/image.hpp
+./linux_svga/profile/supmorph.o : supmorph.c
+	g++  -c -o ./linux_svga/profile/supmorph.o supmorph.c -Iinclude -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+./linux_svga/profile/supmorph.o : include/jrand.hpp
+./linux_svga/profile/supmorph.o : include/video.hpp
+./linux_svga/profile/supmorph.o : include/timing.hpp
+./linux_svga/profile/supmorph.o : include/filter.hpp
+./linux_svga/profile/supmorph.o : include/macs.hpp
+./linux_svga/profile/supmorph.o : include/system.h
+./linux_svga/profile/supmorph.o : include/specs.hpp
+./linux_svga/profile/supmorph.o : include/palette.hpp
+./linux_svga/profile/supmorph.o : include/linked.hpp
+./linux_svga/profile/supmorph.o : include/image.hpp
+./linux_svga/profile/supmorph.o : include/timage.hpp
+./linux_svga/profile/supmorph.o : include/jmalloc.hpp
+./linux_svga/profile/supmorph.o : include/supmorph.hpp
+./linux_svga/profile/image24.o : image24.c
+	g++  -c -o ./linux_svga/profile/image24.o image24.c -Iinclude -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+./linux_svga/profile/image24.o : include/image.hpp
+./linux_svga/profile/image24.o : include/filter.hpp
+./linux_svga/profile/image24.o : include/macs.hpp
+./linux_svga/profile/image24.o : include/system.h
+./linux_svga/profile/image24.o : include/jmalloc.hpp
+./linux_svga/profile/image24.o : include/specs.hpp
+./linux_svga/profile/image24.o : include/linked.hpp
+./linux_svga/profile/image24.o : include/palette.hpp
+./linux_svga/profile/image24.o : include/image24.hpp
+./linux_svga/profile/pcxread.o : pcxread.c
+	g++  -c -o ./linux_svga/profile/pcxread.o pcxread.c -Iinclude -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+./linux_svga/profile/pcxread.o : include/filter.hpp
+./linux_svga/profile/pcxread.o : include/macs.hpp
+./linux_svga/profile/pcxread.o : include/image24.hpp
+./linux_svga/profile/pcxread.o : include/system.h
+./linux_svga/profile/pcxread.o : include/jmalloc.hpp
+./linux_svga/profile/pcxread.o : include/specs.hpp
+./linux_svga/profile/pcxread.o : include/palette.hpp
+./linux_svga/profile/pcxread.o : include/linked.hpp
+./linux_svga/profile/pcxread.o : include/image.hpp
+./linux_svga/profile/pcxread.o : include/pcxread.hpp
+./linux_svga/profile/timage.o : timage.c
+	g++  -c -o ./linux_svga/profile/timage.o timage.c -Iinclude -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+./linux_svga/profile/timage.o : include/filter.hpp
+./linux_svga/profile/timage.o : include/macs.hpp
+./linux_svga/profile/timage.o : include/system.h
+./linux_svga/profile/timage.o : include/jmalloc.hpp
+./linux_svga/profile/timage.o : include/specs.hpp
+./linux_svga/profile/timage.o : include/palette.hpp
+./linux_svga/profile/timage.o : include/linked.hpp
+./linux_svga/profile/timage.o : include/image.hpp
+./linux_svga/profile/timage.o : include/timage.hpp
+./linux_svga/profile/jmalloc.o : jmalloc.c
+	g++  -c -o ./linux_svga/profile/jmalloc.o jmalloc.c -Iinclude -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+./linux_svga/profile/jmalloc.o : include/jmalloc.hpp
+./linux_svga/profile/jmalloc.o : include/system.h
+./linux_svga/profile/jmalloc.o : include/macs.hpp
+./linux_svga/profile/jmalloc.o : include/doscall.hpp
+./linux_svga/profile/jrand.o : jrand.c
+	g++  -c -o ./linux_svga/profile/jrand.o jrand.c -Iinclude -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+./linux_svga/profile/jrand.o : include/jrand.hpp
+./linux_svga/profile/lbmread.o : lbmread.c
+	g++  -c -o ./linux_svga/profile/lbmread.o lbmread.c -Iinclude -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+./linux_svga/profile/lbmread.o : include/system.h
+./linux_svga/profile/lbmread.o : include/jmalloc.hpp
+./linux_svga/profile/lbmread.o : include/specs.hpp
+./linux_svga/profile/lbmread.o : include/palette.hpp
+./linux_svga/profile/lbmread.o : include/linked.hpp
+./linux_svga/profile/lbmread.o : include/image.hpp
+./linux_svga/profile/lbmread.o : include/lbmread.hpp
+./linux_svga/profile/targa.o : targa.c
+	g++  -c -o ./linux_svga/profile/targa.o targa.c -Iinclude -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+./linux_svga/profile/targa.o : include/system.h
+./linux_svga/profile/targa.o : include/jmalloc.hpp
+./linux_svga/profile/targa.o : include/specs.hpp
+./linux_svga/profile/targa.o : include/palette.hpp
+./linux_svga/profile/targa.o : include/linked.hpp
+./linux_svga/profile/targa.o : include/image.hpp
+./linux_svga/profile/keys.o : keys.c
+	g++  -c -o ./linux_svga/profile/keys.o keys.c -Iinclude -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+./linux_svga/profile/keys.o : include/keys.hpp
+./linux_svga/profile/dprint.o : dprint.c
+	g++  -c -o ./linux_svga/profile/dprint.o dprint.c -Iinclude -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+./linux_svga/profile/dprint.o : include/system.h
+./linux_svga/profile/dprint.o : include/macs.hpp
+./linux_svga/profile/status.o : status.c
+	g++  -c -o ./linux_svga/profile/status.o status.c -Iinclude -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+./linux_svga/profile/status.o : include/dprint.hpp
+./linux_svga/profile/status.o : include/timage.hpp
+./linux_svga/profile/status.o : include/fonts.hpp
+./linux_svga/profile/status.o : include/filter.hpp
+./linux_svga/profile/status.o : include/mouse.hpp
+./linux_svga/profile/status.o : include/sprite.hpp
+./linux_svga/profile/status.o : include/keys.hpp
+./linux_svga/profile/status.o : include/event.hpp
+./linux_svga/profile/status.o : include/jmalloc.hpp
+./linux_svga/profile/status.o : include/specs.hpp
+./linux_svga/profile/status.o : include/palette.hpp
+./linux_svga/profile/status.o : include/linked.hpp
+./linux_svga/profile/status.o : include/image.hpp
+./linux_svga/profile/status.o : include/video.hpp
+./linux_svga/profile/status.o : include/jwindow.hpp
+./linux_svga/profile/status.o : include/visobj.hpp
+./linux_svga/profile/status.o : include/status.hpp
+./linux_svga/profile/status.o : include/system.h
+./linux_svga/profile/status.o : include/macs.hpp
+./linux_svga/profile/visobj.o : visobj.c
+	g++  -c -o ./linux_svga/profile/visobj.o visobj.c -Iinclude -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+./linux_svga/profile/visobj.o : include/timage.hpp
+./linux_svga/profile/visobj.o : include/fonts.hpp
+./linux_svga/profile/visobj.o : include/filter.hpp
+./linux_svga/profile/visobj.o : include/mouse.hpp
+./linux_svga/profile/visobj.o : include/macs.hpp
+./linux_svga/profile/visobj.o : include/sprite.hpp
+./linux_svga/profile/visobj.o : include/keys.hpp
+./linux_svga/profile/visobj.o : include/event.hpp
+./linux_svga/profile/visobj.o : include/jmalloc.hpp
+./linux_svga/profile/visobj.o : include/specs.hpp
+./linux_svga/profile/visobj.o : include/palette.hpp
+./linux_svga/profile/visobj.o : include/linked.hpp
+./linux_svga/profile/visobj.o : include/image.hpp
+./linux_svga/profile/visobj.o : include/system.h
+./linux_svga/profile/visobj.o : include/video.hpp
+./linux_svga/profile/visobj.o : include/jwindow.hpp
+./linux_svga/profile/visobj.o : include/visobj.hpp
+
+./linux_x11/profile/image.a : $(LINUX_X11_image_profile_o_files)
+	ar ruvs ./linux_x11/profile/image.a \
+	./linux_x11/profile/filter.o \
+	./linux_x11/profile/gifread.o \
+	./linux_x11/profile/globals.o \
+	./linux_x11/profile/image.o \
+	./linux_x11/profile/linked.o \
+	./linux_x11/profile/input.o \
+	./linux_x11/profile/mdlread.o \
+	./linux_x11/profile/palette.o \
+	./linux_x11/profile/ppmread.o \
+	./linux_x11/profile/include.o \
+	./linux_x11/profile/xwdread.o \
+	./linux_x11/profile/fonts.o \
+	./linux_x11/profile/decoder.o \
+	./linux_x11/profile/loader.o \
+	./linux_x11/profile/glread.o \
+	./linux_x11/profile/texture.o \
+	./linux_x11/profile/specs.o \
+	./linux_x11/profile/supmorph.o \
+	./linux_x11/profile/image24.o \
+	./linux_x11/profile/pcxread.o \
+	./linux_x11/profile/timage.o \
+	./linux_x11/profile/jmalloc.o \
+	./linux_x11/profile/jrand.o \
+	./linux_x11/profile/lbmread.o \
+	./linux_x11/profile/targa.o \
+	./linux_x11/profile/keys.o \
+	./linux_x11/profile/dprint.o \
+	./linux_x11/profile/status.o \
+	./linux_x11/profile/visobj.o
+
+./linux_x11/profile/filter.o : filter.c
+	g++  -c -o ./linux_x11/profile/filter.o filter.c -Iinclude -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+./linux_x11/profile/filter.o : include/filter.hpp
+./linux_x11/profile/filter.o : include/macs.hpp
+./linux_x11/profile/filter.o : include/system.h
+./linux_x11/profile/filter.o : include/jmalloc.hpp
+./linux_x11/profile/filter.o : include/specs.hpp
+./linux_x11/profile/filter.o : include/palette.hpp
+./linux_x11/profile/filter.o : include/linked.hpp
+./linux_x11/profile/filter.o : include/image.hpp
+./linux_x11/profile/gifread.o : gifread.c
+	g++  -c -o ./linux_x11/profile/gifread.o gifread.c -Iinclude -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+./linux_x11/profile/gifread.o : include/macs.hpp
+./linux_x11/profile/gifread.o : include/dir.h
+./linux_x11/profile/gifread.o : include/dos.h
+./linux_x11/profile/gifread.o : include/std.h
+./linux_x11/profile/gifread.o : include/gifdecod.hpp
+./linux_x11/profile/gifread.o : include/video.hpp
+./linux_x11/profile/gifread.o : include/system.h
+./linux_x11/profile/gifread.o : include/jmalloc.hpp
+./linux_x11/profile/gifread.o : include/specs.hpp
+./linux_x11/profile/gifread.o : include/palette.hpp
+./linux_x11/profile/gifread.o : include/linked.hpp
+./linux_x11/profile/gifread.o : include/image.hpp
+./linux_x11/profile/gifread.o : include/gifread.hpp
+./linux_x11/profile/globals.o : globals.c
+	g++  -c -o ./linux_x11/profile/globals.o globals.c -Iinclude -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+./linux_x11/profile/globals.o : globals.c
+./linux_x11/profile/image.o : image.c
+	g++  -c -o ./linux_x11/profile/image.o image.c -Iinclude -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+./linux_x11/profile/image.o : include/macs.hpp
+./linux_x11/profile/image.o : include/system.h
+./linux_x11/profile/image.o : include/jmalloc.hpp
+./linux_x11/profile/image.o : include/specs.hpp
+./linux_x11/profile/image.o : include/palette.hpp
+./linux_x11/profile/image.o : include/linked.hpp
+./linux_x11/profile/image.o : include/image.hpp
+./linux_x11/profile/linked.o : linked.c
+	g++  -c -o ./linux_x11/profile/linked.o linked.c -Iinclude -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+./linux_x11/profile/linked.o : include/linked.hpp
+./linux_x11/profile/input.o : input.c
+	g++  -c -o ./linux_x11/profile/input.o input.c -Iinclude -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+./linux_x11/profile/input.o : include/timage.hpp
+./linux_x11/profile/input.o : include/fonts.hpp
+./linux_x11/profile/input.o : include/filter.hpp
+./linux_x11/profile/input.o : include/mouse.hpp
+./linux_x11/profile/input.o : include/macs.hpp
+./linux_x11/profile/input.o : include/sprite.hpp
+./linux_x11/profile/input.o : include/keys.hpp
+./linux_x11/profile/input.o : include/event.hpp
+./linux_x11/profile/input.o : include/jmalloc.hpp
+./linux_x11/profile/input.o : include/specs.hpp
+./linux_x11/profile/input.o : include/palette.hpp
+./linux_x11/profile/input.o : include/linked.hpp
+./linux_x11/profile/input.o : include/image.hpp
+./linux_x11/profile/input.o : include/system.h
+./linux_x11/profile/input.o : include/video.hpp
+./linux_x11/profile/input.o : include/jwindow.hpp
+./linux_x11/profile/input.o : include/input.hpp
+./linux_x11/profile/mdlread.o : mdlread.c
+	g++  -c -o ./linux_x11/profile/mdlread.o mdlread.c -Iinclude -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+./linux_x11/profile/mdlread.o : include/macs.hpp
+./linux_x11/profile/mdlread.o : include/image.hpp
+./linux_x11/profile/mdlread.o : include/system.h
+./linux_x11/profile/mdlread.o : include/jmalloc.hpp
+./linux_x11/profile/mdlread.o : include/specs.hpp
+./linux_x11/profile/mdlread.o : include/linked.hpp
+./linux_x11/profile/mdlread.o : include/palette.hpp
+./linux_x11/profile/mdlread.o : include/mdlread.hpp
+./linux_x11/profile/palette.o : palette.c
+	g++  -c -o ./linux_x11/profile/palette.o palette.c -Iinclude -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+./linux_x11/profile/palette.o : include/filter.hpp
+./linux_x11/profile/palette.o : include/video.hpp
+./linux_x11/profile/palette.o : include/dos.h
+./linux_x11/profile/palette.o : include/macs.hpp
+./linux_x11/profile/palette.o : include/image.hpp
+./linux_x11/profile/palette.o : include/system.h
+./linux_x11/profile/palette.o : include/jmalloc.hpp
+./linux_x11/profile/palette.o : include/specs.hpp
+./linux_x11/profile/palette.o : include/linked.hpp
+./linux_x11/profile/palette.o : include/palette.hpp
+./linux_x11/profile/ppmread.o : ppmread.c
+	g++  -c -o ./linux_x11/profile/ppmread.o ppmread.c -Iinclude -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+./linux_x11/profile/ppmread.o : include/ppmread.hpp
+./linux_x11/profile/ppmread.o : include/macs.hpp
+./linux_x11/profile/ppmread.o : include/system.h
+./linux_x11/profile/ppmread.o : include/jmalloc.hpp
+./linux_x11/profile/ppmread.o : include/specs.hpp
+./linux_x11/profile/ppmread.o : include/palette.hpp
+./linux_x11/profile/ppmread.o : include/linked.hpp
+./linux_x11/profile/ppmread.o : include/image.hpp
+./linux_x11/profile/include.o : include.c
+	g++  -c -o ./linux_x11/profile/include.o include.c -Iinclude -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+./linux_x11/profile/include.o : include/system.h
+./linux_x11/profile/include.o : include/jmalloc.hpp
+./linux_x11/profile/include.o : include/specs.hpp
+./linux_x11/profile/include.o : include/palette.hpp
+./linux_x11/profile/include.o : include/linked.hpp
+./linux_x11/profile/include.o : include/image.hpp
+./linux_x11/profile/include.o : include/include.hpp
+./linux_x11/profile/xwdread.o : xwdread.c
+	g++  -c -o ./linux_x11/profile/xwdread.o xwdread.c -Iinclude -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+./linux_x11/profile/xwdread.o : include/image24.hpp
+./linux_x11/profile/xwdread.o : include/main.hpp
+./linux_x11/profile/xwdread.o : include/dos.h
+./linux_x11/profile/xwdread.o : include/video.hpp
+./linux_x11/profile/xwdread.o : include/mouse.hpp
+./linux_x11/profile/xwdread.o : include/macs.hpp
+./linux_x11/profile/xwdread.o : include/sprite.hpp
+./linux_x11/profile/xwdread.o : include/keys.hpp
+./linux_x11/profile/xwdread.o : include/event.hpp
+./linux_x11/profile/xwdread.o : include/system.h
+./linux_x11/profile/xwdread.o : include/jmalloc.hpp
+./linux_x11/profile/xwdread.o : include/specs.hpp
+./linux_x11/profile/xwdread.o : include/palette.hpp
+./linux_x11/profile/xwdread.o : include/linked.hpp
+./linux_x11/profile/xwdread.o : include/image.hpp
+./linux_x11/profile/xwdread.o : include/filter.hpp
+./linux_x11/profile/fonts.o : fonts.c
+	g++  -c -o ./linux_x11/profile/fonts.o fonts.c -Iinclude -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+./linux_x11/profile/fonts.o : include/filter.hpp
+./linux_x11/profile/fonts.o : include/macs.hpp
+./linux_x11/profile/fonts.o : include/timage.hpp
+./linux_x11/profile/fonts.o : include/system.h
+./linux_x11/profile/fonts.o : include/jmalloc.hpp
+./linux_x11/profile/fonts.o : include/specs.hpp
+./linux_x11/profile/fonts.o : include/palette.hpp
+./linux_x11/profile/fonts.o : include/linked.hpp
+./linux_x11/profile/fonts.o : include/image.hpp
+./linux_x11/profile/fonts.o : include/fonts.hpp
+./linux_x11/profile/decoder.o : decoder.c
+	g++  -c -o ./linux_x11/profile/decoder.o decoder.c -Iinclude -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+./linux_x11/profile/decoder.o : include/macs.hpp
+./linux_x11/profile/decoder.o : include/system.h
+./linux_x11/profile/decoder.o : include/jmalloc.hpp
+./linux_x11/profile/decoder.o : include/specs.hpp
+./linux_x11/profile/decoder.o : include/palette.hpp
+./linux_x11/profile/decoder.o : include/linked.hpp
+./linux_x11/profile/decoder.o : include/image.hpp
+./linux_x11/profile/decoder.o : include/errs.h
+./linux_x11/profile/loader.o : loader.c
+	g++  -c -o ./linux_x11/profile/loader.o loader.c -Iinclude -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+./linux_x11/profile/loader.o : include/targa.hpp
+./linux_x11/profile/loader.o : include/lbmread.hpp
+./linux_x11/profile/loader.o : include/pcxread.hpp
+./linux_x11/profile/loader.o : include/glread.hpp
+./linux_x11/profile/loader.o : include/xwdread.hpp
+./linux_x11/profile/loader.o : include/ppmread.hpp
+./linux_x11/profile/loader.o : include/mdlread.hpp
+./linux_x11/profile/loader.o : include/filter.hpp
+./linux_x11/profile/loader.o : include/macs.hpp
+./linux_x11/profile/loader.o : include/image24.hpp
+./linux_x11/profile/loader.o : include/system.h
+./linux_x11/profile/loader.o : include/jmalloc.hpp
+./linux_x11/profile/loader.o : include/specs.hpp
+./linux_x11/profile/loader.o : include/palette.hpp
+./linux_x11/profile/loader.o : include/linked.hpp
+./linux_x11/profile/loader.o : include/image.hpp
+./linux_x11/profile/loader.o : include/loader.hpp
+./linux_x11/profile/glread.o : glread.c
+	g++  -c -o ./linux_x11/profile/glread.o glread.c -Iinclude -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+./linux_x11/profile/glread.o : include/video.hpp
+./linux_x11/profile/glread.o : include/jmalloc.hpp
+./linux_x11/profile/glread.o : include/specs.hpp
+./linux_x11/profile/glread.o : include/palette.hpp
+./linux_x11/profile/glread.o : include/linked.hpp
+./linux_x11/profile/glread.o : include/image.hpp
+./linux_x11/profile/glread.o : include/system.h
+./linux_x11/profile/glread.o : include/macs.hpp
+./linux_x11/profile/texture.o : texture.c
+	g++  -c -o ./linux_x11/profile/texture.o texture.c -Iinclude -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+./linux_x11/profile/texture.o : include/mouse.hpp
+./linux_x11/profile/texture.o : include/sprite.hpp
+./linux_x11/profile/texture.o : include/keys.hpp
+./linux_x11/profile/texture.o : include/event.hpp
+./linux_x11/profile/texture.o : include/macs.hpp
+./linux_x11/profile/texture.o : include/video.hpp
+./linux_x11/profile/texture.o : include/system.h
+./linux_x11/profile/texture.o : include/jmalloc.hpp
+./linux_x11/profile/texture.o : include/specs.hpp
+./linux_x11/profile/texture.o : include/palette.hpp
+./linux_x11/profile/texture.o : include/linked.hpp
+./linux_x11/profile/texture.o : include/image.hpp
+./linux_x11/profile/specs.o : specs.c
+	g++  -c -o ./linux_x11/profile/specs.o specs.c -Iinclude -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+./linux_x11/profile/specs.o : include/dprint.hpp
+./linux_x11/profile/specs.o : include/system.h
+./linux_x11/profile/specs.o : include/jmalloc.hpp
+./linux_x11/profile/specs.o : include/specs.hpp
+./linux_x11/profile/specs.o : include/palette.hpp
+./linux_x11/profile/specs.o : include/linked.hpp
+./linux_x11/profile/specs.o : include/image.hpp
+./linux_x11/profile/supmorph.o : supmorph.c
+	g++  -c -o ./linux_x11/profile/supmorph.o supmorph.c -Iinclude -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+./linux_x11/profile/supmorph.o : include/jrand.hpp
+./linux_x11/profile/supmorph.o : include/video.hpp
+./linux_x11/profile/supmorph.o : include/timing.hpp
+./linux_x11/profile/supmorph.o : include/filter.hpp
+./linux_x11/profile/supmorph.o : include/macs.hpp
+./linux_x11/profile/supmorph.o : include/system.h
+./linux_x11/profile/supmorph.o : include/specs.hpp
+./linux_x11/profile/supmorph.o : include/palette.hpp
+./linux_x11/profile/supmorph.o : include/linked.hpp
+./linux_x11/profile/supmorph.o : include/image.hpp
+./linux_x11/profile/supmorph.o : include/timage.hpp
+./linux_x11/profile/supmorph.o : include/jmalloc.hpp
+./linux_x11/profile/supmorph.o : include/supmorph.hpp
+./linux_x11/profile/image24.o : image24.c
+	g++  -c -o ./linux_x11/profile/image24.o image24.c -Iinclude -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+./linux_x11/profile/image24.o : include/image.hpp
+./linux_x11/profile/image24.o : include/filter.hpp
+./linux_x11/profile/image24.o : include/macs.hpp
+./linux_x11/profile/image24.o : include/system.h
+./linux_x11/profile/image24.o : include/jmalloc.hpp
+./linux_x11/profile/image24.o : include/specs.hpp
+./linux_x11/profile/image24.o : include/linked.hpp
+./linux_x11/profile/image24.o : include/palette.hpp
+./linux_x11/profile/image24.o : include/image24.hpp
+./linux_x11/profile/pcxread.o : pcxread.c
+	g++  -c -o ./linux_x11/profile/pcxread.o pcxread.c -Iinclude -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+./linux_x11/profile/pcxread.o : include/filter.hpp
+./linux_x11/profile/pcxread.o : include/macs.hpp
+./linux_x11/profile/pcxread.o : include/image24.hpp
+./linux_x11/profile/pcxread.o : include/system.h
+./linux_x11/profile/pcxread.o : include/jmalloc.hpp
+./linux_x11/profile/pcxread.o : include/specs.hpp
+./linux_x11/profile/pcxread.o : include/palette.hpp
+./linux_x11/profile/pcxread.o : include/linked.hpp
+./linux_x11/profile/pcxread.o : include/image.hpp
+./linux_x11/profile/pcxread.o : include/pcxread.hpp
+./linux_x11/profile/timage.o : timage.c
+	g++  -c -o ./linux_x11/profile/timage.o timage.c -Iinclude -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+./linux_x11/profile/timage.o : include/filter.hpp
+./linux_x11/profile/timage.o : include/macs.hpp
+./linux_x11/profile/timage.o : include/system.h
+./linux_x11/profile/timage.o : include/jmalloc.hpp
+./linux_x11/profile/timage.o : include/specs.hpp
+./linux_x11/profile/timage.o : include/palette.hpp
+./linux_x11/profile/timage.o : include/linked.hpp
+./linux_x11/profile/timage.o : include/image.hpp
+./linux_x11/profile/timage.o : include/timage.hpp
+./linux_x11/profile/jmalloc.o : jmalloc.c
+	g++  -c -o ./linux_x11/profile/jmalloc.o jmalloc.c -Iinclude -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+./linux_x11/profile/jmalloc.o : include/jmalloc.hpp
+./linux_x11/profile/jmalloc.o : include/system.h
+./linux_x11/profile/jmalloc.o : include/macs.hpp
+./linux_x11/profile/jmalloc.o : include/doscall.hpp
+./linux_x11/profile/jrand.o : jrand.c
+	g++  -c -o ./linux_x11/profile/jrand.o jrand.c -Iinclude -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+./linux_x11/profile/jrand.o : include/jrand.hpp
+./linux_x11/profile/lbmread.o : lbmread.c
+	g++  -c -o ./linux_x11/profile/lbmread.o lbmread.c -Iinclude -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+./linux_x11/profile/lbmread.o : include/system.h
+./linux_x11/profile/lbmread.o : include/jmalloc.hpp
+./linux_x11/profile/lbmread.o : include/specs.hpp
+./linux_x11/profile/lbmread.o : include/palette.hpp
+./linux_x11/profile/lbmread.o : include/linked.hpp
+./linux_x11/profile/lbmread.o : include/image.hpp
+./linux_x11/profile/lbmread.o : include/lbmread.hpp
+./linux_x11/profile/targa.o : targa.c
+	g++  -c -o ./linux_x11/profile/targa.o targa.c -Iinclude -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+./linux_x11/profile/targa.o : include/system.h
+./linux_x11/profile/targa.o : include/jmalloc.hpp
+./linux_x11/profile/targa.o : include/specs.hpp
+./linux_x11/profile/targa.o : include/palette.hpp
+./linux_x11/profile/targa.o : include/linked.hpp
+./linux_x11/profile/targa.o : include/image.hpp
+./linux_x11/profile/keys.o : keys.c
+	g++  -c -o ./linux_x11/profile/keys.o keys.c -Iinclude -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+./linux_x11/profile/keys.o : include/keys.hpp
+./linux_x11/profile/dprint.o : dprint.c
+	g++  -c -o ./linux_x11/profile/dprint.o dprint.c -Iinclude -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+./linux_x11/profile/dprint.o : include/system.h
+./linux_x11/profile/dprint.o : include/macs.hpp
+./linux_x11/profile/status.o : status.c
+	g++  -c -o ./linux_x11/profile/status.o status.c -Iinclude -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+./linux_x11/profile/status.o : include/dprint.hpp
+./linux_x11/profile/status.o : include/timage.hpp
+./linux_x11/profile/status.o : include/fonts.hpp
+./linux_x11/profile/status.o : include/filter.hpp
+./linux_x11/profile/status.o : include/mouse.hpp
+./linux_x11/profile/status.o : include/sprite.hpp
+./linux_x11/profile/status.o : include/keys.hpp
+./linux_x11/profile/status.o : include/event.hpp
+./linux_x11/profile/status.o : include/jmalloc.hpp
+./linux_x11/profile/status.o : include/specs.hpp
+./linux_x11/profile/status.o : include/palette.hpp
+./linux_x11/profile/status.o : include/linked.hpp
+./linux_x11/profile/status.o : include/image.hpp
+./linux_x11/profile/status.o : include/video.hpp
+./linux_x11/profile/status.o : include/jwindow.hpp
+./linux_x11/profile/status.o : include/visobj.hpp
+./linux_x11/profile/status.o : include/status.hpp
+./linux_x11/profile/status.o : include/system.h
+./linux_x11/profile/status.o : include/macs.hpp
+./linux_x11/profile/visobj.o : visobj.c
+	g++  -c -o ./linux_x11/profile/visobj.o visobj.c -Iinclude -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+./linux_x11/profile/visobj.o : include/timage.hpp
+./linux_x11/profile/visobj.o : include/fonts.hpp
+./linux_x11/profile/visobj.o : include/filter.hpp
+./linux_x11/profile/visobj.o : include/mouse.hpp
+./linux_x11/profile/visobj.o : include/macs.hpp
+./linux_x11/profile/visobj.o : include/sprite.hpp
+./linux_x11/profile/visobj.o : include/keys.hpp
+./linux_x11/profile/visobj.o : include/event.hpp
+./linux_x11/profile/visobj.o : include/jmalloc.hpp
+./linux_x11/profile/visobj.o : include/specs.hpp
+./linux_x11/profile/visobj.o : include/palette.hpp
+./linux_x11/profile/visobj.o : include/linked.hpp
+./linux_x11/profile/visobj.o : include/image.hpp
+./linux_x11/profile/visobj.o : include/system.h
+./linux_x11/profile/visobj.o : include/video.hpp
+./linux_x11/profile/visobj.o : include/jwindow.hpp
+./linux_x11/profile/visobj.o : include/visobj.hpp
+

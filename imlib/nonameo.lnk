@@ -1,0 +1,14 @@
+system dos4g
+option caseexact
+name nonameo.exe
+option stack=8k
+file ..\imlib\port\dos4gw\DOS\opt\video.obj
+file ..\imlib\port\dos4gw\DOS\opt\event.obj
+file ..\imlib\port\dos4gw\DOS\opt\timing.obj
+file ..\imlib\port\dos4gw\DOS\opt\mouse.obj
+file ..\imlib\port\dos4gw\DOS\opt\jdir.obj
+file ..\imlib\DOS\opt\jwindow.obj
+file ..\imlib\port\dos4gw\DOS\opt\joystick.obj
+file ..\imlib\port\dos4gw\DOS\opt\jnet.obj
+file ..\imlib\port\dos4gw\DOS\opt\doscall.obj
+file ..\imlib\port\dos4gw\DOS\opt\sound.obj

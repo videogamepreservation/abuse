@@ -1,0 +1,15 @@
+debug all
+system dos4g
+option caseexact
+name noname.exe
+option stack=8k
+file ..\imlib\port\dos4gw\DOS\debug\video.obj
+file ..\imlib\port\dos4gw\DOS\debug\event.obj
+file ..\imlib\port\dos4gw\DOS\debug\timing.obj
+file ..\imlib\port\dos4gw\DOS\debug\mouse.obj
+file ..\imlib\port\dos4gw\DOS\debug\jdir.obj
+file ..\imlib\DOS\debug\jwindow.obj
+file ..\imlib\port\dos4gw\DOS\debug\joystick.obj
+file ..\imlib\port\dos4gw\DOS\debug\jnet.obj
+file ..\imlib\port\dos4gw\DOS\debug\doscall.obj
+file ..\imlib\port\dos4gw\DOS\debug\sound.obj

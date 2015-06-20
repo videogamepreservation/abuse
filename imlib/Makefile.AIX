@@ -1,0 +1,2162 @@
+all : opt
+
+debug : ./AIX/debug/image.a ./AIX/debug/packet.a ./AIX/debug/gui.a ./AIX/debug/net.a ./AIX/debug/dir.a ./AIX/debug/sound.a ./AIX/debug/joy.a ./AIX/debug/winman.a ./AIX/debug/time.a
+	echo Made debug
+
+opt : ./AIX/opt/image.a ./AIX/opt/packet.a ./AIX/opt/gui.a ./AIX/opt/net.a ./AIX/opt/dir.a ./AIX/opt/sound.a ./AIX/opt/joy.a ./AIX/opt/winman.a ./AIX/opt/time.a
+	echo Made opt
+
+profile : ./AIX/profile/image.a ./AIX/profile/packet.a ./AIX/profile/gui.a ./AIX/profile/net.a ./AIX/profile/dir.a ./AIX/profile/sound.a ./AIX/profile/joy.a ./AIX/profile/winman.a ./AIX/profile/time.a
+	echo Made profile
+
+AIX_image_debug_o_files = \
+	/tmp/2a1735e4.o \
+	/tmp/766455d4.o \
+	/tmp/887c938a.o \
+	/tmp/a7d10ac6.o \
+	/tmp/1b1a83f4.o \
+	/tmp/d42da7b7.o \
+	/tmp/7d8eee86.o \
+	/tmp/93b115b9.o \
+	/tmp/8df04d45.o \
+	/tmp/88a0f760.o \
+	/tmp/93253932.o \
+	/tmp/ce197449.o \
+	/tmp/7a2f7667.o \
+	/tmp/1bfd3f8a.o \
+	/tmp/13013f49.o \
+	/tmp/b55c23bb.o \
+	/tmp/c221d886.o \
+	/tmp/228c0c1e.o \
+	/tmp/0db76be5.o \
+	/tmp/8bd9e1ee.o \
+	/tmp/1b2dec45.o \
+	/tmp/8690c906.o \
+	/tmp/b3f75f68.o \
+	/tmp/7b80b7e5.o \
+	/tmp/b30799fd.o \
+	/tmp/60567100.o \
+	/tmp/35398b99.o \
+	/tmp/4891aea2.o \
+	/tmp/31769caa.o
+
+AIX_packet_debug_o_files = \
+	/tmp/1cee01f0.o
+
+AIX_gui_debug_o_files = \
+	/tmp/c91eb00f.o \
+	/tmp/0afa0352.o \
+	/tmp/888179f2.o \
+	/tmp/d552341d.o \
+	/tmp/a5fcf297.o
+
+AIX_net_debug_o_files = \
+	/tmp/dfbf9346.o
+
+AIX_dir_debug_o_files = \
+	/tmp/d7a761f0.o
+
+AIX_sound_debug_o_files = \
+	/tmp/d5486b1b.o \
+	/tmp/8e90dc8f.o
+
+AIX_joy_debug_o_files = \
+	/tmp/9ef18826.o
+
+AIX_winman_debug_o_files = \
+	/tmp/5b1321a8.o \
+	/tmp/6d435cbd.o \
+	/tmp/660cca8c.o \
+	/tmp/a6f80b3a.o
+
+AIX_time_debug_o_files = \
+	/tmp/b6e2f4f7.o
+
+./AIX/debug/time.a : $(AIX_time_debug_o_files)
+	ar ruvs ./AIX/debug/time.a \
+	/tmp/b6e2f4f7.o
+
+/tmp/b6e2f4f7.o : port/unix/timing.c
+	g++  -c -o /tmp/b6e2f4f7.o port/unix/timing.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK -DNO_XSHM 
+
+/tmp/b6e2f4f7.o : include/timing.hpp
+
+./AIX/debug/winman.a : $(AIX_winman_debug_o_files)
+	ar ruvs ./AIX/debug/winman.a \
+	/tmp/5b1321a8.o \
+	/tmp/6d435cbd.o \
+	/tmp/660cca8c.o \
+	/tmp/a6f80b3a.o
+
+/tmp/5b1321a8.o : port/x11/video.c
+	g++  -c -o /tmp/5b1321a8.o port/x11/video.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK -DNO_XSHM 
+
+/tmp/5b1321a8.o : include/bitmap.h
+/tmp/5b1321a8.o : include/macs.hpp
+/tmp/5b1321a8.o : include/xinclude.h
+/tmp/5b1321a8.o : include/dos.h
+/tmp/5b1321a8.o : include/video.hpp
+/tmp/5b1321a8.o : include/globals.hpp
+/tmp/5b1321a8.o : include/system.h
+/tmp/5b1321a8.o : include/jmalloc.hpp
+/tmp/5b1321a8.o : include/specs.hpp
+/tmp/5b1321a8.o : include/palette.hpp
+/tmp/5b1321a8.o : include/linked.hpp
+/tmp/5b1321a8.o : include/image.hpp
+/tmp/5b1321a8.o : include/filter.hpp
+/tmp/6d435cbd.o : port/x11/mouse.c
+	g++  -c -o /tmp/6d435cbd.o port/x11/mouse.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK -DNO_XSHM 
+
+/tmp/6d435cbd.o : include/xinclude.h
+/tmp/6d435cbd.o : include/mouse.hpp
+/tmp/6d435cbd.o : include/monoprnt.hpp
+/tmp/6d435cbd.o : include/mdlread.hpp
+/tmp/6d435cbd.o : include/filter.hpp
+/tmp/6d435cbd.o : include/macs.hpp
+/tmp/6d435cbd.o : include/sprite.hpp
+/tmp/6d435cbd.o : include/jmalloc.hpp
+/tmp/6d435cbd.o : include/specs.hpp
+/tmp/6d435cbd.o : include/palette.hpp
+/tmp/6d435cbd.o : include/linked.hpp
+/tmp/6d435cbd.o : include/image.hpp
+/tmp/6d435cbd.o : include/system.h
+/tmp/6d435cbd.o : include/video.hpp
+/tmp/660cca8c.o : port/x11/event.c
+	g++  -c -o /tmp/660cca8c.o port/x11/event.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK -DNO_XSHM 
+
+/tmp/660cca8c.o : include/keys.hpp
+/tmp/660cca8c.o : include/event.hpp
+/tmp/660cca8c.o : include/sprite.hpp
+/tmp/660cca8c.o : include/mouse.hpp
+/tmp/660cca8c.o : include/macs.hpp
+/tmp/660cca8c.o : include/gifread.hpp
+/tmp/660cca8c.o : include/video.hpp
+/tmp/660cca8c.o : include/mdlread.hpp
+/tmp/660cca8c.o : include/jmalloc.hpp
+/tmp/660cca8c.o : include/specs.hpp
+/tmp/660cca8c.o : include/palette.hpp
+/tmp/660cca8c.o : include/linked.hpp
+/tmp/660cca8c.o : include/image.hpp
+/tmp/660cca8c.o : include/xinclude.h
+/tmp/660cca8c.o : include/system.h
+/tmp/a6f80b3a.o : jwindow.c
+	g++  -c -o /tmp/a6f80b3a.o jwindow.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK -DNO_XSHM 
+
+/tmp/a6f80b3a.o : include/timage.hpp
+/tmp/a6f80b3a.o : include/fonts.hpp
+/tmp/a6f80b3a.o : include/jwindow.hpp
+/tmp/a6f80b3a.o : include/filter.hpp
+/tmp/a6f80b3a.o : include/mouse.hpp
+/tmp/a6f80b3a.o : include/macs.hpp
+/tmp/a6f80b3a.o : include/sprite.hpp
+/tmp/a6f80b3a.o : include/keys.hpp
+/tmp/a6f80b3a.o : include/event.hpp
+/tmp/a6f80b3a.o : include/jmalloc.hpp
+/tmp/a6f80b3a.o : include/specs.hpp
+/tmp/a6f80b3a.o : include/palette.hpp
+/tmp/a6f80b3a.o : include/linked.hpp
+/tmp/a6f80b3a.o : include/image.hpp
+/tmp/a6f80b3a.o : include/system.h
+/tmp/a6f80b3a.o : include/video.hpp
+
+./AIX/debug/joy.a : $(AIX_joy_debug_o_files)
+	ar ruvs ./AIX/debug/joy.a \
+	/tmp/9ef18826.o
+
+/tmp/9ef18826.o : port/unix/joystick.c
+	g++  -c -o /tmp/9ef18826.o port/unix/joystick.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK -DNO_XSHM 
+
+/tmp/9ef18826.o : port/unix/joystick.c
+
+./AIX/debug/sound.a : $(AIX_sound_debug_o_files)
+	ar ruvs ./AIX/debug/sound.a \
+	/tmp/d5486b1b.o \
+	/tmp/8e90dc8f.o
+
+/tmp/d5486b1b.o : port/aix/sound.c
+	g++  -c -o /tmp/d5486b1b.o port/aix/sound.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK -DNO_XSHM 
+
+/tmp/d5486b1b.o : include/timing.hpp
+/tmp/d5486b1b.o : include/dprint.hpp
+/tmp/d5486b1b.o : include/jmalloc.hpp
+/tmp/d5486b1b.o : include/linked.hpp
+/tmp/d5486b1b.o : include/specs.hpp
+/tmp/d5486b1b.o : include/readwav.hpp
+/tmp/d5486b1b.o : include/sound.hpp
+/tmp/d5486b1b.o : include/system.h
+/tmp/d5486b1b.o : include/macs.hpp
+/tmp/8e90dc8f.o : readwav.c
+	g++  -c -o /tmp/8e90dc8f.o readwav.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK -DNO_XSHM 
+
+/tmp/8e90dc8f.o : include/dprint.hpp
+/tmp/8e90dc8f.o : include/macs.hpp
+/tmp/8e90dc8f.o : include/system.h
+/tmp/8e90dc8f.o : include/jmalloc.hpp
+/tmp/8e90dc8f.o : include/linked.hpp
+/tmp/8e90dc8f.o : include/specs.hpp
+/tmp/8e90dc8f.o : include/readwav.hpp
+
+./AIX/debug/dir.a : $(AIX_dir_debug_o_files)
+	ar ruvs ./AIX/debug/dir.a \
+	/tmp/d7a761f0.o
+
+/tmp/d7a761f0.o : port/unix/jdir.c
+	g++  -c -o /tmp/d7a761f0.o port/unix/jdir.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK -DNO_XSHM 
+
+/tmp/d7a761f0.o : include/jmalloc.hpp
+
+./AIX/debug/net.a : $(AIX_net_debug_o_files)
+	ar ruvs ./AIX/debug/net.a \
+	/tmp/dfbf9346.o
+
+/tmp/dfbf9346.o : port/unix/jnet.c
+	g++  -c -o /tmp/dfbf9346.o port/unix/jnet.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK -DNO_XSHM 
+
+/tmp/dfbf9346.o : include/jmalloc.hpp
+/tmp/dfbf9346.o : include/packet.hpp
+/tmp/dfbf9346.o : include/system.h
+/tmp/dfbf9346.o : include/macs.hpp
+/tmp/dfbf9346.o : include/jnet.hpp
+
+./AIX/debug/gui.a : $(AIX_gui_debug_o_files)
+	ar ruvs ./AIX/debug/gui.a \
+	/tmp/c91eb00f.o \
+	/tmp/0afa0352.o \
+	/tmp/888179f2.o \
+	/tmp/d552341d.o \
+	/tmp/a5fcf297.o
+
+/tmp/c91eb00f.o : pmenu.c
+	g++  -c -o /tmp/c91eb00f.o pmenu.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK -DNO_XSHM 
+
+/tmp/c91eb00f.o : include/timage.hpp
+/tmp/c91eb00f.o : include/fonts.hpp
+/tmp/c91eb00f.o : include/filter.hpp
+/tmp/c91eb00f.o : include/mouse.hpp
+/tmp/c91eb00f.o : include/macs.hpp
+/tmp/c91eb00f.o : include/sprite.hpp
+/tmp/c91eb00f.o : include/keys.hpp
+/tmp/c91eb00f.o : include/event.hpp
+/tmp/c91eb00f.o : include/specs.hpp
+/tmp/c91eb00f.o : include/palette.hpp
+/tmp/c91eb00f.o : include/linked.hpp
+/tmp/c91eb00f.o : include/image.hpp
+/tmp/c91eb00f.o : include/system.h
+/tmp/c91eb00f.o : include/video.hpp
+/tmp/c91eb00f.o : include/jwindow.hpp
+/tmp/c91eb00f.o : include/input.hpp
+/tmp/c91eb00f.o : include/jmalloc.hpp
+/tmp/c91eb00f.o : include/pmenu.hpp
+/tmp/0afa0352.o : scroller.c
+	g++  -c -o /tmp/0afa0352.o scroller.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK -DNO_XSHM 
+
+/tmp/0afa0352.o : include/timage.hpp
+/tmp/0afa0352.o : include/fonts.hpp
+/tmp/0afa0352.o : include/filter.hpp
+/tmp/0afa0352.o : include/mouse.hpp
+/tmp/0afa0352.o : include/macs.hpp
+/tmp/0afa0352.o : include/sprite.hpp
+/tmp/0afa0352.o : include/keys.hpp
+/tmp/0afa0352.o : include/event.hpp
+/tmp/0afa0352.o : include/jmalloc.hpp
+/tmp/0afa0352.o : include/specs.hpp
+/tmp/0afa0352.o : include/palette.hpp
+/tmp/0afa0352.o : include/linked.hpp
+/tmp/0afa0352.o : include/image.hpp
+/tmp/0afa0352.o : include/system.h
+/tmp/0afa0352.o : include/video.hpp
+/tmp/0afa0352.o : include/jwindow.hpp
+/tmp/0afa0352.o : include/input.hpp
+/tmp/0afa0352.o : include/scroller.hpp
+/tmp/888179f2.o : filesel.c
+	g++  -c -o /tmp/888179f2.o filesel.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK -DNO_XSHM 
+
+/tmp/888179f2.o : include/jdir.hpp
+/tmp/888179f2.o : include/scroller.hpp
+/tmp/888179f2.o : include/input.hpp
+/tmp/888179f2.o : include/timage.hpp
+/tmp/888179f2.o : include/fonts.hpp
+/tmp/888179f2.o : include/filter.hpp
+/tmp/888179f2.o : include/mouse.hpp
+/tmp/888179f2.o : include/macs.hpp
+/tmp/888179f2.o : include/sprite.hpp
+/tmp/888179f2.o : include/keys.hpp
+/tmp/888179f2.o : include/event.hpp
+/tmp/888179f2.o : include/jmalloc.hpp
+/tmp/888179f2.o : include/specs.hpp
+/tmp/888179f2.o : include/palette.hpp
+/tmp/888179f2.o : include/linked.hpp
+/tmp/888179f2.o : include/image.hpp
+/tmp/888179f2.o : include/system.h
+/tmp/888179f2.o : include/video.hpp
+/tmp/888179f2.o : include/jwindow.hpp
+/tmp/888179f2.o : include/filesel.hpp
+/tmp/d552341d.o : tools.c
+	g++  -c -o /tmp/d552341d.o tools.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK -DNO_XSHM 
+
+/tmp/d552341d.o : include/visobj.hpp
+/tmp/d552341d.o : include/scroller.hpp
+/tmp/d552341d.o : include/input.hpp
+/tmp/d552341d.o : include/timage.hpp
+/tmp/d552341d.o : include/fonts.hpp
+/tmp/d552341d.o : include/filter.hpp
+/tmp/d552341d.o : include/mouse.hpp
+/tmp/d552341d.o : include/macs.hpp
+/tmp/d552341d.o : include/sprite.hpp
+/tmp/d552341d.o : include/keys.hpp
+/tmp/d552341d.o : include/event.hpp
+/tmp/d552341d.o : include/jmalloc.hpp
+/tmp/d552341d.o : include/specs.hpp
+/tmp/d552341d.o : include/palette.hpp
+/tmp/d552341d.o : include/linked.hpp
+/tmp/d552341d.o : include/image.hpp
+/tmp/d552341d.o : include/system.h
+/tmp/d552341d.o : include/video.hpp
+/tmp/d552341d.o : include/jwindow.hpp
+/tmp/d552341d.o : include/tools.hpp
+/tmp/a5fcf297.o : guistat.c
+	g++  -c -o /tmp/a5fcf297.o guistat.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK -DNO_XSHM 
+
+/tmp/a5fcf297.o : include/guistat.hpp
+/tmp/a5fcf297.o : include/timing.hpp
+/tmp/a5fcf297.o : include/timage.hpp
+/tmp/a5fcf297.o : include/fonts.hpp
+/tmp/a5fcf297.o : include/filter.hpp
+/tmp/a5fcf297.o : include/mouse.hpp
+/tmp/a5fcf297.o : include/macs.hpp
+/tmp/a5fcf297.o : include/sprite.hpp
+/tmp/a5fcf297.o : include/keys.hpp
+/tmp/a5fcf297.o : include/event.hpp
+/tmp/a5fcf297.o : include/jmalloc.hpp
+/tmp/a5fcf297.o : include/specs.hpp
+/tmp/a5fcf297.o : include/palette.hpp
+/tmp/a5fcf297.o : include/linked.hpp
+/tmp/a5fcf297.o : include/image.hpp
+/tmp/a5fcf297.o : include/system.h
+/tmp/a5fcf297.o : include/video.hpp
+/tmp/a5fcf297.o : include/jwindow.hpp
+/tmp/a5fcf297.o : include/visobj.hpp
+/tmp/a5fcf297.o : include/status.hpp
+
+./AIX/debug/packet.a : $(AIX_packet_debug_o_files)
+	ar ruvs ./AIX/debug/packet.a \
+	/tmp/1cee01f0.o
+
+/tmp/1cee01f0.o : packet.c
+	g++  -c -o /tmp/1cee01f0.o packet.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK -DNO_XSHM 
+
+/tmp/1cee01f0.o : include/jmalloc.hpp
+/tmp/1cee01f0.o : include/system.h
+/tmp/1cee01f0.o : include/macs.hpp
+/tmp/1cee01f0.o : include/packet.hpp
+
+./AIX/debug/image.a : $(AIX_image_debug_o_files)
+	ar ruvs ./AIX/debug/image.a \
+	/tmp/2a1735e4.o \
+	/tmp/766455d4.o \
+	/tmp/887c938a.o \
+	/tmp/a7d10ac6.o \
+	/tmp/1b1a83f4.o \
+	/tmp/d42da7b7.o \
+	/tmp/7d8eee86.o \
+	/tmp/93b115b9.o \
+	/tmp/8df04d45.o \
+	/tmp/88a0f760.o \
+	/tmp/93253932.o \
+	/tmp/ce197449.o \
+	/tmp/7a2f7667.o \
+	/tmp/1bfd3f8a.o \
+	/tmp/13013f49.o \
+	/tmp/b55c23bb.o \
+	/tmp/c221d886.o \
+	/tmp/228c0c1e.o \
+	/tmp/0db76be5.o \
+	/tmp/8bd9e1ee.o \
+	/tmp/1b2dec45.o \
+	/tmp/8690c906.o \
+	/tmp/b3f75f68.o \
+	/tmp/7b80b7e5.o \
+	/tmp/b30799fd.o \
+	/tmp/60567100.o \
+	/tmp/35398b99.o \
+	/tmp/4891aea2.o \
+	/tmp/31769caa.o
+
+/tmp/2a1735e4.o : filter.c
+	g++  -c -o /tmp/2a1735e4.o filter.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK -DNO_XSHM 
+
+/tmp/2a1735e4.o : include/filter.hpp
+/tmp/2a1735e4.o : include/macs.hpp
+/tmp/2a1735e4.o : include/system.h
+/tmp/2a1735e4.o : include/jmalloc.hpp
+/tmp/2a1735e4.o : include/specs.hpp
+/tmp/2a1735e4.o : include/palette.hpp
+/tmp/2a1735e4.o : include/linked.hpp
+/tmp/2a1735e4.o : include/image.hpp
+/tmp/766455d4.o : gifread.c
+	g++  -c -o /tmp/766455d4.o gifread.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK -DNO_XSHM 
+
+/tmp/766455d4.o : include/macs.hpp
+/tmp/766455d4.o : include/dir.h
+/tmp/766455d4.o : include/dos.h
+/tmp/766455d4.o : include/std.h
+/tmp/766455d4.o : include/gifdecod.hpp
+/tmp/766455d4.o : include/video.hpp
+/tmp/766455d4.o : include/system.h
+/tmp/766455d4.o : include/jmalloc.hpp
+/tmp/766455d4.o : include/specs.hpp
+/tmp/766455d4.o : include/palette.hpp
+/tmp/766455d4.o : include/linked.hpp
+/tmp/766455d4.o : include/image.hpp
+/tmp/766455d4.o : include/gifread.hpp
+/tmp/887c938a.o : globals.c
+	g++  -c -o /tmp/887c938a.o globals.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK -DNO_XSHM 
+
+/tmp/887c938a.o : globals.c
+/tmp/a7d10ac6.o : image.c
+	g++  -c -o /tmp/a7d10ac6.o image.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK -DNO_XSHM 
+
+/tmp/a7d10ac6.o : include/macs.hpp
+/tmp/a7d10ac6.o : include/system.h
+/tmp/a7d10ac6.o : include/jmalloc.hpp
+/tmp/a7d10ac6.o : include/specs.hpp
+/tmp/a7d10ac6.o : include/palette.hpp
+/tmp/a7d10ac6.o : include/linked.hpp
+/tmp/a7d10ac6.o : include/image.hpp
+/tmp/1b1a83f4.o : linked.c
+	g++  -c -o /tmp/1b1a83f4.o linked.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK -DNO_XSHM 
+
+/tmp/1b1a83f4.o : include/linked.hpp
+/tmp/d42da7b7.o : input.c
+	g++  -c -o /tmp/d42da7b7.o input.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK -DNO_XSHM 
+
+/tmp/d42da7b7.o : include/timage.hpp
+/tmp/d42da7b7.o : include/fonts.hpp
+/tmp/d42da7b7.o : include/filter.hpp
+/tmp/d42da7b7.o : include/mouse.hpp
+/tmp/d42da7b7.o : include/macs.hpp
+/tmp/d42da7b7.o : include/sprite.hpp
+/tmp/d42da7b7.o : include/keys.hpp
+/tmp/d42da7b7.o : include/event.hpp
+/tmp/d42da7b7.o : include/jmalloc.hpp
+/tmp/d42da7b7.o : include/specs.hpp
+/tmp/d42da7b7.o : include/palette.hpp
+/tmp/d42da7b7.o : include/linked.hpp
+/tmp/d42da7b7.o : include/image.hpp
+/tmp/d42da7b7.o : include/system.h
+/tmp/d42da7b7.o : include/video.hpp
+/tmp/d42da7b7.o : include/jwindow.hpp
+/tmp/d42da7b7.o : include/input.hpp
+/tmp/7d8eee86.o : mdlread.c
+	g++  -c -o /tmp/7d8eee86.o mdlread.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK -DNO_XSHM 
+
+/tmp/7d8eee86.o : include/macs.hpp
+/tmp/7d8eee86.o : include/image.hpp
+/tmp/7d8eee86.o : include/system.h
+/tmp/7d8eee86.o : include/jmalloc.hpp
+/tmp/7d8eee86.o : include/specs.hpp
+/tmp/7d8eee86.o : include/linked.hpp
+/tmp/7d8eee86.o : include/palette.hpp
+/tmp/7d8eee86.o : include/mdlread.hpp
+/tmp/93b115b9.o : palette.c
+	g++  -c -o /tmp/93b115b9.o palette.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK -DNO_XSHM 
+
+/tmp/93b115b9.o : include/filter.hpp
+/tmp/93b115b9.o : include/video.hpp
+/tmp/93b115b9.o : include/dos.h
+/tmp/93b115b9.o : include/macs.hpp
+/tmp/93b115b9.o : include/image.hpp
+/tmp/93b115b9.o : include/system.h
+/tmp/93b115b9.o : include/jmalloc.hpp
+/tmp/93b115b9.o : include/specs.hpp
+/tmp/93b115b9.o : include/linked.hpp
+/tmp/93b115b9.o : include/palette.hpp
+/tmp/8df04d45.o : ppmread.c
+	g++  -c -o /tmp/8df04d45.o ppmread.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK -DNO_XSHM 
+
+/tmp/8df04d45.o : include/ppmread.hpp
+/tmp/8df04d45.o : include/macs.hpp
+/tmp/8df04d45.o : include/system.h
+/tmp/8df04d45.o : include/jmalloc.hpp
+/tmp/8df04d45.o : include/specs.hpp
+/tmp/8df04d45.o : include/palette.hpp
+/tmp/8df04d45.o : include/linked.hpp
+/tmp/8df04d45.o : include/image.hpp
+/tmp/88a0f760.o : include.c
+	g++  -c -o /tmp/88a0f760.o include.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK -DNO_XSHM 
+
+/tmp/88a0f760.o : include/system.h
+/tmp/88a0f760.o : include/jmalloc.hpp
+/tmp/88a0f760.o : include/specs.hpp
+/tmp/88a0f760.o : include/palette.hpp
+/tmp/88a0f760.o : include/linked.hpp
+/tmp/88a0f760.o : include/image.hpp
+/tmp/88a0f760.o : include/include.hpp
+/tmp/93253932.o : xwdread.c
+	g++  -c -o /tmp/93253932.o xwdread.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK -DNO_XSHM 
+
+/tmp/93253932.o : include/image24.hpp
+/tmp/93253932.o : include/main.hpp
+/tmp/93253932.o : include/dos.h
+/tmp/93253932.o : include/video.hpp
+/tmp/93253932.o : include/mouse.hpp
+/tmp/93253932.o : include/macs.hpp
+/tmp/93253932.o : include/sprite.hpp
+/tmp/93253932.o : include/keys.hpp
+/tmp/93253932.o : include/event.hpp
+/tmp/93253932.o : include/system.h
+/tmp/93253932.o : include/jmalloc.hpp
+/tmp/93253932.o : include/specs.hpp
+/tmp/93253932.o : include/palette.hpp
+/tmp/93253932.o : include/linked.hpp
+/tmp/93253932.o : include/image.hpp
+/tmp/93253932.o : include/filter.hpp
+/tmp/ce197449.o : fonts.c
+	g++  -c -o /tmp/ce197449.o fonts.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK -DNO_XSHM 
+
+/tmp/ce197449.o : include/filter.hpp
+/tmp/ce197449.o : include/macs.hpp
+/tmp/ce197449.o : include/timage.hpp
+/tmp/ce197449.o : include/system.h
+/tmp/ce197449.o : include/jmalloc.hpp
+/tmp/ce197449.o : include/specs.hpp
+/tmp/ce197449.o : include/palette.hpp
+/tmp/ce197449.o : include/linked.hpp
+/tmp/ce197449.o : include/image.hpp
+/tmp/ce197449.o : include/fonts.hpp
+/tmp/7a2f7667.o : decoder.c
+	g++  -c -o /tmp/7a2f7667.o decoder.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK -DNO_XSHM 
+
+/tmp/7a2f7667.o : include/macs.hpp
+/tmp/7a2f7667.o : include/system.h
+/tmp/7a2f7667.o : include/jmalloc.hpp
+/tmp/7a2f7667.o : include/specs.hpp
+/tmp/7a2f7667.o : include/palette.hpp
+/tmp/7a2f7667.o : include/linked.hpp
+/tmp/7a2f7667.o : include/image.hpp
+/tmp/7a2f7667.o : include/errs.h
+/tmp/1bfd3f8a.o : loader.c
+	g++  -c -o /tmp/1bfd3f8a.o loader.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK -DNO_XSHM 
+
+/tmp/1bfd3f8a.o : include/targa.hpp
+/tmp/1bfd3f8a.o : include/lbmread.hpp
+/tmp/1bfd3f8a.o : include/pcxread.hpp
+/tmp/1bfd3f8a.o : include/glread.hpp
+/tmp/1bfd3f8a.o : include/xwdread.hpp
+/tmp/1bfd3f8a.o : include/ppmread.hpp
+/tmp/1bfd3f8a.o : include/mdlread.hpp
+/tmp/1bfd3f8a.o : include/filter.hpp
+/tmp/1bfd3f8a.o : include/macs.hpp
+/tmp/1bfd3f8a.o : include/image24.hpp
+/tmp/1bfd3f8a.o : include/system.h
+/tmp/1bfd3f8a.o : include/jmalloc.hpp
+/tmp/1bfd3f8a.o : include/specs.hpp
+/tmp/1bfd3f8a.o : include/palette.hpp
+/tmp/1bfd3f8a.o : include/linked.hpp
+/tmp/1bfd3f8a.o : include/image.hpp
+/tmp/1bfd3f8a.o : include/loader.hpp
+/tmp/13013f49.o : glread.c
+	g++  -c -o /tmp/13013f49.o glread.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK -DNO_XSHM 
+
+/tmp/13013f49.o : include/video.hpp
+/tmp/13013f49.o : include/jmalloc.hpp
+/tmp/13013f49.o : include/specs.hpp
+/tmp/13013f49.o : include/palette.hpp
+/tmp/13013f49.o : include/linked.hpp
+/tmp/13013f49.o : include/image.hpp
+/tmp/13013f49.o : include/system.h
+/tmp/13013f49.o : include/macs.hpp
+/tmp/b55c23bb.o : texture.c
+	g++  -c -o /tmp/b55c23bb.o texture.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK -DNO_XSHM 
+
+/tmp/b55c23bb.o : include/mouse.hpp
+/tmp/b55c23bb.o : include/sprite.hpp
+/tmp/b55c23bb.o : include/keys.hpp
+/tmp/b55c23bb.o : include/event.hpp
+/tmp/b55c23bb.o : include/macs.hpp
+/tmp/b55c23bb.o : include/video.hpp
+/tmp/b55c23bb.o : include/system.h
+/tmp/b55c23bb.o : include/jmalloc.hpp
+/tmp/b55c23bb.o : include/specs.hpp
+/tmp/b55c23bb.o : include/palette.hpp
+/tmp/b55c23bb.o : include/linked.hpp
+/tmp/b55c23bb.o : include/image.hpp
+/tmp/c221d886.o : specs.c
+	g++  -c -o /tmp/c221d886.o specs.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK -DNO_XSHM 
+
+/tmp/c221d886.o : include/dprint.hpp
+/tmp/c221d886.o : include/system.h
+/tmp/c221d886.o : include/jmalloc.hpp
+/tmp/c221d886.o : include/specs.hpp
+/tmp/c221d886.o : include/palette.hpp
+/tmp/c221d886.o : include/linked.hpp
+/tmp/c221d886.o : include/image.hpp
+/tmp/228c0c1e.o : supmorph.c
+	g++  -c -o /tmp/228c0c1e.o supmorph.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK -DNO_XSHM 
+
+/tmp/228c0c1e.o : include/jrand.hpp
+/tmp/228c0c1e.o : include/video.hpp
+/tmp/228c0c1e.o : include/timing.hpp
+/tmp/228c0c1e.o : include/filter.hpp
+/tmp/228c0c1e.o : include/macs.hpp
+/tmp/228c0c1e.o : include/system.h
+/tmp/228c0c1e.o : include/specs.hpp
+/tmp/228c0c1e.o : include/palette.hpp
+/tmp/228c0c1e.o : include/linked.hpp
+/tmp/228c0c1e.o : include/image.hpp
+/tmp/228c0c1e.o : include/timage.hpp
+/tmp/228c0c1e.o : include/jmalloc.hpp
+/tmp/228c0c1e.o : include/supmorph.hpp
+/tmp/0db76be5.o : image24.c
+	g++  -c -o /tmp/0db76be5.o image24.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK -DNO_XSHM 
+
+/tmp/0db76be5.o : include/image.hpp
+/tmp/0db76be5.o : include/filter.hpp
+/tmp/0db76be5.o : include/macs.hpp
+/tmp/0db76be5.o : include/system.h
+/tmp/0db76be5.o : include/jmalloc.hpp
+/tmp/0db76be5.o : include/specs.hpp
+/tmp/0db76be5.o : include/linked.hpp
+/tmp/0db76be5.o : include/palette.hpp
+/tmp/0db76be5.o : include/image24.hpp
+/tmp/8bd9e1ee.o : pcxread.c
+	g++  -c -o /tmp/8bd9e1ee.o pcxread.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK -DNO_XSHM 
+
+/tmp/8bd9e1ee.o : include/filter.hpp
+/tmp/8bd9e1ee.o : include/macs.hpp
+/tmp/8bd9e1ee.o : include/image24.hpp
+/tmp/8bd9e1ee.o : include/system.h
+/tmp/8bd9e1ee.o : include/jmalloc.hpp
+/tmp/8bd9e1ee.o : include/specs.hpp
+/tmp/8bd9e1ee.o : include/palette.hpp
+/tmp/8bd9e1ee.o : include/linked.hpp
+/tmp/8bd9e1ee.o : include/image.hpp
+/tmp/8bd9e1ee.o : include/pcxread.hpp
+/tmp/1b2dec45.o : timage.c
+	g++  -c -o /tmp/1b2dec45.o timage.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK -DNO_XSHM 
+
+/tmp/1b2dec45.o : include/filter.hpp
+/tmp/1b2dec45.o : include/macs.hpp
+/tmp/1b2dec45.o : include/system.h
+/tmp/1b2dec45.o : include/jmalloc.hpp
+/tmp/1b2dec45.o : include/specs.hpp
+/tmp/1b2dec45.o : include/palette.hpp
+/tmp/1b2dec45.o : include/linked.hpp
+/tmp/1b2dec45.o : include/image.hpp
+/tmp/1b2dec45.o : include/timage.hpp
+/tmp/8690c906.o : jmalloc.c
+	g++  -c -o /tmp/8690c906.o jmalloc.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK -DNO_XSHM 
+
+/tmp/8690c906.o : include/jmalloc.hpp
+/tmp/8690c906.o : include/system.h
+/tmp/8690c906.o : include/macs.hpp
+/tmp/8690c906.o : include/doscall.hpp
+/tmp/b3f75f68.o : jrand.c
+	g++  -c -o /tmp/b3f75f68.o jrand.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK -DNO_XSHM 
+
+/tmp/b3f75f68.o : include/jrand.hpp
+/tmp/7b80b7e5.o : lbmread.c
+	g++  -c -o /tmp/7b80b7e5.o lbmread.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK -DNO_XSHM 
+
+/tmp/7b80b7e5.o : include/system.h
+/tmp/7b80b7e5.o : include/jmalloc.hpp
+/tmp/7b80b7e5.o : include/specs.hpp
+/tmp/7b80b7e5.o : include/palette.hpp
+/tmp/7b80b7e5.o : include/linked.hpp
+/tmp/7b80b7e5.o : include/image.hpp
+/tmp/7b80b7e5.o : include/lbmread.hpp
+/tmp/b30799fd.o : targa.c
+	g++  -c -o /tmp/b30799fd.o targa.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK -DNO_XSHM 
+
+/tmp/b30799fd.o : include/system.h
+/tmp/b30799fd.o : include/jmalloc.hpp
+/tmp/b30799fd.o : include/specs.hpp
+/tmp/b30799fd.o : include/palette.hpp
+/tmp/b30799fd.o : include/linked.hpp
+/tmp/b30799fd.o : include/image.hpp
+/tmp/60567100.o : keys.c
+	g++  -c -o /tmp/60567100.o keys.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK -DNO_XSHM 
+
+/tmp/60567100.o : include/keys.hpp
+/tmp/35398b99.o : dprint.c
+	g++  -c -o /tmp/35398b99.o dprint.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK -DNO_XSHM 
+
+/tmp/35398b99.o : include/system.h
+/tmp/35398b99.o : include/macs.hpp
+/tmp/4891aea2.o : status.c
+	g++  -c -o /tmp/4891aea2.o status.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK -DNO_XSHM 
+
+/tmp/4891aea2.o : include/dprint.hpp
+/tmp/4891aea2.o : include/timage.hpp
+/tmp/4891aea2.o : include/fonts.hpp
+/tmp/4891aea2.o : include/filter.hpp
+/tmp/4891aea2.o : include/mouse.hpp
+/tmp/4891aea2.o : include/sprite.hpp
+/tmp/4891aea2.o : include/keys.hpp
+/tmp/4891aea2.o : include/event.hpp
+/tmp/4891aea2.o : include/jmalloc.hpp
+/tmp/4891aea2.o : include/specs.hpp
+/tmp/4891aea2.o : include/palette.hpp
+/tmp/4891aea2.o : include/linked.hpp
+/tmp/4891aea2.o : include/image.hpp
+/tmp/4891aea2.o : include/video.hpp
+/tmp/4891aea2.o : include/jwindow.hpp
+/tmp/4891aea2.o : include/visobj.hpp
+/tmp/4891aea2.o : include/status.hpp
+/tmp/4891aea2.o : include/system.h
+/tmp/4891aea2.o : include/macs.hpp
+/tmp/31769caa.o : visobj.c
+	g++  -c -o /tmp/31769caa.o visobj.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK -DNO_XSHM 
+
+/tmp/31769caa.o : include/timage.hpp
+/tmp/31769caa.o : include/fonts.hpp
+/tmp/31769caa.o : include/filter.hpp
+/tmp/31769caa.o : include/mouse.hpp
+/tmp/31769caa.o : include/macs.hpp
+/tmp/31769caa.o : include/sprite.hpp
+/tmp/31769caa.o : include/keys.hpp
+/tmp/31769caa.o : include/event.hpp
+/tmp/31769caa.o : include/jmalloc.hpp
+/tmp/31769caa.o : include/specs.hpp
+/tmp/31769caa.o : include/palette.hpp
+/tmp/31769caa.o : include/linked.hpp
+/tmp/31769caa.o : include/image.hpp
+/tmp/31769caa.o : include/system.h
+/tmp/31769caa.o : include/video.hpp
+/tmp/31769caa.o : include/jwindow.hpp
+/tmp/31769caa.o : include/visobj.hpp
+
+AIX_image_opt_o_files = \
+	/tmp/76f11512.o \
+	/tmp/c28a5b08.o \
+	/tmp/d4a299be.o \
+	/tmp/f35f1014.o \
+	/tmp/67f46322.o \
+	/tmp/20bbad05.o \
+	/tmp/c9b4f4ba.o \
+	/tmp/dfd71bed.o \
+	/tmp/d9165379.o \
+	/tmp/d4c6fd94.o \
+	/tmp/df4b3f66.o \
+	/tmp/1aa77a97.o \
+	/tmp/c6557c9b.o \
+	/tmp/67d71fb8.o \
+	/tmp/5fdb1f77.o \
+	/tmp/018229ef.o \
+	/tmp/0eafded4.o \
+	/tmp/6efe84ca.o \
+	/tmp/59dd7119.o \
+	/tmp/d7ffe722.o \
+	/tmp/6707cc73.o \
+	/tmp/d2b6cf3a.o \
+	/tmp/ff8565b6.o \
+	/tmp/c7a6bd19.o \
+	/tmp/ff959f4b.o \
+	/tmp/ac98e948.o \
+	/tmp/81136bc7.o \
+	/tmp/946b8ed0.o \
+	/tmp/7d507cd8.o
+
+AIX_packet_opt_o_files = \
+	/tmp/68c8e11e.o
+
+AIX_gui_opt_o_files = \
+	/tmp/15acb65d.o \
+	/tmp/566c7bfe.o \
+	/tmp/d4a77f26.o \
+	/tmp/21e03a6b.o \
+	/tmp/f122f8cb.o
+
+AIX_net_opt_o_files = \
+	/tmp/2beda3a5.o
+
+AIX_dir_opt_o_files = \
+	/tmp/23d5714f.o
+
+AIX_sound_opt_o_files = \
+	/tmp/21c69107.o \
+	/tmp/dab6e2c3.o
+
+AIX_joy_opt_o_files = \
+	/tmp/ea4f4881.o
+
+AIX_winman_opt_o_files = \
+	/tmp/a761c32c.o \
+	/tmp/b991fe41.o \
+	/tmp/b25a6c10.o \
+	/tmp/f21e116e.o
+
+AIX_time_opt_o_files = \
+	/tmp/02a84430.o
+
+./AIX/opt/time.a : $(AIX_time_opt_o_files)
+	ar ruvs ./AIX/opt/time.a \
+	/tmp/02a84430.o
+
+/tmp/02a84430.o : port/unix/timing.c
+	g++  -c -o /tmp/02a84430.o port/unix/timing.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK -DNO_XSHM 
+
+/tmp/02a84430.o : include/timing.hpp
+
+./AIX/opt/winman.a : $(AIX_winman_opt_o_files)
+	ar ruvs ./AIX/opt/winman.a \
+	/tmp/a761c32c.o \
+	/tmp/b991fe41.o \
+	/tmp/b25a6c10.o \
+	/tmp/f21e116e.o
+
+/tmp/a761c32c.o : port/x11/video.c
+	g++  -c -o /tmp/a761c32c.o port/x11/video.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK -DNO_XSHM 
+
+/tmp/a761c32c.o : include/bitmap.h
+/tmp/a761c32c.o : include/macs.hpp
+/tmp/a761c32c.o : include/xinclude.h
+/tmp/a761c32c.o : include/dos.h
+/tmp/a761c32c.o : include/video.hpp
+/tmp/a761c32c.o : include/globals.hpp
+/tmp/a761c32c.o : include/system.h
+/tmp/a761c32c.o : include/jmalloc.hpp
+/tmp/a761c32c.o : include/specs.hpp
+/tmp/a761c32c.o : include/palette.hpp
+/tmp/a761c32c.o : include/linked.hpp
+/tmp/a761c32c.o : include/image.hpp
+/tmp/a761c32c.o : include/filter.hpp
+/tmp/b991fe41.o : port/x11/mouse.c
+	g++  -c -o /tmp/b991fe41.o port/x11/mouse.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK -DNO_XSHM 
+
+/tmp/b991fe41.o : include/xinclude.h
+/tmp/b991fe41.o : include/mouse.hpp
+/tmp/b991fe41.o : include/monoprnt.hpp
+/tmp/b991fe41.o : include/mdlread.hpp
+/tmp/b991fe41.o : include/filter.hpp
+/tmp/b991fe41.o : include/macs.hpp
+/tmp/b991fe41.o : include/sprite.hpp
+/tmp/b991fe41.o : include/jmalloc.hpp
+/tmp/b991fe41.o : include/specs.hpp
+/tmp/b991fe41.o : include/palette.hpp
+/tmp/b991fe41.o : include/linked.hpp
+/tmp/b991fe41.o : include/image.hpp
+/tmp/b991fe41.o : include/system.h
+/tmp/b991fe41.o : include/video.hpp
+/tmp/b25a6c10.o : port/x11/event.c
+	g++  -c -o /tmp/b25a6c10.o port/x11/event.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK -DNO_XSHM 
+
+/tmp/b25a6c10.o : include/keys.hpp
+/tmp/b25a6c10.o : include/event.hpp
+/tmp/b25a6c10.o : include/sprite.hpp
+/tmp/b25a6c10.o : include/mouse.hpp
+/tmp/b25a6c10.o : include/macs.hpp
+/tmp/b25a6c10.o : include/gifread.hpp
+/tmp/b25a6c10.o : include/video.hpp
+/tmp/b25a6c10.o : include/mdlread.hpp
+/tmp/b25a6c10.o : include/jmalloc.hpp
+/tmp/b25a6c10.o : include/specs.hpp
+/tmp/b25a6c10.o : include/palette.hpp
+/tmp/b25a6c10.o : include/linked.hpp
+/tmp/b25a6c10.o : include/image.hpp
+/tmp/b25a6c10.o : include/xinclude.h
+/tmp/b25a6c10.o : include/system.h
+/tmp/f21e116e.o : jwindow.c
+	g++  -c -o /tmp/f21e116e.o jwindow.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK -DNO_XSHM 
+
+/tmp/f21e116e.o : include/timage.hpp
+/tmp/f21e116e.o : include/fonts.hpp
+/tmp/f21e116e.o : include/jwindow.hpp
+/tmp/f21e116e.o : include/filter.hpp
+/tmp/f21e116e.o : include/mouse.hpp
+/tmp/f21e116e.o : include/macs.hpp
+/tmp/f21e116e.o : include/sprite.hpp
+/tmp/f21e116e.o : include/keys.hpp
+/tmp/f21e116e.o : include/event.hpp
+/tmp/f21e116e.o : include/jmalloc.hpp
+/tmp/f21e116e.o : include/specs.hpp
+/tmp/f21e116e.o : include/palette.hpp
+/tmp/f21e116e.o : include/linked.hpp
+/tmp/f21e116e.o : include/image.hpp
+/tmp/f21e116e.o : include/system.h
+/tmp/f21e116e.o : include/video.hpp
+
+./AIX/opt/joy.a : $(AIX_joy_opt_o_files)
+	ar ruvs ./AIX/opt/joy.a \
+	/tmp/ea4f4881.o
+
+/tmp/ea4f4881.o : port/unix/joystick.c
+	g++  -c -o /tmp/ea4f4881.o port/unix/joystick.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK -DNO_XSHM 
+
+/tmp/ea4f4881.o : port/unix/joystick.c
+
+./AIX/opt/sound.a : $(AIX_sound_opt_o_files)
+	ar ruvs ./AIX/opt/sound.a \
+	/tmp/21c69107.o \
+	/tmp/dab6e2c3.o
+
+/tmp/21c69107.o : port/aix/sound.c
+	g++  -c -o /tmp/21c69107.o port/aix/sound.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK -DNO_XSHM 
+
+/tmp/21c69107.o : include/timing.hpp
+/tmp/21c69107.o : include/dprint.hpp
+/tmp/21c69107.o : include/jmalloc.hpp
+/tmp/21c69107.o : include/linked.hpp
+/tmp/21c69107.o : include/specs.hpp
+/tmp/21c69107.o : include/readwav.hpp
+/tmp/21c69107.o : include/sound.hpp
+/tmp/21c69107.o : include/system.h
+/tmp/21c69107.o : include/macs.hpp
+/tmp/dab6e2c3.o : readwav.c
+	g++  -c -o /tmp/dab6e2c3.o readwav.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK -DNO_XSHM 
+
+/tmp/dab6e2c3.o : include/dprint.hpp
+/tmp/dab6e2c3.o : include/macs.hpp
+/tmp/dab6e2c3.o : include/system.h
+/tmp/dab6e2c3.o : include/jmalloc.hpp
+/tmp/dab6e2c3.o : include/linked.hpp
+/tmp/dab6e2c3.o : include/specs.hpp
+/tmp/dab6e2c3.o : include/readwav.hpp
+
+./AIX/opt/dir.a : $(AIX_dir_opt_o_files)
+	ar ruvs ./AIX/opt/dir.a \
+	/tmp/23d5714f.o
+
+/tmp/23d5714f.o : port/unix/jdir.c
+	g++  -c -o /tmp/23d5714f.o port/unix/jdir.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK -DNO_XSHM 
+
+/tmp/23d5714f.o : include/jmalloc.hpp
+
+./AIX/opt/net.a : $(AIX_net_opt_o_files)
+	ar ruvs ./AIX/opt/net.a \
+	/tmp/2beda3a5.o
+
+/tmp/2beda3a5.o : port/unix/jnet.c
+	g++  -c -o /tmp/2beda3a5.o port/unix/jnet.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK -DNO_XSHM 
+
+/tmp/2beda3a5.o : include/jmalloc.hpp
+/tmp/2beda3a5.o : include/packet.hpp
+/tmp/2beda3a5.o : include/system.h
+/tmp/2beda3a5.o : include/macs.hpp
+/tmp/2beda3a5.o : include/jnet.hpp
+
+./AIX/opt/gui.a : $(AIX_gui_opt_o_files)
+	ar ruvs ./AIX/opt/gui.a \
+	/tmp/15acb65d.o \
+	/tmp/566c7bfe.o \
+	/tmp/d4a77f26.o \
+	/tmp/21e03a6b.o \
+	/tmp/f122f8cb.o
+
+/tmp/15acb65d.o : pmenu.c
+	g++  -c -o /tmp/15acb65d.o pmenu.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK -DNO_XSHM 
+
+/tmp/15acb65d.o : include/timage.hpp
+/tmp/15acb65d.o : include/fonts.hpp
+/tmp/15acb65d.o : include/filter.hpp
+/tmp/15acb65d.o : include/mouse.hpp
+/tmp/15acb65d.o : include/macs.hpp
+/tmp/15acb65d.o : include/sprite.hpp
+/tmp/15acb65d.o : include/keys.hpp
+/tmp/15acb65d.o : include/event.hpp
+/tmp/15acb65d.o : include/specs.hpp
+/tmp/15acb65d.o : include/palette.hpp
+/tmp/15acb65d.o : include/linked.hpp
+/tmp/15acb65d.o : include/image.hpp
+/tmp/15acb65d.o : include/system.h
+/tmp/15acb65d.o : include/video.hpp
+/tmp/15acb65d.o : include/jwindow.hpp
+/tmp/15acb65d.o : include/input.hpp
+/tmp/15acb65d.o : include/jmalloc.hpp
+/tmp/15acb65d.o : include/pmenu.hpp
+/tmp/566c7bfe.o : scroller.c
+	g++  -c -o /tmp/566c7bfe.o scroller.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK -DNO_XSHM 
+
+/tmp/566c7bfe.o : include/timage.hpp
+/tmp/566c7bfe.o : include/fonts.hpp
+/tmp/566c7bfe.o : include/filter.hpp
+/tmp/566c7bfe.o : include/mouse.hpp
+/tmp/566c7bfe.o : include/macs.hpp
+/tmp/566c7bfe.o : include/sprite.hpp
+/tmp/566c7bfe.o : include/keys.hpp
+/tmp/566c7bfe.o : include/event.hpp
+/tmp/566c7bfe.o : include/jmalloc.hpp
+/tmp/566c7bfe.o : include/specs.hpp
+/tmp/566c7bfe.o : include/palette.hpp
+/tmp/566c7bfe.o : include/linked.hpp
+/tmp/566c7bfe.o : include/image.hpp
+/tmp/566c7bfe.o : include/system.h
+/tmp/566c7bfe.o : include/video.hpp
+/tmp/566c7bfe.o : include/jwindow.hpp
+/tmp/566c7bfe.o : include/input.hpp
+/tmp/566c7bfe.o : include/scroller.hpp
+/tmp/d4a77f26.o : filesel.c
+	g++  -c -o /tmp/d4a77f26.o filesel.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK -DNO_XSHM 
+
+/tmp/d4a77f26.o : include/jdir.hpp
+/tmp/d4a77f26.o : include/scroller.hpp
+/tmp/d4a77f26.o : include/input.hpp
+/tmp/d4a77f26.o : include/timage.hpp
+/tmp/d4a77f26.o : include/fonts.hpp
+/tmp/d4a77f26.o : include/filter.hpp
+/tmp/d4a77f26.o : include/mouse.hpp
+/tmp/d4a77f26.o : include/macs.hpp
+/tmp/d4a77f26.o : include/sprite.hpp
+/tmp/d4a77f26.o : include/keys.hpp
+/tmp/d4a77f26.o : include/event.hpp
+/tmp/d4a77f26.o : include/jmalloc.hpp
+/tmp/d4a77f26.o : include/specs.hpp
+/tmp/d4a77f26.o : include/palette.hpp
+/tmp/d4a77f26.o : include/linked.hpp
+/tmp/d4a77f26.o : include/image.hpp
+/tmp/d4a77f26.o : include/system.h
+/tmp/d4a77f26.o : include/video.hpp
+/tmp/d4a77f26.o : include/jwindow.hpp
+/tmp/d4a77f26.o : include/filesel.hpp
+/tmp/21e03a6b.o : tools.c
+	g++  -c -o /tmp/21e03a6b.o tools.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK -DNO_XSHM 
+
+/tmp/21e03a6b.o : include/visobj.hpp
+/tmp/21e03a6b.o : include/scroller.hpp
+/tmp/21e03a6b.o : include/input.hpp
+/tmp/21e03a6b.o : include/timage.hpp
+/tmp/21e03a6b.o : include/fonts.hpp
+/tmp/21e03a6b.o : include/filter.hpp
+/tmp/21e03a6b.o : include/mouse.hpp
+/tmp/21e03a6b.o : include/macs.hpp
+/tmp/21e03a6b.o : include/sprite.hpp
+/tmp/21e03a6b.o : include/keys.hpp
+/tmp/21e03a6b.o : include/event.hpp
+/tmp/21e03a6b.o : include/jmalloc.hpp
+/tmp/21e03a6b.o : include/specs.hpp
+/tmp/21e03a6b.o : include/palette.hpp
+/tmp/21e03a6b.o : include/linked.hpp
+/tmp/21e03a6b.o : include/image.hpp
+/tmp/21e03a6b.o : include/system.h
+/tmp/21e03a6b.o : include/video.hpp
+/tmp/21e03a6b.o : include/jwindow.hpp
+/tmp/21e03a6b.o : include/tools.hpp
+/tmp/f122f8cb.o : guistat.c
+	g++  -c -o /tmp/f122f8cb.o guistat.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK -DNO_XSHM 
+
+/tmp/f122f8cb.o : include/guistat.hpp
+/tmp/f122f8cb.o : include/timing.hpp
+/tmp/f122f8cb.o : include/timage.hpp
+/tmp/f122f8cb.o : include/fonts.hpp
+/tmp/f122f8cb.o : include/filter.hpp
+/tmp/f122f8cb.o : include/mouse.hpp
+/tmp/f122f8cb.o : include/macs.hpp
+/tmp/f122f8cb.o : include/sprite.hpp
+/tmp/f122f8cb.o : include/keys.hpp
+/tmp/f122f8cb.o : include/event.hpp
+/tmp/f122f8cb.o : include/jmalloc.hpp
+/tmp/f122f8cb.o : include/specs.hpp
+/tmp/f122f8cb.o : include/palette.hpp
+/tmp/f122f8cb.o : include/linked.hpp
+/tmp/f122f8cb.o : include/image.hpp
+/tmp/f122f8cb.o : include/system.h
+/tmp/f122f8cb.o : include/video.hpp
+/tmp/f122f8cb.o : include/jwindow.hpp
+/tmp/f122f8cb.o : include/visobj.hpp
+/tmp/f122f8cb.o : include/status.hpp
+
+./AIX/opt/packet.a : $(AIX_packet_opt_o_files)
+	ar ruvs ./AIX/opt/packet.a \
+	/tmp/68c8e11e.o
+
+/tmp/68c8e11e.o : packet.c
+	g++  -c -o /tmp/68c8e11e.o packet.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK -DNO_XSHM 
+
+/tmp/68c8e11e.o : include/jmalloc.hpp
+/tmp/68c8e11e.o : include/system.h
+/tmp/68c8e11e.o : include/macs.hpp
+/tmp/68c8e11e.o : include/packet.hpp
+
+./AIX/opt/image.a : $(AIX_image_opt_o_files)
+	ar ruvs ./AIX/opt/image.a \
+	/tmp/76f11512.o \
+	/tmp/c28a5b08.o \
+	/tmp/d4a299be.o \
+	/tmp/f35f1014.o \
+	/tmp/67f46322.o \
+	/tmp/20bbad05.o \
+	/tmp/c9b4f4ba.o \
+	/tmp/dfd71bed.o \
+	/tmp/d9165379.o \
+	/tmp/d4c6fd94.o \
+	/tmp/df4b3f66.o \
+	/tmp/1aa77a97.o \
+	/tmp/c6557c9b.o \
+	/tmp/67d71fb8.o \
+	/tmp/5fdb1f77.o \
+	/tmp/018229ef.o \
+	/tmp/0eafded4.o \
+	/tmp/6efe84ca.o \
+	/tmp/59dd7119.o \
+	/tmp/d7ffe722.o \
+	/tmp/6707cc73.o \
+	/tmp/d2b6cf3a.o \
+	/tmp/ff8565b6.o \
+	/tmp/c7a6bd19.o \
+	/tmp/ff959f4b.o \
+	/tmp/ac98e948.o \
+	/tmp/81136bc7.o \
+	/tmp/946b8ed0.o \
+	/tmp/7d507cd8.o
+
+/tmp/76f11512.o : filter.c
+	g++  -c -o /tmp/76f11512.o filter.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK -DNO_XSHM 
+
+/tmp/76f11512.o : include/filter.hpp
+/tmp/76f11512.o : include/macs.hpp
+/tmp/76f11512.o : include/system.h
+/tmp/76f11512.o : include/jmalloc.hpp
+/tmp/76f11512.o : include/specs.hpp
+/tmp/76f11512.o : include/palette.hpp
+/tmp/76f11512.o : include/linked.hpp
+/tmp/76f11512.o : include/image.hpp
+/tmp/c28a5b08.o : gifread.c
+	g++  -c -o /tmp/c28a5b08.o gifread.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK -DNO_XSHM 
+
+/tmp/c28a5b08.o : include/macs.hpp
+/tmp/c28a5b08.o : include/dir.h
+/tmp/c28a5b08.o : include/dos.h
+/tmp/c28a5b08.o : include/std.h
+/tmp/c28a5b08.o : include/gifdecod.hpp
+/tmp/c28a5b08.o : include/video.hpp
+/tmp/c28a5b08.o : include/system.h
+/tmp/c28a5b08.o : include/jmalloc.hpp
+/tmp/c28a5b08.o : include/specs.hpp
+/tmp/c28a5b08.o : include/palette.hpp
+/tmp/c28a5b08.o : include/linked.hpp
+/tmp/c28a5b08.o : include/image.hpp
+/tmp/c28a5b08.o : include/gifread.hpp
+/tmp/d4a299be.o : globals.c
+	g++  -c -o /tmp/d4a299be.o globals.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK -DNO_XSHM 
+
+/tmp/d4a299be.o : globals.c
+/tmp/f35f1014.o : image.c
+	g++  -c -o /tmp/f35f1014.o image.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK -DNO_XSHM 
+
+/tmp/f35f1014.o : include/macs.hpp
+/tmp/f35f1014.o : include/system.h
+/tmp/f35f1014.o : include/jmalloc.hpp
+/tmp/f35f1014.o : include/specs.hpp
+/tmp/f35f1014.o : include/palette.hpp
+/tmp/f35f1014.o : include/linked.hpp
+/tmp/f35f1014.o : include/image.hpp
+/tmp/67f46322.o : linked.c
+	g++  -c -o /tmp/67f46322.o linked.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK -DNO_XSHM 
+
+/tmp/67f46322.o : include/linked.hpp
+/tmp/20bbad05.o : input.c
+	g++  -c -o /tmp/20bbad05.o input.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK -DNO_XSHM 
+
+/tmp/20bbad05.o : include/timage.hpp
+/tmp/20bbad05.o : include/fonts.hpp
+/tmp/20bbad05.o : include/filter.hpp
+/tmp/20bbad05.o : include/mouse.hpp
+/tmp/20bbad05.o : include/macs.hpp
+/tmp/20bbad05.o : include/sprite.hpp
+/tmp/20bbad05.o : include/keys.hpp
+/tmp/20bbad05.o : include/event.hpp
+/tmp/20bbad05.o : include/jmalloc.hpp
+/tmp/20bbad05.o : include/specs.hpp
+/tmp/20bbad05.o : include/palette.hpp
+/tmp/20bbad05.o : include/linked.hpp
+/tmp/20bbad05.o : include/image.hpp
+/tmp/20bbad05.o : include/system.h
+/tmp/20bbad05.o : include/video.hpp
+/tmp/20bbad05.o : include/jwindow.hpp
+/tmp/20bbad05.o : include/input.hpp
+/tmp/c9b4f4ba.o : mdlread.c
+	g++  -c -o /tmp/c9b4f4ba.o mdlread.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK -DNO_XSHM 
+
+/tmp/c9b4f4ba.o : include/macs.hpp
+/tmp/c9b4f4ba.o : include/image.hpp
+/tmp/c9b4f4ba.o : include/system.h
+/tmp/c9b4f4ba.o : include/jmalloc.hpp
+/tmp/c9b4f4ba.o : include/specs.hpp
+/tmp/c9b4f4ba.o : include/linked.hpp
+/tmp/c9b4f4ba.o : include/palette.hpp
+/tmp/c9b4f4ba.o : include/mdlread.hpp
+/tmp/dfd71bed.o : palette.c
+	g++  -c -o /tmp/dfd71bed.o palette.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK -DNO_XSHM 
+
+/tmp/dfd71bed.o : include/filter.hpp
+/tmp/dfd71bed.o : include/video.hpp
+/tmp/dfd71bed.o : include/dos.h
+/tmp/dfd71bed.o : include/macs.hpp
+/tmp/dfd71bed.o : include/image.hpp
+/tmp/dfd71bed.o : include/system.h
+/tmp/dfd71bed.o : include/jmalloc.hpp
+/tmp/dfd71bed.o : include/specs.hpp
+/tmp/dfd71bed.o : include/linked.hpp
+/tmp/dfd71bed.o : include/palette.hpp
+/tmp/d9165379.o : ppmread.c
+	g++  -c -o /tmp/d9165379.o ppmread.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK -DNO_XSHM 
+
+/tmp/d9165379.o : include/ppmread.hpp
+/tmp/d9165379.o : include/macs.hpp
+/tmp/d9165379.o : include/system.h
+/tmp/d9165379.o : include/jmalloc.hpp
+/tmp/d9165379.o : include/specs.hpp
+/tmp/d9165379.o : include/palette.hpp
+/tmp/d9165379.o : include/linked.hpp
+/tmp/d9165379.o : include/image.hpp
+/tmp/d4c6fd94.o : include.c
+	g++  -c -o /tmp/d4c6fd94.o include.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK -DNO_XSHM 
+
+/tmp/d4c6fd94.o : include/system.h
+/tmp/d4c6fd94.o : include/jmalloc.hpp
+/tmp/d4c6fd94.o : include/specs.hpp
+/tmp/d4c6fd94.o : include/palette.hpp
+/tmp/d4c6fd94.o : include/linked.hpp
+/tmp/d4c6fd94.o : include/image.hpp
+/tmp/d4c6fd94.o : include/include.hpp
+/tmp/df4b3f66.o : xwdread.c
+	g++  -c -o /tmp/df4b3f66.o xwdread.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK -DNO_XSHM 
+
+/tmp/df4b3f66.o : include/image24.hpp
+/tmp/df4b3f66.o : include/main.hpp
+/tmp/df4b3f66.o : include/dos.h
+/tmp/df4b3f66.o : include/video.hpp
+/tmp/df4b3f66.o : include/mouse.hpp
+/tmp/df4b3f66.o : include/macs.hpp
+/tmp/df4b3f66.o : include/sprite.hpp
+/tmp/df4b3f66.o : include/keys.hpp
+/tmp/df4b3f66.o : include/event.hpp
+/tmp/df4b3f66.o : include/system.h
+/tmp/df4b3f66.o : include/jmalloc.hpp
+/tmp/df4b3f66.o : include/specs.hpp
+/tmp/df4b3f66.o : include/palette.hpp
+/tmp/df4b3f66.o : include/linked.hpp
+/tmp/df4b3f66.o : include/image.hpp
+/tmp/df4b3f66.o : include/filter.hpp
+/tmp/1aa77a97.o : fonts.c
+	g++  -c -o /tmp/1aa77a97.o fonts.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK -DNO_XSHM 
+
+/tmp/1aa77a97.o : include/filter.hpp
+/tmp/1aa77a97.o : include/macs.hpp
+/tmp/1aa77a97.o : include/timage.hpp
+/tmp/1aa77a97.o : include/system.h
+/tmp/1aa77a97.o : include/jmalloc.hpp
+/tmp/1aa77a97.o : include/specs.hpp
+/tmp/1aa77a97.o : include/palette.hpp
+/tmp/1aa77a97.o : include/linked.hpp
+/tmp/1aa77a97.o : include/image.hpp
+/tmp/1aa77a97.o : include/fonts.hpp
+/tmp/c6557c9b.o : decoder.c
+	g++  -c -o /tmp/c6557c9b.o decoder.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK -DNO_XSHM 
+
+/tmp/c6557c9b.o : include/macs.hpp
+/tmp/c6557c9b.o : include/system.h
+/tmp/c6557c9b.o : include/jmalloc.hpp
+/tmp/c6557c9b.o : include/specs.hpp
+/tmp/c6557c9b.o : include/palette.hpp
+/tmp/c6557c9b.o : include/linked.hpp
+/tmp/c6557c9b.o : include/image.hpp
+/tmp/c6557c9b.o : include/errs.h
+/tmp/67d71fb8.o : loader.c
+	g++  -c -o /tmp/67d71fb8.o loader.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK -DNO_XSHM 
+
+/tmp/67d71fb8.o : include/targa.hpp
+/tmp/67d71fb8.o : include/lbmread.hpp
+/tmp/67d71fb8.o : include/pcxread.hpp
+/tmp/67d71fb8.o : include/glread.hpp
+/tmp/67d71fb8.o : include/xwdread.hpp
+/tmp/67d71fb8.o : include/ppmread.hpp
+/tmp/67d71fb8.o : include/mdlread.hpp
+/tmp/67d71fb8.o : include/filter.hpp
+/tmp/67d71fb8.o : include/macs.hpp
+/tmp/67d71fb8.o : include/image24.hpp
+/tmp/67d71fb8.o : include/system.h
+/tmp/67d71fb8.o : include/jmalloc.hpp
+/tmp/67d71fb8.o : include/specs.hpp
+/tmp/67d71fb8.o : include/palette.hpp
+/tmp/67d71fb8.o : include/linked.hpp
+/tmp/67d71fb8.o : include/image.hpp
+/tmp/67d71fb8.o : include/loader.hpp
+/tmp/5fdb1f77.o : glread.c
+	g++  -c -o /tmp/5fdb1f77.o glread.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK -DNO_XSHM 
+
+/tmp/5fdb1f77.o : include/video.hpp
+/tmp/5fdb1f77.o : include/jmalloc.hpp
+/tmp/5fdb1f77.o : include/specs.hpp
+/tmp/5fdb1f77.o : include/palette.hpp
+/tmp/5fdb1f77.o : include/linked.hpp
+/tmp/5fdb1f77.o : include/image.hpp
+/tmp/5fdb1f77.o : include/system.h
+/tmp/5fdb1f77.o : include/macs.hpp
+/tmp/018229ef.o : texture.c
+	g++  -c -o /tmp/018229ef.o texture.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK -DNO_XSHM 
+
+/tmp/018229ef.o : include/mouse.hpp
+/tmp/018229ef.o : include/sprite.hpp
+/tmp/018229ef.o : include/keys.hpp
+/tmp/018229ef.o : include/event.hpp
+/tmp/018229ef.o : include/macs.hpp
+/tmp/018229ef.o : include/video.hpp
+/tmp/018229ef.o : include/system.h
+/tmp/018229ef.o : include/jmalloc.hpp
+/tmp/018229ef.o : include/specs.hpp
+/tmp/018229ef.o : include/palette.hpp
+/tmp/018229ef.o : include/linked.hpp
+/tmp/018229ef.o : include/image.hpp
+/tmp/0eafded4.o : specs.c
+	g++  -c -o /tmp/0eafded4.o specs.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK -DNO_XSHM 
+
+/tmp/0eafded4.o : include/dprint.hpp
+/tmp/0eafded4.o : include/system.h
+/tmp/0eafded4.o : include/jmalloc.hpp
+/tmp/0eafded4.o : include/specs.hpp
+/tmp/0eafded4.o : include/palette.hpp
+/tmp/0eafded4.o : include/linked.hpp
+/tmp/0eafded4.o : include/image.hpp
+/tmp/6efe84ca.o : supmorph.c
+	g++  -c -o /tmp/6efe84ca.o supmorph.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK -DNO_XSHM 
+
+/tmp/6efe84ca.o : include/jrand.hpp
+/tmp/6efe84ca.o : include/video.hpp
+/tmp/6efe84ca.o : include/timing.hpp
+/tmp/6efe84ca.o : include/filter.hpp
+/tmp/6efe84ca.o : include/macs.hpp
+/tmp/6efe84ca.o : include/system.h
+/tmp/6efe84ca.o : include/specs.hpp
+/tmp/6efe84ca.o : include/palette.hpp
+/tmp/6efe84ca.o : include/linked.hpp
+/tmp/6efe84ca.o : include/image.hpp
+/tmp/6efe84ca.o : include/timage.hpp
+/tmp/6efe84ca.o : include/jmalloc.hpp
+/tmp/6efe84ca.o : include/supmorph.hpp
+/tmp/59dd7119.o : image24.c
+	g++  -c -o /tmp/59dd7119.o image24.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK -DNO_XSHM 
+
+/tmp/59dd7119.o : include/image.hpp
+/tmp/59dd7119.o : include/filter.hpp
+/tmp/59dd7119.o : include/macs.hpp
+/tmp/59dd7119.o : include/system.h
+/tmp/59dd7119.o : include/jmalloc.hpp
+/tmp/59dd7119.o : include/specs.hpp
+/tmp/59dd7119.o : include/linked.hpp
+/tmp/59dd7119.o : include/palette.hpp
+/tmp/59dd7119.o : include/image24.hpp
+/tmp/d7ffe722.o : pcxread.c
+	g++  -c -o /tmp/d7ffe722.o pcxread.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK -DNO_XSHM 
+
+/tmp/d7ffe722.o : include/filter.hpp
+/tmp/d7ffe722.o : include/macs.hpp
+/tmp/d7ffe722.o : include/image24.hpp
+/tmp/d7ffe722.o : include/system.h
+/tmp/d7ffe722.o : include/jmalloc.hpp
+/tmp/d7ffe722.o : include/specs.hpp
+/tmp/d7ffe722.o : include/palette.hpp
+/tmp/d7ffe722.o : include/linked.hpp
+/tmp/d7ffe722.o : include/image.hpp
+/tmp/d7ffe722.o : include/pcxread.hpp
+/tmp/6707cc73.o : timage.c
+	g++  -c -o /tmp/6707cc73.o timage.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK -DNO_XSHM 
+
+/tmp/6707cc73.o : include/filter.hpp
+/tmp/6707cc73.o : include/macs.hpp
+/tmp/6707cc73.o : include/system.h
+/tmp/6707cc73.o : include/jmalloc.hpp
+/tmp/6707cc73.o : include/specs.hpp
+/tmp/6707cc73.o : include/palette.hpp
+/tmp/6707cc73.o : include/linked.hpp
+/tmp/6707cc73.o : include/image.hpp
+/tmp/6707cc73.o : include/timage.hpp
+/tmp/d2b6cf3a.o : jmalloc.c
+	g++  -c -o /tmp/d2b6cf3a.o jmalloc.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK -DNO_XSHM 
+
+/tmp/d2b6cf3a.o : include/jmalloc.hpp
+/tmp/d2b6cf3a.o : include/system.h
+/tmp/d2b6cf3a.o : include/macs.hpp
+/tmp/d2b6cf3a.o : include/doscall.hpp
+/tmp/ff8565b6.o : jrand.c
+	g++  -c -o /tmp/ff8565b6.o jrand.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK -DNO_XSHM 
+
+/tmp/ff8565b6.o : include/jrand.hpp
+/tmp/c7a6bd19.o : lbmread.c
+	g++  -c -o /tmp/c7a6bd19.o lbmread.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK -DNO_XSHM 
+
+/tmp/c7a6bd19.o : include/system.h
+/tmp/c7a6bd19.o : include/jmalloc.hpp
+/tmp/c7a6bd19.o : include/specs.hpp
+/tmp/c7a6bd19.o : include/palette.hpp
+/tmp/c7a6bd19.o : include/linked.hpp
+/tmp/c7a6bd19.o : include/image.hpp
+/tmp/c7a6bd19.o : include/lbmread.hpp
+/tmp/ff959f4b.o : targa.c
+	g++  -c -o /tmp/ff959f4b.o targa.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK -DNO_XSHM 
+
+/tmp/ff959f4b.o : include/system.h
+/tmp/ff959f4b.o : include/jmalloc.hpp
+/tmp/ff959f4b.o : include/specs.hpp
+/tmp/ff959f4b.o : include/palette.hpp
+/tmp/ff959f4b.o : include/linked.hpp
+/tmp/ff959f4b.o : include/image.hpp
+/tmp/ac98e948.o : keys.c
+	g++  -c -o /tmp/ac98e948.o keys.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK -DNO_XSHM 
+
+/tmp/ac98e948.o : include/keys.hpp
+/tmp/81136bc7.o : dprint.c
+	g++  -c -o /tmp/81136bc7.o dprint.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK -DNO_XSHM 
+
+/tmp/81136bc7.o : include/system.h
+/tmp/81136bc7.o : include/macs.hpp
+/tmp/946b8ed0.o : status.c
+	g++  -c -o /tmp/946b8ed0.o status.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK -DNO_XSHM 
+
+/tmp/946b8ed0.o : include/dprint.hpp
+/tmp/946b8ed0.o : include/timage.hpp
+/tmp/946b8ed0.o : include/fonts.hpp
+/tmp/946b8ed0.o : include/filter.hpp
+/tmp/946b8ed0.o : include/mouse.hpp
+/tmp/946b8ed0.o : include/sprite.hpp
+/tmp/946b8ed0.o : include/keys.hpp
+/tmp/946b8ed0.o : include/event.hpp
+/tmp/946b8ed0.o : include/jmalloc.hpp
+/tmp/946b8ed0.o : include/specs.hpp
+/tmp/946b8ed0.o : include/palette.hpp
+/tmp/946b8ed0.o : include/linked.hpp
+/tmp/946b8ed0.o : include/image.hpp
+/tmp/946b8ed0.o : include/video.hpp
+/tmp/946b8ed0.o : include/jwindow.hpp
+/tmp/946b8ed0.o : include/visobj.hpp
+/tmp/946b8ed0.o : include/status.hpp
+/tmp/946b8ed0.o : include/system.h
+/tmp/946b8ed0.o : include/macs.hpp
+/tmp/7d507cd8.o : visobj.c
+	g++  -c -o /tmp/7d507cd8.o visobj.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK -DNO_XSHM 
+
+/tmp/7d507cd8.o : include/timage.hpp
+/tmp/7d507cd8.o : include/fonts.hpp
+/tmp/7d507cd8.o : include/filter.hpp
+/tmp/7d507cd8.o : include/mouse.hpp
+/tmp/7d507cd8.o : include/macs.hpp
+/tmp/7d507cd8.o : include/sprite.hpp
+/tmp/7d507cd8.o : include/keys.hpp
+/tmp/7d507cd8.o : include/event.hpp
+/tmp/7d507cd8.o : include/jmalloc.hpp
+/tmp/7d507cd8.o : include/specs.hpp
+/tmp/7d507cd8.o : include/palette.hpp
+/tmp/7d507cd8.o : include/linked.hpp
+/tmp/7d507cd8.o : include/image.hpp
+/tmp/7d507cd8.o : include/system.h
+/tmp/7d507cd8.o : include/video.hpp
+/tmp/7d507cd8.o : include/jwindow.hpp
+/tmp/7d507cd8.o : include/visobj.hpp
+
+AIX_image_profile_o_files = \
+	/tmp/1451ffae.o \
+	/tmp/6088438c.o \
+	/tmp/72a08142.o \
+	/tmp/91219ac6.o \
+	/tmp/05544dbe.o \
+	/tmp/be7d37b7.o \
+	/tmp/67b2dc3e.o \
+	/tmp/7dd50371.o \
+	/tmp/77143bfd.o \
+	/tmp/72c4e518.o \
+	/tmp/7d4927ea.o \
+	/tmp/b8690449.o \
+	/tmp/6453641f.o \
+	/tmp/05370954.o \
+	/tmp/fd3b0913.o \
+	/tmp/9f801173.o \
+	/tmp/ac716886.o \
+	/tmp/0c9a08d2.o \
+	/tmp/f7db599d.o \
+	/tmp/75fdcfa6.o \
+	/tmp/0567b60f.o \
+	/tmp/70b4b7be.o \
+	/tmp/9d47ef68.o \
+	/tmp/65a4a59d.o \
+	/tmp/9d5729fd.o \
+	/tmp/4abcb170.o \
+	/tmp/1f735563.o \
+	/tmp/32cb786c.o \
+	/tmp/1bb06674.o
+
+AIX_packet_profile_o_files = \
+	/tmp/0628cbba.o
+
+AIX_gui_profile_o_files = \
+	/tmp/b36e400f.o \
+	/tmp/f408ff06.o \
+	/tmp/72a567aa.o \
+	/tmp/bfa2c41d.o \
+	/tmp/8f20e04f.o
+
+AIX_net_profile_o_files = \
+	/tmp/c93963ab.o
+
+AIX_dir_profile_o_files = \
+	/tmp/c1213155.o
+
+AIX_sound_profile_o_files = \
+	/tmp/bfa8fb6d.o \
+	/tmp/78b4ca47.o
+
+AIX_joy_profile_o_files = \
+	/tmp/881364d7.o
+
+AIX_winman_profile_o_files = \
+	/tmp/45a395fa.o \
+	/tmp/57d3d00f.o \
+	/tmp/509c3ede.o \
+	/tmp/901cf9f2.o
+
+AIX_time_profile_o_files = \
+	/tmp/a0307612.o
+
+./AIX/profile/time.a : $(AIX_time_profile_o_files)
+	ar ruvs ./AIX/profile/time.a \
+	/tmp/a0307612.o
+
+/tmp/a0307612.o : port/unix/timing.c
+	g++  -c -o /tmp/a0307612.o port/unix/timing.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK -DNO_XSHM 
+
+/tmp/a0307612.o : include/timing.hpp
+
+./AIX/profile/winman.a : $(AIX_winman_profile_o_files)
+	ar ruvs ./AIX/profile/winman.a \
+	/tmp/45a395fa.o \
+	/tmp/57d3d00f.o \
+	/tmp/509c3ede.o \
+	/tmp/901cf9f2.o
+
+/tmp/45a395fa.o : port/x11/video.c
+	g++  -c -o /tmp/45a395fa.o port/x11/video.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK -DNO_XSHM 
+
+/tmp/45a395fa.o : include/bitmap.h
+/tmp/45a395fa.o : include/macs.hpp
+/tmp/45a395fa.o : include/xinclude.h
+/tmp/45a395fa.o : include/dos.h
+/tmp/45a395fa.o : include/video.hpp
+/tmp/45a395fa.o : include/globals.hpp
+/tmp/45a395fa.o : include/system.h
+/tmp/45a395fa.o : include/jmalloc.hpp
+/tmp/45a395fa.o : include/specs.hpp
+/tmp/45a395fa.o : include/palette.hpp
+/tmp/45a395fa.o : include/linked.hpp
+/tmp/45a395fa.o : include/image.hpp
+/tmp/45a395fa.o : include/filter.hpp
+/tmp/57d3d00f.o : port/x11/mouse.c
+	g++  -c -o /tmp/57d3d00f.o port/x11/mouse.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK -DNO_XSHM 
+
+/tmp/57d3d00f.o : include/xinclude.h
+/tmp/57d3d00f.o : include/mouse.hpp
+/tmp/57d3d00f.o : include/monoprnt.hpp
+/tmp/57d3d00f.o : include/mdlread.hpp
+/tmp/57d3d00f.o : include/filter.hpp
+/tmp/57d3d00f.o : include/macs.hpp
+/tmp/57d3d00f.o : include/sprite.hpp
+/tmp/57d3d00f.o : include/jmalloc.hpp
+/tmp/57d3d00f.o : include/specs.hpp
+/tmp/57d3d00f.o : include/palette.hpp
+/tmp/57d3d00f.o : include/linked.hpp
+/tmp/57d3d00f.o : include/image.hpp
+/tmp/57d3d00f.o : include/system.h
+/tmp/57d3d00f.o : include/video.hpp
+/tmp/509c3ede.o : port/x11/event.c
+	g++  -c -o /tmp/509c3ede.o port/x11/event.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK -DNO_XSHM 
+
+/tmp/509c3ede.o : include/keys.hpp
+/tmp/509c3ede.o : include/event.hpp
+/tmp/509c3ede.o : include/sprite.hpp
+/tmp/509c3ede.o : include/mouse.hpp
+/tmp/509c3ede.o : include/macs.hpp
+/tmp/509c3ede.o : include/gifread.hpp
+/tmp/509c3ede.o : include/video.hpp
+/tmp/509c3ede.o : include/mdlread.hpp
+/tmp/509c3ede.o : include/jmalloc.hpp
+/tmp/509c3ede.o : include/specs.hpp
+/tmp/509c3ede.o : include/palette.hpp
+/tmp/509c3ede.o : include/linked.hpp
+/tmp/509c3ede.o : include/image.hpp
+/tmp/509c3ede.o : include/xinclude.h
+/tmp/509c3ede.o : include/system.h
+/tmp/901cf9f2.o : jwindow.c
+	g++  -c -o /tmp/901cf9f2.o jwindow.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK -DNO_XSHM 
+
+/tmp/901cf9f2.o : include/timage.hpp
+/tmp/901cf9f2.o : include/fonts.hpp
+/tmp/901cf9f2.o : include/jwindow.hpp
+/tmp/901cf9f2.o : include/filter.hpp
+/tmp/901cf9f2.o : include/mouse.hpp
+/tmp/901cf9f2.o : include/macs.hpp
+/tmp/901cf9f2.o : include/sprite.hpp
+/tmp/901cf9f2.o : include/keys.hpp
+/tmp/901cf9f2.o : include/event.hpp
+/tmp/901cf9f2.o : include/jmalloc.hpp
+/tmp/901cf9f2.o : include/specs.hpp
+/tmp/901cf9f2.o : include/palette.hpp
+/tmp/901cf9f2.o : include/linked.hpp
+/tmp/901cf9f2.o : include/image.hpp
+/tmp/901cf9f2.o : include/system.h
+/tmp/901cf9f2.o : include/video.hpp
+
+./AIX/profile/joy.a : $(AIX_joy_profile_o_files)
+	ar ruvs ./AIX/profile/joy.a \
+	/tmp/881364d7.o
+
+/tmp/881364d7.o : port/unix/joystick.c
+	g++  -c -o /tmp/881364d7.o port/unix/joystick.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK -DNO_XSHM 
+
+/tmp/881364d7.o : port/unix/joystick.c
+
+./AIX/profile/sound.a : $(AIX_sound_profile_o_files)
+	ar ruvs ./AIX/profile/sound.a \
+	/tmp/bfa8fb6d.o \
+	/tmp/78b4ca47.o
+
+/tmp/bfa8fb6d.o : port/aix/sound.c
+	g++  -c -o /tmp/bfa8fb6d.o port/aix/sound.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK -DNO_XSHM 
+
+/tmp/bfa8fb6d.o : include/timing.hpp
+/tmp/bfa8fb6d.o : include/dprint.hpp
+/tmp/bfa8fb6d.o : include/jmalloc.hpp
+/tmp/bfa8fb6d.o : include/linked.hpp
+/tmp/bfa8fb6d.o : include/specs.hpp
+/tmp/bfa8fb6d.o : include/readwav.hpp
+/tmp/bfa8fb6d.o : include/sound.hpp
+/tmp/bfa8fb6d.o : include/system.h
+/tmp/bfa8fb6d.o : include/macs.hpp
+/tmp/78b4ca47.o : readwav.c
+	g++  -c -o /tmp/78b4ca47.o readwav.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK -DNO_XSHM 
+
+/tmp/78b4ca47.o : include/dprint.hpp
+/tmp/78b4ca47.o : include/macs.hpp
+/tmp/78b4ca47.o : include/system.h
+/tmp/78b4ca47.o : include/jmalloc.hpp
+/tmp/78b4ca47.o : include/linked.hpp
+/tmp/78b4ca47.o : include/specs.hpp
+/tmp/78b4ca47.o : include/readwav.hpp
+
+./AIX/profile/dir.a : $(AIX_dir_profile_o_files)
+	ar ruvs ./AIX/profile/dir.a \
+	/tmp/c1213155.o
+
+/tmp/c1213155.o : port/unix/jdir.c
+	g++  -c -o /tmp/c1213155.o port/unix/jdir.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK -DNO_XSHM 
+
+/tmp/c1213155.o : include/jmalloc.hpp
+
+./AIX/profile/net.a : $(AIX_net_profile_o_files)
+	ar ruvs ./AIX/profile/net.a \
+	/tmp/c93963ab.o
+
+/tmp/c93963ab.o : port/unix/jnet.c
+	g++  -c -o /tmp/c93963ab.o port/unix/jnet.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK -DNO_XSHM 
+
+/tmp/c93963ab.o : include/jmalloc.hpp
+/tmp/c93963ab.o : include/packet.hpp
+/tmp/c93963ab.o : include/system.h
+/tmp/c93963ab.o : include/macs.hpp
+/tmp/c93963ab.o : include/jnet.hpp
+
+./AIX/profile/gui.a : $(AIX_gui_profile_o_files)
+	ar ruvs ./AIX/profile/gui.a \
+	/tmp/b36e400f.o \
+	/tmp/f408ff06.o \
+	/tmp/72a567aa.o \
+	/tmp/bfa2c41d.o \
+	/tmp/8f20e04f.o
+
+/tmp/b36e400f.o : pmenu.c
+	g++  -c -o /tmp/b36e400f.o pmenu.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK -DNO_XSHM 
+
+/tmp/b36e400f.o : include/timage.hpp
+/tmp/b36e400f.o : include/fonts.hpp
+/tmp/b36e400f.o : include/filter.hpp
+/tmp/b36e400f.o : include/mouse.hpp
+/tmp/b36e400f.o : include/macs.hpp
+/tmp/b36e400f.o : include/sprite.hpp
+/tmp/b36e400f.o : include/keys.hpp
+/tmp/b36e400f.o : include/event.hpp
+/tmp/b36e400f.o : include/specs.hpp
+/tmp/b36e400f.o : include/palette.hpp
+/tmp/b36e400f.o : include/linked.hpp
+/tmp/b36e400f.o : include/image.hpp
+/tmp/b36e400f.o : include/system.h
+/tmp/b36e400f.o : include/video.hpp
+/tmp/b36e400f.o : include/jwindow.hpp
+/tmp/b36e400f.o : include/input.hpp
+/tmp/b36e400f.o : include/jmalloc.hpp
+/tmp/b36e400f.o : include/pmenu.hpp
+/tmp/f408ff06.o : scroller.c
+	g++  -c -o /tmp/f408ff06.o scroller.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK -DNO_XSHM 
+
+/tmp/f408ff06.o : include/timage.hpp
+/tmp/f408ff06.o : include/fonts.hpp
+/tmp/f408ff06.o : include/filter.hpp
+/tmp/f408ff06.o : include/mouse.hpp
+/tmp/f408ff06.o : include/macs.hpp
+/tmp/f408ff06.o : include/sprite.hpp
+/tmp/f408ff06.o : include/keys.hpp
+/tmp/f408ff06.o : include/event.hpp
+/tmp/f408ff06.o : include/jmalloc.hpp
+/tmp/f408ff06.o : include/specs.hpp
+/tmp/f408ff06.o : include/palette.hpp
+/tmp/f408ff06.o : include/linked.hpp
+/tmp/f408ff06.o : include/image.hpp
+/tmp/f408ff06.o : include/system.h
+/tmp/f408ff06.o : include/video.hpp
+/tmp/f408ff06.o : include/jwindow.hpp
+/tmp/f408ff06.o : include/input.hpp
+/tmp/f408ff06.o : include/scroller.hpp
+/tmp/72a567aa.o : filesel.c
+	g++  -c -o /tmp/72a567aa.o filesel.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK -DNO_XSHM 
+
+/tmp/72a567aa.o : include/jdir.hpp
+/tmp/72a567aa.o : include/scroller.hpp
+/tmp/72a567aa.o : include/input.hpp
+/tmp/72a567aa.o : include/timage.hpp
+/tmp/72a567aa.o : include/fonts.hpp
+/tmp/72a567aa.o : include/filter.hpp
+/tmp/72a567aa.o : include/mouse.hpp
+/tmp/72a567aa.o : include/macs.hpp
+/tmp/72a567aa.o : include/sprite.hpp
+/tmp/72a567aa.o : include/keys.hpp
+/tmp/72a567aa.o : include/event.hpp
+/tmp/72a567aa.o : include/jmalloc.hpp
+/tmp/72a567aa.o : include/specs.hpp
+/tmp/72a567aa.o : include/palette.hpp
+/tmp/72a567aa.o : include/linked.hpp
+/tmp/72a567aa.o : include/image.hpp
+/tmp/72a567aa.o : include/system.h
+/tmp/72a567aa.o : include/video.hpp
+/tmp/72a567aa.o : include/jwindow.hpp
+/tmp/72a567aa.o : include/filesel.hpp
+/tmp/bfa2c41d.o : tools.c
+	g++  -c -o /tmp/bfa2c41d.o tools.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK -DNO_XSHM 
+
+/tmp/bfa2c41d.o : include/visobj.hpp
+/tmp/bfa2c41d.o : include/scroller.hpp
+/tmp/bfa2c41d.o : include/input.hpp
+/tmp/bfa2c41d.o : include/timage.hpp
+/tmp/bfa2c41d.o : include/fonts.hpp
+/tmp/bfa2c41d.o : include/filter.hpp
+/tmp/bfa2c41d.o : include/mouse.hpp
+/tmp/bfa2c41d.o : include/macs.hpp
+/tmp/bfa2c41d.o : include/sprite.hpp
+/tmp/bfa2c41d.o : include/keys.hpp
+/tmp/bfa2c41d.o : include/event.hpp
+/tmp/bfa2c41d.o : include/jmalloc.hpp
+/tmp/bfa2c41d.o : include/specs.hpp
+/tmp/bfa2c41d.o : include/palette.hpp
+/tmp/bfa2c41d.o : include/linked.hpp
+/tmp/bfa2c41d.o : include/image.hpp
+/tmp/bfa2c41d.o : include/system.h
+/tmp/bfa2c41d.o : include/video.hpp
+/tmp/bfa2c41d.o : include/jwindow.hpp
+/tmp/bfa2c41d.o : include/tools.hpp
+/tmp/8f20e04f.o : guistat.c
+	g++  -c -o /tmp/8f20e04f.o guistat.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK -DNO_XSHM 
+
+/tmp/8f20e04f.o : include/guistat.hpp
+/tmp/8f20e04f.o : include/timing.hpp
+/tmp/8f20e04f.o : include/timage.hpp
+/tmp/8f20e04f.o : include/fonts.hpp
+/tmp/8f20e04f.o : include/filter.hpp
+/tmp/8f20e04f.o : include/mouse.hpp
+/tmp/8f20e04f.o : include/macs.hpp
+/tmp/8f20e04f.o : include/sprite.hpp
+/tmp/8f20e04f.o : include/keys.hpp
+/tmp/8f20e04f.o : include/event.hpp
+/tmp/8f20e04f.o : include/jmalloc.hpp
+/tmp/8f20e04f.o : include/specs.hpp
+/tmp/8f20e04f.o : include/palette.hpp
+/tmp/8f20e04f.o : include/linked.hpp
+/tmp/8f20e04f.o : include/image.hpp
+/tmp/8f20e04f.o : include/system.h
+/tmp/8f20e04f.o : include/video.hpp
+/tmp/8f20e04f.o : include/jwindow.hpp
+/tmp/8f20e04f.o : include/visobj.hpp
+/tmp/8f20e04f.o : include/status.hpp
+
+./AIX/profile/packet.a : $(AIX_packet_profile_o_files)
+	ar ruvs ./AIX/profile/packet.a \
+	/tmp/0628cbba.o
+
+/tmp/0628cbba.o : packet.c
+	g++  -c -o /tmp/0628cbba.o packet.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK -DNO_XSHM 
+
+/tmp/0628cbba.o : include/jmalloc.hpp
+/tmp/0628cbba.o : include/system.h
+/tmp/0628cbba.o : include/macs.hpp
+/tmp/0628cbba.o : include/packet.hpp
+
+./AIX/profile/image.a : $(AIX_image_profile_o_files)
+	ar ruvs ./AIX/profile/image.a \
+	/tmp/1451ffae.o \
+	/tmp/6088438c.o \
+	/tmp/72a08142.o \
+	/tmp/91219ac6.o \
+	/tmp/05544dbe.o \
+	/tmp/be7d37b7.o \
+	/tmp/67b2dc3e.o \
+	/tmp/7dd50371.o \
+	/tmp/77143bfd.o \
+	/tmp/72c4e518.o \
+	/tmp/7d4927ea.o \
+	/tmp/b8690449.o \
+	/tmp/6453641f.o \
+	/tmp/05370954.o \
+	/tmp/fd3b0913.o \
+	/tmp/9f801173.o \
+	/tmp/ac716886.o \
+	/tmp/0c9a08d2.o \
+	/tmp/f7db599d.o \
+	/tmp/75fdcfa6.o \
+	/tmp/0567b60f.o \
+	/tmp/70b4b7be.o \
+	/tmp/9d47ef68.o \
+	/tmp/65a4a59d.o \
+	/tmp/9d5729fd.o \
+	/tmp/4abcb170.o \
+	/tmp/1f735563.o \
+	/tmp/32cb786c.o \
+	/tmp/1bb06674.o
+
+/tmp/1451ffae.o : filter.c
+	g++  -c -o /tmp/1451ffae.o filter.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK -DNO_XSHM 
+
+/tmp/1451ffae.o : include/filter.hpp
+/tmp/1451ffae.o : include/macs.hpp
+/tmp/1451ffae.o : include/system.h
+/tmp/1451ffae.o : include/jmalloc.hpp
+/tmp/1451ffae.o : include/specs.hpp
+/tmp/1451ffae.o : include/palette.hpp
+/tmp/1451ffae.o : include/linked.hpp
+/tmp/1451ffae.o : include/image.hpp
+/tmp/6088438c.o : gifread.c
+	g++  -c -o /tmp/6088438c.o gifread.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK -DNO_XSHM 
+
+/tmp/6088438c.o : include/macs.hpp
+/tmp/6088438c.o : include/dir.h
+/tmp/6088438c.o : include/dos.h
+/tmp/6088438c.o : include/std.h
+/tmp/6088438c.o : include/gifdecod.hpp
+/tmp/6088438c.o : include/video.hpp
+/tmp/6088438c.o : include/system.h
+/tmp/6088438c.o : include/jmalloc.hpp
+/tmp/6088438c.o : include/specs.hpp
+/tmp/6088438c.o : include/palette.hpp
+/tmp/6088438c.o : include/linked.hpp
+/tmp/6088438c.o : include/image.hpp
+/tmp/6088438c.o : include/gifread.hpp
+/tmp/72a08142.o : globals.c
+	g++  -c -o /tmp/72a08142.o globals.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK -DNO_XSHM 
+
+/tmp/72a08142.o : globals.c
+/tmp/91219ac6.o : image.c
+	g++  -c -o /tmp/91219ac6.o image.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK -DNO_XSHM 
+
+/tmp/91219ac6.o : include/macs.hpp
+/tmp/91219ac6.o : include/system.h
+/tmp/91219ac6.o : include/jmalloc.hpp
+/tmp/91219ac6.o : include/specs.hpp
+/tmp/91219ac6.o : include/palette.hpp
+/tmp/91219ac6.o : include/linked.hpp
+/tmp/91219ac6.o : include/image.hpp
+/tmp/05544dbe.o : linked.c
+	g++  -c -o /tmp/05544dbe.o linked.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK -DNO_XSHM 
+
+/tmp/05544dbe.o : include/linked.hpp
+/tmp/be7d37b7.o : input.c
+	g++  -c -o /tmp/be7d37b7.o input.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK -DNO_XSHM 
+
+/tmp/be7d37b7.o : include/timage.hpp
+/tmp/be7d37b7.o : include/fonts.hpp
+/tmp/be7d37b7.o : include/filter.hpp
+/tmp/be7d37b7.o : include/mouse.hpp
+/tmp/be7d37b7.o : include/macs.hpp
+/tmp/be7d37b7.o : include/sprite.hpp
+/tmp/be7d37b7.o : include/keys.hpp
+/tmp/be7d37b7.o : include/event.hpp
+/tmp/be7d37b7.o : include/jmalloc.hpp
+/tmp/be7d37b7.o : include/specs.hpp
+/tmp/be7d37b7.o : include/palette.hpp
+/tmp/be7d37b7.o : include/linked.hpp
+/tmp/be7d37b7.o : include/image.hpp
+/tmp/be7d37b7.o : include/system.h
+/tmp/be7d37b7.o : include/video.hpp
+/tmp/be7d37b7.o : include/jwindow.hpp
+/tmp/be7d37b7.o : include/input.hpp
+/tmp/67b2dc3e.o : mdlread.c
+	g++  -c -o /tmp/67b2dc3e.o mdlread.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK -DNO_XSHM 
+
+/tmp/67b2dc3e.o : include/macs.hpp
+/tmp/67b2dc3e.o : include/image.hpp
+/tmp/67b2dc3e.o : include/system.h
+/tmp/67b2dc3e.o : include/jmalloc.hpp
+/tmp/67b2dc3e.o : include/specs.hpp
+/tmp/67b2dc3e.o : include/linked.hpp
+/tmp/67b2dc3e.o : include/palette.hpp
+/tmp/67b2dc3e.o : include/mdlread.hpp
+/tmp/7dd50371.o : palette.c
+	g++  -c -o /tmp/7dd50371.o palette.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK -DNO_XSHM 
+
+/tmp/7dd50371.o : include/filter.hpp
+/tmp/7dd50371.o : include/video.hpp
+/tmp/7dd50371.o : include/dos.h
+/tmp/7dd50371.o : include/macs.hpp
+/tmp/7dd50371.o : include/image.hpp
+/tmp/7dd50371.o : include/system.h
+/tmp/7dd50371.o : include/jmalloc.hpp
+/tmp/7dd50371.o : include/specs.hpp
+/tmp/7dd50371.o : include/linked.hpp
+/tmp/7dd50371.o : include/palette.hpp
+/tmp/77143bfd.o : ppmread.c
+	g++  -c -o /tmp/77143bfd.o ppmread.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK -DNO_XSHM 
+
+/tmp/77143bfd.o : include/ppmread.hpp
+/tmp/77143bfd.o : include/macs.hpp
+/tmp/77143bfd.o : include/system.h
+/tmp/77143bfd.o : include/jmalloc.hpp
+/tmp/77143bfd.o : include/specs.hpp
+/tmp/77143bfd.o : include/palette.hpp
+/tmp/77143bfd.o : include/linked.hpp
+/tmp/77143bfd.o : include/image.hpp
+/tmp/72c4e518.o : include.c
+	g++  -c -o /tmp/72c4e518.o include.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK -DNO_XSHM 
+
+/tmp/72c4e518.o : include/system.h
+/tmp/72c4e518.o : include/jmalloc.hpp
+/tmp/72c4e518.o : include/specs.hpp
+/tmp/72c4e518.o : include/palette.hpp
+/tmp/72c4e518.o : include/linked.hpp
+/tmp/72c4e518.o : include/image.hpp
+/tmp/72c4e518.o : include/include.hpp
+/tmp/7d4927ea.o : xwdread.c
+	g++  -c -o /tmp/7d4927ea.o xwdread.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK -DNO_XSHM 
+
+/tmp/7d4927ea.o : include/image24.hpp
+/tmp/7d4927ea.o : include/main.hpp
+/tmp/7d4927ea.o : include/dos.h
+/tmp/7d4927ea.o : include/video.hpp
+/tmp/7d4927ea.o : include/mouse.hpp
+/tmp/7d4927ea.o : include/macs.hpp
+/tmp/7d4927ea.o : include/sprite.hpp
+/tmp/7d4927ea.o : include/keys.hpp
+/tmp/7d4927ea.o : include/event.hpp
+/tmp/7d4927ea.o : include/system.h
+/tmp/7d4927ea.o : include/jmalloc.hpp
+/tmp/7d4927ea.o : include/specs.hpp
+/tmp/7d4927ea.o : include/palette.hpp
+/tmp/7d4927ea.o : include/linked.hpp
+/tmp/7d4927ea.o : include/image.hpp
+/tmp/7d4927ea.o : include/filter.hpp
+/tmp/b8690449.o : fonts.c
+	g++  -c -o /tmp/b8690449.o fonts.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK -DNO_XSHM 
+
+/tmp/b8690449.o : include/filter.hpp
+/tmp/b8690449.o : include/macs.hpp
+/tmp/b8690449.o : include/timage.hpp
+/tmp/b8690449.o : include/system.h
+/tmp/b8690449.o : include/jmalloc.hpp
+/tmp/b8690449.o : include/specs.hpp
+/tmp/b8690449.o : include/palette.hpp
+/tmp/b8690449.o : include/linked.hpp
+/tmp/b8690449.o : include/image.hpp
+/tmp/b8690449.o : include/fonts.hpp
+/tmp/6453641f.o : decoder.c
+	g++  -c -o /tmp/6453641f.o decoder.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK -DNO_XSHM 
+
+/tmp/6453641f.o : include/macs.hpp
+/tmp/6453641f.o : include/system.h
+/tmp/6453641f.o : include/jmalloc.hpp
+/tmp/6453641f.o : include/specs.hpp
+/tmp/6453641f.o : include/palette.hpp
+/tmp/6453641f.o : include/linked.hpp
+/tmp/6453641f.o : include/image.hpp
+/tmp/6453641f.o : include/errs.h
+/tmp/05370954.o : loader.c
+	g++  -c -o /tmp/05370954.o loader.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK -DNO_XSHM 
+
+/tmp/05370954.o : include/targa.hpp
+/tmp/05370954.o : include/lbmread.hpp
+/tmp/05370954.o : include/pcxread.hpp
+/tmp/05370954.o : include/glread.hpp
+/tmp/05370954.o : include/xwdread.hpp
+/tmp/05370954.o : include/ppmread.hpp
+/tmp/05370954.o : include/mdlread.hpp
+/tmp/05370954.o : include/filter.hpp
+/tmp/05370954.o : include/macs.hpp
+/tmp/05370954.o : include/image24.hpp
+/tmp/05370954.o : include/system.h
+/tmp/05370954.o : include/jmalloc.hpp
+/tmp/05370954.o : include/specs.hpp
+/tmp/05370954.o : include/palette.hpp
+/tmp/05370954.o : include/linked.hpp
+/tmp/05370954.o : include/image.hpp
+/tmp/05370954.o : include/loader.hpp
+/tmp/fd3b0913.o : glread.c
+	g++  -c -o /tmp/fd3b0913.o glread.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK -DNO_XSHM 
+
+/tmp/fd3b0913.o : include/video.hpp
+/tmp/fd3b0913.o : include/jmalloc.hpp
+/tmp/fd3b0913.o : include/specs.hpp
+/tmp/fd3b0913.o : include/palette.hpp
+/tmp/fd3b0913.o : include/linked.hpp
+/tmp/fd3b0913.o : include/image.hpp
+/tmp/fd3b0913.o : include/system.h
+/tmp/fd3b0913.o : include/macs.hpp
+/tmp/9f801173.o : texture.c
+	g++  -c -o /tmp/9f801173.o texture.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK -DNO_XSHM 
+
+/tmp/9f801173.o : include/mouse.hpp
+/tmp/9f801173.o : include/sprite.hpp
+/tmp/9f801173.o : include/keys.hpp
+/tmp/9f801173.o : include/event.hpp
+/tmp/9f801173.o : include/macs.hpp
+/tmp/9f801173.o : include/video.hpp
+/tmp/9f801173.o : include/system.h
+/tmp/9f801173.o : include/jmalloc.hpp
+/tmp/9f801173.o : include/specs.hpp
+/tmp/9f801173.o : include/palette.hpp
+/tmp/9f801173.o : include/linked.hpp
+/tmp/9f801173.o : include/image.hpp
+/tmp/ac716886.o : specs.c
+	g++  -c -o /tmp/ac716886.o specs.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK -DNO_XSHM 
+
+/tmp/ac716886.o : include/dprint.hpp
+/tmp/ac716886.o : include/system.h
+/tmp/ac716886.o : include/jmalloc.hpp
+/tmp/ac716886.o : include/specs.hpp
+/tmp/ac716886.o : include/palette.hpp
+/tmp/ac716886.o : include/linked.hpp
+/tmp/ac716886.o : include/image.hpp
+/tmp/0c9a08d2.o : supmorph.c
+	g++  -c -o /tmp/0c9a08d2.o supmorph.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK -DNO_XSHM 
+
+/tmp/0c9a08d2.o : include/jrand.hpp
+/tmp/0c9a08d2.o : include/video.hpp
+/tmp/0c9a08d2.o : include/timing.hpp
+/tmp/0c9a08d2.o : include/filter.hpp
+/tmp/0c9a08d2.o : include/macs.hpp
+/tmp/0c9a08d2.o : include/system.h
+/tmp/0c9a08d2.o : include/specs.hpp
+/tmp/0c9a08d2.o : include/palette.hpp
+/tmp/0c9a08d2.o : include/linked.hpp
+/tmp/0c9a08d2.o : include/image.hpp
+/tmp/0c9a08d2.o : include/timage.hpp
+/tmp/0c9a08d2.o : include/jmalloc.hpp
+/tmp/0c9a08d2.o : include/supmorph.hpp
+/tmp/f7db599d.o : image24.c
+	g++  -c -o /tmp/f7db599d.o image24.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK -DNO_XSHM 
+
+/tmp/f7db599d.o : include/image.hpp
+/tmp/f7db599d.o : include/filter.hpp
+/tmp/f7db599d.o : include/macs.hpp
+/tmp/f7db599d.o : include/system.h
+/tmp/f7db599d.o : include/jmalloc.hpp
+/tmp/f7db599d.o : include/specs.hpp
+/tmp/f7db599d.o : include/linked.hpp
+/tmp/f7db599d.o : include/palette.hpp
+/tmp/f7db599d.o : include/image24.hpp
+/tmp/75fdcfa6.o : pcxread.c
+	g++  -c -o /tmp/75fdcfa6.o pcxread.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK -DNO_XSHM 
+
+/tmp/75fdcfa6.o : include/filter.hpp
+/tmp/75fdcfa6.o : include/macs.hpp
+/tmp/75fdcfa6.o : include/image24.hpp
+/tmp/75fdcfa6.o : include/system.h
+/tmp/75fdcfa6.o : include/jmalloc.hpp
+/tmp/75fdcfa6.o : include/specs.hpp
+/tmp/75fdcfa6.o : include/palette.hpp
+/tmp/75fdcfa6.o : include/linked.hpp
+/tmp/75fdcfa6.o : include/image.hpp
+/tmp/75fdcfa6.o : include/pcxread.hpp
+/tmp/0567b60f.o : timage.c
+	g++  -c -o /tmp/0567b60f.o timage.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK -DNO_XSHM 
+
+/tmp/0567b60f.o : include/filter.hpp
+/tmp/0567b60f.o : include/macs.hpp
+/tmp/0567b60f.o : include/system.h
+/tmp/0567b60f.o : include/jmalloc.hpp
+/tmp/0567b60f.o : include/specs.hpp
+/tmp/0567b60f.o : include/palette.hpp
+/tmp/0567b60f.o : include/linked.hpp
+/tmp/0567b60f.o : include/image.hpp
+/tmp/0567b60f.o : include/timage.hpp
+/tmp/70b4b7be.o : jmalloc.c
+	g++  -c -o /tmp/70b4b7be.o jmalloc.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK -DNO_XSHM 
+
+/tmp/70b4b7be.o : include/jmalloc.hpp
+/tmp/70b4b7be.o : include/system.h
+/tmp/70b4b7be.o : include/macs.hpp
+/tmp/70b4b7be.o : include/doscall.hpp
+/tmp/9d47ef68.o : jrand.c
+	g++  -c -o /tmp/9d47ef68.o jrand.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK -DNO_XSHM 
+
+/tmp/9d47ef68.o : include/jrand.hpp
+/tmp/65a4a59d.o : lbmread.c
+	g++  -c -o /tmp/65a4a59d.o lbmread.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK -DNO_XSHM 
+
+/tmp/65a4a59d.o : include/system.h
+/tmp/65a4a59d.o : include/jmalloc.hpp
+/tmp/65a4a59d.o : include/specs.hpp
+/tmp/65a4a59d.o : include/palette.hpp
+/tmp/65a4a59d.o : include/linked.hpp
+/tmp/65a4a59d.o : include/image.hpp
+/tmp/65a4a59d.o : include/lbmread.hpp
+/tmp/9d5729fd.o : targa.c
+	g++  -c -o /tmp/9d5729fd.o targa.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK -DNO_XSHM 
+
+/tmp/9d5729fd.o : include/system.h
+/tmp/9d5729fd.o : include/jmalloc.hpp
+/tmp/9d5729fd.o : include/specs.hpp
+/tmp/9d5729fd.o : include/palette.hpp
+/tmp/9d5729fd.o : include/linked.hpp
+/tmp/9d5729fd.o : include/image.hpp
+/tmp/4abcb170.o : keys.c
+	g++  -c -o /tmp/4abcb170.o keys.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK -DNO_XSHM 
+
+/tmp/4abcb170.o : include/keys.hpp
+/tmp/1f735563.o : dprint.c
+	g++  -c -o /tmp/1f735563.o dprint.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK -DNO_XSHM 
+
+/tmp/1f735563.o : include/system.h
+/tmp/1f735563.o : include/macs.hpp
+/tmp/32cb786c.o : status.c
+	g++  -c -o /tmp/32cb786c.o status.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK -DNO_XSHM 
+
+/tmp/32cb786c.o : include/dprint.hpp
+/tmp/32cb786c.o : include/timage.hpp
+/tmp/32cb786c.o : include/fonts.hpp
+/tmp/32cb786c.o : include/filter.hpp
+/tmp/32cb786c.o : include/mouse.hpp
+/tmp/32cb786c.o : include/sprite.hpp
+/tmp/32cb786c.o : include/keys.hpp
+/tmp/32cb786c.o : include/event.hpp
+/tmp/32cb786c.o : include/jmalloc.hpp
+/tmp/32cb786c.o : include/specs.hpp
+/tmp/32cb786c.o : include/palette.hpp
+/tmp/32cb786c.o : include/linked.hpp
+/tmp/32cb786c.o : include/image.hpp
+/tmp/32cb786c.o : include/video.hpp
+/tmp/32cb786c.o : include/jwindow.hpp
+/tmp/32cb786c.o : include/visobj.hpp
+/tmp/32cb786c.o : include/status.hpp
+/tmp/32cb786c.o : include/system.h
+/tmp/32cb786c.o : include/macs.hpp
+/tmp/1bb06674.o : visobj.c
+	g++  -c -o /tmp/1bb06674.o visobj.c -Iinclude -O2 -DMANAGE_MEM -DNO_CHECK -DNO_XSHM 
+
+/tmp/1bb06674.o : include/timage.hpp
+/tmp/1bb06674.o : include/fonts.hpp
+/tmp/1bb06674.o : include/filter.hpp
+/tmp/1bb06674.o : include/mouse.hpp
+/tmp/1bb06674.o : include/macs.hpp
+/tmp/1bb06674.o : include/sprite.hpp
+/tmp/1bb06674.o : include/keys.hpp
+/tmp/1bb06674.o : include/event.hpp
+/tmp/1bb06674.o : include/jmalloc.hpp
+/tmp/1bb06674.o : include/specs.hpp
+/tmp/1bb06674.o : include/palette.hpp
+/tmp/1bb06674.o : include/linked.hpp
+/tmp/1bb06674.o : include/image.hpp
+/tmp/1bb06674.o : include/system.h
+/tmp/1bb06674.o : include/video.hpp
+/tmp/1bb06674.o : include/jwindow.hpp
+/tmp/1bb06674.o : include/visobj.hpp
+

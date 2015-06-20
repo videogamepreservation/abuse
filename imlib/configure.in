@@ -1,0 +1,51 @@
+AC_INIT(jwindow.c)
+AM_INIT_AUTOMAKE(imlib, 2.0)
+AC_PROG_CC
+AC_PROG_CPP
+AC_PROG_CXX
+AC_PROG_RANLIB
+AC_CANONICAL_HOST
+
+AC_PATH_XTRA
+
+# Do we have X shared memory support?
+AC_CHECK_LIB(Xext,XShmAttach,:,[
+AC_CHECK_LIB(XextSam,XShmAttach,:,AC_DEFINE(NO_XSHM),$X_LIBS -lX11 -lXext)
+],$X_LIBS -lX11)
+
+JOYSTICK=port/unix/joystick.o
+SOUND=port/unix/sound.o
+TIMING=port/unix/timing.o
+LIBSVGA=
+case ${host} in
+  *-*-linux*) 
+	JOYSTICK=port/linux/joystick.o
+	SOUND=port/sgi/sound.o
+	AC_CHECK_HEADER(vga.h,LIBSVGA=libsvgawin.a,)
+	;;
+  mips-sgi-irix*) 
+	SOUND=port/sgi/sound.o
+	TIMING=port/sgi/timing.o
+	;;
+  powerpc-*-aix4*)
+	SOUND=port/aix/sound.o
+	;;
+  *) 
+	;;
+esac
+AC_SUBST(JOYSTICK)
+AC_SUBST(SOUND)
+AC_SUBST(TIMING)
+AC_SUBST(LIBSVGA)
+
+AC_CHECK_FUNCS(atexit on_exit, break)
+AB_C_BIGENDIAN
+
+AC_LANG_SAVE
+AC_LANG_CPLUSPLUS
+AB_ADD_FLAGS(-fno-exceptions -fno-rtti)
+AC_LANG_RESTORE
+
+mkdir -p port/unix port/x11 port/svga port/linux port/sgi port/aix
+
+AC_OUTPUT(Makefile)

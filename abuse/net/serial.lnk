@@ -1,0 +1,6 @@
+system dos4gw
+option caseexact
+debug all
+name serial.exe
+option stack=70k
+file serial.obj

@@ -1,0 +1,574 @@
+WATCOM Linker Version 10.0
+Copyright by WATCOM International Corp. 1985, 1994. All rights reserved.
+Created on:       96/12/29 14:42:58
+Executable Image: vcado.exe
+creating a Rational Systems executable
+Warning(1028): char unsigned near * near name_to_address( char near *, int ) is an undefined reference
+Warning(1028): void near dprintf( char const near *, ... ) is an undefined reference
+Warning(1028): int near bwt_init() is an undefined reference
+Warning(1028): void near bwt_uninit() is an undefined reference
+Warning(1028): near bwt_in_socket::bwt_in_socket( int ) is an undefined reference
+Warning(1028): near bwt_out_socket::bwt_out_socket() is an undefined reference
+Warning(1028): int near bwt_out_socket::try_connect( char near *, int ) is an undefined reference
+Warning(1028): int near bwt_get_my_ip() is an undefined reference
+
+
+                        +------------+
+                        |   Groups   |
+                        +------------+
+
+Group                           Address              Size
+=====                           =======              ====
+
+DGROUP                          0002:00000000        000140e0
+
+
+
+                        +--------------+
+                        |   Segments   |
+                        +--------------+
+
+Segment                Class          Group          Address         Size
+=======                =====          =====          =======         ====
+
+BEGTEXT                CODE                          0001:00000000   00000010
+_TEXT                  CODE                          0001:00000010   0000b63b
+_NULL                  BEGDATA        DGROUP         0002:00000000   00000004
+_AFTERNULL             BEGDATA        DGROUP         0002:00000004   00000000
+CONST                  DATA           DGROUP         0002:00000004   0000086c
+CONST2                 DATA           DGROUP         0002:00000870   000000d0
+_DATA                  DATA           DGROUP         0002:00000940   0000080c
+TIB                    DATA           DGROUP         0002:0000114c   00000000
+TI                     DATA           DGROUP         0002:0000114c   00000000
+TIE                    DATA           DGROUP         0002:0000114c   00000000
+XIB                    DATA           DGROUP         0002:0000114c   00000000
+XI                     DATA           DGROUP         0002:0000114c   0000002a
+XIE                    DATA           DGROUP         0002:00001176   00000000
+YIB                    DATA           DGROUP         0002:00001176   00000000
+YI                     DATA           DGROUP         0002:00001176   0000000c
+YIE                    DATA           DGROUP         0002:00001182   00000000
+DATA                   DATA           DGROUP         0002:00001182   00000000
+_BSS                   BSS            DGROUP         0002:00001184   00001754
+STACK                  STACK          DGROUP         0002:000028e0   00011800
+
+
+                        +----------------+
+                        |   Memory Map   |
+                        +----------------+
+
+* = unreferenced symbol
++ = symbol only referenced locally
+
+Address        Symbol
+=======        ======
+
+Module: .\wat\opt\ipxtest.obj(F:\IMLIB\PORT\DOS4GW\ipxtest.c)
+0001:00000010  main_
+0001:00000010  void near free_up_memory()
+Module: .\wat\opt\ipx.obj(F:\IMLIB\PORT\DOS4GW\ipx.c)
+0001:00000014  int near ipx_init()
+0001:0000005a  void near ipx_uninit()
+0001:0000005b* void near close_ipx_socket( int )
+0001:000000a8* void near ipx_idle()
+0001:000000d8  char unsigned near * near ipx_get_local_address()
+0001:0000016c* void near ipx_listen( ECBStructure near * )
+0001:000001da  near ipx_out_socket::ipx_out_socket( int )
+0001:000004e2* int near ipx_send_packet( void near * )
+0001:0000052f  int near ipx_out_socket::try_connect( char near *, int )
+0001:000007ed+ int near ipx_out_socket::ready_to_read()
+0001:00000836+ int near ipx_out_socket::ready_to_write()
+0001:0000084a+ int near ipx_out_socket::send( packet near & )
+0001:00000986+ int near ipx_out_socket::get( packet near & )
+0001:00000c33+ near ipx_out_socket::~ipx_out_socket()
+0001:00000cd0  near ipx_in_socket::ipx_in_socket( int )
+0001:00000cf9+ out_socket near * near ipx_in_socket::check_for_connect()
+0001:00000fc4+ near ipx_in_socket::~ipx_in_socket()
+Module: .\wat\opt\doscall.obj(D:\U\CRACK\IMLIB\port\dos4gw\doscall.c)
+0001:0000100c  void near RM_intr( int, rminfo near * )
+0001:00001061  void near * near alloc_low_memory( long )
+0001:00001109  void near free_low_memory( void near * )
+0001:000011ac  long near low_memory_available()
+Module: ..\..\wat\opt\packet.obj(F:\IMLIB\packet.c)
+0001:00001320* int near packet::advance( long )
+0001:0000133a* void near packet::write_long( long unsigned )
+0001:000013a6* void near packet::write_short( short unsigned )
+0001:00001420* void near packet::write_byte( char unsigned )
+0001:0000144e* near packet::~packet()
+0001:0000145c* near packet::packet( int )
+0001:0000149e* void near packet::get_string( char near *, int )
+0001:000014e8* void near packet::reset()
+0001:000014f7  void near packet::make_bigger( int )
+0001:00001514* int near packet::read( char unsigned near *, int )
+0001:00001554* int near packet::write( char unsigned near *, int )
+0001:000015c5* void near packet::insert_into( packet near & )
+Module: ..\..\wat\opt\jmalloc.obj(F:\IMLIB\jmalloc.c)
+0001:0000163c* int near block_manager::valid_static_ptr( void near * )
+0001:0000169a* int near block_manager::valid_cache_ptr( void near * )
+0001:000016fb* void near block_manager::report( __iobuf near * )
+0001:000018cf* long near block_manager::pointer_size( void near * )
+0001:000018dd* long near block_manager::available()
+0001:000018ff* long near block_manager::allocated()
+0001:0000191c* void near block_manager::init( void near *, long, char unsigned )
+0001:0000198a+ void near * near block_manager::static_alloc( long, char near * )
+0001:00001a7e+ void near * near block_manager::cache_alloc( long, char near * )
+0001:00001bbc+ void near block_manager::cache_free( void near * )
+0001:00001d25+ void near block_manager::static_free( void near * )
+0001:00001e39* void near jmalloc_uninit()
+0001:00001e85* void near jmem_cleanup( int, void near * )
+0001:00001ecf* void near jmalloc_init( long )
+0001:000020e4* long near j_available()
+0001:0000212d* long near j_allocated()
+0001:0000216c  void near * near jmalloc( long, char near * )
+0001:000021d8  void near jfree( void near * )
+0001:000021d8  void near operator delete( void near * )
+0001:00002269  void near * near jrealloc( void near *, long, char near * )
+0001:00002531* void near dmem_report()
+0001:00002767* void near mem_report( char near * )
+0001:00002983  void near * near operator new( int unsigned )
+0001:000029f1* long near small_ptr_size( void near * )
+0001:000029f7* int near valid_ptr( void near * )
+0002:00000940+ int near jmalloc_max_size
+0002:000011b8  int near alloc_space
+0002:000011bc+ block_manager near bmanage[]
+0002:00002628+ int near bmanage_total
+Module: .\wat\opt\timing.obj(F:\IMLIB\port\dos4gw\timing.c)
+0002:00002634+ long unsigned volatile near tick_counter
+0002:00002638+ void (near * near install_timer_handler)( void (near *)())
+0002:0000263c+ void (near * near uninstall_timer_handler)()
+0002:00002640+ char unsigned near timer_installed
+0002:00002650+ int near total_timer_calls
+0002:00002654+ __enbqgtimer_calls near timer_calls[]
+0001:00002b2c* void near add_timer_call( void (near *)(), int )
+0001:00002b6c* void near remove_timer_call( void (near *)())
+0001:00002bdc+ void far new_timer_int()
+0001:00002c4a+ void near timer_stub()
+0001:00002ca2* void near timer_init()
+0001:00002d88+ void near timer_uninit()
+0001:00002f78* void near time_marker::get_time()
+0001:00002f78  near time_marker::time_marker()
+0001:00002f87  double near time_marker::diff_time( time_marker near * )
+0001:00002fa4  void near milli_wait( int unsigned )
+Module: .\wat\opt\jnet.obj(F:\IMLIB\PORT\DOS4GW\jnet.c)
+0002:000026a8  char near last_sock_err[]
+0002:00002770  int near current_sock_err
+0001:00002fcc* void near set_sock_err( int )
+0001:00002fd2* int near net_init( int )
+0001:00003018* void near net_uninit()
+0001:00003037* in_socket near * near create_in_socket( int )
+0001:00003079* out_socket near * near create_out_socket( char near *, int )
+0001:000030f5* char unsigned near * near get_local_address()
+0001:0000312e  near out_socket::~out_socket()
+Module: c:\watcom\lib386\dos\clib3r.lib(cstrt386)
+0001:00000003* ___begtext
+0002:00000000* __nullarea
+0002:0000114c* __start_TI
+0002:0000114c* __end_TI
+0002:00000950  __GDAptr
+0002:00000954  __D16Infoseg
+0002:00000956  __x386_zero_base_selector
+0001:00003138  _cstart_
+0001:000033c7  __exit_
+0001:000033c9  __do_exit_with_msg__
+0001:00003404  __GETDS
+Module: c:\watcom\lib386\plib3r.lib(vfun_err)
+0001:0000340f  __wcpp_2_undef_vfun__
+Module: c:\watcom\lib386\plib3r.lib(undefed)
+0001:00003434  __wcpp_2_undefed_cdtor__
+Module: c:\watcom\lib386\plib3r.lib(pure_err)
+0001:00003446  __wcpp_2_pure_error__
+Module: c:\watcom\lib386\dos\clib3r.lib(set386)
+0001:00003470  memset_
+Module: c:\watcom\lib386\dos\clib3r.lib(sprintf)
+0001:0000349b  sprintf_
+Module: c:\watcom\lib386\dos\clib3r.lib(printf)
+0001:000034cb  printf_
+Module: c:\watcom\lib386\dos\clib3r.lib(exit)
+0001:000034ed+ __null_int23_exit_
+0001:000034ee  exit_
+0001:00003506+ _exit_
+0002:00000958  ___atexit
+0002:0000095c+ ___int23_exit
+0002:00000960+ ___FPE_handler_exit
+Module: c:\watcom\lib386\plib3r.lib(dtorarst)
+0001:0000351c  __wcpp_2_dtor_array_store__
+Module: c:\watcom\lib386\plib3r.lib(opdelarr)
+0001:0000353c  void near operator delete []( void near * )
+Module: c:\watcom\lib386\dos\clib3r.lib(fltused)
+0000:00000000  _fltused_
+Module: c:\watcom\lib386\dos\emu387.lib(386inite)
+0001:00003547* __fini_387_emulator
+0001:00003542  __init_387_emulator
+Module: c:\watcom\lib386\dos\clib3r.lib(_8087386)
+0002:00000964  __8087
+0002:00000965  __real87
+Module: c:\watcom\lib386\dos\clib3r.lib(intx386)
+0001:0000354c  int386x_
+Module: c:\watcom\lib386\dos\clib3r.lib(fprintf)
+0001:00003565  fprintf_
+Module: c:\watcom\lib386\dos\clib3r.lib(iob)
+0002:00000968  ___iob
+0002:00000b70* ___tmpfnext
+0002:00000b71  __fmode
+0002:00002778  ___ClosedStreams
+Module: c:\watcom\lib386\dos\clib3r.lib(nfree)
+0001:00003586  _nfree_
+0001:00003586  free_
+Module: c:\watcom\lib386\dos\clib3r.lib(nmalloc)
+0001:000035e4  _nmalloc_
+0001:000035e4  malloc_
+0002:00000b7c  ___nheapbeg
+0002:00000b80  ___MiniHeapRover
+0002:00000b84  ___LargestSizeB4MiniHeapRover
+Module: c:\watcom\lib386\dos\clib3r.lib(nrealloc)
+0001:000036c7* _nrealloc_
+0001:000036c7  realloc_
+Module: c:\watcom\lib386\dos\clib3r.lib(fopen)
+0001:0000376d+ __open_flags_
+0001:000038e9+ _fsopen_
+0001:00003904  fopen_
+0001:00003976* freopen_
+Module: c:\watcom\lib386\dos\clib3r.lib(fclose)
+0001:0000399a  fclose_
+0001:000039c9  __shutdown_stream_
+0001:000039ea+ __MkTmpFile_
+0001:00003a53  __doclose_
+Module: c:\watcom\lib386\dos\clib3r.lib(gtime386)
+0001:00003adc  _dos_getdate_
+0001:00003af7  _dos_gettime_
+Module: c:\watcom\lib386\dos\clib3r.lib(d_getvec)
+0001:00003b11  _dos_getvect_
+Module: c:\watcom\lib386\dos\clib3r.lib(d_setvec)
+0001:00003b45  _dos_setvect_
+Module: c:\watcom\lib386\dos\clib3r.lib(atexit)
+0001:00003b70+ _Full_at_exit_rtn_
+0001:00003ba7  atexit_
+0002:0000277c+ __ExitList
+0002:000027fc+ __ExitCount
+Module: c:\watcom\lib386\dos\clib3r.lib(stime386)
+0001:00003be4  _dos_setdate_
+0001:00003c09  _dos_settime_
+Module: c:\watcom\lib386\dos\clib3r.lib(delay386)
+0001:00003c2e  delay_
+Module: c:\watcom\lib386\dos\clib3r.lib(cmain386)
+0001:00003c33  __CMain
+Module: c:\watcom\lib386\dos\clib3r.lib(inirt386)
+0001:00003c82  __InitRtns
+0001:00003ccd  __FiniRtns
+Module: c:\watcom\lib386\dos\clib3r.lib(seg386)
+0000:00001234  __DOSseg__
+Module: c:\watcom\lib386\dos\clib3r.lib(crwd386)
+0002:00000b98  __psp
+0002:00000bc3  __osmajor
+0002:00000bc4  __osminor
+0002:00000bba  __Extender
+0002:00000bbb  __ExtenderSubtype
+0002:00000bbc  __X32VM
+0002:00000b9c* __x386_stacklow
+0002:00000b90  __LpCmdLine
+0002:00000b94  __LpPgmName
+0002:00000b88  __dynend
+0002:00000b8c  __curbrk
+0002:00000b9c  __STACKLOW
+0002:00000ba0  __STACKTOP
+0002:00000ba4  __ASTACKSIZ
+0002:00000ba8  __ASTACKPTR
+0002:00000bac* __cbyte
+0002:00000bb0* __cbyte2
+0002:00000bb4  __child
+0002:00000bbd  __Envptr
+0002:00000bc1  __Envseg
+0002:00000bb8  __no87
+0002:00000bc5  __FPE_handler
+0002:00000bc5  ___FPE_handler
+Module: c:\watcom\lib386\plib3r.lib(prwdata)
+0002:00000bca  __wint_pure_error_flag
+0002:00000bcc  __wint_undef_vfun_flag
+0002:00000bce* __wint_module_init
+Module: c:\watcom\lib386\plib3r.lib(fatalerr)
+0001:00003d20  __wcpp_2_fatal_runtime_error__
+Module: c:\watcom\lib386\dos\clib3r.lib(__stos)
+0001:00003d40  __STOSB
+0001:00003d77* __STOSD
+Module: c:\watcom\lib386\dos\clib3r.lib(prtf)
+0001:00003de3  __prtf_
+Module: c:\watcom\lib386\dos\clib3r.lib(fprtf)
+0001:000047ee  __fprtf_
+Module: c:\watcom\lib386\plib3r.lib(stabadt)
+0001:00004874  __wcpp_2_dtor_array__
+Module: c:\watcom\lib386\dos\clib3r.lib(setefg)
+0001:000048a2  __setEFGfmt_
+Module: c:\watcom\lib386\math387r.lib(dosinite)
+0001:000048be  __sys_init_387_emulator
+0001:00004a43  __sys_fini_387_emulator
+Module: c:\watcom\lib386\dos\clib3r.lib(chk8087)
+0001:00004b22+ __init_8087_
+0001:00004b53* _fpreset_
+0001:00004b5d  __chk8087_
+Module: c:\watcom\lib386\dos\clib3r.lib(intxa386)
+0001:00004b9e  __int386x_
+0001:00004bfb* _DoINTR_
+Module: c:\watcom\lib386\dos\clib3r.lib(stinit)
+0002:00002800  ___OpenStreams
+Module: c:\watcom\lib386\dos\clib3r.lib(memalloc)
+0001:00004f7c  __MemAllocator
+0001:00005024  __MemFree
+Module: c:\watcom\lib386\dos\clib3r.lib(heapmod)
+0002:00002804  ___fheap_clean
+0002:00002805  ___nheap_clean
+Module: c:\watcom\lib386\dos\clib3r.lib(grownear)
+0001:0000516e+ __FreeDPMIBlocks_
+0001:000051cc  __ReAllocDPMIBlock_
+0001:00005343+ __LastFree_
+0001:00005513  __ExpandDGROUP_
+Module: c:\watcom\lib386\dos\clib3r.lib(nmemneed)
+0001:000056ce  __nmemneed_
+Module: c:\watcom\lib386\dos\clib3r.lib(nmsize)
+0001:000056d1  _nmsize_
+0001:000056d1* _msize_
+Module: c:\watcom\lib386\dos\clib3r.lib(nexpand)
+0001:000056da  _nexpand_
+0001:000056da* _expand_
+0001:00005712+ __HeapManager_expand_
+Module: c:\watcom\lib386\dos\clib3r.lib(tolower)
+0001:00005904  tolower_
+0001:00005904* _tolower_
+Module: c:\watcom\lib386\dos\clib3r.lib(seterrno)
+0001:00005912* __set_EDOM_
+0001:00005917  __set_errno_
+0001:00005923  __set_ERANGE_
+0001:0000592a  __set_EINVAL_
+0001:0000593a  __set_doserrno_
+0001:00005946* __FPE_exception_
+Module: c:\watcom\lib386\dos\clib3r.lib(open)
+0001:0000594d* open_
+0001:00005971  sopen_
+0001:00005b36* __set_binary_
+Module: c:\watcom\lib386\dos\clib3r.lib(allocfp)
+0001:00005b9b  __allocfp_
+0001:00005c43  __freefp_
+0001:00005c7c  __purgefp_
+Module: c:\watcom\lib386\dos\clib3r.lib(fseek)
+0001:00005cdc  fseek_
+Module: c:\watcom\lib386\dos\clib3r.lib(chktty)
+0001:00005dd8  __chktty_
+Module: c:\watcom\lib386\dos\clib3r.lib(gtpid)
+0001:00005e09  getpid_
+Module: c:\watcom\lib386\dos\clib3r.lib(flush)
+0001:00005e0f  __flush_
+Module: c:\watcom\lib386\dos\clib3r.lib(ftell)
+0001:00005ece  ftell_
+Module: c:\watcom\lib386\dos\clib3r.lib(lseek)
+0001:00005efe  lseek_
+0001:00005efe* _lseek_
+Module: c:\watcom\lib386\dos\clib3r.lib(_clse)
+0001:00005f3f  __close_
+Module: c:\watcom\lib386\dos\clib3r.lib(remove)
+0001:00005f71  remove_
+Module: c:\watcom\lib386\dos\clib3r.lib(delay)
+0001:00005f76  __delay_init_
+0001:00005fa8  __delay_
+Module: c:\watcom\lib386\dos\clib3r.lib(stack386)
+0001:00005fe0  stackavail_
+Module: c:\watcom\lib386\dos\clib3r.lib(cinit)
+0001:00005fe9  __CommonInit_
+Module: c:\watcom\lib386\dos\clib3r.lib(___argc)
+0002:0000280c  ____Argc
+0002:00002810  ____Argv
+Module: c:\watcom\lib386\dos\clib3r.lib(enterdb)
+0001:00005ff4  __EnterWVIDEO_
+0002:00000c20+ ___WD_Present
+Module: c:\watcom\lib386\dos\clib3r.lib(xmsg)
+0001:0000601a  __exit_with_msg_
+0001:0000601f  __fatal_runtime_error_
+Module: c:\watcom\lib386\dos\clib3r.lib(itoa)
+0001:00006061+ utoa_
+0001:000060ab  itoa_
+0001:000060ab* _itoa_
+Module: c:\watcom\lib386\dos\clib3r.lib(noefgfmt)
+0002:00000c24  ___EFG_printf
+0002:00000c28  ___EFG_scanf
+Module: c:\watcom\lib386\dos\clib3r.lib(ltoa)
+0001:000060fd  ultoa_
+0001:00006146  ltoa_
+0001:00006146* _ltoa_
+Module: c:\watcom\lib386\dos\clib3r.lib(toupper)
+0001:00006161  toupper_
+0001:00006161* _toupper_
+Module: c:\watcom\lib386\dos\clib3r.lib(fputc)
+0001:0000616f  fputc_
+Module: c:\watcom\lib386\dos\clib3r.lib(ioalloc)
+0001:00006213  __ioalloc_
+Module: c:\watcom\lib386\plib3r.lib(stabarr)
+0001:000062b9  __wcpp_2_arr_register__
+0002:0000116a* rt_init __based("XI") __wcpp_2_data_stab_init_arr_
+Module: c:\watcom\lib386\plib3r.lib(stabdtor)
+0001:000064b0  __wcpp_2_destruct_internal__
+0001:000064ba* __wcpp_2_destruct_all__
+0001:000064bc* __wcpp_2_destruct__
+0001:000064ce* __wcpp_2_destruct_after_all__
+0001:000064d0* __wcpp_2_destruct_after__
+Module: c:\watcom\lib386\plib3r.lib(stabreg)
+0001:000064e0  __wcpp_2_base_register__
+0001:000064f9* __wcpp_2_base_deregister__
+0001:00006500* __wcpp_2_base_deregister_2__
+0001:0000650a  __wcpp_2_internal_deregister__
+Module: c:\watcom\lib386\dos\clib3r.lib(efgfmt)
+0001:00006513  _EFG_Format_
+Module: c:\watcom\lib386\math387r.lib(cnvs2d)
+0001:00006638  __cnvs2d_
+Module: c:\watcom\lib386\dos\emu387.lib(emu387)
+0001:000069e4* __int7_X32VM
+0001:00006a30  __int7
+0001:000069c0  __int7_pl3
+Module: c:\watcom\lib386\dos\clib3r.lib(hook387)
+0001:0000986e  __hook387
+0001:00009938  __unhook387
+Module: c:\watcom\lib386\dos\clib3r.lib(8087cw)
+0002:00000cb8  __8087cw
+Module: c:\watcom\lib386\dos\clib3r.lib(save8087)
+0002:00000cbc  ___Save8087
+0002:00000cc0  ___Rest8087
+Module: c:\watcom\lib386\dos\clib3r.lib(ini87386)
+0001:00009992  __init_80x87
+Module: c:\watcom\lib386\dos\clib3r.lib(initfile)
+0001:000099b9  __InitFiles_
+Module: c:\watcom\lib386\dos\clib3r.lib(ioexit)
+0001:00009a31  __full_io_exit_
+0001:00009a3d* fcloseall_
+Module: c:\watcom\lib386\dos\clib3r.lib(minreal)
+0002:00002894  ___minreal
+Module: c:\watcom\lib386\dos\clib3r.lib(heapen)
+0001:00009a94* _heapenable_
+0002:00000cc4  ___heap_enabled
+Module: c:\watcom\lib386\dos\clib3r.lib(sbrk386)
+0001:00009aa4* sbrk_
+0001:00009b63  __brk_
+Module: c:\watcom\lib386\dos\clib3r.lib(amblksiz)
+0002:00000cc8  __amblksiz
+Module: c:\watcom\lib386\dos\clib3r.lib(errno)
+0001:00009c25  __get_errno_ptr_
+0001:00009c2b  __get_doserrno_ptr_
+0002:00002898+ __doserrno
+0002:0000289c+ _errno
+Module: c:\watcom\lib386\dos\clib3r.lib(isatt)
+0001:00009c31  isatty_
+Module: c:\watcom\lib386\dos\clib3r.lib(dosret)
+0001:00009c4f* _dosret0_
+0001:00009c56* _dosretax_
+0001:00009c5b  __set_errno_dos_
+Module: c:\watcom\lib386\dos\clib3r.lib(umaskval)
+0002:00000ce0  ___umaskval
+Module: c:\watcom\lib386\dos\clib3r.lib(iomode)
+0001:00009cc1  __IOMode_
+0001:00009d16  __SetIOMode_
+0002:00000ce4+ ___NFiles
+0002:00000ce8+ ___init_mode
+0002:00000d38+ __iomode
+Module: c:\watcom\lib386\dos\clib3r.lib(tell)
+0001:00009d2b  tell_
+Module: c:\watcom\lib386\dos\clib3r.lib(qwrit)
+0001:00009d3c  __qwrite_
+Module: c:\watcom\lib386\dos\clib3r.lib(unlnk)
+0001:00009db8  unlink_
+Module: c:\watcom\lib386\plib3r.lib(tssize)
+0001:00009df8  __wcpp_2_ts_size__
+Module: c:\watcom\lib386\plib3r.lib(cppdata)
+0002:000028a0  __wint_thread_data
+0002:000028c0  ___wcpp_2_data_catch_completed_
+0002:000028c4  ___wcpp_2_data_dtreg_vfptrs_
+Module: c:\watcom\lib386\plib3r.lib(stabtrav)
+0001:00009e3c+ __wcpp_2_stab_entry__
+0001:00009e6a  __wcpp_2_stab_trav_init__
+0001:00009e8b  __wcpp_2_stab_trav_comp__
+0001:00009e90  __wcpp_2_stab_trav_next__
+0001:00009f15  __wcpp_2_stab_trav_move__
+Module: c:\watcom\lib386\plib3r.lib(stabthrw)
+0001:00009fbf  __wcpp_2_corrupted_stack__
+0001:0000a521* __wcpp_2_rethrow__
+0001:0000a54e+ __wcpp_2_catch_done__
+0001:0000a57f* __wcpp_2_throw__
+0001:0000a593* __wcpp_2_throw_zero__
+0002:00001170+ ___wcpp_2_data_init_longjmp_
+Module: c:\watcom\lib386\math387r.lib(ftos)
+0001:0000a67d* _SetMaxPrec_
+0001:0000a7f8  _FtoS_
+Module: c:\watcom\lib386\math387r.lib(strtod)
+0001:0000aa1c  strtod_
+Module: c:\watcom\lib386\plib3r.lib(bittest)
+0001:0000abc8  __wcpp_2_bit_test__
+Module: c:\watcom\lib386\plib3r.lib(callterm)
+0001:0000abe8  __wcpp_2_call_terminate__
+Module: c:\watcom\lib386\plib3r.lib(tsequiv)
+0001:0000abf6  __wcpp_2_ts_equiv__
+Module: c:\watcom\lib386\plib3r.lib(callunex)
+0001:0000ac30  __wcpp_2_call_unexpected__
+Module: c:\watcom\lib386\dos\clib3r.lib(stjmp386)
+0001:0000ac36* _setjmp_
+0001:0000ac6b  longjmp_
+Module: c:\watcom\lib386\plib3r.lib(allocexc)
+0001:0000ace8  __wcpp_2_alloc_exc__
+0001:0000ae18  __wcpp_2_free_exc__
+0001:0000ae44  __wcpp_2_pop_exc__
+0001:0000ae53  __wcpp_2_push_exc__
+Module: c:\watcom\lib386\dos\clib3r.lib(ljmphdl)
+0002:00000d48  ___longjmp_handler
+Module: c:\watcom\lib386\math387r.lib(nan_inf)
+0001:0000ae61  __Nan_Inf_
+Module: c:\watcom\lib386\math387r.lib(floor)
+0001:0000aee5  floor_
+Module: c:\watcom\lib386\math387r.lib(fchop)
+0001:0000af22  __CHP
+Module: c:\watcom\lib386\math387r.lib(scale)
+0001:0000af3f+ _Scale_
+0001:0000af80  _Scale10V_
+Module: c:\watcom\lib386\math387r.lib(cvt)
+0001:0000b067  __cvt_
+Module: c:\watcom\lib386\dos\clib3r.lib(amodf386)
+0001:0000b24e* __ModF
+0001:0000b2de  __ZBuf2F
+Module: c:\watcom\lib386\dos\clib3r.lib(hugeval)
+0002:000008e8  __HugeValue
+Module: c:\watcom\lib386\plib3r.lib(termnate)
+0001:0000b37c  void near terminate()
+Module: c:\watcom\lib386\plib3r.lib(unexpect)
+0001:0000b3c8  void near unexpected()
+Module: c:\watcom\lib386\plib3r.lib(areaexc)
+0002:00000d4c  ___EXC_AREA
+Module: c:\watcom\lib386\math387r.lib(modf387)
+0001:0000b3fc  modf_
+Module: c:\watcom\lib386\math387r.lib(i64ts386)
+0001:0000b416  __CmpBigInt
+0001:0000b450  __Rnd2Int
+0001:0000b4bb  __Bin2String
+Module: c:\watcom\lib386\math387r.lib(fpow10)
+0002:000008f0  __BigPow10Table
+Module: c:\watcom\lib386\math387r.lib(frexp)
+0001:0000b5dc  frexp_
+
+
+                        +---------------------------+
+                        |   Unresolved References   |
+                        +---------------------------+
+
+Undefined Symbol                Referenced by
+================                =============
+
+char unsigned near * near name_to_address( char near *, int ) .\wat\opt\ipx.obj(F:\IMLIB\PORT\DOS4GW\ipx.c)
+void near dprintf( char const near *, ... ) .\wat\opt\ipx.obj(F:\IMLIB\PORT\DOS4GW\ipx.c)
+void near dprintf( char const near *, ... ) .\wat\opt\timing.obj(F:\IMLIB\port\dos4gw\timing.c)
+int near bwt_init()             .\wat\opt\jnet.obj(F:\IMLIB\PORT\DOS4GW\jnet.c)
+void near bwt_uninit()          .\wat\opt\jnet.obj(F:\IMLIB\PORT\DOS4GW\jnet.c)
+near bwt_in_socket::bwt_in_socket( int ) .\wat\opt\jnet.obj(F:\IMLIB\PORT\DOS4GW\jnet.c)
+near bwt_out_socket::bwt_out_socket() .\wat\opt\jnet.obj(F:\IMLIB\PORT\DOS4GW\jnet.c)
+int near bwt_out_socket::try_connect( char near *, int ) .\wat\opt\jnet.obj(F:\IMLIB\PORT\DOS4GW\jnet.c)
+int near bwt_get_my_ip()        .\wat\opt\jnet.obj(F:\IMLIB\PORT\DOS4GW\jnet.c)
+
+
+                        +--------------------+
+                        |   Libraries Used   |
+                        +--------------------+
+
+c:\watcom\lib386\dos\clib3r.lib
+c:\watcom\lib386\plib3r.lib
+c:\watcom\lib386\math387r.lib
+c:\watcom\lib386\dos\emu387.lib

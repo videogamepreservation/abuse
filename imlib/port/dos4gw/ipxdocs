@@ -1,0 +1,173 @@
+/*******************************************************************
+
+  IPXLIB.C V1.00
+  Copyright (c) 1992 by Kurt Duncan - All Rights Reserved
+
+  Library of functions based on the Novell IPX transport mechanism
+  Watcom'ed by Simeon Pashley (simeon@krisalis.demon.co.uk)
+*******************************************************************/
+
+#include <string.h>
+#include <stdio.h>
+#include <dos.h>
+#include "ipxlib.h"
+#include "dos32.h"
+
+struct rminfo RMI;
+
+/***********************************************************************
+  IPX_Is_Loaded
+***********************************************************************/
+word IPX_Is_Loaded (void)
+{
+	RMI.EAX=0x7a00;
+	RMInt(0x2f, RMI);
+
+	if (0xFF != (byte)RMI.EAX)
+		return (0);
+	return (1);
+}
+
+/***********************************************************************
+  IPX_Open_Socket
+***********************************************************************/
+
+word IPX_Open_Socket (word Socket_Number)
+{
+	RMI.EBX=0x00;			/* IPX function 00h */
+	RMI.EAX=0x00;			/* Longevity code 00h (close at end of pgm) */
+	RMI.EDX=IPX_Flipword (Socket_Number);
+	RMInt(0x7a, RMI);
+
+	return ((byte)RMI.EAX);
+}
+
+/***********************************************************************
+  IPX_Close_Socket
+***********************************************************************/
+
+void IPX_Close_Socket (word Socket_Number)
+{
+	RMI.EBX=0x00;			/* IPX function 01h */
+	RMI.EDX=IPX_Flipword (Socket_Number);
+	RMInt(0x7a, RMI);
+}
+
+/***********************************************************************
+  IPX_Get_Local_Target
+***********************************************************************/
+
+word IPX_Get_Local_Target (struct IPX_address *Destination,
+                                   struct IPX_node    *Target)
+{
+	int 	iSegment, iDestOff, iTargetOff;
+
+	if ((int)Destination < (int)Target)
+		iSegment=D32RealSeg(Destination);
+	else
+		iSegment=D32RealSeg(Target);
+
+	iDestOff=(int)Destination-(16*iSegment);
+	iTargetOff=(int)Target-(16*iSegment);
+
+	/* Set up real-mode call structure */
+	memset(&RMI, 0, sizeof(RMI));
+	RMI.EBX	= 0x02;
+	RMI.ES	= iSegment;
+	RMI.ESI	= iDestOff;
+	RMI.EDI	= iTargetOff;
+	RMInt(0x7a, RMI);
+
+	return (RMI.ECX);
+}
+
+/***********************************************************************
+  IPX_Send_Packet
+***********************************************************************/
+
+void IPX_Send_Packet (struct IPX_ECB *ECB)
+{
+	/* Set up real-mode call structure */
+	memset(&RMI, 0, sizeof(RMI));
+	RMI.EBX	= 0x03;
+	RMI.ES	= D32RealSeg(ECB);
+	RMI.ESI	= D32RealOff(ECB);
+	RMInt(0x7a, RMI);
+}
+
+/***********************************************************************
+  IPX_Listen_For_Packet
+***********************************************************************/
+
+void IPX_Listen_For_Packet (struct IPX_ECB *ECB)
+{
+	/* Set up real-mode call structure */
+	memset(&RMI, 0, sizeof(RMI));
+	RMI.EBX	= 0x04;
+	RMI.ES	= D32RealSeg(ECB);
+	RMI.ESI	= D32RealOff(ECB);
+
+	RMInt(0x7a, RMI);
+}
+
+/***********************************************************************
+  IPX_Cancel_Event
+***********************************************************************/
+
+void IPX_Cancel_Event (struct IPX_ECB *ECB)
+{
+	/* Set up real-mode call structure */
+	memset(&RMI, 0, sizeof(RMI));
+	RMI.EBX	= 0x06;
+	RMI.ES	= D32RealSeg(ECB);
+	RMI.ESI	= D32RealOff(ECB);
+
+	RMInt(0x7a, RMI);
+}
+
+/***********************************************************************
+  IPX_Get_Internetwork_Address
+***********************************************************************/
+
+void IPX_Get_Internetwork_Address (struct IPX_address *Address)
+{
+	/* Set up real-mode call structure */
+	memset(&RMI, 0, sizeof(RMI));
+	RMI.EBX	= 0x09;
+	RMI.ES	= D32RealSeg(Address);
+	RMI.ESI	= D32RealOff(Address);
+
+	RMInt(0x7a, RMI);
+}
+
+/***********************************************************************
+  IPX_Relinquish_Control
+***********************************************************************/
+
+void IPX_Relinquish_Control (void)
+{
+	RMI.EBX=0x0A;			/* IPX function 0Ah */
+	RMInt(0x7a, RMI);
+}
+
+/***********************************************************************
+  IPX_Flipword
+***********************************************************************/
+
+word IPX_Flipword (word Inword)
+{
+	byte c1, c2;
+	c1 = Inword >> 8;
+	c2 = Inword & 0xFF;
+	return ( (word) (c2 << 8) | c1);
+}
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,31 @@
+#! /bin/sh
+
+[ -d ${HOME}/.abuse ] || mkdir ${HOME}/.abuse || exit 1
+
+prefix=@prefix@
+exec_prefix=@exec_prefix@
+ddir=@datadir@/abuse
+xdir=@libdir@/abuse
+
+mydir=`dirname $0`
+if [ -f ${mydir}/Makefile ]; then
+  ddir=`cd @srcdir@; pwd`
+  xdir=`cd ${mydir}; pwd`
+fi
+
+cd ${HOME}/.abuse || exit 1
+
+rm -f abuse.lsp art levels lisp register sfx light.tbl
+ln -s ${ddir}/abuse.lsp ${ddir}/art ${ddir}/levels ${ddir}/lisp \
+  ${ddir}/register ${ddir}/sfx ${ddir}/light.tbl . || exit 1
+
+trap "rm -f abuse.lsp art levels lisp register sfx light.tbl core end.mem fastload.dat sd_cache.tmp" 0 1 2 15
+
+PATH=${xdir}:${PATH}
+export PATH
+
+if [ x$TERM = xlinux ]; then
+  abuse.console ${1:+"$@"}
+else
+  abuse.x11R6 ${1:+"$@"}
+fi

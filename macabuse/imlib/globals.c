@@ -1,0 +1,1 @@
+unsigned long xres,yres;

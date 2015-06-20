@@ -1,0 +1,2075 @@
+all : debug
+
+debug : gamex game
+	echo Made debug
+
+opt : gamexo gameo
+	echo Made opt
+
+profile : gamexp gamep
+	echo Made profile
+
+LINUX_X11_gamex_debug_o_files = \
+	src/net/mac/linux_x11/debug/tcpip.o \
+	src/linux_x11/debug/specache.o \
+	../imlib/linux_x11/debug/sprite.o \
+	src/linux_x11/debug/netcfg.o \
+	src/linux_x11/debug/text_gui.o \
+	src/linux_x11/debug/innet.o \
+	src/net/unix/linux_x11/debug/gserver.o \
+	src/net/unix/linux_x11/debug/gclient.o \
+	src/net/unix/linux_x11/debug/fileman.o \
+	src/net/linux_x11/debug/sock.o \
+	src/linux_x11/debug/chat.o \
+	src/linux_x11/debug/endgame.o \
+	src/linux_x11/debug/setup.o \
+	src/linux_x11/debug/version.o \
+	src/linux_x11/debug/loadgame.o \
+	src/linux_x11/debug/profile.o \
+	src/linux_x11/debug/cop.o \
+	src/linux_x11/debug/statbar.o \
+	src/linux_x11/debug/compiled.o \
+	src/linux_x11/debug/ant.o \
+	src/linux_x11/debug/sensor.o \
+	src/linux_x11/debug/lisp_opt.o \
+	src/linux_x11/debug/demo.o \
+	src/linux_x11/debug/lcache.o \
+	src/linux_x11/debug/lisp_gc.o \
+	src/linux_x11/debug/nfclient.o \
+	src/linux_x11/debug/username.o \
+	src/linux_x11/debug/clisp.o \
+	src/linux_x11/debug/gui.o \
+	src/linux_x11/debug/transp.o \
+	src/linux_x11/debug/collide.o \
+	src/linux_x11/debug/trig.o \
+	src/linux_x11/debug/property.o \
+	src/linux_x11/debug/lisp.o \
+	src/linux_x11/debug/cache.o \
+	src/linux_x11/debug/particle.o \
+	src/linux_x11/debug/objects.o \
+	src/linux_x11/debug/extend.o \
+	src/linux_x11/debug/console.o \
+	src/linux_x11/debug/ability.o \
+	src/linux_x11/debug/items.o \
+	src/linux_x11/debug/dev.o \
+	src/linux_x11/debug/chars.o \
+	src/linux_x11/debug/level.o \
+	src/linux_x11/debug/smallfnt.o \
+	src/linux_x11/debug/automap.o \
+	src/linux_x11/debug/help.o \
+	src/linux_x11/debug/intsect.o \
+	src/linux_x11/debug/loader2.o \
+	src/linux_x11/debug/seq.o \
+	src/linux_x11/debug/points.o \
+	src/linux_x11/debug/fnt6x13.o \
+	src/linux_x11/debug/morpher.o \
+	src/linux_x11/debug/menu.o \
+	src/linux_x11/debug/director.o \
+	src/linux_x11/debug/view.o \
+	src/linux_x11/debug/config.o \
+	src/linux_x11/debug/game.o \
+	src/linux_x11/debug/light.o \
+	src/linux_x11/debug/devsel.o \
+	src/linux_x11/debug/crc.o \
+	src/linux_x11/debug/gamma.o \
+	src/linux_x11/debug/language.o
+
+LINUX_SVGA_game_debug_o_files = \
+	src/net/mac/linux_svga/debug/tcpip.o \
+	src/linux_svga/debug/specache.o \
+	../imlib/linux_svga/debug/sprite.o \
+	src/linux_svga/debug/netcfg.o \
+	src/linux_svga/debug/text_gui.o \
+	src/linux_svga/debug/innet.o \
+	src/net/unix/linux_svga/debug/gserver.o \
+	src/net/unix/linux_svga/debug/gclient.o \
+	src/net/unix/linux_svga/debug/fileman.o \
+	src/net/linux_svga/debug/sock.o \
+	src/linux_svga/debug/chat.o \
+	src/linux_svga/debug/endgame.o \
+	src/linux_svga/debug/setup.o \
+	src/linux_svga/debug/version.o \
+	src/linux_svga/debug/loadgame.o \
+	src/linux_svga/debug/profile.o \
+	src/linux_svga/debug/cop.o \
+	src/linux_svga/debug/statbar.o \
+	src/linux_svga/debug/compiled.o \
+	src/linux_svga/debug/ant.o \
+	src/linux_svga/debug/sensor.o \
+	src/linux_svga/debug/lisp_opt.o \
+	src/linux_svga/debug/demo.o \
+	src/linux_svga/debug/lcache.o \
+	src/linux_svga/debug/lisp_gc.o \
+	src/linux_svga/debug/nfclient.o \
+	src/linux_svga/debug/username.o \
+	src/linux_svga/debug/clisp.o \
+	src/linux_svga/debug/gui.o \
+	src/linux_svga/debug/transp.o \
+	src/linux_svga/debug/collide.o \
+	src/linux_svga/debug/trig.o \
+	src/linux_svga/debug/property.o \
+	src/linux_svga/debug/lisp.o \
+	src/linux_svga/debug/cache.o \
+	src/linux_svga/debug/particle.o \
+	src/linux_svga/debug/objects.o \
+	src/linux_svga/debug/extend.o \
+	src/linux_svga/debug/console.o \
+	src/linux_svga/debug/ability.o \
+	src/linux_svga/debug/items.o \
+	src/linux_svga/debug/dev.o \
+	src/linux_svga/debug/chars.o \
+	src/linux_svga/debug/level.o \
+	src/linux_svga/debug/smallfnt.o \
+	src/linux_svga/debug/automap.o \
+	src/linux_svga/debug/help.o \
+	src/linux_svga/debug/intsect.o \
+	src/linux_svga/debug/loader2.o \
+	src/linux_svga/debug/seq.o \
+	src/linux_svga/debug/points.o \
+	src/linux_svga/debug/fnt6x13.o \
+	src/linux_svga/debug/morpher.o \
+	src/linux_svga/debug/menu.o \
+	src/linux_svga/debug/director.o \
+	src/linux_svga/debug/view.o \
+	src/linux_svga/debug/config.o \
+	src/linux_svga/debug/game.o \
+	src/linux_svga/debug/light.o \
+	src/linux_svga/debug/devsel.o \
+	src/linux_svga/debug/crc.o \
+	src/linux_svga/debug/gamma.o \
+	src/linux_svga/debug/language.o
+
+game : $(LINUX_SVGA_game_debug_o_files)
+	g++  -o game \
+	src/net/mac/linux_svga/debug/tcpip.o \
+	src/linux_svga/debug/specache.o \
+	../imlib/linux_svga/debug/sprite.o \
+	src/linux_svga/debug/netcfg.o \
+	src/linux_svga/debug/text_gui.o \
+	src/linux_svga/debug/innet.o \
+	src/net/unix/linux_svga/debug/gserver.o \
+	src/net/unix/linux_svga/debug/gclient.o \
+	src/net/unix/linux_svga/debug/fileman.o \
+	src/net/linux_svga/debug/sock.o \
+	src/linux_svga/debug/chat.o \
+	src/linux_svga/debug/endgame.o \
+	src/linux_svga/debug/setup.o \
+	src/linux_svga/debug/version.o \
+	src/linux_svga/debug/loadgame.o \
+	src/linux_svga/debug/profile.o \
+	src/linux_svga/debug/cop.o \
+	src/linux_svga/debug/statbar.o \
+	src/linux_svga/debug/compiled.o \
+	src/linux_svga/debug/ant.o \
+	src/linux_svga/debug/sensor.o \
+	src/linux_svga/debug/lisp_opt.o \
+	src/linux_svga/debug/demo.o \
+	src/linux_svga/debug/lcache.o \
+	src/linux_svga/debug/lisp_gc.o \
+	src/linux_svga/debug/nfclient.o \
+	src/linux_svga/debug/username.o \
+	src/linux_svga/debug/clisp.o \
+	src/linux_svga/debug/gui.o \
+	src/linux_svga/debug/transp.o \
+	src/linux_svga/debug/collide.o \
+	src/linux_svga/debug/trig.o \
+	src/linux_svga/debug/property.o \
+	src/linux_svga/debug/lisp.o \
+	src/linux_svga/debug/cache.o \
+	src/linux_svga/debug/particle.o \
+	src/linux_svga/debug/objects.o \
+	src/linux_svga/debug/extend.o \
+	src/linux_svga/debug/console.o \
+	src/linux_svga/debug/ability.o \
+	src/linux_svga/debug/items.o \
+	src/linux_svga/debug/dev.o \
+	src/linux_svga/debug/chars.o \
+	src/linux_svga/debug/level.o \
+	src/linux_svga/debug/smallfnt.o \
+	src/linux_svga/debug/automap.o \
+	src/linux_svga/debug/help.o \
+	src/linux_svga/debug/intsect.o \
+	src/linux_svga/debug/loader2.o \
+	src/linux_svga/debug/seq.o \
+	src/linux_svga/debug/points.o \
+	src/linux_svga/debug/fnt6x13.o \
+	src/linux_svga/debug/morpher.o \
+	src/linux_svga/debug/menu.o \
+	src/linux_svga/debug/director.o \
+	src/linux_svga/debug/view.o \
+	src/linux_svga/debug/config.o \
+	src/linux_svga/debug/game.o \
+	src/linux_svga/debug/light.o \
+	src/linux_svga/debug/devsel.o \
+	src/linux_svga/debug/crc.o \
+	src/linux_svga/debug/gamma.o \
+	src/linux_svga/debug/language.o \
+	../imlib/linux_svga/debug/image.a \
+	../imlib/linux_svga/debug/winman.a \
+	../imlib/linux_svga/debug/gui.a \
+	../imlib/linux_svga/debug/dir.a \
+	../imlib/linux_svga/debug/time.a \
+	../imlib/linux_svga/debug/sound.a \
+	../imlib/linux_svga/debug/joy.a \
+	../imlib/linux_svga/debug/packet.a -lvga -lm
+
+src/net/mac/linux_svga/debug/tcpip.o : src/net/mac/tcpip.c
+	g++  -c -o src/net/mac/linux_svga/debug/tcpip.o src/net/mac/tcpip.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -g -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_svga/debug/specache.o : src/specache.c
+	g++  -c -o src/linux_svga/debug/specache.o src/specache.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -g -DMEM_CHECK -DMANAGE_MEM 
+
+../imlib/linux_svga/debug/sprite.o : ../imlib/sprite.c
+	g++  -c -o ../imlib/linux_svga/debug/sprite.o ../imlib/sprite.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -g -DMEM_CHECK -DMANAGE_MEM 
+
+../imlib/linux_svga/debug/sprite.o : ../imlib/include/sprite.hpp
+../imlib/linux_svga/debug/sprite.o : ../imlib/include/emm.hpp
+../imlib/linux_svga/debug/sprite.o : ../imlib/include/ppmread.hpp
+../imlib/linux_svga/debug/sprite.o : ../imlib/include/gifread.hpp
+../imlib/linux_svga/debug/sprite.o : ../imlib/include/glread.hpp
+../imlib/linux_svga/debug/sprite.o : ../imlib/include/video.hpp
+../imlib/linux_svga/debug/sprite.o : ../imlib/include/image.hpp
+../imlib/linux_svga/debug/sprite.o : ../imlib/include/jmalloc.hpp
+../imlib/linux_svga/debug/sprite.o : ../imlib/include/specs.hpp
+../imlib/linux_svga/debug/sprite.o : ../imlib/include/linked.hpp
+../imlib/linux_svga/debug/sprite.o : ../imlib/include/palette.hpp
+../imlib/linux_svga/debug/sprite.o : ../imlib/include/mdlread.hpp
+../imlib/linux_svga/debug/sprite.o : ../imlib/include/dprint.hpp
+../imlib/linux_svga/debug/sprite.o : ../imlib/include/system.h
+../imlib/linux_svga/debug/sprite.o : ../imlib/include/macs.hpp
+src/linux_svga/debug/netcfg.o : src/netcfg.c
+	g++  -c -o src/linux_svga/debug/netcfg.o src/netcfg.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -g -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_svga/debug/text_gui.o : src/text_gui.c
+	g++  -c -o src/linux_svga/debug/text_gui.o src/text_gui.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -g -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_svga/debug/innet.o : src/innet.c
+	g++  -c -o src/linux_svga/debug/innet.o src/innet.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -g -DMEM_CHECK -DMANAGE_MEM 
+
+src/net/unix/linux_svga/debug/gserver.o : src/net/unix/gserver.c
+	g++  -c -o src/net/unix/linux_svga/debug/gserver.o src/net/unix/gserver.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -g -DMEM_CHECK -DMANAGE_MEM 
+
+src/net/unix/linux_svga/debug/gclient.o : src/net/unix/gclient.c
+	g++  -c -o src/net/unix/linux_svga/debug/gclient.o src/net/unix/gclient.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -g -DMEM_CHECK -DMANAGE_MEM 
+
+src/net/unix/linux_svga/debug/fileman.o : src/net/unix/fileman.c
+	g++  -c -o src/net/unix/linux_svga/debug/fileman.o src/net/unix/fileman.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -g -DMEM_CHECK -DMANAGE_MEM 
+
+src/net/linux_svga/debug/sock.o : src/net/sock.c
+	g++  -c -o src/net/linux_svga/debug/sock.o src/net/sock.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -g -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_svga/debug/chat.o : src/chat.c
+	g++  -c -o src/linux_svga/debug/chat.o src/chat.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -g -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_svga/debug/endgame.o : src/endgame.c
+	g++  -c -o src/linux_svga/debug/endgame.o src/endgame.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -g -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_svga/debug/setup.o : src/setup.c
+	g++  -c -o src/linux_svga/debug/setup.o src/setup.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -g -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_svga/debug/version.o : src/version.c
+	g++  -c -o src/linux_svga/debug/version.o src/version.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -g -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_svga/debug/loadgame.o : src/loadgame.c
+	g++  -c -o src/linux_svga/debug/loadgame.o src/loadgame.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -g -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_svga/debug/profile.o : src/profile.c
+	g++  -c -o src/linux_svga/debug/profile.o src/profile.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -g -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_svga/debug/cop.o : src/cop.c
+	g++  -c -o src/linux_svga/debug/cop.o src/cop.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -g -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_svga/debug/statbar.o : src/statbar.c
+	g++  -c -o src/linux_svga/debug/statbar.o src/statbar.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -g -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_svga/debug/compiled.o : src/compiled.c
+	g++  -c -o src/linux_svga/debug/compiled.o src/compiled.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -g -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_svga/debug/ant.o : src/ant.c
+	g++  -c -o src/linux_svga/debug/ant.o src/ant.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -g -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_svga/debug/sensor.o : src/sensor.c
+	g++  -c -o src/linux_svga/debug/sensor.o src/sensor.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -g -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_svga/debug/lisp_opt.o : src/lisp_opt.c
+	g++  -c -o src/linux_svga/debug/lisp_opt.o src/lisp_opt.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -g -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_svga/debug/demo.o : src/demo.c
+	g++  -c -o src/linux_svga/debug/demo.o src/demo.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -g -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_svga/debug/lcache.o : src/lcache.c
+	g++  -c -o src/linux_svga/debug/lcache.o src/lcache.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -g -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_svga/debug/lisp_gc.o : src/lisp_gc.c
+	g++  -c -o src/linux_svga/debug/lisp_gc.o src/lisp_gc.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -g -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_svga/debug/nfclient.o : src/nfclient.c
+	g++  -c -o src/linux_svga/debug/nfclient.o src/nfclient.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -g -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_svga/debug/username.o : src/username.c
+	g++  -c -o src/linux_svga/debug/username.o src/username.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -g -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_svga/debug/clisp.o : src/clisp.c
+	g++  -c -o src/linux_svga/debug/clisp.o src/clisp.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -g -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_svga/debug/gui.o : src/gui.c
+	g++  -c -o src/linux_svga/debug/gui.o src/gui.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -g -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_svga/debug/transp.o : src/transp.c
+	g++  -c -o src/linux_svga/debug/transp.o src/transp.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -g -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_svga/debug/collide.o : src/collide.c
+	g++  -c -o src/linux_svga/debug/collide.o src/collide.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -g -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_svga/debug/trig.o : src/trig.c
+	g++  -c -o src/linux_svga/debug/trig.o src/trig.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -g -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_svga/debug/property.o : src/property.c
+	g++  -c -o src/linux_svga/debug/property.o src/property.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -g -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_svga/debug/lisp.o : src/lisp.c
+	g++  -c -o src/linux_svga/debug/lisp.o src/lisp.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -g -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_svga/debug/cache.o : src/cache.c
+	g++  -c -o src/linux_svga/debug/cache.o src/cache.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -g -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_svga/debug/particle.o : src/particle.c
+	g++  -c -o src/linux_svga/debug/particle.o src/particle.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -g -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_svga/debug/objects.o : src/objects.c
+	g++  -c -o src/linux_svga/debug/objects.o src/objects.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -g -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_svga/debug/extend.o : src/extend.c
+	g++  -c -o src/linux_svga/debug/extend.o src/extend.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -g -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_svga/debug/console.o : src/console.c
+	g++  -c -o src/linux_svga/debug/console.o src/console.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -g -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_svga/debug/ability.o : src/ability.c
+	g++  -c -o src/linux_svga/debug/ability.o src/ability.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -g -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_svga/debug/items.o : src/items.c
+	g++  -c -o src/linux_svga/debug/items.o src/items.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -g -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_svga/debug/dev.o : src/dev.c
+	g++  -c -o src/linux_svga/debug/dev.o src/dev.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -g -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_svga/debug/chars.o : src/chars.c
+	g++  -c -o src/linux_svga/debug/chars.o src/chars.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -g -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_svga/debug/level.o : src/level.c
+	g++  -c -o src/linux_svga/debug/level.o src/level.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -g -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_svga/debug/smallfnt.o : src/smallfnt.c
+	g++  -c -o src/linux_svga/debug/smallfnt.o src/smallfnt.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -g -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_svga/debug/automap.o : src/automap.c
+	g++  -c -o src/linux_svga/debug/automap.o src/automap.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -g -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_svga/debug/help.o : src/help.c
+	g++  -c -o src/linux_svga/debug/help.o src/help.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -g -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_svga/debug/intsect.o : src/intsect.c
+	g++  -c -o src/linux_svga/debug/intsect.o src/intsect.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -g -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_svga/debug/loader2.o : src/loader2.c
+	g++  -c -o src/linux_svga/debug/loader2.o src/loader2.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -g -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_svga/debug/seq.o : src/seq.c
+	g++  -c -o src/linux_svga/debug/seq.o src/seq.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -g -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_svga/debug/points.o : src/points.c
+	g++  -c -o src/linux_svga/debug/points.o src/points.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -g -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_svga/debug/fnt6x13.o : src/fnt6x13.c
+	g++  -c -o src/linux_svga/debug/fnt6x13.o src/fnt6x13.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -g -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_svga/debug/morpher.o : src/morpher.c
+	g++  -c -o src/linux_svga/debug/morpher.o src/morpher.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -g -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_svga/debug/menu.o : src/menu.c
+	g++  -c -o src/linux_svga/debug/menu.o src/menu.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -g -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_svga/debug/director.o : src/director.c
+	g++  -c -o src/linux_svga/debug/director.o src/director.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -g -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_svga/debug/view.o : src/view.c
+	g++  -c -o src/linux_svga/debug/view.o src/view.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -g -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_svga/debug/config.o : src/config.c
+	g++  -c -o src/linux_svga/debug/config.o src/config.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -g -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_svga/debug/game.o : src/game.c
+	g++  -c -o src/linux_svga/debug/game.o src/game.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -g -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_svga/debug/light.o : src/light.c
+	g++  -c -o src/linux_svga/debug/light.o src/light.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -g -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_svga/debug/devsel.o : src/devsel.c
+	g++  -c -o src/linux_svga/debug/devsel.o src/devsel.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -g -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_svga/debug/crc.o : src/crc.c
+	g++  -c -o src/linux_svga/debug/crc.o src/crc.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -g -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_svga/debug/gamma.o : src/gamma.c
+	g++  -c -o src/linux_svga/debug/gamma.o src/gamma.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -g -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_svga/debug/language.o : src/language.c
+	g++  -c -o src/linux_svga/debug/language.o src/language.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -g -DMEM_CHECK -DMANAGE_MEM 
+
+
+gamex : $(LINUX_X11_gamex_debug_o_files)
+	g++  -o gamex \
+	src/net/mac/linux_x11/debug/tcpip.o \
+	src/linux_x11/debug/specache.o \
+	../imlib/linux_x11/debug/sprite.o \
+	src/linux_x11/debug/netcfg.o \
+	src/linux_x11/debug/text_gui.o \
+	src/linux_x11/debug/innet.o \
+	src/net/unix/linux_x11/debug/gserver.o \
+	src/net/unix/linux_x11/debug/gclient.o \
+	src/net/unix/linux_x11/debug/fileman.o \
+	src/net/linux_x11/debug/sock.o \
+	src/linux_x11/debug/chat.o \
+	src/linux_x11/debug/endgame.o \
+	src/linux_x11/debug/setup.o \
+	src/linux_x11/debug/version.o \
+	src/linux_x11/debug/loadgame.o \
+	src/linux_x11/debug/profile.o \
+	src/linux_x11/debug/cop.o \
+	src/linux_x11/debug/statbar.o \
+	src/linux_x11/debug/compiled.o \
+	src/linux_x11/debug/ant.o \
+	src/linux_x11/debug/sensor.o \
+	src/linux_x11/debug/lisp_opt.o \
+	src/linux_x11/debug/demo.o \
+	src/linux_x11/debug/lcache.o \
+	src/linux_x11/debug/lisp_gc.o \
+	src/linux_x11/debug/nfclient.o \
+	src/linux_x11/debug/username.o \
+	src/linux_x11/debug/clisp.o \
+	src/linux_x11/debug/gui.o \
+	src/linux_x11/debug/transp.o \
+	src/linux_x11/debug/collide.o \
+	src/linux_x11/debug/trig.o \
+	src/linux_x11/debug/property.o \
+	src/linux_x11/debug/lisp.o \
+	src/linux_x11/debug/cache.o \
+	src/linux_x11/debug/particle.o \
+	src/linux_x11/debug/objects.o \
+	src/linux_x11/debug/extend.o \
+	src/linux_x11/debug/console.o \
+	src/linux_x11/debug/ability.o \
+	src/linux_x11/debug/items.o \
+	src/linux_x11/debug/dev.o \
+	src/linux_x11/debug/chars.o \
+	src/linux_x11/debug/level.o \
+	src/linux_x11/debug/smallfnt.o \
+	src/linux_x11/debug/automap.o \
+	src/linux_x11/debug/help.o \
+	src/linux_x11/debug/intsect.o \
+	src/linux_x11/debug/loader2.o \
+	src/linux_x11/debug/seq.o \
+	src/linux_x11/debug/points.o \
+	src/linux_x11/debug/fnt6x13.o \
+	src/linux_x11/debug/morpher.o \
+	src/linux_x11/debug/menu.o \
+	src/linux_x11/debug/director.o \
+	src/linux_x11/debug/view.o \
+	src/linux_x11/debug/config.o \
+	src/linux_x11/debug/game.o \
+	src/linux_x11/debug/light.o \
+	src/linux_x11/debug/devsel.o \
+	src/linux_x11/debug/crc.o \
+	src/linux_x11/debug/gamma.o \
+	src/linux_x11/debug/language.o \
+	../imlib/linux_x11/debug/image.a \
+	../imlib/linux_x11/debug/winman.a \
+	../imlib/linux_x11/debug/gui.a \
+	../imlib/linux_x11/debug/dir.a \
+	../imlib/linux_x11/debug/time.a \
+	../imlib/linux_x11/debug/sound.a \
+	../imlib/linux_x11/debug/joy.a \
+	../imlib/linux_x11/debug/packet.a /lib/libXext.a /lib/libX11.a -lm
+
+src/net/mac/linux_x11/debug/tcpip.o : src/net/mac/tcpip.c
+	g++  -c -o src/net/mac/linux_x11/debug/tcpip.o src/net/mac/tcpip.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -g -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_x11/debug/specache.o : src/specache.c
+	g++  -c -o src/linux_x11/debug/specache.o src/specache.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -g -DMEM_CHECK -DMANAGE_MEM 
+
+../imlib/linux_x11/debug/sprite.o : ../imlib/sprite.c
+	g++  -c -o ../imlib/linux_x11/debug/sprite.o ../imlib/sprite.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -g -DMEM_CHECK -DMANAGE_MEM 
+
+../imlib/linux_x11/debug/sprite.o : ../imlib/include/sprite.hpp
+../imlib/linux_x11/debug/sprite.o : ../imlib/include/emm.hpp
+../imlib/linux_x11/debug/sprite.o : ../imlib/include/ppmread.hpp
+../imlib/linux_x11/debug/sprite.o : ../imlib/include/gifread.hpp
+../imlib/linux_x11/debug/sprite.o : ../imlib/include/glread.hpp
+../imlib/linux_x11/debug/sprite.o : ../imlib/include/video.hpp
+../imlib/linux_x11/debug/sprite.o : ../imlib/include/image.hpp
+../imlib/linux_x11/debug/sprite.o : ../imlib/include/jmalloc.hpp
+../imlib/linux_x11/debug/sprite.o : ../imlib/include/specs.hpp
+../imlib/linux_x11/debug/sprite.o : ../imlib/include/linked.hpp
+../imlib/linux_x11/debug/sprite.o : ../imlib/include/palette.hpp
+../imlib/linux_x11/debug/sprite.o : ../imlib/include/mdlread.hpp
+../imlib/linux_x11/debug/sprite.o : ../imlib/include/dprint.hpp
+../imlib/linux_x11/debug/sprite.o : ../imlib/include/system.h
+../imlib/linux_x11/debug/sprite.o : ../imlib/include/macs.hpp
+src/linux_x11/debug/netcfg.o : src/netcfg.c
+	g++  -c -o src/linux_x11/debug/netcfg.o src/netcfg.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -g -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_x11/debug/text_gui.o : src/text_gui.c
+	g++  -c -o src/linux_x11/debug/text_gui.o src/text_gui.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -g -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_x11/debug/innet.o : src/innet.c
+	g++  -c -o src/linux_x11/debug/innet.o src/innet.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -g -DMEM_CHECK -DMANAGE_MEM 
+
+src/net/unix/linux_x11/debug/gserver.o : src/net/unix/gserver.c
+	g++  -c -o src/net/unix/linux_x11/debug/gserver.o src/net/unix/gserver.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -g -DMEM_CHECK -DMANAGE_MEM 
+
+src/net/unix/linux_x11/debug/gclient.o : src/net/unix/gclient.c
+	g++  -c -o src/net/unix/linux_x11/debug/gclient.o src/net/unix/gclient.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -g -DMEM_CHECK -DMANAGE_MEM 
+
+src/net/unix/linux_x11/debug/fileman.o : src/net/unix/fileman.c
+	g++  -c -o src/net/unix/linux_x11/debug/fileman.o src/net/unix/fileman.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -g -DMEM_CHECK -DMANAGE_MEM 
+
+src/net/linux_x11/debug/sock.o : src/net/sock.c
+	g++  -c -o src/net/linux_x11/debug/sock.o src/net/sock.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -g -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_x11/debug/chat.o : src/chat.c
+	g++  -c -o src/linux_x11/debug/chat.o src/chat.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -g -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_x11/debug/endgame.o : src/endgame.c
+	g++  -c -o src/linux_x11/debug/endgame.o src/endgame.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -g -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_x11/debug/setup.o : src/setup.c
+	g++  -c -o src/linux_x11/debug/setup.o src/setup.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -g -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_x11/debug/version.o : src/version.c
+	g++  -c -o src/linux_x11/debug/version.o src/version.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -g -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_x11/debug/loadgame.o : src/loadgame.c
+	g++  -c -o src/linux_x11/debug/loadgame.o src/loadgame.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -g -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_x11/debug/profile.o : src/profile.c
+	g++  -c -o src/linux_x11/debug/profile.o src/profile.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -g -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_x11/debug/cop.o : src/cop.c
+	g++  -c -o src/linux_x11/debug/cop.o src/cop.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -g -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_x11/debug/statbar.o : src/statbar.c
+	g++  -c -o src/linux_x11/debug/statbar.o src/statbar.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -g -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_x11/debug/compiled.o : src/compiled.c
+	g++  -c -o src/linux_x11/debug/compiled.o src/compiled.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -g -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_x11/debug/ant.o : src/ant.c
+	g++  -c -o src/linux_x11/debug/ant.o src/ant.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -g -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_x11/debug/sensor.o : src/sensor.c
+	g++  -c -o src/linux_x11/debug/sensor.o src/sensor.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -g -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_x11/debug/lisp_opt.o : src/lisp_opt.c
+	g++  -c -o src/linux_x11/debug/lisp_opt.o src/lisp_opt.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -g -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_x11/debug/demo.o : src/demo.c
+	g++  -c -o src/linux_x11/debug/demo.o src/demo.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -g -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_x11/debug/lcache.o : src/lcache.c
+	g++  -c -o src/linux_x11/debug/lcache.o src/lcache.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -g -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_x11/debug/lisp_gc.o : src/lisp_gc.c
+	g++  -c -o src/linux_x11/debug/lisp_gc.o src/lisp_gc.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -g -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_x11/debug/nfclient.o : src/nfclient.c
+	g++  -c -o src/linux_x11/debug/nfclient.o src/nfclient.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -g -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_x11/debug/username.o : src/username.c
+	g++  -c -o src/linux_x11/debug/username.o src/username.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -g -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_x11/debug/clisp.o : src/clisp.c
+	g++  -c -o src/linux_x11/debug/clisp.o src/clisp.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -g -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_x11/debug/gui.o : src/gui.c
+	g++  -c -o src/linux_x11/debug/gui.o src/gui.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -g -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_x11/debug/transp.o : src/transp.c
+	g++  -c -o src/linux_x11/debug/transp.o src/transp.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -g -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_x11/debug/collide.o : src/collide.c
+	g++  -c -o src/linux_x11/debug/collide.o src/collide.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -g -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_x11/debug/trig.o : src/trig.c
+	g++  -c -o src/linux_x11/debug/trig.o src/trig.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -g -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_x11/debug/property.o : src/property.c
+	g++  -c -o src/linux_x11/debug/property.o src/property.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -g -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_x11/debug/lisp.o : src/lisp.c
+	g++  -c -o src/linux_x11/debug/lisp.o src/lisp.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -g -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_x11/debug/cache.o : src/cache.c
+	g++  -c -o src/linux_x11/debug/cache.o src/cache.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -g -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_x11/debug/particle.o : src/particle.c
+	g++  -c -o src/linux_x11/debug/particle.o src/particle.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -g -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_x11/debug/objects.o : src/objects.c
+	g++  -c -o src/linux_x11/debug/objects.o src/objects.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -g -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_x11/debug/extend.o : src/extend.c
+	g++  -c -o src/linux_x11/debug/extend.o src/extend.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -g -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_x11/debug/console.o : src/console.c
+	g++  -c -o src/linux_x11/debug/console.o src/console.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -g -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_x11/debug/ability.o : src/ability.c
+	g++  -c -o src/linux_x11/debug/ability.o src/ability.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -g -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_x11/debug/items.o : src/items.c
+	g++  -c -o src/linux_x11/debug/items.o src/items.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -g -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_x11/debug/dev.o : src/dev.c
+	g++  -c -o src/linux_x11/debug/dev.o src/dev.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -g -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_x11/debug/chars.o : src/chars.c
+	g++  -c -o src/linux_x11/debug/chars.o src/chars.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -g -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_x11/debug/level.o : src/level.c
+	g++  -c -o src/linux_x11/debug/level.o src/level.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -g -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_x11/debug/smallfnt.o : src/smallfnt.c
+	g++  -c -o src/linux_x11/debug/smallfnt.o src/smallfnt.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -g -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_x11/debug/automap.o : src/automap.c
+	g++  -c -o src/linux_x11/debug/automap.o src/automap.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -g -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_x11/debug/help.o : src/help.c
+	g++  -c -o src/linux_x11/debug/help.o src/help.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -g -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_x11/debug/intsect.o : src/intsect.c
+	g++  -c -o src/linux_x11/debug/intsect.o src/intsect.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -g -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_x11/debug/loader2.o : src/loader2.c
+	g++  -c -o src/linux_x11/debug/loader2.o src/loader2.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -g -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_x11/debug/seq.o : src/seq.c
+	g++  -c -o src/linux_x11/debug/seq.o src/seq.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -g -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_x11/debug/points.o : src/points.c
+	g++  -c -o src/linux_x11/debug/points.o src/points.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -g -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_x11/debug/fnt6x13.o : src/fnt6x13.c
+	g++  -c -o src/linux_x11/debug/fnt6x13.o src/fnt6x13.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -g -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_x11/debug/morpher.o : src/morpher.c
+	g++  -c -o src/linux_x11/debug/morpher.o src/morpher.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -g -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_x11/debug/menu.o : src/menu.c
+	g++  -c -o src/linux_x11/debug/menu.o src/menu.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -g -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_x11/debug/director.o : src/director.c
+	g++  -c -o src/linux_x11/debug/director.o src/director.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -g -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_x11/debug/view.o : src/view.c
+	g++  -c -o src/linux_x11/debug/view.o src/view.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -g -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_x11/debug/config.o : src/config.c
+	g++  -c -o src/linux_x11/debug/config.o src/config.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -g -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_x11/debug/game.o : src/game.c
+	g++  -c -o src/linux_x11/debug/game.o src/game.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -g -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_x11/debug/light.o : src/light.c
+	g++  -c -o src/linux_x11/debug/light.o src/light.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -g -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_x11/debug/devsel.o : src/devsel.c
+	g++  -c -o src/linux_x11/debug/devsel.o src/devsel.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -g -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_x11/debug/crc.o : src/crc.c
+	g++  -c -o src/linux_x11/debug/crc.o src/crc.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -g -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_x11/debug/gamma.o : src/gamma.c
+	g++  -c -o src/linux_x11/debug/gamma.o src/gamma.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -g -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_x11/debug/language.o : src/language.c
+	g++  -c -o src/linux_x11/debug/language.o src/language.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -g -DMEM_CHECK -DMANAGE_MEM 
+
+
+LINUX_X11_gamexo_opt_o_files = \
+	src/net/mac/linux_x11/opt/tcpip.o \
+	src/linux_x11/opt/specache.o \
+	../imlib/linux_x11/opt/sprite.o \
+	src/linux_x11/opt/netcfg.o \
+	src/linux_x11/opt/text_gui.o \
+	src/linux_x11/opt/innet.o \
+	src/net/unix/linux_x11/opt/gserver.o \
+	src/net/unix/linux_x11/opt/gclient.o \
+	src/net/unix/linux_x11/opt/fileman.o \
+	src/net/linux_x11/opt/sock.o \
+	src/linux_x11/opt/chat.o \
+	src/linux_x11/opt/endgame.o \
+	src/linux_x11/opt/setup.o \
+	src/linux_x11/opt/version.o \
+	src/linux_x11/opt/loadgame.o \
+	src/linux_x11/opt/profile.o \
+	src/linux_x11/opt/cop.o \
+	src/linux_x11/opt/statbar.o \
+	src/linux_x11/opt/compiled.o \
+	src/linux_x11/opt/ant.o \
+	src/linux_x11/opt/sensor.o \
+	src/linux_x11/opt/lisp_opt.o \
+	src/linux_x11/opt/demo.o \
+	src/linux_x11/opt/lcache.o \
+	src/linux_x11/opt/lisp_gc.o \
+	src/linux_x11/opt/nfclient.o \
+	src/linux_x11/opt/username.o \
+	src/linux_x11/opt/clisp.o \
+	src/linux_x11/opt/gui.o \
+	src/linux_x11/opt/transp.o \
+	src/linux_x11/opt/collide.o \
+	src/linux_x11/opt/trig.o \
+	src/linux_x11/opt/property.o \
+	src/linux_x11/opt/lisp.o \
+	src/linux_x11/opt/cache.o \
+	src/linux_x11/opt/particle.o \
+	src/linux_x11/opt/objects.o \
+	src/linux_x11/opt/extend.o \
+	src/linux_x11/opt/console.o \
+	src/linux_x11/opt/ability.o \
+	src/linux_x11/opt/items.o \
+	src/linux_x11/opt/dev.o \
+	src/linux_x11/opt/chars.o \
+	src/linux_x11/opt/level.o \
+	src/linux_x11/opt/smallfnt.o \
+	src/linux_x11/opt/automap.o \
+	src/linux_x11/opt/help.o \
+	src/linux_x11/opt/intsect.o \
+	src/linux_x11/opt/loader2.o \
+	src/linux_x11/opt/seq.o \
+	src/linux_x11/opt/points.o \
+	src/linux_x11/opt/fnt6x13.o \
+	src/linux_x11/opt/morpher.o \
+	src/linux_x11/opt/menu.o \
+	src/linux_x11/opt/director.o \
+	src/linux_x11/opt/view.o \
+	src/linux_x11/opt/config.o \
+	src/linux_x11/opt/game.o \
+	src/linux_x11/opt/light.o \
+	src/linux_x11/opt/devsel.o \
+	src/linux_x11/opt/crc.o \
+	src/linux_x11/opt/gamma.o \
+	src/linux_x11/opt/language.o
+
+LINUX_SVGA_gameo_opt_o_files = \
+	src/net/mac/linux_svga/opt/tcpip.o \
+	src/linux_svga/opt/specache.o \
+	../imlib/linux_svga/opt/sprite.o \
+	src/linux_svga/opt/netcfg.o \
+	src/linux_svga/opt/text_gui.o \
+	src/linux_svga/opt/innet.o \
+	src/net/unix/linux_svga/opt/gserver.o \
+	src/net/unix/linux_svga/opt/gclient.o \
+	src/net/unix/linux_svga/opt/fileman.o \
+	src/net/linux_svga/opt/sock.o \
+	src/linux_svga/opt/chat.o \
+	src/linux_svga/opt/endgame.o \
+	src/linux_svga/opt/setup.o \
+	src/linux_svga/opt/version.o \
+	src/linux_svga/opt/loadgame.o \
+	src/linux_svga/opt/profile.o \
+	src/linux_svga/opt/cop.o \
+	src/linux_svga/opt/statbar.o \
+	src/linux_svga/opt/compiled.o \
+	src/linux_svga/opt/ant.o \
+	src/linux_svga/opt/sensor.o \
+	src/linux_svga/opt/lisp_opt.o \
+	src/linux_svga/opt/demo.o \
+	src/linux_svga/opt/lcache.o \
+	src/linux_svga/opt/lisp_gc.o \
+	src/linux_svga/opt/nfclient.o \
+	src/linux_svga/opt/username.o \
+	src/linux_svga/opt/clisp.o \
+	src/linux_svga/opt/gui.o \
+	src/linux_svga/opt/transp.o \
+	src/linux_svga/opt/collide.o \
+	src/linux_svga/opt/trig.o \
+	src/linux_svga/opt/property.o \
+	src/linux_svga/opt/lisp.o \
+	src/linux_svga/opt/cache.o \
+	src/linux_svga/opt/particle.o \
+	src/linux_svga/opt/objects.o \
+	src/linux_svga/opt/extend.o \
+	src/linux_svga/opt/console.o \
+	src/linux_svga/opt/ability.o \
+	src/linux_svga/opt/items.o \
+	src/linux_svga/opt/dev.o \
+	src/linux_svga/opt/chars.o \
+	src/linux_svga/opt/level.o \
+	src/linux_svga/opt/smallfnt.o \
+	src/linux_svga/opt/automap.o \
+	src/linux_svga/opt/help.o \
+	src/linux_svga/opt/intsect.o \
+	src/linux_svga/opt/loader2.o \
+	src/linux_svga/opt/seq.o \
+	src/linux_svga/opt/points.o \
+	src/linux_svga/opt/fnt6x13.o \
+	src/linux_svga/opt/morpher.o \
+	src/linux_svga/opt/menu.o \
+	src/linux_svga/opt/director.o \
+	src/linux_svga/opt/view.o \
+	src/linux_svga/opt/config.o \
+	src/linux_svga/opt/game.o \
+	src/linux_svga/opt/light.o \
+	src/linux_svga/opt/devsel.o \
+	src/linux_svga/opt/crc.o \
+	src/linux_svga/opt/gamma.o \
+	src/linux_svga/opt/language.o
+
+gameo : $(LINUX_SVGA_gameo_opt_o_files)
+	g++  -o gameo \
+	src/net/mac/linux_svga/opt/tcpip.o \
+	src/linux_svga/opt/specache.o \
+	../imlib/linux_svga/opt/sprite.o \
+	src/linux_svga/opt/netcfg.o \
+	src/linux_svga/opt/text_gui.o \
+	src/linux_svga/opt/innet.o \
+	src/net/unix/linux_svga/opt/gserver.o \
+	src/net/unix/linux_svga/opt/gclient.o \
+	src/net/unix/linux_svga/opt/fileman.o \
+	src/net/linux_svga/opt/sock.o \
+	src/linux_svga/opt/chat.o \
+	src/linux_svga/opt/endgame.o \
+	src/linux_svga/opt/setup.o \
+	src/linux_svga/opt/version.o \
+	src/linux_svga/opt/loadgame.o \
+	src/linux_svga/opt/profile.o \
+	src/linux_svga/opt/cop.o \
+	src/linux_svga/opt/statbar.o \
+	src/linux_svga/opt/compiled.o \
+	src/linux_svga/opt/ant.o \
+	src/linux_svga/opt/sensor.o \
+	src/linux_svga/opt/lisp_opt.o \
+	src/linux_svga/opt/demo.o \
+	src/linux_svga/opt/lcache.o \
+	src/linux_svga/opt/lisp_gc.o \
+	src/linux_svga/opt/nfclient.o \
+	src/linux_svga/opt/username.o \
+	src/linux_svga/opt/clisp.o \
+	src/linux_svga/opt/gui.o \
+	src/linux_svga/opt/transp.o \
+	src/linux_svga/opt/collide.o \
+	src/linux_svga/opt/trig.o \
+	src/linux_svga/opt/property.o \
+	src/linux_svga/opt/lisp.o \
+	src/linux_svga/opt/cache.o \
+	src/linux_svga/opt/particle.o \
+	src/linux_svga/opt/objects.o \
+	src/linux_svga/opt/extend.o \
+	src/linux_svga/opt/console.o \
+	src/linux_svga/opt/ability.o \
+	src/linux_svga/opt/items.o \
+	src/linux_svga/opt/dev.o \
+	src/linux_svga/opt/chars.o \
+	src/linux_svga/opt/level.o \
+	src/linux_svga/opt/smallfnt.o \
+	src/linux_svga/opt/automap.o \
+	src/linux_svga/opt/help.o \
+	src/linux_svga/opt/intsect.o \
+	src/linux_svga/opt/loader2.o \
+	src/linux_svga/opt/seq.o \
+	src/linux_svga/opt/points.o \
+	src/linux_svga/opt/fnt6x13.o \
+	src/linux_svga/opt/morpher.o \
+	src/linux_svga/opt/menu.o \
+	src/linux_svga/opt/director.o \
+	src/linux_svga/opt/view.o \
+	src/linux_svga/opt/config.o \
+	src/linux_svga/opt/game.o \
+	src/linux_svga/opt/light.o \
+	src/linux_svga/opt/devsel.o \
+	src/linux_svga/opt/crc.o \
+	src/linux_svga/opt/gamma.o \
+	src/linux_svga/opt/language.o \
+	../imlib/linux_svga/opt/image.a \
+	../imlib/linux_svga/opt/winman.a \
+	../imlib/linux_svga/opt/gui.a \
+	../imlib/linux_svga/opt/dir.a \
+	../imlib/linux_svga/opt/time.a \
+	../imlib/linux_svga/opt/sound.a \
+	../imlib/linux_svga/opt/joy.a \
+	../imlib/linux_svga/opt/packet.a -lvga -lm
+
+src/net/mac/linux_svga/opt/tcpip.o : src/net/mac/tcpip.c
+	g++  -c -o src/net/mac/linux_svga/opt/tcpip.o src/net/mac/tcpip.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -DMANAGE_MEM -DNO_CHECK 
+
+src/linux_svga/opt/specache.o : src/specache.c
+	g++  -c -o src/linux_svga/opt/specache.o src/specache.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -DMANAGE_MEM -DNO_CHECK 
+
+../imlib/linux_svga/opt/sprite.o : ../imlib/sprite.c
+	g++  -c -o ../imlib/linux_svga/opt/sprite.o ../imlib/sprite.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -DMANAGE_MEM -DNO_CHECK 
+
+../imlib/linux_svga/opt/sprite.o : ../imlib/include/sprite.hpp
+../imlib/linux_svga/opt/sprite.o : ../imlib/include/emm.hpp
+../imlib/linux_svga/opt/sprite.o : ../imlib/include/ppmread.hpp
+../imlib/linux_svga/opt/sprite.o : ../imlib/include/gifread.hpp
+../imlib/linux_svga/opt/sprite.o : ../imlib/include/glread.hpp
+../imlib/linux_svga/opt/sprite.o : ../imlib/include/video.hpp
+../imlib/linux_svga/opt/sprite.o : ../imlib/include/image.hpp
+../imlib/linux_svga/opt/sprite.o : ../imlib/include/jmalloc.hpp
+../imlib/linux_svga/opt/sprite.o : ../imlib/include/specs.hpp
+../imlib/linux_svga/opt/sprite.o : ../imlib/include/linked.hpp
+../imlib/linux_svga/opt/sprite.o : ../imlib/include/palette.hpp
+../imlib/linux_svga/opt/sprite.o : ../imlib/include/mdlread.hpp
+../imlib/linux_svga/opt/sprite.o : ../imlib/include/dprint.hpp
+../imlib/linux_svga/opt/sprite.o : ../imlib/include/system.h
+../imlib/linux_svga/opt/sprite.o : ../imlib/include/macs.hpp
+src/linux_svga/opt/netcfg.o : src/netcfg.c
+	g++  -c -o src/linux_svga/opt/netcfg.o src/netcfg.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -DMANAGE_MEM -DNO_CHECK 
+
+src/linux_svga/opt/text_gui.o : src/text_gui.c
+	g++  -c -o src/linux_svga/opt/text_gui.o src/text_gui.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -DMANAGE_MEM -DNO_CHECK 
+
+src/linux_svga/opt/innet.o : src/innet.c
+	g++  -c -o src/linux_svga/opt/innet.o src/innet.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -DMANAGE_MEM -DNO_CHECK 
+
+src/net/unix/linux_svga/opt/gserver.o : src/net/unix/gserver.c
+	g++  -c -o src/net/unix/linux_svga/opt/gserver.o src/net/unix/gserver.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -DMANAGE_MEM -DNO_CHECK 
+
+src/net/unix/linux_svga/opt/gclient.o : src/net/unix/gclient.c
+	g++  -c -o src/net/unix/linux_svga/opt/gclient.o src/net/unix/gclient.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -DMANAGE_MEM -DNO_CHECK 
+
+src/net/unix/linux_svga/opt/fileman.o : src/net/unix/fileman.c
+	g++  -c -o src/net/unix/linux_svga/opt/fileman.o src/net/unix/fileman.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -DMANAGE_MEM -DNO_CHECK 
+
+src/net/linux_svga/opt/sock.o : src/net/sock.c
+	g++  -c -o src/net/linux_svga/opt/sock.o src/net/sock.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -DMANAGE_MEM -DNO_CHECK 
+
+src/linux_svga/opt/chat.o : src/chat.c
+	g++  -c -o src/linux_svga/opt/chat.o src/chat.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -DMANAGE_MEM -DNO_CHECK 
+
+src/linux_svga/opt/endgame.o : src/endgame.c
+	g++  -c -o src/linux_svga/opt/endgame.o src/endgame.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -DMANAGE_MEM -DNO_CHECK 
+
+src/linux_svga/opt/setup.o : src/setup.c
+	g++  -c -o src/linux_svga/opt/setup.o src/setup.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -DMANAGE_MEM -DNO_CHECK 
+
+src/linux_svga/opt/version.o : src/version.c
+	g++  -c -o src/linux_svga/opt/version.o src/version.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -DMANAGE_MEM -DNO_CHECK 
+
+src/linux_svga/opt/loadgame.o : src/loadgame.c
+	g++  -c -o src/linux_svga/opt/loadgame.o src/loadgame.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -DMANAGE_MEM -DNO_CHECK 
+
+src/linux_svga/opt/profile.o : src/profile.c
+	g++  -c -o src/linux_svga/opt/profile.o src/profile.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -DMANAGE_MEM -DNO_CHECK 
+
+src/linux_svga/opt/cop.o : src/cop.c
+	g++  -c -o src/linux_svga/opt/cop.o src/cop.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -DMANAGE_MEM -DNO_CHECK 
+
+src/linux_svga/opt/statbar.o : src/statbar.c
+	g++  -c -o src/linux_svga/opt/statbar.o src/statbar.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -DMANAGE_MEM -DNO_CHECK 
+
+src/linux_svga/opt/compiled.o : src/compiled.c
+	g++  -c -o src/linux_svga/opt/compiled.o src/compiled.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -DMANAGE_MEM -DNO_CHECK 
+
+src/linux_svga/opt/ant.o : src/ant.c
+	g++  -c -o src/linux_svga/opt/ant.o src/ant.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -DMANAGE_MEM -DNO_CHECK 
+
+src/linux_svga/opt/sensor.o : src/sensor.c
+	g++  -c -o src/linux_svga/opt/sensor.o src/sensor.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -DMANAGE_MEM -DNO_CHECK 
+
+src/linux_svga/opt/lisp_opt.o : src/lisp_opt.c
+	g++  -c -o src/linux_svga/opt/lisp_opt.o src/lisp_opt.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -DMANAGE_MEM -DNO_CHECK 
+
+src/linux_svga/opt/demo.o : src/demo.c
+	g++  -c -o src/linux_svga/opt/demo.o src/demo.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -DMANAGE_MEM -DNO_CHECK 
+
+src/linux_svga/opt/lcache.o : src/lcache.c
+	g++  -c -o src/linux_svga/opt/lcache.o src/lcache.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -DMANAGE_MEM -DNO_CHECK 
+
+src/linux_svga/opt/lisp_gc.o : src/lisp_gc.c
+	g++  -c -o src/linux_svga/opt/lisp_gc.o src/lisp_gc.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -DMANAGE_MEM -DNO_CHECK 
+
+src/linux_svga/opt/nfclient.o : src/nfclient.c
+	g++  -c -o src/linux_svga/opt/nfclient.o src/nfclient.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -DMANAGE_MEM -DNO_CHECK 
+
+src/linux_svga/opt/username.o : src/username.c
+	g++  -c -o src/linux_svga/opt/username.o src/username.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -DMANAGE_MEM -DNO_CHECK 
+
+src/linux_svga/opt/clisp.o : src/clisp.c
+	g++  -c -o src/linux_svga/opt/clisp.o src/clisp.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -DMANAGE_MEM -DNO_CHECK 
+
+src/linux_svga/opt/gui.o : src/gui.c
+	g++  -c -o src/linux_svga/opt/gui.o src/gui.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -DMANAGE_MEM -DNO_CHECK 
+
+src/linux_svga/opt/transp.o : src/transp.c
+	g++  -c -o src/linux_svga/opt/transp.o src/transp.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -DMANAGE_MEM -DNO_CHECK 
+
+src/linux_svga/opt/collide.o : src/collide.c
+	g++  -c -o src/linux_svga/opt/collide.o src/collide.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -DMANAGE_MEM -DNO_CHECK 
+
+src/linux_svga/opt/trig.o : src/trig.c
+	g++  -c -o src/linux_svga/opt/trig.o src/trig.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -DMANAGE_MEM -DNO_CHECK 
+
+src/linux_svga/opt/property.o : src/property.c
+	g++  -c -o src/linux_svga/opt/property.o src/property.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -DMANAGE_MEM -DNO_CHECK 
+
+src/linux_svga/opt/lisp.o : src/lisp.c
+	g++  -c -o src/linux_svga/opt/lisp.o src/lisp.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -DMANAGE_MEM -DNO_CHECK 
+
+src/linux_svga/opt/cache.o : src/cache.c
+	g++  -c -o src/linux_svga/opt/cache.o src/cache.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -DMANAGE_MEM -DNO_CHECK 
+
+src/linux_svga/opt/particle.o : src/particle.c
+	g++  -c -o src/linux_svga/opt/particle.o src/particle.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -DMANAGE_MEM -DNO_CHECK 
+
+src/linux_svga/opt/objects.o : src/objects.c
+	g++  -c -o src/linux_svga/opt/objects.o src/objects.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -DMANAGE_MEM -DNO_CHECK 
+
+src/linux_svga/opt/extend.o : src/extend.c
+	g++  -c -o src/linux_svga/opt/extend.o src/extend.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -DMANAGE_MEM -DNO_CHECK 
+
+src/linux_svga/opt/console.o : src/console.c
+	g++  -c -o src/linux_svga/opt/console.o src/console.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -DMANAGE_MEM -DNO_CHECK 
+
+src/linux_svga/opt/ability.o : src/ability.c
+	g++  -c -o src/linux_svga/opt/ability.o src/ability.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -DMANAGE_MEM -DNO_CHECK 
+
+src/linux_svga/opt/items.o : src/items.c
+	g++  -c -o src/linux_svga/opt/items.o src/items.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -DMANAGE_MEM -DNO_CHECK 
+
+src/linux_svga/opt/dev.o : src/dev.c
+	g++  -c -o src/linux_svga/opt/dev.o src/dev.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -DMANAGE_MEM -DNO_CHECK 
+
+src/linux_svga/opt/chars.o : src/chars.c
+	g++  -c -o src/linux_svga/opt/chars.o src/chars.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -DMANAGE_MEM -DNO_CHECK 
+
+src/linux_svga/opt/level.o : src/level.c
+	g++  -c -o src/linux_svga/opt/level.o src/level.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -DMANAGE_MEM -DNO_CHECK 
+
+src/linux_svga/opt/smallfnt.o : src/smallfnt.c
+	g++  -c -o src/linux_svga/opt/smallfnt.o src/smallfnt.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -DMANAGE_MEM -DNO_CHECK 
+
+src/linux_svga/opt/automap.o : src/automap.c
+	g++  -c -o src/linux_svga/opt/automap.o src/automap.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -DMANAGE_MEM -DNO_CHECK 
+
+src/linux_svga/opt/help.o : src/help.c
+	g++  -c -o src/linux_svga/opt/help.o src/help.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -DMANAGE_MEM -DNO_CHECK 
+
+src/linux_svga/opt/intsect.o : src/intsect.c
+	g++  -c -o src/linux_svga/opt/intsect.o src/intsect.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -DMANAGE_MEM -DNO_CHECK 
+
+src/linux_svga/opt/loader2.o : src/loader2.c
+	g++  -c -o src/linux_svga/opt/loader2.o src/loader2.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -DMANAGE_MEM -DNO_CHECK 
+
+src/linux_svga/opt/seq.o : src/seq.c
+	g++  -c -o src/linux_svga/opt/seq.o src/seq.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -DMANAGE_MEM -DNO_CHECK 
+
+src/linux_svga/opt/points.o : src/points.c
+	g++  -c -o src/linux_svga/opt/points.o src/points.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -DMANAGE_MEM -DNO_CHECK 
+
+src/linux_svga/opt/fnt6x13.o : src/fnt6x13.c
+	g++  -c -o src/linux_svga/opt/fnt6x13.o src/fnt6x13.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -DMANAGE_MEM -DNO_CHECK 
+
+src/linux_svga/opt/morpher.o : src/morpher.c
+	g++  -c -o src/linux_svga/opt/morpher.o src/morpher.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -DMANAGE_MEM -DNO_CHECK 
+
+src/linux_svga/opt/menu.o : src/menu.c
+	g++  -c -o src/linux_svga/opt/menu.o src/menu.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -DMANAGE_MEM -DNO_CHECK 
+
+src/linux_svga/opt/director.o : src/director.c
+	g++  -c -o src/linux_svga/opt/director.o src/director.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -DMANAGE_MEM -DNO_CHECK 
+
+src/linux_svga/opt/view.o : src/view.c
+	g++  -c -o src/linux_svga/opt/view.o src/view.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -DMANAGE_MEM -DNO_CHECK 
+
+src/linux_svga/opt/config.o : src/config.c
+	g++  -c -o src/linux_svga/opt/config.o src/config.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -DMANAGE_MEM -DNO_CHECK 
+
+src/linux_svga/opt/game.o : src/game.c
+	g++  -c -o src/linux_svga/opt/game.o src/game.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -DMANAGE_MEM -DNO_CHECK 
+
+src/linux_svga/opt/light.o : src/light.c
+	g++  -c -o src/linux_svga/opt/light.o src/light.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -DMANAGE_MEM -DNO_CHECK 
+
+src/linux_svga/opt/devsel.o : src/devsel.c
+	g++  -c -o src/linux_svga/opt/devsel.o src/devsel.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -DMANAGE_MEM -DNO_CHECK 
+
+src/linux_svga/opt/crc.o : src/crc.c
+	g++  -c -o src/linux_svga/opt/crc.o src/crc.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -DMANAGE_MEM -DNO_CHECK 
+
+src/linux_svga/opt/gamma.o : src/gamma.c
+	g++  -c -o src/linux_svga/opt/gamma.o src/gamma.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -DMANAGE_MEM -DNO_CHECK 
+
+src/linux_svga/opt/language.o : src/language.c
+	g++  -c -o src/linux_svga/opt/language.o src/language.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -DMANAGE_MEM -DNO_CHECK 
+
+
+gamexo : $(LINUX_X11_gamexo_opt_o_files)
+	g++  -o gamexo \
+	src/net/mac/linux_x11/opt/tcpip.o \
+	src/linux_x11/opt/specache.o \
+	../imlib/linux_x11/opt/sprite.o \
+	src/linux_x11/opt/netcfg.o \
+	src/linux_x11/opt/text_gui.o \
+	src/linux_x11/opt/innet.o \
+	src/net/unix/linux_x11/opt/gserver.o \
+	src/net/unix/linux_x11/opt/gclient.o \
+	src/net/unix/linux_x11/opt/fileman.o \
+	src/net/linux_x11/opt/sock.o \
+	src/linux_x11/opt/chat.o \
+	src/linux_x11/opt/endgame.o \
+	src/linux_x11/opt/setup.o \
+	src/linux_x11/opt/version.o \
+	src/linux_x11/opt/loadgame.o \
+	src/linux_x11/opt/profile.o \
+	src/linux_x11/opt/cop.o \
+	src/linux_x11/opt/statbar.o \
+	src/linux_x11/opt/compiled.o \
+	src/linux_x11/opt/ant.o \
+	src/linux_x11/opt/sensor.o \
+	src/linux_x11/opt/lisp_opt.o \
+	src/linux_x11/opt/demo.o \
+	src/linux_x11/opt/lcache.o \
+	src/linux_x11/opt/lisp_gc.o \
+	src/linux_x11/opt/nfclient.o \
+	src/linux_x11/opt/username.o \
+	src/linux_x11/opt/clisp.o \
+	src/linux_x11/opt/gui.o \
+	src/linux_x11/opt/transp.o \
+	src/linux_x11/opt/collide.o \
+	src/linux_x11/opt/trig.o \
+	src/linux_x11/opt/property.o \
+	src/linux_x11/opt/lisp.o \
+	src/linux_x11/opt/cache.o \
+	src/linux_x11/opt/particle.o \
+	src/linux_x11/opt/objects.o \
+	src/linux_x11/opt/extend.o \
+	src/linux_x11/opt/console.o \
+	src/linux_x11/opt/ability.o \
+	src/linux_x11/opt/items.o \
+	src/linux_x11/opt/dev.o \
+	src/linux_x11/opt/chars.o \
+	src/linux_x11/opt/level.o \
+	src/linux_x11/opt/smallfnt.o \
+	src/linux_x11/opt/automap.o \
+	src/linux_x11/opt/help.o \
+	src/linux_x11/opt/intsect.o \
+	src/linux_x11/opt/loader2.o \
+	src/linux_x11/opt/seq.o \
+	src/linux_x11/opt/points.o \
+	src/linux_x11/opt/fnt6x13.o \
+	src/linux_x11/opt/morpher.o \
+	src/linux_x11/opt/menu.o \
+	src/linux_x11/opt/director.o \
+	src/linux_x11/opt/view.o \
+	src/linux_x11/opt/config.o \
+	src/linux_x11/opt/game.o \
+	src/linux_x11/opt/light.o \
+	src/linux_x11/opt/devsel.o \
+	src/linux_x11/opt/crc.o \
+	src/linux_x11/opt/gamma.o \
+	src/linux_x11/opt/language.o \
+	../imlib/linux_x11/opt/image.a \
+	../imlib/linux_x11/opt/winman.a \
+	../imlib/linux_x11/opt/gui.a \
+	../imlib/linux_x11/opt/dir.a \
+	../imlib/linux_x11/opt/time.a \
+	../imlib/linux_x11/opt/sound.a \
+	../imlib/linux_x11/opt/joy.a \
+	../imlib/linux_x11/opt/packet.a /lib/libXext.a /lib/libX11.a -lm
+
+src/net/mac/linux_x11/opt/tcpip.o : src/net/mac/tcpip.c
+	g++  -c -o src/net/mac/linux_x11/opt/tcpip.o src/net/mac/tcpip.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -DMANAGE_MEM -DNO_CHECK 
+
+src/linux_x11/opt/specache.o : src/specache.c
+	g++  -c -o src/linux_x11/opt/specache.o src/specache.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -DMANAGE_MEM -DNO_CHECK 
+
+../imlib/linux_x11/opt/sprite.o : ../imlib/sprite.c
+	g++  -c -o ../imlib/linux_x11/opt/sprite.o ../imlib/sprite.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -DMANAGE_MEM -DNO_CHECK 
+
+../imlib/linux_x11/opt/sprite.o : ../imlib/include/sprite.hpp
+../imlib/linux_x11/opt/sprite.o : ../imlib/include/emm.hpp
+../imlib/linux_x11/opt/sprite.o : ../imlib/include/ppmread.hpp
+../imlib/linux_x11/opt/sprite.o : ../imlib/include/gifread.hpp
+../imlib/linux_x11/opt/sprite.o : ../imlib/include/glread.hpp
+../imlib/linux_x11/opt/sprite.o : ../imlib/include/video.hpp
+../imlib/linux_x11/opt/sprite.o : ../imlib/include/image.hpp
+../imlib/linux_x11/opt/sprite.o : ../imlib/include/jmalloc.hpp
+../imlib/linux_x11/opt/sprite.o : ../imlib/include/specs.hpp
+../imlib/linux_x11/opt/sprite.o : ../imlib/include/linked.hpp
+../imlib/linux_x11/opt/sprite.o : ../imlib/include/palette.hpp
+../imlib/linux_x11/opt/sprite.o : ../imlib/include/mdlread.hpp
+../imlib/linux_x11/opt/sprite.o : ../imlib/include/dprint.hpp
+../imlib/linux_x11/opt/sprite.o : ../imlib/include/system.h
+../imlib/linux_x11/opt/sprite.o : ../imlib/include/macs.hpp
+src/linux_x11/opt/netcfg.o : src/netcfg.c
+	g++  -c -o src/linux_x11/opt/netcfg.o src/netcfg.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -DMANAGE_MEM -DNO_CHECK 
+
+src/linux_x11/opt/text_gui.o : src/text_gui.c
+	g++  -c -o src/linux_x11/opt/text_gui.o src/text_gui.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -DMANAGE_MEM -DNO_CHECK 
+
+src/linux_x11/opt/innet.o : src/innet.c
+	g++  -c -o src/linux_x11/opt/innet.o src/innet.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -DMANAGE_MEM -DNO_CHECK 
+
+src/net/unix/linux_x11/opt/gserver.o : src/net/unix/gserver.c
+	g++  -c -o src/net/unix/linux_x11/opt/gserver.o src/net/unix/gserver.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -DMANAGE_MEM -DNO_CHECK 
+
+src/net/unix/linux_x11/opt/gclient.o : src/net/unix/gclient.c
+	g++  -c -o src/net/unix/linux_x11/opt/gclient.o src/net/unix/gclient.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -DMANAGE_MEM -DNO_CHECK 
+
+src/net/unix/linux_x11/opt/fileman.o : src/net/unix/fileman.c
+	g++  -c -o src/net/unix/linux_x11/opt/fileman.o src/net/unix/fileman.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -DMANAGE_MEM -DNO_CHECK 
+
+src/net/linux_x11/opt/sock.o : src/net/sock.c
+	g++  -c -o src/net/linux_x11/opt/sock.o src/net/sock.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -DMANAGE_MEM -DNO_CHECK 
+
+src/linux_x11/opt/chat.o : src/chat.c
+	g++  -c -o src/linux_x11/opt/chat.o src/chat.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -DMANAGE_MEM -DNO_CHECK 
+
+src/linux_x11/opt/endgame.o : src/endgame.c
+	g++  -c -o src/linux_x11/opt/endgame.o src/endgame.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -DMANAGE_MEM -DNO_CHECK 
+
+src/linux_x11/opt/setup.o : src/setup.c
+	g++  -c -o src/linux_x11/opt/setup.o src/setup.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -DMANAGE_MEM -DNO_CHECK 
+
+src/linux_x11/opt/version.o : src/version.c
+	g++  -c -o src/linux_x11/opt/version.o src/version.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -DMANAGE_MEM -DNO_CHECK 
+
+src/linux_x11/opt/loadgame.o : src/loadgame.c
+	g++  -c -o src/linux_x11/opt/loadgame.o src/loadgame.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -DMANAGE_MEM -DNO_CHECK 
+
+src/linux_x11/opt/profile.o : src/profile.c
+	g++  -c -o src/linux_x11/opt/profile.o src/profile.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -DMANAGE_MEM -DNO_CHECK 
+
+src/linux_x11/opt/cop.o : src/cop.c
+	g++  -c -o src/linux_x11/opt/cop.o src/cop.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -DMANAGE_MEM -DNO_CHECK 
+
+src/linux_x11/opt/statbar.o : src/statbar.c
+	g++  -c -o src/linux_x11/opt/statbar.o src/statbar.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -DMANAGE_MEM -DNO_CHECK 
+
+src/linux_x11/opt/compiled.o : src/compiled.c
+	g++  -c -o src/linux_x11/opt/compiled.o src/compiled.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -DMANAGE_MEM -DNO_CHECK 
+
+src/linux_x11/opt/ant.o : src/ant.c
+	g++  -c -o src/linux_x11/opt/ant.o src/ant.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -DMANAGE_MEM -DNO_CHECK 
+
+src/linux_x11/opt/sensor.o : src/sensor.c
+	g++  -c -o src/linux_x11/opt/sensor.o src/sensor.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -DMANAGE_MEM -DNO_CHECK 
+
+src/linux_x11/opt/lisp_opt.o : src/lisp_opt.c
+	g++  -c -o src/linux_x11/opt/lisp_opt.o src/lisp_opt.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -DMANAGE_MEM -DNO_CHECK 
+
+src/linux_x11/opt/demo.o : src/demo.c
+	g++  -c -o src/linux_x11/opt/demo.o src/demo.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -DMANAGE_MEM -DNO_CHECK 
+
+src/linux_x11/opt/lcache.o : src/lcache.c
+	g++  -c -o src/linux_x11/opt/lcache.o src/lcache.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -DMANAGE_MEM -DNO_CHECK 
+
+src/linux_x11/opt/lisp_gc.o : src/lisp_gc.c
+	g++  -c -o src/linux_x11/opt/lisp_gc.o src/lisp_gc.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -DMANAGE_MEM -DNO_CHECK 
+
+src/linux_x11/opt/nfclient.o : src/nfclient.c
+	g++  -c -o src/linux_x11/opt/nfclient.o src/nfclient.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -DMANAGE_MEM -DNO_CHECK 
+
+src/linux_x11/opt/username.o : src/username.c
+	g++  -c -o src/linux_x11/opt/username.o src/username.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -DMANAGE_MEM -DNO_CHECK 
+
+src/linux_x11/opt/clisp.o : src/clisp.c
+	g++  -c -o src/linux_x11/opt/clisp.o src/clisp.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -DMANAGE_MEM -DNO_CHECK 
+
+src/linux_x11/opt/gui.o : src/gui.c
+	g++  -c -o src/linux_x11/opt/gui.o src/gui.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -DMANAGE_MEM -DNO_CHECK 
+
+src/linux_x11/opt/transp.o : src/transp.c
+	g++  -c -o src/linux_x11/opt/transp.o src/transp.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -DMANAGE_MEM -DNO_CHECK 
+
+src/linux_x11/opt/collide.o : src/collide.c
+	g++  -c -o src/linux_x11/opt/collide.o src/collide.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -DMANAGE_MEM -DNO_CHECK 
+
+src/linux_x11/opt/trig.o : src/trig.c
+	g++  -c -o src/linux_x11/opt/trig.o src/trig.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -DMANAGE_MEM -DNO_CHECK 
+
+src/linux_x11/opt/property.o : src/property.c
+	g++  -c -o src/linux_x11/opt/property.o src/property.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -DMANAGE_MEM -DNO_CHECK 
+
+src/linux_x11/opt/lisp.o : src/lisp.c
+	g++  -c -o src/linux_x11/opt/lisp.o src/lisp.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -DMANAGE_MEM -DNO_CHECK 
+
+src/linux_x11/opt/cache.o : src/cache.c
+	g++  -c -o src/linux_x11/opt/cache.o src/cache.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -DMANAGE_MEM -DNO_CHECK 
+
+src/linux_x11/opt/particle.o : src/particle.c
+	g++  -c -o src/linux_x11/opt/particle.o src/particle.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -DMANAGE_MEM -DNO_CHECK 
+
+src/linux_x11/opt/objects.o : src/objects.c
+	g++  -c -o src/linux_x11/opt/objects.o src/objects.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -DMANAGE_MEM -DNO_CHECK 
+
+src/linux_x11/opt/extend.o : src/extend.c
+	g++  -c -o src/linux_x11/opt/extend.o src/extend.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -DMANAGE_MEM -DNO_CHECK 
+
+src/linux_x11/opt/console.o : src/console.c
+	g++  -c -o src/linux_x11/opt/console.o src/console.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -DMANAGE_MEM -DNO_CHECK 
+
+src/linux_x11/opt/ability.o : src/ability.c
+	g++  -c -o src/linux_x11/opt/ability.o src/ability.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -DMANAGE_MEM -DNO_CHECK 
+
+src/linux_x11/opt/items.o : src/items.c
+	g++  -c -o src/linux_x11/opt/items.o src/items.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -DMANAGE_MEM -DNO_CHECK 
+
+src/linux_x11/opt/dev.o : src/dev.c
+	g++  -c -o src/linux_x11/opt/dev.o src/dev.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -DMANAGE_MEM -DNO_CHECK 
+
+src/linux_x11/opt/chars.o : src/chars.c
+	g++  -c -o src/linux_x11/opt/chars.o src/chars.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -DMANAGE_MEM -DNO_CHECK 
+
+src/linux_x11/opt/level.o : src/level.c
+	g++  -c -o src/linux_x11/opt/level.o src/level.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -DMANAGE_MEM -DNO_CHECK 
+
+src/linux_x11/opt/smallfnt.o : src/smallfnt.c
+	g++  -c -o src/linux_x11/opt/smallfnt.o src/smallfnt.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -DMANAGE_MEM -DNO_CHECK 
+
+src/linux_x11/opt/automap.o : src/automap.c
+	g++  -c -o src/linux_x11/opt/automap.o src/automap.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -DMANAGE_MEM -DNO_CHECK 
+
+src/linux_x11/opt/help.o : src/help.c
+	g++  -c -o src/linux_x11/opt/help.o src/help.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -DMANAGE_MEM -DNO_CHECK 
+
+src/linux_x11/opt/intsect.o : src/intsect.c
+	g++  -c -o src/linux_x11/opt/intsect.o src/intsect.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -DMANAGE_MEM -DNO_CHECK 
+
+src/linux_x11/opt/loader2.o : src/loader2.c
+	g++  -c -o src/linux_x11/opt/loader2.o src/loader2.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -DMANAGE_MEM -DNO_CHECK 
+
+src/linux_x11/opt/seq.o : src/seq.c
+	g++  -c -o src/linux_x11/opt/seq.o src/seq.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -DMANAGE_MEM -DNO_CHECK 
+
+src/linux_x11/opt/points.o : src/points.c
+	g++  -c -o src/linux_x11/opt/points.o src/points.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -DMANAGE_MEM -DNO_CHECK 
+
+src/linux_x11/opt/fnt6x13.o : src/fnt6x13.c
+	g++  -c -o src/linux_x11/opt/fnt6x13.o src/fnt6x13.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -DMANAGE_MEM -DNO_CHECK 
+
+src/linux_x11/opt/morpher.o : src/morpher.c
+	g++  -c -o src/linux_x11/opt/morpher.o src/morpher.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -DMANAGE_MEM -DNO_CHECK 
+
+src/linux_x11/opt/menu.o : src/menu.c
+	g++  -c -o src/linux_x11/opt/menu.o src/menu.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -DMANAGE_MEM -DNO_CHECK 
+
+src/linux_x11/opt/director.o : src/director.c
+	g++  -c -o src/linux_x11/opt/director.o src/director.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -DMANAGE_MEM -DNO_CHECK 
+
+src/linux_x11/opt/view.o : src/view.c
+	g++  -c -o src/linux_x11/opt/view.o src/view.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -DMANAGE_MEM -DNO_CHECK 
+
+src/linux_x11/opt/config.o : src/config.c
+	g++  -c -o src/linux_x11/opt/config.o src/config.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -DMANAGE_MEM -DNO_CHECK 
+
+src/linux_x11/opt/game.o : src/game.c
+	g++  -c -o src/linux_x11/opt/game.o src/game.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -DMANAGE_MEM -DNO_CHECK 
+
+src/linux_x11/opt/light.o : src/light.c
+	g++  -c -o src/linux_x11/opt/light.o src/light.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -DMANAGE_MEM -DNO_CHECK 
+
+src/linux_x11/opt/devsel.o : src/devsel.c
+	g++  -c -o src/linux_x11/opt/devsel.o src/devsel.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -DMANAGE_MEM -DNO_CHECK 
+
+src/linux_x11/opt/crc.o : src/crc.c
+	g++  -c -o src/linux_x11/opt/crc.o src/crc.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -DMANAGE_MEM -DNO_CHECK 
+
+src/linux_x11/opt/gamma.o : src/gamma.c
+	g++  -c -o src/linux_x11/opt/gamma.o src/gamma.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -DMANAGE_MEM -DNO_CHECK 
+
+src/linux_x11/opt/language.o : src/language.c
+	g++  -c -o src/linux_x11/opt/language.o src/language.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -DMANAGE_MEM -DNO_CHECK 
+
+
+LINUX_X11_gamexp_profile_o_files = \
+	src/net/mac/linux_x11/profile/tcpip.o \
+	src/linux_x11/profile/specache.o \
+	../imlib/linux_x11/profile/sprite.o \
+	src/linux_x11/profile/netcfg.o \
+	src/linux_x11/profile/text_gui.o \
+	src/linux_x11/profile/innet.o \
+	src/net/unix/linux_x11/profile/gserver.o \
+	src/net/unix/linux_x11/profile/gclient.o \
+	src/net/unix/linux_x11/profile/fileman.o \
+	src/net/linux_x11/profile/sock.o \
+	src/linux_x11/profile/chat.o \
+	src/linux_x11/profile/endgame.o \
+	src/linux_x11/profile/setup.o \
+	src/linux_x11/profile/version.o \
+	src/linux_x11/profile/loadgame.o \
+	src/linux_x11/profile/profile.o \
+	src/linux_x11/profile/cop.o \
+	src/linux_x11/profile/statbar.o \
+	src/linux_x11/profile/compiled.o \
+	src/linux_x11/profile/ant.o \
+	src/linux_x11/profile/sensor.o \
+	src/linux_x11/profile/lisp_opt.o \
+	src/linux_x11/profile/demo.o \
+	src/linux_x11/profile/lcache.o \
+	src/linux_x11/profile/lisp_gc.o \
+	src/linux_x11/profile/nfclient.o \
+	src/linux_x11/profile/username.o \
+	src/linux_x11/profile/clisp.o \
+	src/linux_x11/profile/gui.o \
+	src/linux_x11/profile/transp.o \
+	src/linux_x11/profile/collide.o \
+	src/linux_x11/profile/trig.o \
+	src/linux_x11/profile/property.o \
+	src/linux_x11/profile/lisp.o \
+	src/linux_x11/profile/cache.o \
+	src/linux_x11/profile/particle.o \
+	src/linux_x11/profile/objects.o \
+	src/linux_x11/profile/extend.o \
+	src/linux_x11/profile/console.o \
+	src/linux_x11/profile/ability.o \
+	src/linux_x11/profile/items.o \
+	src/linux_x11/profile/dev.o \
+	src/linux_x11/profile/chars.o \
+	src/linux_x11/profile/level.o \
+	src/linux_x11/profile/smallfnt.o \
+	src/linux_x11/profile/automap.o \
+	src/linux_x11/profile/help.o \
+	src/linux_x11/profile/intsect.o \
+	src/linux_x11/profile/loader2.o \
+	src/linux_x11/profile/seq.o \
+	src/linux_x11/profile/points.o \
+	src/linux_x11/profile/fnt6x13.o \
+	src/linux_x11/profile/morpher.o \
+	src/linux_x11/profile/menu.o \
+	src/linux_x11/profile/director.o \
+	src/linux_x11/profile/view.o \
+	src/linux_x11/profile/config.o \
+	src/linux_x11/profile/game.o \
+	src/linux_x11/profile/light.o \
+	src/linux_x11/profile/devsel.o \
+	src/linux_x11/profile/crc.o \
+	src/linux_x11/profile/gamma.o \
+	src/linux_x11/profile/language.o
+
+LINUX_SVGA_gamep_profile_o_files = \
+	src/net/mac/linux_svga/profile/tcpip.o \
+	src/linux_svga/profile/specache.o \
+	../imlib/linux_svga/profile/sprite.o \
+	src/linux_svga/profile/netcfg.o \
+	src/linux_svga/profile/text_gui.o \
+	src/linux_svga/profile/innet.o \
+	src/net/unix/linux_svga/profile/gserver.o \
+	src/net/unix/linux_svga/profile/gclient.o \
+	src/net/unix/linux_svga/profile/fileman.o \
+	src/net/linux_svga/profile/sock.o \
+	src/linux_svga/profile/chat.o \
+	src/linux_svga/profile/endgame.o \
+	src/linux_svga/profile/setup.o \
+	src/linux_svga/profile/version.o \
+	src/linux_svga/profile/loadgame.o \
+	src/linux_svga/profile/profile.o \
+	src/linux_svga/profile/cop.o \
+	src/linux_svga/profile/statbar.o \
+	src/linux_svga/profile/compiled.o \
+	src/linux_svga/profile/ant.o \
+	src/linux_svga/profile/sensor.o \
+	src/linux_svga/profile/lisp_opt.o \
+	src/linux_svga/profile/demo.o \
+	src/linux_svga/profile/lcache.o \
+	src/linux_svga/profile/lisp_gc.o \
+	src/linux_svga/profile/nfclient.o \
+	src/linux_svga/profile/username.o \
+	src/linux_svga/profile/clisp.o \
+	src/linux_svga/profile/gui.o \
+	src/linux_svga/profile/transp.o \
+	src/linux_svga/profile/collide.o \
+	src/linux_svga/profile/trig.o \
+	src/linux_svga/profile/property.o \
+	src/linux_svga/profile/lisp.o \
+	src/linux_svga/profile/cache.o \
+	src/linux_svga/profile/particle.o \
+	src/linux_svga/profile/objects.o \
+	src/linux_svga/profile/extend.o \
+	src/linux_svga/profile/console.o \
+	src/linux_svga/profile/ability.o \
+	src/linux_svga/profile/items.o \
+	src/linux_svga/profile/dev.o \
+	src/linux_svga/profile/chars.o \
+	src/linux_svga/profile/level.o \
+	src/linux_svga/profile/smallfnt.o \
+	src/linux_svga/profile/automap.o \
+	src/linux_svga/profile/help.o \
+	src/linux_svga/profile/intsect.o \
+	src/linux_svga/profile/loader2.o \
+	src/linux_svga/profile/seq.o \
+	src/linux_svga/profile/points.o \
+	src/linux_svga/profile/fnt6x13.o \
+	src/linux_svga/profile/morpher.o \
+	src/linux_svga/profile/menu.o \
+	src/linux_svga/profile/director.o \
+	src/linux_svga/profile/view.o \
+	src/linux_svga/profile/config.o \
+	src/linux_svga/profile/game.o \
+	src/linux_svga/profile/light.o \
+	src/linux_svga/profile/devsel.o \
+	src/linux_svga/profile/crc.o \
+	src/linux_svga/profile/gamma.o \
+	src/linux_svga/profile/language.o
+
+gamep : $(LINUX_SVGA_gamep_profile_o_files)
+	g++  -o gamep \
+	src/net/mac/linux_svga/profile/tcpip.o \
+	src/linux_svga/profile/specache.o \
+	../imlib/linux_svga/profile/sprite.o \
+	src/linux_svga/profile/netcfg.o \
+	src/linux_svga/profile/text_gui.o \
+	src/linux_svga/profile/innet.o \
+	src/net/unix/linux_svga/profile/gserver.o \
+	src/net/unix/linux_svga/profile/gclient.o \
+	src/net/unix/linux_svga/profile/fileman.o \
+	src/net/linux_svga/profile/sock.o \
+	src/linux_svga/profile/chat.o \
+	src/linux_svga/profile/endgame.o \
+	src/linux_svga/profile/setup.o \
+	src/linux_svga/profile/version.o \
+	src/linux_svga/profile/loadgame.o \
+	src/linux_svga/profile/profile.o \
+	src/linux_svga/profile/cop.o \
+	src/linux_svga/profile/statbar.o \
+	src/linux_svga/profile/compiled.o \
+	src/linux_svga/profile/ant.o \
+	src/linux_svga/profile/sensor.o \
+	src/linux_svga/profile/lisp_opt.o \
+	src/linux_svga/profile/demo.o \
+	src/linux_svga/profile/lcache.o \
+	src/linux_svga/profile/lisp_gc.o \
+	src/linux_svga/profile/nfclient.o \
+	src/linux_svga/profile/username.o \
+	src/linux_svga/profile/clisp.o \
+	src/linux_svga/profile/gui.o \
+	src/linux_svga/profile/transp.o \
+	src/linux_svga/profile/collide.o \
+	src/linux_svga/profile/trig.o \
+	src/linux_svga/profile/property.o \
+	src/linux_svga/profile/lisp.o \
+	src/linux_svga/profile/cache.o \
+	src/linux_svga/profile/particle.o \
+	src/linux_svga/profile/objects.o \
+	src/linux_svga/profile/extend.o \
+	src/linux_svga/profile/console.o \
+	src/linux_svga/profile/ability.o \
+	src/linux_svga/profile/items.o \
+	src/linux_svga/profile/dev.o \
+	src/linux_svga/profile/chars.o \
+	src/linux_svga/profile/level.o \
+	src/linux_svga/profile/smallfnt.o \
+	src/linux_svga/profile/automap.o \
+	src/linux_svga/profile/help.o \
+	src/linux_svga/profile/intsect.o \
+	src/linux_svga/profile/loader2.o \
+	src/linux_svga/profile/seq.o \
+	src/linux_svga/profile/points.o \
+	src/linux_svga/profile/fnt6x13.o \
+	src/linux_svga/profile/morpher.o \
+	src/linux_svga/profile/menu.o \
+	src/linux_svga/profile/director.o \
+	src/linux_svga/profile/view.o \
+	src/linux_svga/profile/config.o \
+	src/linux_svga/profile/game.o \
+	src/linux_svga/profile/light.o \
+	src/linux_svga/profile/devsel.o \
+	src/linux_svga/profile/crc.o \
+	src/linux_svga/profile/gamma.o \
+	src/linux_svga/profile/language.o \
+	../imlib/linux_svga/profile/image.a \
+	../imlib/linux_svga/profile/winman.a \
+	../imlib/linux_svga/profile/gui.a \
+	../imlib/linux_svga/profile/dir.a \
+	../imlib/linux_svga/profile/time.a \
+	../imlib/linux_svga/profile/sound.a \
+	../imlib/linux_svga/profile/joy.a \
+	../imlib/linux_svga/profile/packet.a -lvga -lm
+
+src/net/mac/linux_svga/profile/tcpip.o : src/net/mac/tcpip.c
+	g++  -c -o src/net/mac/linux_svga/profile/tcpip.o src/net/mac/tcpip.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_svga/profile/specache.o : src/specache.c
+	g++  -c -o src/linux_svga/profile/specache.o src/specache.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+../imlib/linux_svga/profile/sprite.o : ../imlib/sprite.c
+	g++  -c -o ../imlib/linux_svga/profile/sprite.o ../imlib/sprite.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+../imlib/linux_svga/profile/sprite.o : ../imlib/include/sprite.hpp
+../imlib/linux_svga/profile/sprite.o : ../imlib/include/emm.hpp
+../imlib/linux_svga/profile/sprite.o : ../imlib/include/ppmread.hpp
+../imlib/linux_svga/profile/sprite.o : ../imlib/include/gifread.hpp
+../imlib/linux_svga/profile/sprite.o : ../imlib/include/glread.hpp
+../imlib/linux_svga/profile/sprite.o : ../imlib/include/video.hpp
+../imlib/linux_svga/profile/sprite.o : ../imlib/include/image.hpp
+../imlib/linux_svga/profile/sprite.o : ../imlib/include/jmalloc.hpp
+../imlib/linux_svga/profile/sprite.o : ../imlib/include/specs.hpp
+../imlib/linux_svga/profile/sprite.o : ../imlib/include/linked.hpp
+../imlib/linux_svga/profile/sprite.o : ../imlib/include/palette.hpp
+../imlib/linux_svga/profile/sprite.o : ../imlib/include/mdlread.hpp
+../imlib/linux_svga/profile/sprite.o : ../imlib/include/dprint.hpp
+../imlib/linux_svga/profile/sprite.o : ../imlib/include/system.h
+../imlib/linux_svga/profile/sprite.o : ../imlib/include/macs.hpp
+src/linux_svga/profile/netcfg.o : src/netcfg.c
+	g++  -c -o src/linux_svga/profile/netcfg.o src/netcfg.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_svga/profile/text_gui.o : src/text_gui.c
+	g++  -c -o src/linux_svga/profile/text_gui.o src/text_gui.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_svga/profile/innet.o : src/innet.c
+	g++  -c -o src/linux_svga/profile/innet.o src/innet.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+src/net/unix/linux_svga/profile/gserver.o : src/net/unix/gserver.c
+	g++  -c -o src/net/unix/linux_svga/profile/gserver.o src/net/unix/gserver.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+src/net/unix/linux_svga/profile/gclient.o : src/net/unix/gclient.c
+	g++  -c -o src/net/unix/linux_svga/profile/gclient.o src/net/unix/gclient.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+src/net/unix/linux_svga/profile/fileman.o : src/net/unix/fileman.c
+	g++  -c -o src/net/unix/linux_svga/profile/fileman.o src/net/unix/fileman.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+src/net/linux_svga/profile/sock.o : src/net/sock.c
+	g++  -c -o src/net/linux_svga/profile/sock.o src/net/sock.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_svga/profile/chat.o : src/chat.c
+	g++  -c -o src/linux_svga/profile/chat.o src/chat.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_svga/profile/endgame.o : src/endgame.c
+	g++  -c -o src/linux_svga/profile/endgame.o src/endgame.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_svga/profile/setup.o : src/setup.c
+	g++  -c -o src/linux_svga/profile/setup.o src/setup.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_svga/profile/version.o : src/version.c
+	g++  -c -o src/linux_svga/profile/version.o src/version.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_svga/profile/loadgame.o : src/loadgame.c
+	g++  -c -o src/linux_svga/profile/loadgame.o src/loadgame.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_svga/profile/profile.o : src/profile.c
+	g++  -c -o src/linux_svga/profile/profile.o src/profile.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_svga/profile/cop.o : src/cop.c
+	g++  -c -o src/linux_svga/profile/cop.o src/cop.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_svga/profile/statbar.o : src/statbar.c
+	g++  -c -o src/linux_svga/profile/statbar.o src/statbar.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_svga/profile/compiled.o : src/compiled.c
+	g++  -c -o src/linux_svga/profile/compiled.o src/compiled.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_svga/profile/ant.o : src/ant.c
+	g++  -c -o src/linux_svga/profile/ant.o src/ant.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_svga/profile/sensor.o : src/sensor.c
+	g++  -c -o src/linux_svga/profile/sensor.o src/sensor.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_svga/profile/lisp_opt.o : src/lisp_opt.c
+	g++  -c -o src/linux_svga/profile/lisp_opt.o src/lisp_opt.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_svga/profile/demo.o : src/demo.c
+	g++  -c -o src/linux_svga/profile/demo.o src/demo.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_svga/profile/lcache.o : src/lcache.c
+	g++  -c -o src/linux_svga/profile/lcache.o src/lcache.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_svga/profile/lisp_gc.o : src/lisp_gc.c
+	g++  -c -o src/linux_svga/profile/lisp_gc.o src/lisp_gc.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_svga/profile/nfclient.o : src/nfclient.c
+	g++  -c -o src/linux_svga/profile/nfclient.o src/nfclient.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_svga/profile/username.o : src/username.c
+	g++  -c -o src/linux_svga/profile/username.o src/username.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_svga/profile/clisp.o : src/clisp.c
+	g++  -c -o src/linux_svga/profile/clisp.o src/clisp.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_svga/profile/gui.o : src/gui.c
+	g++  -c -o src/linux_svga/profile/gui.o src/gui.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_svga/profile/transp.o : src/transp.c
+	g++  -c -o src/linux_svga/profile/transp.o src/transp.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_svga/profile/collide.o : src/collide.c
+	g++  -c -o src/linux_svga/profile/collide.o src/collide.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_svga/profile/trig.o : src/trig.c
+	g++  -c -o src/linux_svga/profile/trig.o src/trig.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_svga/profile/property.o : src/property.c
+	g++  -c -o src/linux_svga/profile/property.o src/property.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_svga/profile/lisp.o : src/lisp.c
+	g++  -c -o src/linux_svga/profile/lisp.o src/lisp.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_svga/profile/cache.o : src/cache.c
+	g++  -c -o src/linux_svga/profile/cache.o src/cache.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_svga/profile/particle.o : src/particle.c
+	g++  -c -o src/linux_svga/profile/particle.o src/particle.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_svga/profile/objects.o : src/objects.c
+	g++  -c -o src/linux_svga/profile/objects.o src/objects.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_svga/profile/extend.o : src/extend.c
+	g++  -c -o src/linux_svga/profile/extend.o src/extend.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_svga/profile/console.o : src/console.c
+	g++  -c -o src/linux_svga/profile/console.o src/console.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_svga/profile/ability.o : src/ability.c
+	g++  -c -o src/linux_svga/profile/ability.o src/ability.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_svga/profile/items.o : src/items.c
+	g++  -c -o src/linux_svga/profile/items.o src/items.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_svga/profile/dev.o : src/dev.c
+	g++  -c -o src/linux_svga/profile/dev.o src/dev.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_svga/profile/chars.o : src/chars.c
+	g++  -c -o src/linux_svga/profile/chars.o src/chars.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_svga/profile/level.o : src/level.c
+	g++  -c -o src/linux_svga/profile/level.o src/level.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_svga/profile/smallfnt.o : src/smallfnt.c
+	g++  -c -o src/linux_svga/profile/smallfnt.o src/smallfnt.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_svga/profile/automap.o : src/automap.c
+	g++  -c -o src/linux_svga/profile/automap.o src/automap.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_svga/profile/help.o : src/help.c
+	g++  -c -o src/linux_svga/profile/help.o src/help.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_svga/profile/intsect.o : src/intsect.c
+	g++  -c -o src/linux_svga/profile/intsect.o src/intsect.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_svga/profile/loader2.o : src/loader2.c
+	g++  -c -o src/linux_svga/profile/loader2.o src/loader2.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_svga/profile/seq.o : src/seq.c
+	g++  -c -o src/linux_svga/profile/seq.o src/seq.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_svga/profile/points.o : src/points.c
+	g++  -c -o src/linux_svga/profile/points.o src/points.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_svga/profile/fnt6x13.o : src/fnt6x13.c
+	g++  -c -o src/linux_svga/profile/fnt6x13.o src/fnt6x13.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_svga/profile/morpher.o : src/morpher.c
+	g++  -c -o src/linux_svga/profile/morpher.o src/morpher.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_svga/profile/menu.o : src/menu.c
+	g++  -c -o src/linux_svga/profile/menu.o src/menu.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_svga/profile/director.o : src/director.c
+	g++  -c -o src/linux_svga/profile/director.o src/director.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_svga/profile/view.o : src/view.c
+	g++  -c -o src/linux_svga/profile/view.o src/view.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_svga/profile/config.o : src/config.c
+	g++  -c -o src/linux_svga/profile/config.o src/config.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_svga/profile/game.o : src/game.c
+	g++  -c -o src/linux_svga/profile/game.o src/game.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_svga/profile/light.o : src/light.c
+	g++  -c -o src/linux_svga/profile/light.o src/light.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_svga/profile/devsel.o : src/devsel.c
+	g++  -c -o src/linux_svga/profile/devsel.o src/devsel.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_svga/profile/crc.o : src/crc.c
+	g++  -c -o src/linux_svga/profile/crc.o src/crc.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_svga/profile/gamma.o : src/gamma.c
+	g++  -c -o src/linux_svga/profile/gamma.o src/gamma.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_svga/profile/language.o : src/language.c
+	g++  -c -o src/linux_svga/profile/language.o src/language.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+
+gamexp : $(LINUX_X11_gamexp_profile_o_files)
+	g++  -o gamexp \
+	src/net/mac/linux_x11/profile/tcpip.o \
+	src/linux_x11/profile/specache.o \
+	../imlib/linux_x11/profile/sprite.o \
+	src/linux_x11/profile/netcfg.o \
+	src/linux_x11/profile/text_gui.o \
+	src/linux_x11/profile/innet.o \
+	src/net/unix/linux_x11/profile/gserver.o \
+	src/net/unix/linux_x11/profile/gclient.o \
+	src/net/unix/linux_x11/profile/fileman.o \
+	src/net/linux_x11/profile/sock.o \
+	src/linux_x11/profile/chat.o \
+	src/linux_x11/profile/endgame.o \
+	src/linux_x11/profile/setup.o \
+	src/linux_x11/profile/version.o \
+	src/linux_x11/profile/loadgame.o \
+	src/linux_x11/profile/profile.o \
+	src/linux_x11/profile/cop.o \
+	src/linux_x11/profile/statbar.o \
+	src/linux_x11/profile/compiled.o \
+	src/linux_x11/profile/ant.o \
+	src/linux_x11/profile/sensor.o \
+	src/linux_x11/profile/lisp_opt.o \
+	src/linux_x11/profile/demo.o \
+	src/linux_x11/profile/lcache.o \
+	src/linux_x11/profile/lisp_gc.o \
+	src/linux_x11/profile/nfclient.o \
+	src/linux_x11/profile/username.o \
+	src/linux_x11/profile/clisp.o \
+	src/linux_x11/profile/gui.o \
+	src/linux_x11/profile/transp.o \
+	src/linux_x11/profile/collide.o \
+	src/linux_x11/profile/trig.o \
+	src/linux_x11/profile/property.o \
+	src/linux_x11/profile/lisp.o \
+	src/linux_x11/profile/cache.o \
+	src/linux_x11/profile/particle.o \
+	src/linux_x11/profile/objects.o \
+	src/linux_x11/profile/extend.o \
+	src/linux_x11/profile/console.o \
+	src/linux_x11/profile/ability.o \
+	src/linux_x11/profile/items.o \
+	src/linux_x11/profile/dev.o \
+	src/linux_x11/profile/chars.o \
+	src/linux_x11/profile/level.o \
+	src/linux_x11/profile/smallfnt.o \
+	src/linux_x11/profile/automap.o \
+	src/linux_x11/profile/help.o \
+	src/linux_x11/profile/intsect.o \
+	src/linux_x11/profile/loader2.o \
+	src/linux_x11/profile/seq.o \
+	src/linux_x11/profile/points.o \
+	src/linux_x11/profile/fnt6x13.o \
+	src/linux_x11/profile/morpher.o \
+	src/linux_x11/profile/menu.o \
+	src/linux_x11/profile/director.o \
+	src/linux_x11/profile/view.o \
+	src/linux_x11/profile/config.o \
+	src/linux_x11/profile/game.o \
+	src/linux_x11/profile/light.o \
+	src/linux_x11/profile/devsel.o \
+	src/linux_x11/profile/crc.o \
+	src/linux_x11/profile/gamma.o \
+	src/linux_x11/profile/language.o \
+	../imlib/linux_x11/profile/image.a \
+	../imlib/linux_x11/profile/winman.a \
+	../imlib/linux_x11/profile/gui.a \
+	../imlib/linux_x11/profile/dir.a \
+	../imlib/linux_x11/profile/time.a \
+	../imlib/linux_x11/profile/sound.a \
+	../imlib/linux_x11/profile/joy.a \
+	../imlib/linux_x11/profile/packet.a /lib/libXext.a /lib/libX11.a -lm
+
+src/net/mac/linux_x11/profile/tcpip.o : src/net/mac/tcpip.c
+	g++  -c -o src/net/mac/linux_x11/profile/tcpip.o src/net/mac/tcpip.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_x11/profile/specache.o : src/specache.c
+	g++  -c -o src/linux_x11/profile/specache.o src/specache.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+../imlib/linux_x11/profile/sprite.o : ../imlib/sprite.c
+	g++  -c -o ../imlib/linux_x11/profile/sprite.o ../imlib/sprite.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+../imlib/linux_x11/profile/sprite.o : ../imlib/include/sprite.hpp
+../imlib/linux_x11/profile/sprite.o : ../imlib/include/emm.hpp
+../imlib/linux_x11/profile/sprite.o : ../imlib/include/ppmread.hpp
+../imlib/linux_x11/profile/sprite.o : ../imlib/include/gifread.hpp
+../imlib/linux_x11/profile/sprite.o : ../imlib/include/glread.hpp
+../imlib/linux_x11/profile/sprite.o : ../imlib/include/video.hpp
+../imlib/linux_x11/profile/sprite.o : ../imlib/include/image.hpp
+../imlib/linux_x11/profile/sprite.o : ../imlib/include/jmalloc.hpp
+../imlib/linux_x11/profile/sprite.o : ../imlib/include/specs.hpp
+../imlib/linux_x11/profile/sprite.o : ../imlib/include/linked.hpp
+../imlib/linux_x11/profile/sprite.o : ../imlib/include/palette.hpp
+../imlib/linux_x11/profile/sprite.o : ../imlib/include/mdlread.hpp
+../imlib/linux_x11/profile/sprite.o : ../imlib/include/dprint.hpp
+../imlib/linux_x11/profile/sprite.o : ../imlib/include/system.h
+../imlib/linux_x11/profile/sprite.o : ../imlib/include/macs.hpp
+src/linux_x11/profile/netcfg.o : src/netcfg.c
+	g++  -c -o src/linux_x11/profile/netcfg.o src/netcfg.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_x11/profile/text_gui.o : src/text_gui.c
+	g++  -c -o src/linux_x11/profile/text_gui.o src/text_gui.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_x11/profile/innet.o : src/innet.c
+	g++  -c -o src/linux_x11/profile/innet.o src/innet.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+src/net/unix/linux_x11/profile/gserver.o : src/net/unix/gserver.c
+	g++  -c -o src/net/unix/linux_x11/profile/gserver.o src/net/unix/gserver.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+src/net/unix/linux_x11/profile/gclient.o : src/net/unix/gclient.c
+	g++  -c -o src/net/unix/linux_x11/profile/gclient.o src/net/unix/gclient.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+src/net/unix/linux_x11/profile/fileman.o : src/net/unix/fileman.c
+	g++  -c -o src/net/unix/linux_x11/profile/fileman.o src/net/unix/fileman.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+src/net/linux_x11/profile/sock.o : src/net/sock.c
+	g++  -c -o src/net/linux_x11/profile/sock.o src/net/sock.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_x11/profile/chat.o : src/chat.c
+	g++  -c -o src/linux_x11/profile/chat.o src/chat.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_x11/profile/endgame.o : src/endgame.c
+	g++  -c -o src/linux_x11/profile/endgame.o src/endgame.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_x11/profile/setup.o : src/setup.c
+	g++  -c -o src/linux_x11/profile/setup.o src/setup.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_x11/profile/version.o : src/version.c
+	g++  -c -o src/linux_x11/profile/version.o src/version.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_x11/profile/loadgame.o : src/loadgame.c
+	g++  -c -o src/linux_x11/profile/loadgame.o src/loadgame.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_x11/profile/profile.o : src/profile.c
+	g++  -c -o src/linux_x11/profile/profile.o src/profile.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_x11/profile/cop.o : src/cop.c
+	g++  -c -o src/linux_x11/profile/cop.o src/cop.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_x11/profile/statbar.o : src/statbar.c
+	g++  -c -o src/linux_x11/profile/statbar.o src/statbar.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_x11/profile/compiled.o : src/compiled.c
+	g++  -c -o src/linux_x11/profile/compiled.o src/compiled.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_x11/profile/ant.o : src/ant.c
+	g++  -c -o src/linux_x11/profile/ant.o src/ant.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_x11/profile/sensor.o : src/sensor.c
+	g++  -c -o src/linux_x11/profile/sensor.o src/sensor.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_x11/profile/lisp_opt.o : src/lisp_opt.c
+	g++  -c -o src/linux_x11/profile/lisp_opt.o src/lisp_opt.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_x11/profile/demo.o : src/demo.c
+	g++  -c -o src/linux_x11/profile/demo.o src/demo.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_x11/profile/lcache.o : src/lcache.c
+	g++  -c -o src/linux_x11/profile/lcache.o src/lcache.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_x11/profile/lisp_gc.o : src/lisp_gc.c
+	g++  -c -o src/linux_x11/profile/lisp_gc.o src/lisp_gc.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_x11/profile/nfclient.o : src/nfclient.c
+	g++  -c -o src/linux_x11/profile/nfclient.o src/nfclient.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_x11/profile/username.o : src/username.c
+	g++  -c -o src/linux_x11/profile/username.o src/username.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_x11/profile/clisp.o : src/clisp.c
+	g++  -c -o src/linux_x11/profile/clisp.o src/clisp.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_x11/profile/gui.o : src/gui.c
+	g++  -c -o src/linux_x11/profile/gui.o src/gui.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_x11/profile/transp.o : src/transp.c
+	g++  -c -o src/linux_x11/profile/transp.o src/transp.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_x11/profile/collide.o : src/collide.c
+	g++  -c -o src/linux_x11/profile/collide.o src/collide.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_x11/profile/trig.o : src/trig.c
+	g++  -c -o src/linux_x11/profile/trig.o src/trig.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_x11/profile/property.o : src/property.c
+	g++  -c -o src/linux_x11/profile/property.o src/property.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_x11/profile/lisp.o : src/lisp.c
+	g++  -c -o src/linux_x11/profile/lisp.o src/lisp.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_x11/profile/cache.o : src/cache.c
+	g++  -c -o src/linux_x11/profile/cache.o src/cache.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_x11/profile/particle.o : src/particle.c
+	g++  -c -o src/linux_x11/profile/particle.o src/particle.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_x11/profile/objects.o : src/objects.c
+	g++  -c -o src/linux_x11/profile/objects.o src/objects.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_x11/profile/extend.o : src/extend.c
+	g++  -c -o src/linux_x11/profile/extend.o src/extend.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_x11/profile/console.o : src/console.c
+	g++  -c -o src/linux_x11/profile/console.o src/console.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_x11/profile/ability.o : src/ability.c
+	g++  -c -o src/linux_x11/profile/ability.o src/ability.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_x11/profile/items.o : src/items.c
+	g++  -c -o src/linux_x11/profile/items.o src/items.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_x11/profile/dev.o : src/dev.c
+	g++  -c -o src/linux_x11/profile/dev.o src/dev.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_x11/profile/chars.o : src/chars.c
+	g++  -c -o src/linux_x11/profile/chars.o src/chars.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_x11/profile/level.o : src/level.c
+	g++  -c -o src/linux_x11/profile/level.o src/level.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_x11/profile/smallfnt.o : src/smallfnt.c
+	g++  -c -o src/linux_x11/profile/smallfnt.o src/smallfnt.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_x11/profile/automap.o : src/automap.c
+	g++  -c -o src/linux_x11/profile/automap.o src/automap.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_x11/profile/help.o : src/help.c
+	g++  -c -o src/linux_x11/profile/help.o src/help.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_x11/profile/intsect.o : src/intsect.c
+	g++  -c -o src/linux_x11/profile/intsect.o src/intsect.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_x11/profile/loader2.o : src/loader2.c
+	g++  -c -o src/linux_x11/profile/loader2.o src/loader2.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_x11/profile/seq.o : src/seq.c
+	g++  -c -o src/linux_x11/profile/seq.o src/seq.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_x11/profile/points.o : src/points.c
+	g++  -c -o src/linux_x11/profile/points.o src/points.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_x11/profile/fnt6x13.o : src/fnt6x13.c
+	g++  -c -o src/linux_x11/profile/fnt6x13.o src/fnt6x13.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_x11/profile/morpher.o : src/morpher.c
+	g++  -c -o src/linux_x11/profile/morpher.o src/morpher.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_x11/profile/menu.o : src/menu.c
+	g++  -c -o src/linux_x11/profile/menu.o src/menu.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_x11/profile/director.o : src/director.c
+	g++  -c -o src/linux_x11/profile/director.o src/director.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_x11/profile/view.o : src/view.c
+	g++  -c -o src/linux_x11/profile/view.o src/view.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_x11/profile/config.o : src/config.c
+	g++  -c -o src/linux_x11/profile/config.o src/config.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_x11/profile/game.o : src/game.c
+	g++  -c -o src/linux_x11/profile/game.o src/game.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_x11/profile/light.o : src/light.c
+	g++  -c -o src/linux_x11/profile/light.o src/light.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_x11/profile/devsel.o : src/devsel.c
+	g++  -c -o src/linux_x11/profile/devsel.o src/devsel.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_x11/profile/crc.o : src/crc.c
+	g++  -c -o src/linux_x11/profile/crc.o src/crc.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_x11/profile/gamma.o : src/gamma.c
+	g++  -c -o src/linux_x11/profile/gamma.o src/gamma.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+src/linux_x11/profile/language.o : src/language.c
+	g++  -c -o src/linux_x11/profile/language.o src/language.c -Iinc -I../imlib/include -Isrc/net/inc -Isrc/net/unix -Isrc/net/inc -O2 -g -pg -DMEM_CHECK -DMANAGE_MEM 
+
+

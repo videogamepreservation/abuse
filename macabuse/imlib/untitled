@@ -1,0 +1,8 @@
+#ifndef HACKS_HPP
+#define HACKS_HPP
+// hacks to let mac stuff do its stuff macishly
+
+extern int HackScreen;
+extern int HackMode;
+
+#endif

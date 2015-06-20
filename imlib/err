@@ -1,0 +1,11 @@
+WATCOM Make Version 3.2
+Copyright by WATCOM International Corp. 1988, 1994. All rights reserved.
+WATCOM is a trademark of WATCOM International Corp.
+	set include=c:\watcom\h;include;e:\sos\include
+	wpp386 port\dos4gw\sound.c -fo=port\dos4gw\wat\opt\sound.obj /omaxne /zp1 /zq -DNO_CHECK -DMANAGE_MEM
+	wlib /n @.\wat\opt\sound.lnk
+WATCOM Library Manager Version 3.0
+Copyright by WATCOM International Corp. 1988, 1994. All rights reserved.
+WATCOM is a trademark of WATCOM International Corp.
+	echo Made opt
+Made opt

@@ -1,0 +1,73 @@
+WATCOM Linker Version 10.0
+Copyright by WATCOM International Corp. 1985, 1994. All rights reserved.
+Created on:       96/01/21 22:48:48
+Warning(1008): cannot open clib3r.lib : file not found
+Warning(1008): cannot open plib3r.lib : file not found
+Warning(1008): cannot open math387r.lib : file not found
+Warning(1008): cannot open emu387.lib : file not found
+Executable Image: remap.exe
+creating an OS/2 linear executable
+Warning(1028): malloc_ is an undefined reference
+Warning(1028): printf_ is an undefined reference
+Warning(1028): _cstart_ is an undefined reference
+
+
+                        +------------+
+                        |   Groups   |
+                        +------------+
+
+Group                           Address              Size
+=====                           =======              ====
+
+DGROUP                          0002:00000000        0000002c
+
+
+
+                        +--------------+
+                        |   Segments   |
+                        +--------------+
+
+Segment                Class          Group          Address         Size
+=======                =====          =====          =======         ====
+
+_TEXT                  CODE                          0001:00000000   0000018c
+CONST                  DATA           DGROUP         0002:00000000   0000002a
+CONST2                 DATA           DGROUP         0002:0000002c   00000000
+_DATA                  DATA           DGROUP         0002:0000002c   00000000
+_BSS                   BSS            DGROUP         0002:0000002c   00000000
+
+
+                        +----------------+
+                        |   Memory Map   |
+                        +----------------+
+
+* = unreferenced symbol
++ = symbol only referenced locally
+
+Address        Symbol
+=======        ======
+
+Module: remap.obj(F:\ABUSE\SRC\remap.c)
+0001:00000000* main_
+Module: remap8x4.obj(remap8x4.asm)
+0001:0000011c  remap_8x4_block_
+Warning(1014): stack segment not found
+Warning(1023): no starting address found, using 0001:00000000
+
+
+                        +---------------------------+
+                        |   Unresolved References   |
+                        +---------------------------+
+
+Undefined Symbol                Referenced by
+================                =============
+
+malloc_                         remap.obj(F:\ABUSE\SRC\remap.c)
+printf_                         remap.obj(F:\ABUSE\SRC\remap.c)
+_cstart_                        remap.obj(F:\ABUSE\SRC\remap.c)
+
+
+                        +--------------------+
+                        |   Libraries Used   |
+                        +--------------------+
+

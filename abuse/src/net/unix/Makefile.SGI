@@ -1,0 +1,227 @@
+all : opt
+
+debug : undrv.sgi
+	echo Made debug
+
+opt : undrvo.sgi
+	echo Made opt
+
+profile : undrvp.sgi
+	echo Made profile
+
+SGI_undrv.sgi_debug_o_files = \
+	./SGI/debug/undrv.o \
+	./SGI/debug/tcpip.o \
+	./SGI/debug/netdrv.o \
+	./SGI/debug/gserver.o \
+	./SGI/debug/gclient.o \
+	./SGI/debug/fileman.o
+
+undrv.sgi : $(SGI_undrv.sgi_debug_o_files)
+	g++ -o undrv.sgi \
+	./SGI/debug/undrv.o \
+	./SGI/debug/tcpip.o \
+	./SGI/debug/netdrv.o \
+	./SGI/debug/gserver.o \
+	./SGI/debug/gclient.o \
+	./SGI/debug/fileman.o -lX11 -lXext -lm
+
+./SGI/debug/undrv.o : undrv.c
+	g++ -c -o ./SGI/debug/undrv.o undrv.c -I../inc -g -DMEM_CHECK -DMANAGE_MEM 
+
+./SGI/debug/undrv.o : tcpip.hpp
+./SGI/debug/undrv.o : fileman.hpp
+./SGI/debug/undrv.o : gclient.hpp
+./SGI/debug/undrv.o : gserver.hpp
+./SGI/debug/undrv.o : netdrv.hpp
+./SGI/debug/undrv.o : ../inc/netface.hpp
+./SGI/debug/undrv.o : ../inc/sock.hpp
+./SGI/debug/undrv.o : undrv.hpp
+./SGI/debug/undrv.o : ../inc/indian.hpp
+./SGI/debug/tcpip.o : tcpip.c
+	g++ -c -o ./SGI/debug/tcpip.o tcpip.c -I../inc -g -DMEM_CHECK -DMANAGE_MEM 
+
+./SGI/debug/tcpip.o : ../inc/sock.hpp
+./SGI/debug/tcpip.o : tcpip.hpp
+./SGI/debug/netdrv.o : netdrv.c
+	g++ -c -o ./SGI/debug/netdrv.o netdrv.c -I../inc -g -DMEM_CHECK -DMANAGE_MEM 
+
+./SGI/debug/netdrv.o : tcpip.hpp
+./SGI/debug/netdrv.o : undrv.hpp
+./SGI/debug/netdrv.o : ../inc/sock.hpp
+./SGI/debug/netdrv.o : gserver.hpp
+./SGI/debug/netdrv.o : ../inc/indian.hpp
+./SGI/debug/netdrv.o : ../inc/netface.hpp
+./SGI/debug/netdrv.o : netdrv.hpp
+./SGI/debug/gserver.o : gserver.c
+	g++ -c -o ./SGI/debug/gserver.o gserver.c -I../inc -g -DMEM_CHECK -DMANAGE_MEM 
+
+./SGI/debug/gserver.o : undrv.hpp
+./SGI/debug/gserver.o : ../inc/indian.hpp
+./SGI/debug/gserver.o : ../inc/netface.hpp
+./SGI/debug/gserver.o : netdrv.hpp
+./SGI/debug/gserver.o : ../inc/sock.hpp
+./SGI/debug/gserver.o : gserver.hpp
+./SGI/debug/gclient.o : gclient.c
+	g++ -c -o ./SGI/debug/gclient.o gclient.c -I../inc -g -DMEM_CHECK -DMANAGE_MEM 
+
+./SGI/debug/gclient.o : undrv.hpp
+./SGI/debug/gclient.o : netdrv.hpp
+./SGI/debug/gclient.o : ../inc/indian.hpp
+./SGI/debug/gclient.o : ../inc/netface.hpp
+./SGI/debug/gclient.o : ../inc/sock.hpp
+./SGI/debug/gclient.o : gclient.hpp
+./SGI/debug/fileman.o : fileman.c
+	g++ -c -o ./SGI/debug/fileman.o fileman.c -I../inc -g -DMEM_CHECK -DMANAGE_MEM 
+
+./SGI/debug/fileman.o : netdrv.hpp
+./SGI/debug/fileman.o : undrv.hpp
+./SGI/debug/fileman.o : ../inc/indian.hpp
+./SGI/debug/fileman.o : ../inc/netface.hpp
+./SGI/debug/fileman.o : ../inc/sock.hpp
+./SGI/debug/fileman.o : fileman.hpp
+
+SGI_undrvo.sgi_opt_o_files = \
+	./SGI/opt/undrv.o \
+	./SGI/opt/tcpip.o \
+	./SGI/opt/netdrv.o \
+	./SGI/opt/gserver.o \
+	./SGI/opt/gclient.o \
+	./SGI/opt/fileman.o
+
+undrvo.sgi : $(SGI_undrvo.sgi_opt_o_files)
+	g++ -o undrvo.sgi \
+	./SGI/opt/undrv.o \
+	./SGI/opt/tcpip.o \
+	./SGI/opt/netdrv.o \
+	./SGI/opt/gserver.o \
+	./SGI/opt/gclient.o \
+	./SGI/opt/fileman.o -lX11 -lXext -lm
+
+./SGI/opt/undrv.o : undrv.c
+	g++ -c -o ./SGI/opt/undrv.o undrv.c -I../inc -O2 -DMANAGE_MEM -DNO_CHECK 
+
+./SGI/opt/undrv.o : tcpip.hpp
+./SGI/opt/undrv.o : fileman.hpp
+./SGI/opt/undrv.o : gclient.hpp
+./SGI/opt/undrv.o : gserver.hpp
+./SGI/opt/undrv.o : netdrv.hpp
+./SGI/opt/undrv.o : ../inc/netface.hpp
+./SGI/opt/undrv.o : ../inc/sock.hpp
+./SGI/opt/undrv.o : undrv.hpp
+./SGI/opt/undrv.o : ../inc/indian.hpp
+./SGI/opt/tcpip.o : tcpip.c
+	g++ -c -o ./SGI/opt/tcpip.o tcpip.c -I../inc -O2 -DMANAGE_MEM -DNO_CHECK 
+
+./SGI/opt/tcpip.o : ../inc/sock.hpp
+./SGI/opt/tcpip.o : tcpip.hpp
+./SGI/opt/netdrv.o : netdrv.c
+	g++ -c -o ./SGI/opt/netdrv.o netdrv.c -I../inc -O2 -DMANAGE_MEM -DNO_CHECK 
+
+./SGI/opt/netdrv.o : tcpip.hpp
+./SGI/opt/netdrv.o : undrv.hpp
+./SGI/opt/netdrv.o : ../inc/sock.hpp
+./SGI/opt/netdrv.o : gserver.hpp
+./SGI/opt/netdrv.o : ../inc/indian.hpp
+./SGI/opt/netdrv.o : ../inc/netface.hpp
+./SGI/opt/netdrv.o : netdrv.hpp
+./SGI/opt/gserver.o : gserver.c
+	g++ -c -o ./SGI/opt/gserver.o gserver.c -I../inc -O2 -DMANAGE_MEM -DNO_CHECK 
+
+./SGI/opt/gserver.o : undrv.hpp
+./SGI/opt/gserver.o : ../inc/indian.hpp
+./SGI/opt/gserver.o : ../inc/netface.hpp
+./SGI/opt/gserver.o : netdrv.hpp
+./SGI/opt/gserver.o : ../inc/sock.hpp
+./SGI/opt/gserver.o : gserver.hpp
+./SGI/opt/gclient.o : gclient.c
+	g++ -c -o ./SGI/opt/gclient.o gclient.c -I../inc -O2 -DMANAGE_MEM -DNO_CHECK 
+
+./SGI/opt/gclient.o : undrv.hpp
+./SGI/opt/gclient.o : netdrv.hpp
+./SGI/opt/gclient.o : ../inc/indian.hpp
+./SGI/opt/gclient.o : ../inc/netface.hpp
+./SGI/opt/gclient.o : ../inc/sock.hpp
+./SGI/opt/gclient.o : gclient.hpp
+./SGI/opt/fileman.o : fileman.c
+	g++ -c -o ./SGI/opt/fileman.o fileman.c -I../inc -O2 -DMANAGE_MEM -DNO_CHECK 
+
+./SGI/opt/fileman.o : netdrv.hpp
+./SGI/opt/fileman.o : undrv.hpp
+./SGI/opt/fileman.o : ../inc/indian.hpp
+./SGI/opt/fileman.o : ../inc/netface.hpp
+./SGI/opt/fileman.o : ../inc/sock.hpp
+./SGI/opt/fileman.o : fileman.hpp
+
+SGI_undrvp.sgi_profile_o_files = \
+	./SGI/profile/undrv.o \
+	./SGI/profile/tcpip.o \
+	./SGI/profile/netdrv.o \
+	./SGI/profile/gserver.o \
+	./SGI/profile/gclient.o \
+	./SGI/profile/fileman.o
+
+undrvp.sgi : $(SGI_undrvp.sgi_profile_o_files)
+	g++ -o undrvp.sgi \
+	./SGI/profile/undrv.o \
+	./SGI/profile/tcpip.o \
+	./SGI/profile/netdrv.o \
+	./SGI/profile/gserver.o \
+	./SGI/profile/gclient.o \
+	./SGI/profile/fileman.o -lX11 -lXext -lm
+
+./SGI/profile/undrv.o : undrv.c
+	g++ -c -o ./SGI/profile/undrv.o undrv.c -I../inc -O2 -g -p -DMEM_CHECK -DMANAGE_MEM 
+
+./SGI/profile/undrv.o : tcpip.hpp
+./SGI/profile/undrv.o : fileman.hpp
+./SGI/profile/undrv.o : gclient.hpp
+./SGI/profile/undrv.o : gserver.hpp
+./SGI/profile/undrv.o : netdrv.hpp
+./SGI/profile/undrv.o : ../inc/netface.hpp
+./SGI/profile/undrv.o : ../inc/sock.hpp
+./SGI/profile/undrv.o : undrv.hpp
+./SGI/profile/undrv.o : ../inc/indian.hpp
+./SGI/profile/tcpip.o : tcpip.c
+	g++ -c -o ./SGI/profile/tcpip.o tcpip.c -I../inc -O2 -g -p -DMEM_CHECK -DMANAGE_MEM 
+
+./SGI/profile/tcpip.o : ../inc/sock.hpp
+./SGI/profile/tcpip.o : tcpip.hpp
+./SGI/profile/netdrv.o : netdrv.c
+	g++ -c -o ./SGI/profile/netdrv.o netdrv.c -I../inc -O2 -g -p -DMEM_CHECK -DMANAGE_MEM 
+
+./SGI/profile/netdrv.o : tcpip.hpp
+./SGI/profile/netdrv.o : undrv.hpp
+./SGI/profile/netdrv.o : ../inc/sock.hpp
+./SGI/profile/netdrv.o : gserver.hpp
+./SGI/profile/netdrv.o : ../inc/indian.hpp
+./SGI/profile/netdrv.o : ../inc/netface.hpp
+./SGI/profile/netdrv.o : netdrv.hpp
+./SGI/profile/gserver.o : gserver.c
+	g++ -c -o ./SGI/profile/gserver.o gserver.c -I../inc -O2 -g -p -DMEM_CHECK -DMANAGE_MEM 
+
+./SGI/profile/gserver.o : undrv.hpp
+./SGI/profile/gserver.o : ../inc/indian.hpp
+./SGI/profile/gserver.o : ../inc/netface.hpp
+./SGI/profile/gserver.o : netdrv.hpp
+./SGI/profile/gserver.o : ../inc/sock.hpp
+./SGI/profile/gserver.o : gserver.hpp
+./SGI/profile/gclient.o : gclient.c
+	g++ -c -o ./SGI/profile/gclient.o gclient.c -I../inc -O2 -g -p -DMEM_CHECK -DMANAGE_MEM 
+
+./SGI/profile/gclient.o : undrv.hpp
+./SGI/profile/gclient.o : netdrv.hpp
+./SGI/profile/gclient.o : ../inc/indian.hpp
+./SGI/profile/gclient.o : ../inc/netface.hpp
+./SGI/profile/gclient.o : ../inc/sock.hpp
+./SGI/profile/gclient.o : gclient.hpp
+./SGI/profile/fileman.o : fileman.c
+	g++ -c -o ./SGI/profile/fileman.o fileman.c -I../inc -O2 -g -p -DMEM_CHECK -DMANAGE_MEM 
+
+./SGI/profile/fileman.o : netdrv.hpp
+./SGI/profile/fileman.o : undrv.hpp
+./SGI/profile/fileman.o : ../inc/indian.hpp
+./SGI/profile/fileman.o : ../inc/netface.hpp
+./SGI/profile/fileman.o : ../inc/sock.hpp
+./SGI/profile/fileman.o : fileman.hpp
+

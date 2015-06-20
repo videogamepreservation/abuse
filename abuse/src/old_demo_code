@@ -1,0 +1,373 @@
+/*
+static void push_demo_event(event &ev)
+{
+  if (ev.type==EV_KEY || ev.type==EV_KEYRELEASE ||
+      ev.type==EV_MOUSE_MOVE || ev.type==EV_MOUSE_BUTTON)
+  {
+    record_total++;
+    record_array=(event **)jrealloc(record_array,sizeof(event *)*record_total,"demo event que");
+    record_array[record_total-1]=new event;
+    memcpy(record_array[record_total-1],&ev,sizeof(ev));
+  }
+}
+
+static void flush_demo_events(bFILE *fp)
+{
+  fp->write_short(record_total);
+  for (int i=0;i<record_total;i++)
+  {
+    event *ev=record_array[i];
+    if (ev->type==EV_KEY)
+    {
+      fp->write_byte(DE_KEY_PRESS);
+      fp->write_byte(2);
+      fp->write_short(ev->key);
+    } 
+    else if (ev->type==EV_KEYRELEASE)
+    { 
+      fp->write_byte(DE_KEY_RELEASE);
+      fp->write_byte(2);
+      fp->write_short(ev->key);
+    }
+    else if (ev->type==EV_MOUSE_MOVE)
+    {
+      fp->write_byte(DE_MOUSE_MOVE);
+      fp->write_byte(4);
+      fp->write_short(ev->mouse_move.x);
+      fp->write_short(ev->mouse_move.y);
+    } else if (ev->type==EV_MOUSE_BUTTON)
+    {
+      fp->write_byte(DE_MOUSE_BUTTON);
+      fp->write_byte(1);
+      fp->write_byte(ev->mouse_button);
+    }
+    jfree(ev);
+  }
+  record_total=0;
+  if (record_array)
+    jfree(record_array);
+  record_array=NULL;
+}
+
+int set_demo_mode(int mode, char *filename, window_manager *wm)
+{
+  switch (demo_mode)
+  {
+    case DEMO_RECORD : 
+    {
+      the_game->show_help("Finished recording");
+      if (demo_file)
+      { 
+	flush_demo_events(demo_file);
+	demo_file->write_short(0xffff);    // end of input marker
+	delete demo_file; 
+        demo_file=NULL;
+      }    
+    } break;
+
+    case DEMO_PLAY :
+    {
+      if (demo_file)
+      { 
+	delete demo_file;
+        demo_file=NULL;
+      }
+
+      if (mode==DEMO_OFF)
+      {
+        the_game->set_state(MENU_STATE);
+	wm->push_event(new event(ID_NULL,NULL));
+      }
+      the_game->reset_keymap();
+      l_difficulty=old_difficulty;
+
+      view *v=player_list;
+      for (;v;v=v->next) { if (v->focus) { v->reset_player(); v->focus->set_aistate(0); } }
+    } break;
+  }
+
+  demo_mode=mode;
+
+  switch (demo_mode)
+  {
+    case DEMO_RECORD :
+    {
+      demo_file=new jFILE(filename,"wb");
+      if (demo_file->open_failure())
+      {
+	the_game->show_help("Unable to open file to record demo");
+	delete demo_file;
+	demo_file=NULL;
+	demo_mode=DEMO_OFF;
+	return 0;
+      } else
+      {
+	char name[100];
+	strcpy(name,current_level->name());
+
+	the_game->load_level(name);
+	demo_file->write("DEMO,VERSION:1",14);
+	demo_file->write_byte(strlen(name)+1);
+	demo_file->write(name,strlen(name)+1);
+	
+	if (DEFINEDP(symbol_value(l_difficulty)))
+	{
+	  if (symbol_value(l_difficulty)==l_easy) demo_file->write_byte(0);
+	  else if (symbol_value(l_difficulty)==l_medium) demo_file->write_byte(1);
+	  else if (symbol_value(l_difficulty)==l_hard) demo_file->write_byte(2);
+	  else demo_file->write_byte(3);
+	} else demo_file->write_byte(3);
+
+	demo_tick_on=current_level->tick_counter();
+	last_demo_mx=last_demo_my=last_demo_mbut=0;
+      }
+      
+      if (dev&EDIT_MODE) toggle_edit_mode();
+      player_list->reset_player();
+    } break;
+    case DEMO_PLAY   :    
+    {
+
+      demo_file=open_file(filename,"rb");
+      if (demo_file->open_failure())
+      {
+	the_game->show_help("Unable to open file to play demo");
+	delete demo_file;
+	demo_file=NULL;
+	demo_mode=DEMO_OFF;
+	return 0;
+      } else
+      {
+	events_for_tick=0;
+	char name[100];
+	demo_file->read(name,14);
+	if (!memcmp(name,"DEMO,VERSION:1",14))
+	{
+	  demo_file->read(name,demo_file->read_byte());
+	  bFILE *test=open_file(name,"rb");        // make sure level is there
+	  if (test->open_failure()) { delete test; return 0; }
+	  delete test;
+
+	  old_difficulty=l_difficulty;
+	  switch (demo_file->read_byte())
+	  {
+	    case 0 : 
+	    { set_symbol_value(l_difficulty,l_easy); } break;
+	    case 1 : 
+	    { set_symbol_value(l_difficulty,l_medium); } break;
+	    case 2 : 
+	    { set_symbol_value(l_difficulty,l_hard); } break;
+	    case 3 : 
+	    { set_symbol_value(l_difficulty,l_extreme); } break;
+	  }
+
+
+	  view *v=player_list;
+	  for (;v;v=v->next) { if (v->focus) v->reset_player(); }
+
+	  the_game->load_level(name);
+	  demo_tick_on=current_level->tick_counter()-1;
+	  the_game->set_state(RUN_STATE);
+	  last_demo_mx=last_demo_my=last_demo_mbut=0;
+
+	  for (;v;v=v->next) { if (v->focus) { v->focus->set_aistate(0); } }
+
+	} else
+	{
+	  delete demo_file;
+	  demo_file=NULL;
+	  the_game->show_help("Bad demo version or, not demo file");
+	  return 0;
+	} 
+      }
+      if (dev&EDIT_MODE) toggle_edit_mode();
+      player_list->reset_player();
+    } break;
+  }
+  return 1;
+}
+
+void load_event(bFILE *fp, window_manager *wm,  event &ev)
+{
+  int type=fp->read_byte();
+  int size=fp->read_byte();
+  wm->set_mouse_position(small_render ? last_demo_mx*2 : last_demo_mx,
+			 small_render ? last_demo_my*2 : last_demo_my);
+  ev.mouse_move.x=last_demo_mx;
+  ev.mouse_move.y=last_demo_my;
+  ev.mouse_button=last_demo_mbut;
+
+  switch (type)
+  {
+    case DE_KEY_PRESS : 
+    { 
+      ev.type=EV_KEY;
+      ev.key=fp->read_short();
+    } break;
+    case DE_KEY_RELEASE : 
+    { 
+      ev.type=EV_KEYRELEASE;
+      ev.key=fp->read_short();
+    } break;
+    case DE_MOUSE_MOVE :
+    {
+      ev.type=EV_MOUSE_MOVE;
+      last_demo_mx=fp->read_short();
+      last_demo_my=fp->read_short();
+      wm->set_mouse_position(small_render ? last_demo_mx*2 : last_demo_mx,
+			     small_render ? last_demo_my*2 : last_demo_my);
+    } break;
+    case DE_MOUSE_BUTTON :
+    {
+      ev.type=EV_MOUSE_BUTTON;
+      last_demo_mbut=fp->read_byte();
+      ev.mouse_button=last_demo_mbut;
+    } break;
+    default :
+    {
+      char buf[100];
+      fp->read(buf,size);
+    } 
+  }  
+}
+
+void remap_demo_mouse()
+{
+  if (small_render)   // divide mouse by 2 if enlarged rendering is on
+  {
+    last_demo_mx=(last_demo_mx-player_list->cx1)/2+player_list->cx1;
+    last_demo_my=(last_demo_my-player_list->cy1)/2+player_list->cy1;
+  }
+}
+
+void get_event(event &ev, window_manager *wm)
+{
+  switch (demo_mode)
+  {
+    case DEMO_PLAY :
+    {
+      if (current_level)
+      {
+	if (events_for_tick==0)  // no more stored events for this tick, got check for tick change
+	{
+	  if (demo_tick_on!=current_level->tick_counter())
+	  {
+	    while (events_for_tick--)    // just in case program didn't read all of last ticks events
+	      load_event(demo_file,wm,ev);
+
+	    events_for_tick=demo_file->read_short();
+	    if (events_for_tick==0xffff)
+	      set_demo_mode(DEMO_OFF,NULL,wm);
+	    demo_tick_on=current_level->tick_counter();
+	  }
+	}
+
+	if (events_for_tick)
+	{
+	  load_event(demo_file,wm,ev);
+	  events_for_tick--;
+	}
+	else
+	{
+	  dprintf("Forced user event in demo mode! bad, bad..\n");
+	  wm->get_event(ev);           // hopefully this will not happen
+	}
+      }
+    } break;
+    case DEMO_RECORD :
+    {
+      if (demo_tick_on!=current_level->tick_counter())
+      {
+	flush_demo_events(demo_file);
+	do
+	{
+	  demo_tick_on++;
+	  if (demo_tick_on!=current_level->tick_counter())  // store no event ticks
+	    demo_file->write_short(0);
+	} while (demo_tick_on!=current_level->tick_counter());
+      }
+      wm->get_event(ev);
+      if (ev.type==EV_MOUSE_MOVE)
+      { last_demo_mx=ev.mouse_move.x;
+	last_demo_my=ev.mouse_move.y;
+	remap_demo_mouse();
+	ev.mouse_move.x=last_demo_mx;
+	ev.mouse_move.y=last_demo_my;
+      } else
+      {
+	ev.mouse_move.x=last_demo_mx;
+	ev.mouse_move.y=last_demo_my;
+	if (ev.type==EV_MOUSE_BUTTON)
+          last_demo_mbut=ev.mouse_button;
+	else ev.mouse_button=last_demo_mbut;
+      }
+
+      if (ev.type==EV_KEY && ev.key==JK_ENTER)
+        set_demo_mode(DEMO_OFF,NULL,wm);
+      else
+        push_demo_event(ev);      
+
+    } break;
+    case DEMO_OFF :
+    { wm->get_event(ev); 
+      idle_ticks=0;
+      last_demo_mx=ev.mouse_move.x;
+      last_demo_my=ev.mouse_move.y;
+      last_demo_mbut=ev.mouse_button;
+      remap_demo_mouse();
+/*      wm->mouse_status(last_demo_mx,last_demo_mx,last_demo_mbut);
+      if (ev.type!=EV_MOUSE_MOVE)
+      {
+	ev.mouse_move.x=last_demo_mx;
+	ev.mouse_move.y=last_demo_my;
+      }
+      if (ev.type!=EV_MOUSE_BUTTON)
+        ev.mouse_button=last_demo_mbut;     */
+    } break;
+  } 
+}
+
+int event_waiting(window_manager *wm)
+{
+  switch (demo_mode)
+  {
+    case DEMO_RECORD :
+    case DEMO_OFF : 
+    { return wm->event_waiting();  } break;
+    case DEMO_PLAY :
+    {
+      if (demo_tick_on!=current_level->tick_counter())
+      {
+	while (events_for_tick)    // just in case program didn't read all of last ticks events
+	{
+	  events_for_tick--;
+	  event ev;
+    	  load_event(demo_file,wm,ev);
+	}
+
+	events_for_tick=demo_file->read_short();
+	demo_tick_on=current_level->tick_counter();
+	if (events_for_tick==0xffff)
+	  set_demo_mode(DEMO_OFF,NULL,wm);
+      }     
+
+      if (demo_mode==DEMO_PLAY)  // make sure we didn't just end demo
+      {
+	while (wm->event_waiting())  // gobble up any user events
+	{
+	  event ev;
+	  wm->get_event(ev);         // see if the user is trying to cut off the demo
+	  if (ev.type==EV_KEY)
+	  set_demo_mode(DEMO_OFF,NULL,wm);
+	}
+	return events_for_tick!=0;
+      } else return wm->event_waiting();
+
+
+    } break;		 
+  }
+  return 0;
+}
+
+
+*/
